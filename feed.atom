@@ -2,8 +2,32 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 <title>blog\hrgruri</title>
 <link href="https://hrgruri.github.io"></link>
-<updated>2016-04-25T17:17:06+09:00</updated>
+<updated>2016-04-26T13:05:37+09:00</updated>
 <id>urn:uuid:1deced78-1925-4a0a-6b37-d3e39e3b7725</id>
+<entry>
+<author><name>Yuya Aratani</name>
+</author>
+<title>Saori v0.3を作った</title>
+<link href="/article/2016/04/261251"></link>
+<id>urn:uuid:4352bc72-9893-69fd-374b-aa57f31f3822</id>
+<updated>2016-04-26T12:51:20+09:00</updated>
+<summary type="html"><![CDATA[<p>Saoriにいくつか機能を加えた.</p>
+<h2>v0.2</h2>
+<p>v0.2ではフィード(/feed.atom)を生成するようにしたり,簡単なタグ機能を加えた.</p>
+<h2>v0.3</h2>
+<p>v0.3では機能の追加ではなく,コードを分けたり修正したりした.あと生成する際に使用するtwigファイルの場所を変更したので,v0.2からv0.3でテーマの互換性がないですが,sampleテーマは直した.</p>
+<h2>v0.4でしたいこと</h2>
+<p>v0.4ではconfig.jsonの場所をcontentsの中にしたい. あとinitでconfig.jsonファイルの生成も. 機能としてはテーマが設定したページを作れるようにしたり,ユーザがMarkdownファイルを作るだけで設定されたテンプレートからページを生成できるようにしたい.  </p>
+<hr />
+<p>現在アクセスできるのは</p>
+<ul>
+<li>/page/:page_number</li>
+<li>/article/:year/:month/:title</li>
+<li>/tag</li>
+<li>/tag/:tag_name/:page_number</li>
+</ul>
+]]></summary>
+</entry>
 <entry>
 <author><name>Yuya Aratani</name>
 </author>
