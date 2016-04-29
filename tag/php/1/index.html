@@ -19,18 +19,77 @@
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
                                 <div class="blog-article">
-            <h1 class="blog-article-title"><a href="/article/2016/04/saori">Saori V0.1.0のリリース</a></h1>
-            <div class="blog-article-meta">April 24, 2016</div>
+            <h1 class="blog-article-title"><a href="/article/2016/04/icd3">icd3</a></h1>
+            <div class="blog-article-meta">April 29, 2016</div>
             <div class="blog-article-contents">
-                                    Saoriについて
-SaoriというPHPを使った簡単なサイトジェネレータを作りました.現在のバージョンはv0.1.0です.これで,PHP動かない場所(たとえばusername.github.io)でもブログを公開できます. 仕組みとしてはローカルでPHPを使ってHTMLを生成して,それを公開するって流れです.
-現在,テーマはsampleしかないのです.これでは1ページあたりの記事の数は5つとなっ
-                                <br><a href="/article/2016/04/saori">read</a>
-           </div>
+                                    <p>先生｢創成3で作ってもらったサイトをオープンキャンパスで見せようと思う｣<br />
+私｢あっ,はい. ちゃんとしたコードに直したかったので, 修正したら渡します｣<br />
+先生｢それなんだけどね, 今のままだと書籍だけで見た感じが微妙だから絵も推薦できるようにして. 7月末までにしておいてね｣</p>
+<p>こんなわけで,前に作ったサイトの見た目をとかを修正するだけだったつもりが, 先生からのお願い(?)で推薦対象となるカテゴリーを増やすことになりました.<br />
+追加することになったのは浮世絵. 浮世絵のログは抽出してDBに保存していなかったので,もう一度アクセスログの解析をすることになりました. クローラなどのログはすでに落としてあるのがあったと思うので,そこからもう一度.</p>
+<p><Font color="red">I Love PHP</font> なのでもちろんPHPを使います. スクレイピングもPHPです. スクレイピングのコードも前まではクラスを作ってそれを使っていただけだったのですが, 今回はComposerでインストールして使えるようにして公開したいと思います.</p>
+<p>実行環境は,今日,研究室に立てたUbuntu Serverを使おうかなと. 開発段階では研究室のみからアクセスできるようにしておけばいい. オープンキャンパスの時のみ,大学のIPだけを通すようにするとか考えたが... 前回と同様にデータを先生に渡すだけになるのかな?</p>
+
+                           </div>
                           <ul class="blog-article-tags">
                    Tag:
-                                          <li><a href="/tag/php">php</a></li>
-                                          <li><a href="/tag/saori">saori</a></li>
+                                          <li><a href="/tag/php/1">php</a></li>
+                                          <li><a href="/tag/univ/1">univ</a></li>
+                                  </ul>
+                  </div>
+            <div class="blog-article">
+            <h1 class="blog-article-title"><a href="/article/2016/04/261251">Saori v0.3を作った</a></h1>
+            <div class="blog-article-meta">April 26, 2016</div>
+            <div class="blog-article-contents">
+                                    <p>Saoriにいくつか機能を加えた.</p>
+<h2>v0.2</h2>
+<p>v0.2ではフィード(/feed.atom)を生成するようにしたり,簡単なタグ機能を加えた.</p>
+<h2>v0.3</h2>
+<p>v0.3では機能の追加ではなく,コードを分けたり修正したりした.あと生成する際に使用するtwigファイルの場所を変更したので,v0.2からv0.3でテーマの互換性がないですが,sampleテーマは直した.</p>
+<h2>v0.4でしたいこと</h2>
+<p>v0.4ではconfig.jsonの場所をcontentsの中にしたい. あとinitでconfig.jsonファイルの生成も. 機能としてはテーマが設定したページを作れるようにしたり,ユーザがMarkdownファイルを作るだけで設定されたテンプレートからページを生成できるようにしたい.  </p>
+<hr />
+<p>現在アクセスできるのは</p>
+<ul>
+<li>/page/:page_number</li>
+<li>/article/:year/:month/:title</li>
+<li>/tag</li>
+<li>/tag/:tag_name/:page_number</li>
+</ul>
+
+                           </div>
+                          <ul class="blog-article-tags">
+                   Tag:
+                                          <li><a href="/tag/php/1">php</a></li>
+                                          <li><a href="/tag/saori/1">saori</a></li>
+                                  </ul>
+                  </div>
+            <div class="blog-article">
+            <h1 class="blog-article-title"><a href="/article/2016/04/saori">Saori v0.1.0のリリース</a></h1>
+            <div class="blog-article-meta">April 24, 2016</div>
+            <div class="blog-article-contents">
+                                    <h2>Saoriについて</h2>
+<p>SaoriというPHPを使った簡単なサイトジェネレータを作りました.現在のバージョンはv0.1.0です.これで,PHP動かない場所(たとえばusername.github.io)でもブログを公開できます. 仕組みとしてはローカルでPHPを使ってHTMLを生成して,それを公開するって流れです.<br />
+現在,テーマはsampleしかないのです.これでは1ページあたりの記事の数は5つとなっています.
+使い方は<a href="https://github.com/hrgruri/saori">GitHub</a>で.まだまだ開発途中で,追加したい機能がいくつかあるのでがんばります.  </p>
+<pre><code class="language-sh">composer install hrgruri/saori
+</code></pre>
+<h3>機能</h3>
+<ul>
+<li>各記事用のページの生成(/article/:year/:month/title)</li>
+<li>記事(N件)ごとのページを生成(/page/:page_number)</li>
+</ul>
+<h3>予定</h3>
+<p>各記事に対する設定でタグの欄があるのですが,Saoriの機能ではタグ一覧取得,タグ用のページの生成がないので,タグ機能を加えようと思います.<br />
+フィード機能(ATOM/RSS)がまだできていないので,それもできればいいかなと思っています.</p>
+<hr />
+<p>プログラムの話は全くしていないので,それに関しては近いうちに別の記事でします.</p>
+
+                           </div>
+                          <ul class="blog-article-tags">
+                   Tag:
+                                          <li><a href="/tag/php/1">php</a></li>
+                                          <li><a href="/tag/saori/1">saori</a></li>
                                   </ul>
                   </div>
         <ul class = "pager">
