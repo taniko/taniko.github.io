@@ -2,8 +2,29 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 <title>blog\hrgruri</title>
 <link href="https://hrgruri.github.io"></link>
-<updated>2016-04-30T00:08:20+09:00</updated>
+<updated>2016-05-30T14:06:21+09:00</updated>
 <id>urn:uuid:1deced78-1925-4a0a-6b37-d3e39e3b7725</id>
+<entry>
+<author><name>Yuya Aratani</name>
+</author>
+<title>Saori v0.4.0を作りました</title>
+<link href="/article/2016/05/301402"></link>
+<id>urn:uuid:0d67959e-4782-4b3a-ff12-614f7faba226</id>
+<updated>2016-05-30T14:02:18+09:00</updated>
+<summary type="html"><![CDATA[<p>v0.4.0での変更点は</p>
+<ul>
+<li>Twigファイルの場所の変更</li>
+<li>config.jsonの場所を変更</li>
+<li>ユーザページの生成機能</li>
+</ul>
+<h2>Twigファイルの場所の変更について</h2>
+<p>Twigファイルの場所をtheme/:theme_name/twig/にしました. サイトを生成するのに必要なテンプレートはtemplate内に置きました.これからはsaoriが直接呼び出すTwigファイルはここにおいていこうと思います.  </p>
+<h2>config.jsonの場所を変更について</h2>
+<p>contentsディレクトリ内にconfig.jsonを設置するように変更しました. 何故したかというと,config.jsonもgitで管理しやすくするためです.</p>
+<h2>ユーザページの生成機能について</h2>
+<p>それと<a href="/article/2016/04/261251/">前に言ってた</a>,ユーザがMarkdownファイルを作るだけでページを生成できるようにしました. 例えば,contents/page/about.mdというファイルを作るとtemplate/page.twigを利用して,/about/index.htmlが作られます. しかしこれだと画像が扱えない(作ってから気づいた)ので,v0.5では画像をどこかにコピーしてMarkdownファイル内にある画像のパスをそこに書き換えようかな思います.</p>
+]]></summary>
+</entry>
 <entry>
 <author><name>Yuya Aratani</name>
 </author>

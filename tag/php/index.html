@@ -6,6 +6,7 @@
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/article.css">
         <link rel="stylesheet" href="/css/tag.css">
         <link href="/feed.atom" rel="alternate" title="atom" type="application/atom+xml">
     </head>
@@ -19,6 +20,30 @@
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
                                 <div class="blog-article">
+            <h1 class="blog-article-title"><a href="/article/2016/05/301402">Saori v0.4.0を作りました</a></h1>
+            <div class="blog-article-meta">May 30, 2016</div>
+            <div class="blog-article-contents">
+                                    <p>v0.4.0での変更点は</p>
+<ul>
+<li>Twigファイルの場所の変更</li>
+<li>config.jsonの場所を変更</li>
+<li>ユーザページの生成機能</li>
+</ul>
+<h2>Twigファイルの場所の変更について</h2>
+<p>Twigファイルの場所をtheme/:theme_name/twig/にしました. サイトを生成するのに必要なテンプレートはtemplate内に置きました.これからはsaoriが直接呼び出すTwigファイルはここにおいていこうと思います.  </p>
+<h2>config.jsonの場所を変更について</h2>
+<p>contentsディレクトリ内にconfig.jsonを設置するように変更しました. 何故したかというと,config.jsonもgitで管理しやすくするためです.</p>
+<h2>ユーザページの生成機能について</h2>
+<p>それと<a href="/article/2016/04/261251/">前に言ってた</a>,ユーザがMarkdownファイルを作るだけでページを生成できるようにしました. 例えば,contents/page/about.mdというファイルを作るとtemplate/page.twigを利用して,/about/index.htmlが作られます. しかしこれだと画像が扱えない(作ってから気づいた)ので,v0.5では画像をどこかにコピーしてMarkdownファイル内にある画像のパスをそこに書き換えようかな思います.</p>
+
+                           </div>
+                          <ul class="blog-article-tags">
+                   Tag:
+                                          <li><a href="/tag/php/1">php</a></li>
+                                          <li><a href="/tag/saori/1">saori</a></li>
+                                  </ul>
+                  </div>
+            <div class="blog-article">
             <h1 class="blog-article-title"><a href="/article/2016/04/icd3">icd3</a></h1>
             <div class="blog-article-meta">April 29, 2016</div>
             <div class="blog-article-contents">
