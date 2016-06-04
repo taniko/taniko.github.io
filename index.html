@@ -22,7 +22,7 @@
                 <link href="/feed.atom" rel="alternate" title="atom" type="application/atom+xml">
     </head>
     <body>
-        <div id="blog-header">
+        <div id="blog-header" style="background: #9effff;">
             <div class="container">
                 <h1 id="blog-title"><a href="/">blog\hrgruri</a></h1>
             </div>
@@ -31,6 +31,28 @@
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
                                 <div class="blog-article">
+            <h1 class="blog-article-title"><a href="/article/2016/06/042227">Saori v0.5.x-devにてTableがおかしい</a></h1>
+            <div class="blog-article-meta">June 4, 2016</div>
+            <div class="blog-article-contents">
+                                    <p>現在Saoriのv0.5を作っていますが, どうやらテーブルが正しく表示されないです.</p>
+<pre><code class="language-markdown">|name|値|
+|:-:|:-:|
+|f85|キーワード|
+|f23|絵師|
+|f83|画題|
+</code></pre>
+<p>上記の記述をしたら以下の様なテーブルが生成されました.</p>
+<p><img src="/article/2016/06/042227/table.png" alt="" /></p>
+<p>罫線が入っていないので,テーブルとしてわかりにくくなっています. 今のところ原因がわかっていません. Atomの上では正しく表示されているので記述に間違いはないのではないかとは思います. cebe/markdownを使ってMarkdownを変換しています. とりあえず他のライブラリを使ってみてどう表示されるのか試してみます. あとHTMLも確認してみたいと思います.</p>
+<p>ちなみにv0.5.x-devでは記事とユーザページ(contents/page/NAME.md)の画像ファイルのパスの書き換えはできるようになりました. </p>
+
+                            </div>
+                            <ul class="blog-article-tags">
+                    Tag:
+                                            <li><a href="/tag/saori/1">saori</a></li>
+                                    </ul>
+                    </div>
+            <div class="blog-article">
             <h1 class="blog-article-title"><a href="/article/2016/06/arc">立命館ARCのスクレイピング</a></h1>
             <div class="blog-article-meta">June 2, 2016</div>
             <div class="blog-article-contents">
@@ -175,35 +197,10 @@ object(Hrgruri\Rarcs\Asset\Nishikie)#51 (5) {
                                             <li><a href="/tag/saori/1">saori</a></li>
                                     </ul>
                     </div>
-            <div class="blog-article">
-            <h1 class="blog-article-title"><a href="/article/2016/04/saori">Saori v0.1.0のリリース</a></h1>
-            <div class="blog-article-meta">April 24, 2016</div>
-            <div class="blog-article-contents">
-                                    <h2>Saoriについて</h2>
-<p>SaoriというPHPを使った簡単なサイトジェネレータを作りました.現在のバージョンはv0.1.0です.これで,PHP動かない場所(たとえばusername.github.io)でもブログを公開できます. 仕組みとしてはローカルでPHPを使ってHTMLを生成して,それを公開するって流れです.<br />
-現在,テーマはsampleしかないのです.これでは1ページあたりの記事の数は5つとなっています.
-使い方は<a href="https://github.com/hrgruri/saori">GitHub</a>で.まだまだ開発途中で,追加したい機能がいくつかあるのでがんばります.  </p>
-<pre><code class="language-sh">composer install hrgruri/saori
-</code></pre>
-<h3>機能</h3>
-<ul>
-<li>各記事用のページの生成(/article/:year/:month/title)</li>
-<li>記事(N件)ごとのページを生成(/page/:page_number)</li>
-</ul>
-<h3>予定</h3>
-<p>各記事に対する設定でタグの欄があるのですが,Saoriの機能ではタグ一覧取得,タグ用のページの生成がないので,タグ機能を加えようと思います.<br />
-フィード機能(ATOM/RSS)がまだできていないので,それもできればいいかなと思っています.</p>
-<hr />
-<p>プログラムの話は全くしていないので,それに関しては近いうちに別の記事でします.</p>
-
-                            </div>
-                            <ul class="blog-article-tags">
-                    Tag:
-                                            <li><a href="/tag/php/1">php</a></li>
-                                            <li><a href="/tag/saori/1">saori</a></li>
-                                    </ul>
+                <ul class = "pager">
+            <li class = "next_link"><a href = "/page/2">Next &rarr;</a></li>
+        </ul>
                     </div>
-                        </div>
                                                     <div id="blog-side" class="col-xs-12 col-md-3 col-md-offset-1">
                                                     <p><a href="https://github.com/hrgruri" title="GitHub">GitHub</a><br />
 <a href="https://twitter.com/hrgruri" title="Twitter">Twitter</a></p>

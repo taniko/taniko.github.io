@@ -2,8 +2,28 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 <title>blog\hrgruri</title>
 <link href="https://hrgruri.github.io"></link>
-<updated>2016-06-02T22:22:15+09:00</updated>
+<updated>2016-06-04T23:02:51+09:00</updated>
 <id>urn:uuid:1deced78-1925-4a0a-6b37-d3e39e3b7725</id>
+<entry>
+<author><name>Yuya Aratani</name>
+</author>
+<title>Saori v0.5.x-devにてTableがおかしい</title>
+<link href="/article/2016/06/042227"></link>
+<id>urn:uuid:34a591c2-3e2d-b7f2-4ee6-8c45e35f7a42</id>
+<updated>2016-06-04T22:27:39+09:00</updated>
+<summary type="html"><![CDATA[<p>現在Saoriのv0.5を作っていますが, どうやらテーブルが正しく表示されないです.</p>
+<pre><code class="language-markdown">|name|値|
+|:-:|:-:|
+|f85|キーワード|
+|f23|絵師|
+|f83|画題|
+</code></pre>
+<p>上記の記述をしたら以下の様なテーブルが生成されました.</p>
+<p><img src="/article/2016/06/042227/table.png" alt="" /></p>
+<p>罫線が入っていないので,テーブルとしてわかりにくくなっています. 今のところ原因がわかっていません. Atomの上では正しく表示されているので記述に間違いはないのではないかとは思います. cebe/markdownを使ってMarkdownを変換しています. とりあえず他のライブラリを使ってみてどう表示されるのか試してみます. あとHTMLも確認してみたいと思います.</p>
+<p>ちなみにv0.5.x-devでは記事とユーザページ(contents/page/NAME.md)の画像ファイルのパスの書き換えはできるようになりました. </p>
+]]></summary>
+</entry>
 <entry>
 <author><name>Yuya Aratani</name>
 </author>

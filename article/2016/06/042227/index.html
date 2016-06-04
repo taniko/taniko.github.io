@@ -30,27 +30,31 @@
         <div class="container">
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
-                                <div class="blog-article">
-            <h1 class="blog-article-title"><a href="/article/2016/04/icd3">icd3</a></h1>
-            <div class="blog-article-meta">April 29, 2016</div>
-            <div class="blog-article-contents">
-                                    <p>先生｢創成3で作ってもらったサイトをオープンキャンパスで見せようと思う｣<br />
-私｢あっ,はい. ちゃんとしたコードに直したかったので, 修正したら渡します｣<br />
-先生｢それなんだけどね, 今のままだと書籍だけで見た感じが微妙だから絵も推薦できるようにして. 7月末までにしておいてね｣</p>
-<p>こんなわけで,前に作ったサイトの見た目をとかを修正するだけだったつもりが, 先生からのお願い(?)で推薦対象となるカテゴリーを増やすことになりました.<br />
-追加することになったのは浮世絵. 浮世絵のログは抽出してDBに保存していなかったので,もう一度アクセスログの解析をすることになりました. クローラなどのログはすでに落としてあるのがあったと思うので,そこからもう一度.</p>
-<p><Font color="red">I Love PHP</font> なのでもちろんPHPを使います. スクレイピングもPHPです. スクレイピングのコードも前まではクラスを作ってそれを使っていただけだったのですが, 今回はComposerでインストールして使えるようにして公開したいと思います.</p>
-<p>実行環境は,今日,研究室に立てたUbuntu Serverを使おうかなと. 開発段階では研究室のみからアクセスできるようにしておけばいい. オープンキャンパスの時のみ,大学のIPだけを通すようにするとか考えたが... 前回と同様にデータを先生に渡すだけになるのかな</p>
+                        <div class="blog-article">
+        <h1 class="blog-article-title"><a href="/article/2016/06/042227">Saori v0.5.x-devにてTableがおかしい</a></h1>
+        <div class="blog-article-meta">June 4, 2016</div>
+        <div class="blog-article-contents">
+                            <p>現在Saoriのv0.5を作っていますが, どうやらテーブルが正しく表示されないです.</p>
+<pre><code class="language-markdown">|name|値|
+|:-:|:-:|
+|f85|キーワード|
+|f23|絵師|
+|f83|画題|
+</code></pre>
+<p>上記の記述をしたら以下の様なテーブルが生成されました.</p>
+<p><img src="/article/2016/06/042227/table.png" alt="" /></p>
+<p>罫線が入っていないので,テーブルとしてわかりにくくなっています. 今のところ原因がわかっていません. Atomの上では正しく表示されているので記述に間違いはないのではないかとは思います. cebe/markdownを使ってMarkdownを変換しています. とりあえず他のライブラリを使ってみてどう表示されるのか試してみます. あとHTMLも確認してみたいと思います.</p>
+<p>ちなみにv0.5.x-devでは記事とユーザページ(contents/page/NAME.md)の画像ファイルのパスの書き換えはできるようになりました. </p>
 
-                           </div>
-                          <ul class="blog-article-tags">
-                   Tag:
-                                          <li><a href="/tag/php/1">php</a></li>
-                                          <li><a href="/tag/univ/1">univ</a></li>
-                                  </ul>
-                  </div>
-        <ul class = "pager">
-                    </ul>
+                    </div>
+                    <ul class="blog-article-tags">
+                Tag:
+                                    <li><a href="/tag/saori/1">saori</a></li>
+                            </ul>
+            </div>
+    <ul class = "pager">
+                            <li class = "older_link"><a href = "/article/2016/06/arc">Older &rarr;</a></li>
+            </ul>
                 </div>
                                                     <div id="blog-side" class="col-xs-12 col-md-3 col-md-offset-1">
                                                     <p><a href="https://github.com/hrgruri" title="GitHub">GitHub</a><br />
