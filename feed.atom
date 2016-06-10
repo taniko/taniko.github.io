@@ -2,8 +2,21 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 <title>blog\hrgruri</title>
 <link href="https://hrgruri.github.io"></link>
-<updated>2016-06-10T14:49:36+09:00</updated>
+<updated>2016-06-10T22:47:51+09:00</updated>
 <id>urn:uuid:1deced78-1925-4a0a-6b37-d3e39e3b7725</id>
+<entry>
+<author><name>Yuya Aratani</name>
+</author>
+<title>Saori v0.5を作った</title>
+<link href="/article/2016/06/102235"></link>
+<id>urn:uuid:65a453e3-79a3-ccbd-085a-bc8729a31881</id>
+<updated>2016-06-10T22:35:58+09:00</updated>
+<summary type="html"><![CDATA[<p>Saori v0.5.0をリリースした. これで簡単にユーザが新たなページを生成することができるようになった. そして,<a href="http://hrgruri.github.io/article/2016/06/042227/">前の記事</a>で言っていたテーブルがおかしい理由はテーブルのCSSが記述されていなかったからでした. ボーダの設定を指定なかったので,枠線がない状態で出力されていただけでした.</p>
+<hr />
+<p>そろそろv0.x系をやめてv1.0にしてもいい頃かもしれない. 最初に思っていた必要な最低限の機能はできたと思う.<br />
+それとちゃんとした使い方をまとめて記事かページを生成する必要がある. 今のところ他の人が使うのには不親切だ. README.mdには記事の編集のことしか記述していない. (誰か作る人がいるのかわからないが)テーマの作り方やユーザページについてなど. こういったものをまとめ終えたらv1.0.0にしたいと思います.</p>
+]]></summary>
+</entry>
 <entry>
 <author><name>Yuya Aratani</name>
 </author>

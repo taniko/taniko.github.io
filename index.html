@@ -31,6 +31,17 @@
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
                                 <div class="blog-article" style="background-color: #FFF1CF;">
+            <h1 class="blog-article-title"><a href="/article/2016/06/102235">Saori v0.5を作った</a></h1>
+            <div class="blog-article-meta">June 10, 2016</div>
+            <div class="blog-article-contents">
+                                    <p>Saori v0.5.0をリリースした. これで簡単にユーザが新たなページを生成することができるようになった. そして,<a href="http://hrgruri.github.io/article/2016/06/042227/">前の記事</a>で言っていたテーブルがおかしい理由はテーブルのCSSが記述されていなかったからでした. ボーダの設定を指定なかったので,枠線がない状態で出力されていただけでした.</p>
+<hr />
+<p>そろそろv0.x系をやめてv1.0にしてもいい頃かもしれない. 最初に思っていた必要な最低限の機能はできたと思う.<br />
+それとちゃんとした使い方をまとめて記事かページを生成する必要がある. 今のところ他の人が使うのには不親切だ. README.mdには記事の編集のことしか記述していない. (誰か作る人がいるのかわからないが)テーマの作り方やユーザページについてなど. こういったものをまとめ終えたらv1.0.0にしたいと思います.</p>
+
+                            </div>
+                    </div>
+            <div class="blog-article" style="background-color: #FFF1CF;">
             <h1 class="blog-article-title"><a href="/article/2016/06/042227">Saori v0.5.x-devにてTableがおかしい</a></h1>
             <div class="blog-article-meta">June 4, 2016</div>
             <div class="blog-article-contents">
@@ -168,33 +179,6 @@ object(Hrgruri\Rarcs\Asset\Nishikie)#51 (5) {
                     Tag:
                                             <li><a href="/tag/php/1">php</a></li>
                                             <li><a href="/tag/univ/1">univ</a></li>
-                                    </ul>
-                    </div>
-            <div class="blog-article" style="background-color: #FFF1CF;">
-            <h1 class="blog-article-title"><a href="/article/2016/04/261251">Saori v0.3を作った</a></h1>
-            <div class="blog-article-meta">April 26, 2016</div>
-            <div class="blog-article-contents">
-                                    <p>Saoriにいくつか機能を加えた.</p>
-<h2>v0.2</h2>
-<p>v0.2ではフィード(/feed.atom)を生成するようにしたり,簡単なタグ機能を加えた.</p>
-<h2>v0.3</h2>
-<p>v0.3では機能の追加ではなく,コードを分けたり修正したりした.あと生成する際に使用するtwigファイルの場所を変更したので,v0.2からv0.3でテーマの互換性がないですが,sampleテーマは直した.</p>
-<h2>v0.4でしたいこと</h2>
-<p>v0.4ではconfig.jsonの場所をcontentsの中にしたい. あとinitでconfig.jsonファイルの生成も. 機能としてはテーマが設定したページを作れるようにしたり,ユーザがMarkdownファイルを作るだけで設定されたテンプレートからページを生成できるようにしたい.  </p>
-<hr />
-<p>現在アクセスできるのは</p>
-<ul>
-<li>/page/:page_number</li>
-<li>/article/:year/:month/:title</li>
-<li>/tag</li>
-<li>/tag/:tag_name/:page_number</li>
-</ul>
-
-                            </div>
-                            <ul class="blog-article-tags">
-                    Tag:
-                                            <li><a href="/tag/php/1">php</a></li>
-                                            <li><a href="/tag/saori/1">saori</a></li>
                                     </ul>
                     </div>
                 <ul class = "pager">

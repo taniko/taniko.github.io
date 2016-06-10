@@ -31,30 +31,18 @@
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
                         <div class="blog-article" style="background-color: #FFF1CF;">
-        <h1 class="blog-article-title"><a href="/article/2016/06/042227">Saori v0.5.x-devにてTableがおかしい</a></h1>
-        <div class="blog-article-meta">June 4, 2016</div>
+        <h1 class="blog-article-title"><a href="/article/2016/06/102235">Saori v0.5を作った</a></h1>
+        <div class="blog-article-meta">June 10, 2016</div>
         <div class="blog-article-contents">
-                            <p>現在Saoriのv0.5を作っていますが, どうやらテーブルが正しく表示されないです.</p>
-<pre><code class="language-markdown">|name|値|
-|:-:|:-:|
-|f85|キーワード|
-|f23|絵師|
-|f83|画題|
-</code></pre>
-<p>上記の記述をしたら以下の様なテーブルが生成されました.</p>
-<p><img src="/article/2016/06/042227/table.png" alt="" /></p>
-<p>罫線が入っていないので,テーブルとしてわかりにくくなっています. 今のところ原因がわかっていません. Atomの上では正しく表示されているので記述に間違いはないのではないかとは思います. cebe/markdownを使ってMarkdownを変換しています. とりあえず他のライブラリを使ってみてどう表示されるのか試してみます. あとHTMLも確認してみたいと思います.</p>
-<p>ちなみにv0.5.x-devでは記事とユーザページ(contents/page/NAME.md)の画像ファイルのパスの書き換えはできるようになりました. </p>
+                            <p>Saori v0.5.0をリリースした. これで簡単にユーザが新たなページを生成することができるようになった. そして,<a href="http://hrgruri.github.io/article/2016/06/042227/">前の記事</a>で言っていたテーブルがおかしい理由はテーブルのCSSが記述されていなかったからでした. ボーダの設定を指定なかったので,枠線がない状態で出力されていただけでした.</p>
+<hr />
+<p>そろそろv0.x系をやめてv1.0にしてもいい頃かもしれない. 最初に思っていた必要な最低限の機能はできたと思う.<br />
+それとちゃんとした使い方をまとめて記事かページを生成する必要がある. 今のところ他の人が使うのには不親切だ. README.mdには記事の編集のことしか記述していない. (誰か作る人がいるのかわからないが)テーマの作り方やユーザページについてなど. こういったものをまとめ終えたらv1.0.0にしたいと思います.</p>
 
                     </div>
-                    <ul class="blog-article-tags">
-                Tag:
-                                    <li><a href="/tag/saori/1">saori</a></li>
-                            </ul>
             </div>
     <ul class = "pager">
-                    <li class = "newer_link"><a href = "/article/2016/06/102235">&larr; Newer</a></li>
-                            <li class = "older_link"><a href = "/article/2016/06/arc">Older &rarr;</a></li>
+                            <li class = "older_link"><a href = "/article/2016/06/042227">Older &rarr;</a></li>
             </ul>
                 </div>
                                                     <div id="blog-side"
