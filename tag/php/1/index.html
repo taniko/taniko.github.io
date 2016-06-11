@@ -31,6 +31,87 @@
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
                                 <div class="blog-article" style="background-color: #FFF1CF;">
+            <h1 class="blog-article-title"><a href="/article/2016/06/ritsucal">立命館の学年暦をスクレイピング</a></h1>
+            <div class="blog-article-meta">June 11, 2016</div>
+            <div class="blog-article-contents">
+                                    <h1>ritsucal</h1>
+<p>ritsucalは立命館大学･大学院の学年暦をスクレイピングするPHPのライブラリです. 前から作っていて<a href="https://github.com/hrgruri/ritsucal">GitHub</a>にあげていましたが,久しぶりに見るとREADME.mdに変な文字が混ざっていたので,いくつか修正して,そのついでに簡単な使い方を書きます.</p>
+<h2>インストール</h2>
+<p>インストールはcomposerからできます</p>
+<pre><code class="language-sh">composer require hrgruri/ritsucal
+</code></pre>
+<h2>使い方</h2>
+<pre><code class="language-php">&lt;?php
+require 'vendor/autoload.php';
+try {
+    $client = new Hrgruri\Ritsucal\Client();
+    $calenders = $client-&gt;getCalenders();
+    var_dump($calenders);
+} catch (\Hrgruri\Ritsucal\Exception\UrlException $e) {
+    print "Error\n";
+}
+</code></pre>
+<p>こんな感じでコードを書くと動きます. 得られるのは以下の学年暦.  </p>
+<ol>
+<li>2016年度　立命館大学　学年暦</li>
+</ol>
+<ul>
+<li><p>2016年度　立命館大学大学院　学年暦 セメスター制
+（法学研究科、経済学研究科、経営学研究科、社会学研究科、文学研究科、国際関係研究科、政策科学研究科、応用人間科学研究科、言語教育情報研究科、公務研究科、スポーツ健康科学研究科、映像研究科、先端総合学術研究科）</p>
+</li>
+<li><p>2016年度　立命館大学大学院　学年暦 セメスター制
+（理工学研究科、情報理工学研究科、生命科学研究科、薬学研究科）</p>
+</li>
+<li><p>2016年度　立命館大学大学院　学年暦 セッション制
+（テクノロジー・マネジメント研究科、経営管理研究科）</p>
+</li>
+<li><p>2016年度　立命館大学大学院　学年暦
+（法務研究科）</p>
+</li>
+</ul>
+<p>var_dump()した結果の一部です</p>
+<pre><code>array(5) {
+  [0]=&gt;
+  object(Hrgruri\Ritsucal\Calender)#66 (2) {
+    ["title"]=&gt;
+    string(40) "2016年度　立命館大学　学年暦"
+    ["events"]=&gt;
+    array(79) {
+      [0]=&gt;
+      object(Hrgruri\Ritsucal\Event)#111 (4) {
+        ["year"]=&gt;
+        int(2016)
+        ["month"]=&gt;
+        int(4)
+        ["day"]=&gt;
+        int(1)
+        ["title"]=&gt;
+        string(27) "前期セメスター開始"
+      }
+      [1]=&gt;
+      object(Hrgruri\Ritsucal\Event)#65 (4) {
+        ["year"]=&gt;
+        int(2016)
+        ["month"]=&gt;
+        int(4)
+        ["day"]=&gt;
+        int(1)
+        ["title"]=&gt;
+        string(27) "オリエンテーション"
+      }
+</code></pre>
+<p>デフォルトでは <a href="http://www.ritsumei.ac.jp/profile/info/calender/">http://www.ritsumei.ac.jp/profile/info/calender/</a> から情報を取ってきますが,</p>
+<pre><code class="language-php">$calenders = $client-&gt;getCalenders('http://www.ritsumei.ac.jp/profile/info/calender/2016/');
+</code></pre>
+<p>などのようにすると別の年度の学年暦を取ってくることができます.</p>
+
+                           </div>
+                          <ul class="blog-article-tags">
+                   Tag:
+                                          <li><a href="/tag/php/1">php</a></li>
+                                  </ul>
+                  </div>
+            <div class="blog-article" style="background-color: #FFF1CF;">
             <h1 class="blog-article-title"><a href="/article/2016/06/arc">立命館ARCのスクレイピング</a></h1>
             <div class="blog-article-meta">June 2, 2016</div>
             <div class="blog-article-contents">
@@ -175,36 +256,9 @@ object(Hrgruri\Rarcs\Asset\Nishikie)#51 (5) {
                                           <li><a href="/tag/saori/1">saori</a></li>
                                   </ul>
                   </div>
-            <div class="blog-article" style="background-color: #FFF1CF;">
-            <h1 class="blog-article-title"><a href="/article/2016/04/saori">Saori v0.1.0のリリース</a></h1>
-            <div class="blog-article-meta">April 24, 2016</div>
-            <div class="blog-article-contents">
-                                    <h2>Saoriについて</h2>
-<p>SaoriというPHPを使った簡単なサイトジェネレータを作りました.現在のバージョンはv0.1.0です.これで,PHP動かない場所(たとえばusername.github.io)でもブログを公開できます. 仕組みとしてはローカルでPHPを使ってHTMLを生成して,それを公開するって流れです.<br />
-現在,テーマはsampleしかないのです.これでは1ページあたりの記事の数は5つとなっています.
-使い方は<a href="https://github.com/hrgruri/saori">GitHub</a>で.まだまだ開発途中で,追加したい機能がいくつかあるのでがんばります.  </p>
-<pre><code class="language-sh">composer install hrgruri/saori
-</code></pre>
-<h3>機能</h3>
-<ul>
-<li>各記事用のページの生成(/article/:year/:month/title)</li>
-<li>記事(N件)ごとのページを生成(/page/:page_number)</li>
-</ul>
-<h3>予定</h3>
-<p>各記事に対する設定でタグの欄があるのですが,Saoriの機能ではタグ一覧取得,タグ用のページの生成がないので,タグ機能を加えようと思います.<br />
-フィード機能(ATOM/RSS)がまだできていないので,それもできればいいかなと思っています.</p>
-<hr />
-<p>プログラムの話は全くしていないので,それに関しては近いうちに別の記事でします.</p>
-
-                           </div>
-                          <ul class="blog-article-tags">
-                   Tag:
-                                          <li><a href="/tag/php/1">php</a></li>
-                                          <li><a href="/tag/saori/1">saori</a></li>
-                                  </ul>
-                  </div>
         <ul class = "pager">
-                    </ul>
+                            <li class = "next_link"><a href = "/tag/php/2">Next &rarr;</a></li>
+            </ul>
                 </div>
                                                     <div id="blog-side"
                         class="col-xs-12 col-md-3 col-md-offset-1"
