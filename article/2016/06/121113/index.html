@@ -31,27 +31,20 @@
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
                         <div class="blog-article" style="background-color: #FFF1CF;">
-        <h1 class="blog-article-title"><a href="/article/2016/06/ritsucal">立命館の学年暦をスクレイピング</a></h1>
-        <div class="blog-article-meta">June 11, 2016</div>
+        <h1 class="blog-article-title"><a href="/article/2016/06/121113">学年暦のスクレイピングについて</a></h1>
+        <div class="blog-article-meta">June 12, 2016</div>
         <div class="blog-article-contents">
-                            <h1>ritsucal</h1>
-<p>ritsucalは立命館大学･大学院の学年暦をスクレイピングするPHPのライブラリです. 前から作っていて<a href="https://github.com/hrgruri/ritsucal">GitHub</a>にあげていましたが,久しぶりに見るとREADME.mdに変な文字が混ざっていたので,いくつか修正して,そのついでに簡単な使い方を書きます.</p>
-<h2>インストール</h2>
-<p>インストールはcomposerからできます</p>
-<pre><code class="language-sh">composer require hrgruri/ritsucal
+                            <p><a href="/article/2016/06/ritsucal/">前の記事</a>でPHPを使って,学年暦のスクレイピングを行うライブラリの紹介をしたので,今回はそれを作ったことの話をします. スクレイピングは<a href="https://github.com/FriendsOfPHP/Goutte">fabpot/goutte</a>を使用しました</p>
+<h2>ページをローカルで動かす</h2>
+<p>おそらくコード書いて1回では成功できず,何度も失敗すると思うので,負荷を与えないように対象のページをダウンロードしてローカルで動かしてそこにスクレイピングをしましょう.<br />
+Chromeで 'Command(Control) + S'でダウンロードできます. ファイル名はindexでいいです. 次に動かし方ですが, PHPのビルトインサーバを使いましょう.</p>
+<pre><code class="language-sh">cd public
+php -S localhost:8000
 </code></pre>
-<h2>使い方</h2>
-<pre><code class="language-php">&lt;?php
-require 'vendor/autoload.php';
-try {
-    $client = new Hrgruri\Ritsucal\Client();
-    $calenders = $client-&gt;getCalenders();
-    var_dump($calenders);
-} catch (\Hrgruri\Ritsucal\Exception\UrlException $e) {
-    print "Error\n";
-}
-</code></pre>
-<p>こんな感じでコードを書くと動きます. 得られるのは以下の学年暦.  </p>
+<p>詳しくは<a href="http://php.net/manual/ja/features.commandline.webserver.php">ここで</a>.</p>
+<h2>スクレイピングをする</h2>
+<h3>タイトル</h3>
+<p>ブラウザで上記のlocalhostにアクセスをして学年暦のタイトル(ページのタイトルではない)を探します.</p>
 <ol>
 <li><p>2016年度　立命館大学　学年暦</p>
 </li>
@@ -68,51 +61,23 @@ try {
   （法務研究科）</p>
 </li>
 </ol>
-<p>var_dump()した結果の一部です</p>
-<pre><code>array(5) {
-  [0]=&gt;
-  object(Hrgruri\Ritsucal\Calender)#66 (2) {
-    ["title"]=&gt;
-    string(40) "2016年度　立命館大学　学年暦"
-    ["events"]=&gt;
-    array(79) {
-      [0]=&gt;
-      object(Hrgruri\Ritsucal\Event)#111 (4) {
-        ["year"]=&gt;
-        int(2016)
-        ["month"]=&gt;
-        int(4)
-        ["day"]=&gt;
-        int(1)
-        ["title"]=&gt;
-        string(27) "前期セメスター開始"
-      }
-      [1]=&gt;
-      object(Hrgruri\Ritsucal\Event)#65 (4) {
-        ["year"]=&gt;
-        int(2016)
-        ["month"]=&gt;
-        int(4)
-        ["day"]=&gt;
-        int(1)
-        ["title"]=&gt;
-        string(27) "オリエンテーション"
-      }
+<p>この5つがあるので,これをタイトルとして,5つの学年暦を取得します. Chromeで右クリック→検証で構造を確かめられるので,見に行くとclass="mod-title type4"が割り振られているので</p>
+<pre><code class="language-php">$title = $crawler-&gt;filter('.mod-title.type4')-&gt;eq($i)-&gt;text();
 </code></pre>
-<p>デフォルトでは <a href="http://www.ritsumei.ac.jp/profile/info/calender/">http://www.ritsumei.ac.jp/profile/info/calender/</a> から情報を取ってきますが,</p>
-<pre><code class="language-php">$calenders = $client-&gt;getCalenders('http://www.ritsumei.ac.jp/profile/info/calender/2016/');
-</code></pre>
-<p>などのようにすると別の年度の学年暦を取ってくることができます.</p>
+<p>で得られます.</p>
+<h3>年度</h3>
+<p>年度ですが,これはタイトル内に書かれているので<a href="http://php.net/preg_match">preg_match()</a>を使って｢2016｣を拾ってあげます.</p>
+<h3>各学年暦</h3>
+<p>ここからがスクレイピングするのには面倒な構造になっています.というのも, 学部と大学院では構造が異なっているのです. 学部の方は, mod-wysiwyg &gt; set-table &gt; table内にtheadとtbodyが2つ(前期･後期)あります. 一方, 大学院の方はmod-wysiwyg &gt; set-table が2つ(前期･後期)です.<br />
+eventはclass="event"ではなくテーブルの要素(イベント名･月･日)だと考えてください. mod-wysiwyは略.</p>
+<p><img src="/article/2016/06/121113/structure.jpeg" alt="" /></p>
+<p>これは不親切ですね. しかし,うまいこと下から順に配列を結合させていくと,5つの学年暦ができます. 考え方としては, 各学年暦にはset-tableが複数あり,tableの中にもtbodyが複数あることを前提に作るってことです.  結合やイベントのことなどは<a href="https://github.com/hrgruri/ritsucal/blob/master/src/Client.php">コード</a>を見てもらうほうがいいかと.  </p>
+<p>同じ日の行事はまとめられているので注意してください.</p>
 
                     </div>
-                    <ul class="blog-article-tags">
-                Tag:
-                                    <li><a href="/tag/php/1">php</a></li>
-                            </ul>
             </div>
     <ul class = "pager">
-                            <li class = "newer_link"><a href = "/article/2016/06/121113">&larr; Newer</a></li>
-                                    <li class = "older_link"><a href = "/article/2016/06/102235">Older &rarr;</a></li>
+                                            <li class = "older_link"><a href = "/article/2016/06/ritsucal">Older &rarr;</a></li>
             </ul>
                 </div>
                                                     <div id="blog-side"
