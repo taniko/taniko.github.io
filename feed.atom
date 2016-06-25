@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 <title>blog\hrgruri</title>
 <link href="https://hrgruri.github.io"></link>
-<updated>2016-06-24T22:54:22+09:00</updated>
+<updated>2016-06-25T18:52:19+09:00</updated>
 <id>urn:uuid:1deced78-1925-4a0a-6b37-d3e39e3b7725</id>
 <entry>
 <author><name>Yuya Aratani</name>
@@ -128,6 +128,24 @@ try {
 <pre><code class="language-php">$calenders = $client-&gt;getCalenders('http://www.ritsumei.ac.jp/profile/info/calender/2016/');
 </code></pre>
 <p>などのようにすると別の年度の学年暦を取ってくることができます.</p>
+<hr />
+<p>追記 2016-06-25</p>
+<h2>JSON</h2>
+<p>他の言語でもデータを扱うためにJSON形式で保存する方法です. </p>
+<pre><code class="language-php">&lt;?php
+require 'vendor/autoload.php';
+try {
+    $client = new Hrgruri\Ritsucal\Client();
+    $calenders = $client-&gt;getCalenders();
+    file_put_contents(
+        'file_path',
+        json_encode($calenders, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)
+    );
+} catch (\Hrgruri\Ritsucal\Exception\UrlException $e) {
+    print "Error\n";
+}
+</code></pre>
+<p><a href="http://php.net/file_put_contents">file_put_contents()</a>で指定したところに保存できます. <a href="http://php.net/json_encode">json_encode()</a>のJSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODEは見やすい形にしてくれるオプションです.</p>
 ]]></summary>
 </entry>
 <entry>

@@ -71,3 +71,24 @@ array(5) {
 $calenders = $client->getCalenders('http://www.ritsumei.ac.jp/profile/info/calender/2016/');
 ```
 などのようにすると別の年度の学年暦を取ってくることができます.
+
+***
+追記 2016-06-25
+## JSON
+他の言語でもデータを扱うためにJSON形式で保存する方法です. 
+```php
+<?php
+require 'vendor/autoload.php';
+try {
+    $client = new Hrgruri\Ritsucal\Client();
+    $calenders = $client->getCalenders();
+    file_put_contents(
+        'file_path',
+        json_encode($calenders, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)
+    );
+} catch (\Hrgruri\Ritsucal\Exception\UrlException $e) {
+    print "Error\n";
+}
+```
+
+[file_put_contents()](http://php.net/file_put_contents)で指定したところに保存できます. [json_encode()](http://php.net/json_encode)のJSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODEは見やすい形にしてくれるオプションです.
