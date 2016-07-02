@@ -31,10 +31,10 @@
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
                         <div class="blog-article" style="background-color: #FFF1CF;">
-        <h1 class="blog-article-title"><a href="/article/2016/06/121113">学年暦のスクレイピングについて</a></h1>
-        <div class="blog-article-meta">June 12, 2016</div>
-        <div class="blog-article-contents">
-                            <p><a href="/article/2016/06/ritsucal/">前の記事</a>でPHPを使って,学年暦のスクレイピングを行うライブラリの紹介をしたので,今回はそれを作ったことの話をします. スクレイピングは<a href="https://github.com/FriendsOfPHP/Goutte">fabpot/goutte</a>を使用しました</p>
+    <h1 class="blog-article-title"><a href="/article/2016/06/121113">学年暦のスクレイピングについて</a></h1>
+    <div class="blog-article-meta">June 12, 2016</div>
+    <div class="blog-article-contents">
+                    <p><a href="/article/2016/06/ritsucal/">前の記事</a>でPHPを使って,学年暦のスクレイピングを行うライブラリの紹介をしたので,今回はそれを作ったことの話をします. スクレイピングは<a href="https://github.com/FriendsOfPHP/Goutte">fabpot/goutte</a>を使用しました</p>
 <h2>ページをローカルで動かす</h2>
 <p>おそらくコード書いて1回では成功できず,何度も失敗すると思うので,負荷を与えないように対象のページをダウンロードしてローカルで動かしてそこにスクレイピングをしましょう.<br />
 Chromeで 'Command(Control) + S'でダウンロードできます. ファイル名はindexでいいです. 次に動かし方ですが, PHPのビルトインサーバを使いましょう.</p>
@@ -74,11 +74,11 @@ eventはclass="event"ではなくテーブルの要素(イベント名･月･�
 <p>これは不親切ですね. しかし,うまいこと下から順に配列を結合させていくと,5つの学年暦ができます. 考え方としては, 各学年暦にはset-tableが複数あり,tableの中にもtbodyが複数あることを前提に作るってことです.  結合やイベントのことなどは<a href="https://github.com/hrgruri/ritsucal/blob/master/src/Client.php">コード</a>を見てもらうほうがいいかと.  </p>
 <p>同じ日の行事はまとめられているので注意してください.</p>
 
-                    </div>
-                                    <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
             </div>
+                    <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    </div>
     <ul class = "pager">
-                                            <li class = "older_link"><a href = "/article/2016/06/ritsucal">Older &rarr;</a></li>
+                                            <li class = "older-link"><a href = "/article/2016/06/ritsucal">Older &rarr;</a></li>
             </ul>
                 </div>
                                                     <div id="blog-side"
@@ -92,6 +92,18 @@ eventはclass="event"ではなくテーブルの要素(イベント名･月･�
 <p><a href="https://twitter.com/hrgruri" title="Twitter">Twitter</a></p>
 
                                             </div>
+                                                                    <div id="blog-recent" class="col-md-3 col-md-offset-1 hidden-sm-down"
+                        style="background-color: #91D0EF;"
+                    >
+                                                    最近の記事<br>
+                                                <ul id="recent-list">
+                                                            <li><a href="/article/2016/06/121113">学年暦のスクレイピングについて</a><br></li>
+                                                            <li><a href="/article/2016/06/ritsucal">立命館の学年暦をスクレイピング</a><br></li>
+                                                            <li><a href="/article/2016/06/102235">Saori v0.5を作った</a><br></li>
+                                                            <li><a href="/article/2016/06/042227">Saori v0.5.x-devにてTableがおかしい</a><br></li>
+                                                            <li><a href="/article/2016/06/arc">立命館ARCのスクレイピング</a><br></li>
+                                                    </ul>
+                    </div>
                             </div>
         </div>
     </body>
