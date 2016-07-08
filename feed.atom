@@ -2,8 +2,18 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 <title>blog\hrgruri</title>
 <link href="https://hrgruri.github.io"></link>
-<updated>2016-07-02T13:03:32+09:00</updated>
+<updated>2016-07-08T16:29:20+09:00</updated>
 <id>urn:uuid:1deced78-1925-4a0a-6b37-d3e39e3b7725</id>
+<entry>
+<author><name>Yuya Aratani</name>
+</author>
+<title>ブログのテーマを変えた</title>
+<link href="/article/2016/07/081625"></link>
+<id>urn:uuid:5597600c-4919-31e3-f790-fd8db57256b5</id>
+<updated>2016-07-08T16:25:33+09:00</updated>
+<summary type="html"><![CDATA[<p>ブログのテーマを変えました. ただそれだけです.</p>
+]]></summary>
+</entry>
 <entry>
 <author><name>Yuya Aratani</name>
 </author>

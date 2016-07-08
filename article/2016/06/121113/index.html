@@ -21,19 +21,19 @@
             </script>
                 <link href="/feed.atom" rel="alternate" title="atom" type="application/atom+xml">
     </head>
-    <body style="background-color: white;">
-        <div id="blog-header" style="background: #9EFFFF;">
+    <body>
+        <div id="blog-header" style="background: #000033;">
             <div class="container">
-                <h1 id="blog-title"><a href="/">blog\hrgruri</a></h1>
+                <h1 id="blog-title"><a href="/" style="color:#EEEEEE;">blog\hrgruri</a></h1>
             </div>
         </div>
         <div class="container">
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
-                        <div class="blog-article" style="background-color: #FFF1CF;">
-    <h1 class="blog-article-title"><a href="/article/2016/06/121113">学年暦のスクレイピングについて</a></h1>
-    <div class="blog-article-meta">June 12, 2016</div>
-    <div class="blog-article-contents">
+                        <div class="article">
+    <span class="article-date">2016-06-12</span>
+    <h1 class="article-title"><a href="/article/2016/06/121113">学年暦のスクレイピングについて</a></h1>
+        <div class="article-contents">
                     <p><a href="/article/2016/06/ritsucal/">前の記事</a>でPHPを使って,学年暦のスクレイピングを行うライブラリの紹介をしたので,今回はそれを作ったことの話をします. スクレイピングは<a href="https://github.com/FriendsOfPHP/Goutte">fabpot/goutte</a>を使用しました</p>
 <h2>ページをローカルで動かす</h2>
 <p>おそらくコード書いて1回では成功できず,何度も失敗すると思うので,負荷を与えないように対象のページをダウンロードしてローカルで動かしてそこにスクレイピングをしましょう.<br />
@@ -75,36 +75,51 @@ eventはclass="event"ではなくテーブルの要素(イベント名･月･�
 <p>同じ日の行事はまとめられているので注意してください.</p>
 
             </div>
-                    <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
     </div>
-    <ul class = "pager">
-                                            <li class = "older-link"><a href = "/article/2016/06/ritsucal">Older &rarr;</a></li>
-            </ul>
+    <nav class="pager">
+                                    <a class="new" href="/article/2016/07/081625">&larr; ブログのテーマを変えた</a>
+                            <a class="old" href="/article/2016/06/ritsucal">立命館の学年暦をスクレイピング &rarr;</a>
+            </nav>
                 </div>
-                                                    <div id="blog-side"
-                        class="col-xs-12 col-md-3 col-md-offset-1"
-                        style="background-color: #91D0EF;"
-                    >
-                                                    <p><a href="/about">About</a></p>
-<hr />
-<p><a href="https://github.com/hrgruri" title="GitHub">GitHub</a>  </p>
-<hr />
-<p><a href="https://twitter.com/hrgruri" title="Twitter">Twitter</a></p>
+                <div id="blog-side" class="col-xs-12 col-md-4">
+                                                                <div id="side-profile">
+                            <div class="side-title">プロフィール</div>
+                            <p>@hrgruri<br />
+<img src="/img/profile.jpeg" width="100px"></p>
 
-                                            </div>
-                                                                    <div id="blog-recent" class="col-md-3 col-md-offset-1 hidden-sm-down"
-                        style="background-color: #91D0EF;"
-                    >
-                                                    最近の記事<br>
-                                                <ul id="recent-list">
-                                                            <li><a href="/article/2016/06/121113">学年暦のスクレイピングについて</a><br></li>
-                                                            <li><a href="/article/2016/06/ritsucal">立命館の学年暦をスクレイピング</a><br></li>
-                                                            <li><a href="/article/2016/06/102235">Saori v0.5を作った</a><br></li>
-                                                            <li><a href="/article/2016/06/042227">Saori v0.5.x-devにてTableがおかしい</a><br></li>
-                                                            <li><a href="/article/2016/06/arc">立命館ARCのスクレイピング</a><br></li>
-                                                    </ul>
-                    </div>
-                            </div>
+                        </div>
+                    
+                                                                <div id="side-links">
+                            <div class="side-title">リンク</div>
+                            <ul>
+                                                            <li><a href="https://github.com/hrgruri">github</a><br></li>
+                                                            <li><a href="https://twitter.com/hrgruri">twitter</a><br></li>
+                                                        </ul>
+                        </div>
+                    
+                                                                <div id="side-recent" class="hidden-sm-down">
+                            <div class="side-title">最新記事</div>
+                            <ul>
+                                                                    <li><a href="/article/2016/07/081625">ブログのテーマを変えた</a><br></li>
+                                                                    <li><a href="/article/2016/06/121113">学年暦のスクレイピングについて</a><br></li>
+                                                                    <li><a href="/article/2016/06/ritsucal">立命館の学年暦をスクレイピング</a><br></li>
+                                                                    <li><a href="/article/2016/06/102235">Saori v0.5を作った</a><br></li>
+                                                                    <li><a href="/article/2016/06/042227">Saori v0.5.x-devにてTableがおかしい</a><br></li>
+                                                            </ul>
+                        </div>
+                    
+                                                                <div id="side-tags" class=" hidden-sm-down">
+                            <div class="side-title">タグ</div>
+                            <ul>
+                                                            <li><a href="/tag/php/1">php (6)</a></li>
+                                                            <li><a href="/tag/saori/1">saori (4)</a></li>
+                                                            <li><a href="/tag/univ/1">univ (1)</a></li>
+                                                        </ul>
+                        </div>
+                                        </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>

@@ -21,19 +21,22 @@
             </script>
                 <link href="/feed.atom" rel="alternate" title="atom" type="application/atom+xml">
     </head>
-    <body style="background-color: white;">
-        <div id="blog-header" style="background: #9EFFFF;">
+    <body>
+        <div id="blog-header" style="background: #000033;">
             <div class="container">
-                <h1 id="blog-title"><a href="/">blog\hrgruri</a></h1>
+                <h1 id="blog-title"><a href="/" style="color:#EEEEEE;">blog\hrgruri</a></h1>
             </div>
         </div>
         <div class="container">
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
-                        <div class="blog-article" style="background-color: #FFF1CF;">
-    <h1 class="blog-article-title"><a href="/article/2016/06/arc">立命館ARCのスクレイピング</a></h1>
-    <div class="blog-article-meta">June 2, 2016</div>
-    <div class="blog-article-contents">
+                        <div class="article">
+    <span class="article-date">2016-06-02</span>
+    <h1 class="article-title"><a href="/article/2016/06/arc">立命館ARCのスクレイピング</a></h1>
+            <ul class="article-tags">
+                            <li><a href="/tag/php/1">php</a></li>
+                    </ul>
+        <div class="article-contents">
                     <h1>PHPでスクレイピング</h1>
 <p>創成3では立命館大学アート・リサーチセンター(以下ARC)のアクセスログを使って資料の推薦を行うことが目的でした. 最初はリンクだけを使った質素なものを作る予定でしたが, 途中でスクレイピングをして, サイト内だけで簡単な検索･閲覧をできるようにすることになりました. PHPを使ってやったのですが,これがとっても大変でした.</p>
 <h2>謎のname</h2>
@@ -100,41 +103,51 @@ object(Hrgruri\Rarcs\Asset\Nishikie)#51 (5) {
 </code></pre>
 
             </div>
-            <ul class="blog-article-tags">
-            Tag:
-                            <li><a href="/tag/php/1">php</a></li>
-                    </ul>
-                    <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
     </div>
-    <ul class = "pager">
-                                    <li class = "newer-link"><a href = "/article/2016/06/042227">&larr; Newer</a></li>
-                            <li class = "older-link"><a href = "/article/2016/05/301402">Older &rarr;</a></li>
-            </ul>
+    <nav class="pager">
+                                    <a class="new" href="/article/2016/06/042227">&larr; Saori v0.5.x-devにてTableがおかしい</a>
+                            <a class="old" href="/article/2016/05/301402">Saori v0.4.0を作りました &rarr;</a>
+            </nav>
                 </div>
-                                                    <div id="blog-side"
-                        class="col-xs-12 col-md-3 col-md-offset-1"
-                        style="background-color: #91D0EF;"
-                    >
-                                                    <p><a href="/about">About</a></p>
-<hr />
-<p><a href="https://github.com/hrgruri" title="GitHub">GitHub</a>  </p>
-<hr />
-<p><a href="https://twitter.com/hrgruri" title="Twitter">Twitter</a></p>
+                <div id="blog-side" class="col-xs-12 col-md-4">
+                                                                <div id="side-profile">
+                            <div class="side-title">プロフィール</div>
+                            <p>@hrgruri<br />
+<img src="/img/profile.jpeg" width="100px"></p>
 
-                                            </div>
-                                                                    <div id="blog-recent" class="col-md-3 col-md-offset-1 hidden-sm-down"
-                        style="background-color: #91D0EF;"
-                    >
-                                                    最近の記事<br>
-                                                <ul id="recent-list">
-                                                            <li><a href="/article/2016/06/121113">学年暦のスクレイピングについて</a><br></li>
-                                                            <li><a href="/article/2016/06/ritsucal">立命館の学年暦をスクレイピング</a><br></li>
-                                                            <li><a href="/article/2016/06/102235">Saori v0.5を作った</a><br></li>
-                                                            <li><a href="/article/2016/06/042227">Saori v0.5.x-devにてTableがおかしい</a><br></li>
-                                                            <li><a href="/article/2016/06/arc">立命館ARCのスクレイピング</a><br></li>
-                                                    </ul>
-                    </div>
-                            </div>
+                        </div>
+                    
+                                                                <div id="side-links">
+                            <div class="side-title">リンク</div>
+                            <ul>
+                                                            <li><a href="https://github.com/hrgruri">github</a><br></li>
+                                                            <li><a href="https://twitter.com/hrgruri">twitter</a><br></li>
+                                                        </ul>
+                        </div>
+                    
+                                                                <div id="side-recent" class="hidden-sm-down">
+                            <div class="side-title">最新記事</div>
+                            <ul>
+                                                                    <li><a href="/article/2016/07/081625">ブログのテーマを変えた</a><br></li>
+                                                                    <li><a href="/article/2016/06/121113">学年暦のスクレイピングについて</a><br></li>
+                                                                    <li><a href="/article/2016/06/ritsucal">立命館の学年暦をスクレイピング</a><br></li>
+                                                                    <li><a href="/article/2016/06/102235">Saori v0.5を作った</a><br></li>
+                                                                    <li><a href="/article/2016/06/042227">Saori v0.5.x-devにてTableがおかしい</a><br></li>
+                                                            </ul>
+                        </div>
+                    
+                                                                <div id="side-tags" class=" hidden-sm-down">
+                            <div class="side-title">タグ</div>
+                            <ul>
+                                                            <li><a href="/tag/php/1">php (6)</a></li>
+                                                            <li><a href="/tag/saori/1">saori (4)</a></li>
+                                                            <li><a href="/tag/univ/1">univ (1)</a></li>
+                                                        </ul>
+                        </div>
+                                        </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>

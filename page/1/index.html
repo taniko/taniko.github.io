@@ -21,19 +21,28 @@
             </script>
                 <link href="/feed.atom" rel="alternate" title="atom" type="application/atom+xml">
     </head>
-    <body style="background-color: white;">
-        <div id="blog-header" style="background: #9EFFFF;">
+    <body>
+        <div id="blog-header" style="background: #000033;">
             <div class="container">
-                <h1 id="blog-title"><a href="/">blog\hrgruri</a></h1>
+                <h1 id="blog-title"><a href="/" style="color:#EEEEEE;">blog\hrgruri</a></h1>
             </div>
         </div>
         <div class="container">
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
-                                <div class="blog-article" style="background-color: #FFF1CF;">
-    <h1 class="blog-article-title"><a href="/article/2016/06/121113">学年暦のスクレイピングについて</a></h1>
-    <div class="blog-article-meta">June 12, 2016</div>
-    <div class="blog-article-contents">
+                                <div class="article">
+    <span class="article-date">2016-07-08</span>
+    <h1 class="article-title"><a href="/article/2016/07/081625">ブログのテーマを変えた</a></h1>
+        <div class="article-contents">
+                    <p>ブログのテーマを変えました. ただそれだけです.</p>
+
+            </div>
+                <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    </div>
+            <div class="article">
+    <span class="article-date">2016-06-12</span>
+    <h1 class="article-title"><a href="/article/2016/06/121113">学年暦のスクレイピングについて</a></h1>
+        <div class="article-contents">
                     <p><a href="/article/2016/06/ritsucal/">前の記事</a>でPHPを使って,学年暦のスクレイピングを行うライブラリの紹介をしたので,今回はそれを作ったことの話をします. スクレイピングは<a href="https://github.com/FriendsOfPHP/Goutte">fabpot/goutte</a>を使用しました</p>
 <h2>ページをローカルで動かす</h2>
 <p>おそらくコード書いて1回では成功できず,何度も失敗すると思うので,負荷を与えないように対象のページをダウンロードしてローカルで動かしてそこにスクレイピングをしましょう.<br />
@@ -75,12 +84,15 @@ eventはclass="event"ではなくテーブルの要素(イベント名･月･�
 <p>同じ日の行事はまとめられているので注意してください.</p>
 
             </div>
-                    <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
     </div>
-            <div class="blog-article" style="background-color: #FFF1CF;">
-    <h1 class="blog-article-title"><a href="/article/2016/06/ritsucal">立命館の学年暦をスクレイピング</a></h1>
-    <div class="blog-article-meta">June 11, 2016</div>
-    <div class="blog-article-contents">
+            <div class="article">
+    <span class="article-date">2016-06-11</span>
+    <h1 class="article-title"><a href="/article/2016/06/ritsucal">立命館の学年暦をスクレイピング</a></h1>
+            <ul class="article-tags">
+                            <li><a href="/tag/php/1">php</a></li>
+                    </ul>
+        <div class="article-contents">
                     <h1>ritsucal</h1>
 <p>ritsucalは立命館大学･大学院の学年暦をスクレイピングするPHPのライブラリです. 前から作っていて<a href="https://github.com/hrgruri/ritsucal">GitHub</a>にあげていましたが,久しぶりに見るとREADME.mdに変な文字が混ざっていたので,いくつか修正して,そのついでに簡単な使い方を書きます.</p>
 <h2>インストール</h2>
@@ -170,28 +182,27 @@ try {
 <p><a href="http://php.net/file_put_contents">file_put_contents()</a>で指定したところに保存できます. <a href="http://php.net/json_encode">json_encode()</a>のJSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODEは見やすい形にしてくれるオプションです.</p>
 
             </div>
-            <ul class="blog-article-tags">
-            Tag:
-                            <li><a href="/tag/php/1">php</a></li>
-                    </ul>
-                    <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
     </div>
-            <div class="blog-article" style="background-color: #FFF1CF;">
-    <h1 class="blog-article-title"><a href="/article/2016/06/102235">Saori v0.5を作った</a></h1>
-    <div class="blog-article-meta">June 10, 2016</div>
-    <div class="blog-article-contents">
+            <div class="article">
+    <span class="article-date">2016-06-10</span>
+    <h1 class="article-title"><a href="/article/2016/06/102235">Saori v0.5を作った</a></h1>
+        <div class="article-contents">
                     <p>Saori v0.5.0をリリースした. これで簡単にユーザが新たなページを生成することができるようになった. そして,<a href="http://hrgruri.github.io/article/2016/06/042227/">前の記事</a>で言っていたテーブルがおかしい理由はテーブルのCSSが記述されていなかったからでした. ボーダの設定を指定なかったので,枠線がない状態で出力されていただけでした.</p>
 <hr />
 <p>そろそろv0.x系をやめてv1.0にしてもいい頃かもしれない. 最初に思っていた必要な最低限の機能はできたと思う.<br />
 それとちゃんとした使い方をまとめて記事かページを生成する必要がある. 今のところ他の人が使うのには不親切だ. README.mdには記事の編集のことしか記述していない. (誰か作る人がいるのかわからないが)テーマの作り方やユーザページについてなど. こういったものをまとめ終えたらv1.0.0にしたいと思います.</p>
 
             </div>
-                    <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
     </div>
-            <div class="blog-article" style="background-color: #FFF1CF;">
-    <h1 class="blog-article-title"><a href="/article/2016/06/042227">Saori v0.5.x-devにてTableがおかしい</a></h1>
-    <div class="blog-article-meta">June 4, 2016</div>
-    <div class="blog-article-contents">
+            <div class="article">
+    <span class="article-date">2016-06-04</span>
+    <h1 class="article-title"><a href="/article/2016/06/042227">Saori v0.5.x-devにてTableがおかしい</a></h1>
+            <ul class="article-tags">
+                            <li><a href="/tag/saori/1">saori</a></li>
+                    </ul>
+        <div class="article-contents">
                     <p>現在Saoriのv0.5を作っていますが, どうやらテーブルが正しく表示されないです.</p>
 <pre><code class="language-markdown">|name|値|
 |:-:|:-:|
@@ -205,116 +216,50 @@ try {
 <p>ちなみにv0.5.x-devでは記事とユーザページ(contents/page/NAME.md)の画像ファイルのパスの書き換えはできるようになりました. </p>
 
             </div>
-            <ul class="blog-article-tags">
-            Tag:
-                            <li><a href="/tag/saori/1">saori</a></li>
-                    </ul>
-                    <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
     </div>
-            <div class="blog-article" style="background-color: #FFF1CF;">
-    <h1 class="blog-article-title"><a href="/article/2016/06/arc">立命館ARCのスクレイピング</a></h1>
-    <div class="blog-article-meta">June 2, 2016</div>
-    <div class="blog-article-contents">
-                    <h1>PHPでスクレイピング</h1>
-<p>創成3では立命館大学アート・リサーチセンター(以下ARC)のアクセスログを使って資料の推薦を行うことが目的でした. 最初はリンクだけを使った質素なものを作る予定でしたが, 途中でスクレイピングをして, サイト内だけで簡単な検索･閲覧をできるようにすることになりました. PHPを使ってやったのですが,これがとっても大変でした.</p>
-<h2>謎のname</h2>
-<p>HTMLのFormのほとんどにはname属性がつけられています.</p>
-<pre><code class="language-html">&lt;input type="text" name="username"&gt;
-</code></pre>
-<p>nameからどういった値が入るのか推測できるようになっているべきです.上の例だとユーザ名が入るのだと推測できます. しかしながらARCのフォームでは全くそれがなされていなかった.</p>
-<h3>浮世絵データベース</h3>
-<table>
-<thead>
-<tr><th align="center">name</th><th align="center">値</th></tr>
-</thead>
-<tbody>
-<tr><td align="center">f85</td><td align="center">キーワード</td></tr>
-<tr><td align="center">f23</td><td align="center">絵師</td></tr>
-<tr><td align="center">f83</td><td align="center">画題</td></tr>
-</tbody>
-</table>
-<h3>古典籍データベース</h3>
-<table>
-<thead>
-<tr><th align="center">name</th><th align="center">値</th></tr>
-</thead>
-<tbody>
-<tr><td align="center">f61</td><td align="center">資料名</td></tr>
-<tr><td align="center">f63</td><td align="center">編著者</td></tr>
-</tbody>
-</table>
-<p>まったく謎です. ちなみに浮世絵DBの絵師であるf23ですが,古典籍DBでは資料のソート(成立月日順)のために使われています.
-ちなみに統一されているものも一応あります.</p>
-<table>
-<thead>
-<tr><th align="center">name</th><th align="center">値</th></tr>
-</thead>
-<tbody>
-<tr><td align="center">-max</td><td align="center">表示件数</td></tr>
-<tr><td align="center">skip</td><td align="center">スキップ数</td></tr>
-</tbody>
-</table>
-<p>この2つは推測できますね. なぜかmaxではなく-maxですが. 統一されておらず,推測できないのはスクレイピングする側としては辛いですね. サーバサイドのコードを書くに扱いづらくなかったのでしょうか?</p>
-<h2>作ったライブラリ</h2>
-<p>オープンキャンパスのために創成3のサイトを再び作っているので使っているが, それさえ終わればもう使うことはないと思う. <a href="https://github.com/hrgruri/rarcs">GitHub</a>にアップロードしています. またComposerからインストールして使うことができます.</p>
-<pre><code class="language-sh">composer require hrgruri/rarcs
-</code></pre>
-<pre><code class="language-php">&lt;?php
-require 'vendor/autoload.php';
-
-$client = new Hrgruri\Rarcs\NishikieClient();
-var_dump($client-&gt;getDetail('arcUP2435'));
-/*
-object(Hrgruri\Rarcs\Asset\Nishikie)#51 (5) {
-  ["artist"]=&gt;
-  string(6) "広貞"
-  ["id"]=&gt;
-  string(9) "arcUP2435"
-  ["url"]=&gt;
-  string(62) "http://www.dh-jac.net/db/nishikie/results-big.php?f1=arcUP2435"
-  ["title"]=&gt;
-  string(54) "「菅原　三ノ口」「松王丸」「梅王丸」"
-  ["cover"]=&gt;
-  string(87) "http://www.arc.ritsumei.ac.jp/archive01/theater/image/PB/arc/Prints/arcUP/arcUP2435.jpg"
-}
- */
-</code></pre>
-
-            </div>
-            <ul class="blog-article-tags">
-            Tag:
-                            <li><a href="/tag/php/1">php</a></li>
-                    </ul>
-                    <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-    </div>
-        <ul class = "pager">
-                            <li class = "next-link"><a href = "/page/2">Next &rarr;</a></li>
-            </ul>
+        <nav class="pager">
+                            <a class="old" href="/page/2">次のページ &rarr;</a>
+            </nav>
                 </div>
-                                                    <div id="blog-side"
-                        class="col-xs-12 col-md-3 col-md-offset-1"
-                        style="background-color: #91D0EF;"
-                    >
-                                                    <p><a href="/about">About</a></p>
-<hr />
-<p><a href="https://github.com/hrgruri" title="GitHub">GitHub</a>  </p>
-<hr />
-<p><a href="https://twitter.com/hrgruri" title="Twitter">Twitter</a></p>
+                <div id="blog-side" class="col-xs-12 col-md-4">
+                                                                <div id="side-profile">
+                            <div class="side-title">プロフィール</div>
+                            <p>@hrgruri<br />
+<img src="/img/profile.jpeg" width="100px"></p>
 
-                                            </div>
-                                                                    <div id="blog-recent" class="col-md-3 col-md-offset-1 hidden-sm-down"
-                        style="background-color: #91D0EF;"
-                    >
-                                                    最近の記事<br>
-                                                <ul id="recent-list">
-                                                            <li><a href="/article/2016/06/121113">学年暦のスクレイピングについて</a><br></li>
-                                                            <li><a href="/article/2016/06/ritsucal">立命館の学年暦をスクレイピング</a><br></li>
-                                                            <li><a href="/article/2016/06/102235">Saori v0.5を作った</a><br></li>
-                                                            <li><a href="/article/2016/06/042227">Saori v0.5.x-devにてTableがおかしい</a><br></li>
-                                                            <li><a href="/article/2016/06/arc">立命館ARCのスクレイピング</a><br></li>
-                                                    </ul>
-                    </div>
-                            </div>
+                        </div>
+                    
+                                                                <div id="side-links">
+                            <div class="side-title">リンク</div>
+                            <ul>
+                                                            <li><a href="https://github.com/hrgruri">github</a><br></li>
+                                                            <li><a href="https://twitter.com/hrgruri">twitter</a><br></li>
+                                                        </ul>
+                        </div>
+                    
+                                                                <div id="side-recent" class="hidden-sm-down">
+                            <div class="side-title">最新記事</div>
+                            <ul>
+                                                                    <li><a href="/article/2016/07/081625">ブログのテーマを変えた</a><br></li>
+                                                                    <li><a href="/article/2016/06/121113">学年暦のスクレイピングについて</a><br></li>
+                                                                    <li><a href="/article/2016/06/ritsucal">立命館の学年暦をスクレイピング</a><br></li>
+                                                                    <li><a href="/article/2016/06/102235">Saori v0.5を作った</a><br></li>
+                                                                    <li><a href="/article/2016/06/042227">Saori v0.5.x-devにてTableがおかしい</a><br></li>
+                                                            </ul>
+                        </div>
+                    
+                                                                <div id="side-tags" class=" hidden-sm-down">
+                            <div class="side-title">タグ</div>
+                            <ul>
+                                                            <li><a href="/tag/php/1">php (6)</a></li>
+                                                            <li><a href="/tag/saori/1">saori (4)</a></li>
+                                                            <li><a href="/tag/univ/1">univ (1)</a></li>
+                                                        </ul>
+                        </div>
+                                        </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>
