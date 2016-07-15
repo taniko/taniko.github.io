@@ -2,8 +2,19 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 <title>blog\hrgruri</title>
 <link href="https://hrgruri.github.io"></link>
-<updated>2016-07-13T21:07:26+09:00</updated>
+<updated>2016-07-15T23:13:23+09:00</updated>
 <id>urn:uuid:1deced78-1925-4a0a-6b37-d3e39e3b7725</id>
+<entry>
+<author><name>Yuya Aratani</name>
+</author>
+<title>Saoriの使い方</title>
+<link href="/article/2016/07/152308"></link>
+<id>urn:uuid:b6fc0d8e-e1ee-2061-6b11-b0775aa30092</id>
+<updated>2016-07-15T23:08:00+09:00</updated>
+<summary type="html"><![CDATA[<p>PHPを使ってgithub.ioでブログをやるための静的サイトジェネレータである<a href="https://github.com/hrgruri/saori">saori</a>の使い方を簡単にですがまとめました. リンクは<a href="/repository/saori">こちら</a>です.<br />
+現在, 使い方だけなのでテーマの作成方法など内部的な話は書けていませんが近いうちに書きたいと思います.</p>
+]]></summary>
+</entry>
 <entry>
 <author><name>Yuya Aratani</name>
 </author>

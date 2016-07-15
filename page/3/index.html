@@ -31,104 +31,6 @@
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
                                 <div class="article" style="background: white;">
-    <span class="article-date">2016-07-15</span>
-    <h1 class="article-title"><a href="/article/2016/07/152308">Saoriの使い方</a></h1>
-            <ul class="article-tags">
-                            <li><a href="/tag/saori/1">saori</a></li>
-                    </ul>
-        <div class="article-contents">
-                    <p>PHPを使ってgithub.ioでブログをやるための静的サイトジェネレータである<a href="https://github.com/hrgruri/saori">saori</a>の使い方を簡単にですがまとめました. リンクは<a href="/repository/saori">こちら</a>です.<br />
-現在, 使い方だけなのでテーマの作成方法など内部的な話は書けていませんが近いうちに書きたいと思います.</p>
-
-            </div>
-    <div class="article-share">
-                            <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-            </div>
-
-    </div>
-            <div class="article" style="background: white;">
-    <span class="article-date">2016-06-04</span>
-    <h1 class="article-title"><a href="/article/2016/06/042227">Saori v0.5.x-devにてTableがおかしい</a></h1>
-            <ul class="article-tags">
-                            <li><a href="/tag/saori/1">saori</a></li>
-                    </ul>
-        <div class="article-contents">
-                    <p>現在Saoriのv0.5を作っていますが, どうやらテーブルが正しく表示されないです.</p>
-<pre><code class="language-markdown">|name|値|
-|:-:|:-:|
-|f85|キーワード|
-|f23|絵師|
-|f83|画題|
-</code></pre>
-<p>上記の記述をしたら以下の様なテーブルが生成されました.</p>
-<p><img src="/article/2016/06/042227/table.png" alt="" /></p>
-<p>罫線が入っていないので,テーブルとしてわかりにくくなっています. 今のところ原因がわかっていません. Atomの上では正しく表示されているので記述に間違いはないのではないかとは思います. cebe/markdownを使ってMarkdownを変換しています. とりあえず他のライブラリを使ってみてどう表示されるのか試してみます. あとHTMLも確認してみたいと思います.</p>
-<p>ちなみにv0.5.x-devでは記事とユーザページ(contents/page/NAME.md)の画像ファイルのパスの書き換えはできるようになりました. </p>
-
-            </div>
-    <div class="article-share">
-                            <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-            </div>
-
-    </div>
-            <div class="article" style="background: white;">
-    <span class="article-date">2016-05-30</span>
-    <h1 class="article-title"><a href="/article/2016/05/301402">Saori v0.4.0を作りました</a></h1>
-            <ul class="article-tags">
-                            <li><a href="/tag/saori/1">saori</a></li>
-                            <li><a href="/tag/php/1">php</a></li>
-                    </ul>
-        <div class="article-contents">
-                    <p>v0.4.0での変更点は</p>
-<ul>
-<li>Twigファイルの場所の変更</li>
-<li>config.jsonの場所を変更</li>
-<li>ユーザページの生成機能</li>
-</ul>
-<h2>Twigファイルの場所の変更について</h2>
-<p>Twigファイルの場所をtheme/:theme_name/twig/にしました. サイトを生成するのに必要なテンプレートはtemplate内に置きました.これからはsaoriが直接呼び出すTwigファイルはここにおいていこうと思います.  </p>
-<h2>config.jsonの場所を変更について</h2>
-<p>contentsディレクトリ内にconfig.jsonを設置するように変更しました. 何故したかというと,config.jsonもgitで管理しやすくするためです.</p>
-<h2>ユーザページの生成機能について</h2>
-<p>それと<a href="/article/2016/04/261251/">前に言ってた</a>,ユーザがMarkdownファイルを作るだけでページを生成できるようにしました. 例えば,contents/page/about.mdというファイルを作るとtemplate/page.twigを利用して,/about/index.htmlが作られます. しかしこれだと画像が扱えない(作ってから気づいた)ので,v0.5では画像をどこかにコピーしてMarkdownファイル内にある画像のパスをそこに書き換えようかな思います.</p>
-
-            </div>
-    <div class="article-share">
-                            <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-            </div>
-
-    </div>
-            <div class="article" style="background: white;">
-    <span class="article-date">2016-04-26</span>
-    <h1 class="article-title"><a href="/article/2016/04/261251">Saori v0.3を作った</a></h1>
-            <ul class="article-tags">
-                            <li><a href="/tag/saori/1">saori</a></li>
-                            <li><a href="/tag/php/1">php</a></li>
-                    </ul>
-        <div class="article-contents">
-                    <p>Saoriにいくつか機能を加えた.</p>
-<h2>v0.2</h2>
-<p>v0.2ではフィード(/feed.atom)を生成するようにしたり,簡単なタグ機能を加えた.</p>
-<h2>v0.3</h2>
-<p>v0.3では機能の追加ではなく,コードを分けたり修正したりした.あと生成する際に使用するtwigファイルの場所を変更したので,v0.2からv0.3でテーマの互換性がないですが,sampleテーマは直した.</p>
-<h2>v0.4でしたいこと</h2>
-<p>v0.4ではconfig.jsonの場所をcontentsの中にしたい. あとinitでconfig.jsonファイルの生成も. 機能としてはテーマが設定したページを作れるようにしたり,ユーザがMarkdownファイルを作るだけで設定されたテンプレートからページを生成できるようにしたい.  </p>
-<hr />
-<p>現在アクセスできるのは</p>
-<ul>
-<li>/page/:page_number</li>
-<li>/article/:year/:month/:title</li>
-<li>/tag</li>
-<li>/tag/:tag_name/:page_number</li>
-</ul>
-
-            </div>
-    <div class="article-share">
-                            <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-            </div>
-
-    </div>
-            <div class="article" style="background: white;">
     <span class="article-date">2016-04-24</span>
     <h1 class="article-title"><a href="/article/2016/04/saori">Saori v0.1.0のリリース</a></h1>
             <ul class="article-tags">
@@ -160,6 +62,7 @@
 
     </div>
         <nav class="pager">
+                    <div class="previous"><a href="/page/2">&laquo; prev</a></div>
                     </nav>
                 </div>
                 <div id="blog-side" class="col-xs-12 col-md-4">

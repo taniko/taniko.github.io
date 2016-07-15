@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
-        <title>Saori v0.3を作った - blog\hrgruri</title>
+        <title>blog\hrgruri</title>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="/css/style.css">
@@ -30,45 +30,69 @@
         <div class="container">
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
-                                <div class="article" style="background: white;">
-    <span class="article-date">2016-04-26</span>
-    <h1 class="article-title"><a href="/article/2016/04/261251">Saori v0.3を作った</a></h1>
-            <ul class="article-tags">
-                            <li><a href="/tag/saori/1">saori</a></li>
-                            <li><a href="/tag/php/1">php</a></li>
-                    </ul>
-        <div class="article-contents">
-                    <p>Saoriにいくつか機能を加えた.</p>
-<h2>v0.2</h2>
-<p>v0.2ではフィード(/feed.atom)を生成するようにしたり,簡単なタグ機能を加えた.</p>
-<h2>v0.3</h2>
-<p>v0.3では機能の追加ではなく,コードを分けたり修正したりした.あと生成する際に使用するtwigファイルの場所を変更したので,v0.2からv0.3でテーマの互換性がないですが,sampleテーマは直した.</p>
-<h2>v0.4でしたいこと</h2>
-<p>v0.4ではconfig.jsonの場所をcontentsの中にしたい. あとinitでconfig.jsonファイルの生成も. 機能としてはテーマが設定したページを作れるようにしたり,ユーザがMarkdownファイルを作るだけで設定されたテンプレートからページを生成できるようにしたい.  </p>
-<hr />
-<p>現在アクセスできるのは</p>
-<ul>
-<li>/page/:page_number</li>
-<li>/article/:year/:month/:title</li>
-<li>/tag</li>
-<li>/tag/:tag_name/:page_number</li>
-</ul>
+                        <div id="page-contents" style="background: white;">
+        <h1>saori</h1>
+<h2>概要</h2>
+<p><a href="https://github.com/hrgruri/saori">saori</a>はgithub.ioでブログをするための静的サイトジェネレータです. PHPで作られていてターミナル上で動作をさせます. MarkdownとJSONでブログの記事や設定を記述していきます.  </p>
+<h2>始め方</h2>
+<h3>インストール</h3>
+<p>インストールはComposerからできます</p>
+<pre><code class="language-sh">mkdir blog
+cd blog
+composer require hrgruri/saori
+</code></pre>
+<h3>初期化</h3>
+<p>まずは動かすためのコードを記述します. main.phpにでも以下のコードを書いてください.</p>
+<pre><code class="language-php">&lt;?php
+require ('vendor/autoload.php');
+$saori = new hrgruri\saori\Saori(__DIR__);
+$saori-&gt;run($argv);
+</code></pre>
+<p>次の初期化をしましょう. 初期化をすることで,必要最低限の設定ファイルが生成されます.</p>
+<pre><code class="language-sh">php main.php init
+</code></pre>
+<p>そうするとcontents/config.jsonができていると思うので, 必要なところを編集してください. <font color='red'>idはGitHubのアカウント名</font>です.</p>
+<h2>使い方</h2>
+<h3>記事を投稿する</h3>
+<pre><code class="language-php">php main.php post (:article_title)
+</code></pre>
+<p>これで contents/yyyy/mm/:article_title にarticle.mdとconfig.jsonが生成されます. ちなみにarticle_titleを設定しなければ contents/yyyy/mm/ddhhmm (日時分)に生成されます.<br />
+config.jsonで記事のタイトルとタグを設定します.
+いよいよ記事の作成です. article.mdにMarkdown形式で記述していきます.</p>
+<h3>サイトを生成する</h3>
+<p>いよいよサイトを生成します.</p>
+<pre><code class="language-php">php main.php make
+</code></pre>
+<p>これでlocalとusername.github.io (username部分はcontents/config.jsonのid)が作られます.<br />
+公開する前にどのようなサイトが生成されたのかを確認してみたいと思います. 確認にはPHPのビルトイン･サーバを使いましょう.</p>
+<pre><code class="language-php">php -S localhost:8000 -t local
+</code></pre>
+<p>ブラウザで<a href="http://localhost:8000">http://localhost:8000</a>にアクセスしてみましょう.</p>
+<h3>GitHubにPush</h3>
+<p>まずはGitHubに｢username.github.io｣というリポジトリを作成しましょう. username部分はGitHubのアカウント名です.  </p>
+<pre><code class="language-sh">cd hrgruri.github.io
+git init
+git remote add origin git@github.com:username/username.github.io.git
+git add --all
+git commit -m 'Initial commit'
+git push origin master
+</code></pre>
+<h2>その他</h2>
+<p>config.jsonを編集することでブログの設定を変えることができます. それ以外にもtheme.jsonでテーマごとの設定を上書きすることができます. (できない部分もあり)</p>
+<pre><code class="language-json">{
+    "saori": {
+        "color": {
+            "header" : "#A9EEE6",
+            "title" :"#F7FBFC",
+            "body":"#FEFAEC",
+            "page-contents": "#FFF1CF"
+        }
+    }
+}
+</code></pre>
+<p>これは,saoriというテーマを使用した際に使用する色を変えるためのものです. 変更できる箇所と名前はテーマによって異なるので注意してください. saoriテーマは<a href="https://github.com/hrgruri/saori/blob/v1.0/src/theme/saori/config.json">ここ</a>で確認することができます.</p>
+<p>(2016-07-15: 内部的な話は現在書いています)</p>
 
-            </div>
-    <div class="article-share">
-                            <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-            </div>
-
-            <div class="pager">
-                            <div id="pager-next">
-                    <div class="lines"><span>next article</span></div>
-                    <a href="/article/2016/04/icd3">icd3</a>
-                </div>
-                                        <div id="pager-prev">
-                    <div class="lines"><span>previous article</span></div>
-                    <a href="/article/2016/04/saori">Saori v0.1.0のリリース</a>
-                </div>
-                    </div>
     </div>
                 </div>
                 <div id="blog-side" class="col-xs-12 col-md-4">
