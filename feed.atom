@@ -2,8 +2,20 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 <title>blog\hrgruri</title>
 <link href="https://hrgruri.github.io"></link>
-<updated>2016-07-15T23:13:23+09:00</updated>
+<updated>2016-07-16T16:33:21+09:00</updated>
 <id>urn:uuid:1deced78-1925-4a0a-6b37-d3e39e3b7725</id>
+<entry>
+<author><name>Yuya Aratani</name>
+</author>
+<title>demo</title>
+<link href="/article/2016/07/demo"></link>
+<id>urn:uuid:1d3fe443-518a-f427-75c3-45cb08feffe5</id>
+<updated>2016-07-16T16:32:52+09:00</updated>
+<summary type="html"><![CDATA[<h1>deom</h1>
+<p>これはデモ用の記事です. 現在LT真っ最中です.<br />
+<img src="/article/2016/07/demo/front.jpg" alt="" /></p>
+]]></summary>
+</entry>
 <entry>
 <author><name>Yuya Aratani</name>
 </author>
