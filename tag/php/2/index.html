@@ -31,6 +31,36 @@
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
                                 <div class="article" style="background: white;">
+    <span class="article-date">2016-04-26</span>
+    <h1 class="article-title"><a href="/article/2016/04/261251">Saori v0.3を作った</a></h1>
+            <ul class="article-tags">
+                            <li><a href="/tag/saori/1">saori</a></li>
+                            <li><a href="/tag/php/1">php</a></li>
+                    </ul>
+        <div class="article-contents">
+                    <p>Saoriにいくつか機能を加えた.</p>
+<h2>v0.2</h2>
+<p>v0.2ではフィード(/feed.atom)を生成するようにしたり,簡単なタグ機能を加えた.</p>
+<h2>v0.3</h2>
+<p>v0.3では機能の追加ではなく,コードを分けたり修正したりした.あと生成する際に使用するtwigファイルの場所を変更したので,v0.2からv0.3でテーマの互換性がないですが,sampleテーマは直した.</p>
+<h2>v0.4でしたいこと</h2>
+<p>v0.4ではconfig.jsonの場所をcontentsの中にしたい. あとinitでconfig.jsonファイルの生成も. 機能としてはテーマが設定したページを作れるようにしたり,ユーザがMarkdownファイルを作るだけで設定されたテンプレートからページを生成できるようにしたい.  </p>
+<hr />
+<p>現在アクセスできるのは</p>
+<ul>
+<li>/page/:page_number</li>
+<li>/article/:year/:month/:title</li>
+<li>/tag</li>
+<li>/tag/:tag_name/:page_number</li>
+</ul>
+
+            </div>
+    <div class="article-share">
+                            <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            </div>
+
+    </div>
+            <div class="article" style="background: white;">
     <span class="article-date">2016-04-24</span>
     <h1 class="article-title"><a href="/article/2016/04/saori">Saori v0.1.0のリリース</a></h1>
             <ul class="article-tags">
@@ -85,19 +115,20 @@
                                                                 <div id="side-recent" class="hidden-sm-down" style="background: white;">
                             <div class="side-title">最新記事</div>
                             <ul>
+                                                                    <li><a href="/article/2016/07/phpcon_kansai_2016">PHPカンファレンス 関西2016でLT</a><br></li>
                                                                     <li><a href="/article/2016/07/demo">demo</a><br></li>
                                                                     <li><a href="/article/2016/07/152308">Saoriの使い方</a><br></li>
                                                                     <li><a href="/article/2016/07/081625">ブログのテーマを変えた</a><br></li>
                                                                     <li><a href="/article/2016/06/121113">学年暦のスクレイピングについて</a><br></li>
-                                                                    <li><a href="/article/2016/06/ritsucal">立命館の学年暦をスクレイピング</a><br></li>
                                                             </ul>
                         </div>
                     
                                                                 <div id="side-tags" class=" hidden-sm-down" style="background: white;">
                             <div class="side-title">タグ</div>
                             <ul>
-                                                            <li><a href="/tag/php/1">php (6)</a></li>
-                                                            <li><a href="/tag/saori/1">saori (5)</a></li>
+                                                            <li><a href="/tag/conference/1">conference (1)</a></li>
+                                                            <li><a href="/tag/php/1">php (7)</a></li>
+                                                            <li><a href="/tag/saori/1">saori (6)</a></li>
                                                             <li><a href="/tag/univ/1">univ (1)</a></li>
                                                         </ul>
                         </div>
