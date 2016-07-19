@@ -31,6 +31,45 @@
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
                                 <div class="article" style="background: white;">
+    <span class="article-date">2016-07-19</span>
+    <h1 class="article-title"><a href="/article/2016/07/saori_article_cache">Saoriの下書きとキャッシュ</a></h1>
+            <ul class="article-tags">
+                            <li><a href="/tag/saori/1">saori</a></li>
+                    </ul>
+        <div class="article-contents">
+                    <h1>saori v1.1の開発</h1>
+<p>現在saori v1.1の開発を行っています.  </p>
+<ul>
+<li>下書き機能</li>
+<li>記事のキャッシュ</li>
+</ul>
+<p>に関することを行いました.  </p>
+<h2>下書き機能</h2>
+<p>下書き機能は<code>php main.php draft :name</code>とするとcontents/draft/:name/article.mdが作成されてここで記事の下書きができるよになるものです. 投稿したい場合は<code>php main.php post :name</code>とするとcontents/article/yyyy/mm/:nameにコピーされます. 記事のconfigファイルは<code>post</code>した時に作成されます.</p>
+<h2>記事のキャッシュ</h2>
+<p>今まではarticle.mdの画像パスを書き換えたものをcache/に作成しておき, <code>article.html()</code>でarticle.mdを読み込んでパースをしていました.<br />
+これを予めパースしておきarticle.htmlをcache/に作成しておき, <code>article.html()</code>でarticle.htmlを読み込むというものに変更しました.</p>
+<h3>時間計測</h3>
+<p>500回ループさせて時間を計測しました. 変更前後で2回計測.</p>
+<table>
+<thead>
+<tr><th></th><th>変更前</th><th>変更後</th></tr>
+</thead>
+<tbody>
+<tr><td>1回目</td><td>60.15</td><td>53.39</td></tr>
+<tr><td>2回目</td><td>59.77</td><td>54.78</td></tr>
+<tr><td>平均</td><td>59.96</td><td>54.085</td></tr>
+</tbody>
+</table>
+<p>記事の数やブログのテンプレートによって前後するとは思いますが, 方式を変えたことで5.875秒削減できました. 現在のところブログを生成する際には誤差かもしれませんが, 記事数が増えれば差が大きくなっていくかもしれません.</p>
+
+            </div>
+    <div class="article-share">
+                            <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            </div>
+
+    </div>
+            <div class="article" style="background: white;">
     <span class="article-date">2016-07-17</span>
     <h1 class="article-title"><a href="/article/2016/07/phpcon_kansai_2016">PHPカンファレンス 関西2016でLT</a></h1>
             <ul class="article-tags">
@@ -221,36 +260,6 @@ LTをしたことで思ったのが, みんな優しかったです. LT後にも
             </div>
 
     </div>
-            <div class="article" style="background: white;">
-    <span class="article-date">2016-04-26</span>
-    <h1 class="article-title"><a href="/article/2016/04/261251">Saori v0.3を作った</a></h1>
-            <ul class="article-tags">
-                            <li><a href="/tag/saori/1">saori</a></li>
-                            <li><a href="/tag/php/1">php</a></li>
-                    </ul>
-        <div class="article-contents">
-                    <p>Saoriにいくつか機能を加えた.</p>
-<h2>v0.2</h2>
-<p>v0.2ではフィード(/feed.atom)を生成するようにしたり,簡単なタグ機能を加えた.</p>
-<h2>v0.3</h2>
-<p>v0.3では機能の追加ではなく,コードを分けたり修正したりした.あと生成する際に使用するtwigファイルの場所を変更したので,v0.2からv0.3でテーマの互換性がないですが,sampleテーマは直した.</p>
-<h2>v0.4でしたいこと</h2>
-<p>v0.4ではconfig.jsonの場所をcontentsの中にしたい. あとinitでconfig.jsonファイルの生成も. 機能としてはテーマが設定したページを作れるようにしたり,ユーザがMarkdownファイルを作るだけで設定されたテンプレートからページを生成できるようにしたい.  </p>
-<hr />
-<p>現在アクセスできるのは</p>
-<ul>
-<li>/page/:page_number</li>
-<li>/article/:year/:month/:title</li>
-<li>/tag</li>
-<li>/tag/:tag_name/:page_number</li>
-</ul>
-
-            </div>
-    <div class="article-share">
-                            <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-            </div>
-
-    </div>
         <nav class="pager">
                             <div class="next"><a href="/tag/saori/2">next &raquo;</a></div>
             </nav>
@@ -275,11 +284,11 @@ LTをしたことで思ったのが, みんな優しかったです. LT後にも
                                                                 <div id="side-recent" class="hidden-sm-down" style="background: white;">
                             <div class="side-title">最新記事</div>
                             <ul>
+                                                                    <li><a href="/article/2016/07/saori_article_cache">Saoriの下書きとキャッシュ</a><br></li>
                                                                     <li><a href="/article/2016/07/phpcon_kansai_2016">PHPカンファレンス 関西2016でLT</a><br></li>
                                                                     <li><a href="/article/2016/07/demo">demo</a><br></li>
                                                                     <li><a href="/article/2016/07/152308">Saoriの使い方</a><br></li>
                                                                     <li><a href="/article/2016/07/081625">ブログのテーマを変えた</a><br></li>
-                                                                    <li><a href="/article/2016/06/121113">学年暦のスクレイピングについて</a><br></li>
                                                             </ul>
                         </div>
                     
@@ -288,7 +297,7 @@ LTをしたことで思ったのが, みんな優しかったです. LT後にも
                             <ul>
                                                             <li><a href="/tag/conference/1">conference (1)</a></li>
                                                             <li><a href="/tag/php/1">php (7)</a></li>
-                                                            <li><a href="/tag/saori/1">saori (6)</a></li>
+                                                            <li><a href="/tag/saori/1">saori (7)</a></li>
                                                             <li><a href="/tag/univ/1">univ (1)</a></li>
                                                         </ul>
                         </div>
