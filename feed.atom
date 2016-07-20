@@ -2,8 +2,43 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 <title>blog\hrgruri</title>
 <link href="https://hrgruri.github.io"></link>
-<updated>2016-07-19T14:27:44+09:00</updated>
+<updated>2016-07-20T16:45:48+09:00</updated>
 <id>urn:uuid:1deced78-1925-4a0a-6b37-d3e39e3b7725</id>
+<entry>
+<author><name>Yuya Aratani</name>
+</author>
+<title>弊大学の闇 (学年暦編)</title>
+<link href="/article/2016/07/calender"></link>
+<id>urn:uuid:e88658d3-84af-858f-2723-092c0d6110e2</id>
+<updated>2016-07-20T16:31:04+09:00</updated>
+<summary type="html"><![CDATA[<h1>学年暦の闇</h1>
+<p>大学の行事をJSONで返してくれるようなものを作ろうとしていた時に気づいた弊大学の闇を話したいと思います.</p>
+<h2>calender ?</h2>
+<p>PHPを使って学年暦をスクレイピングする<a href="https://github.com/hrgruri/ritsucal">ライブラリ</a>に行事の検索機能を追加しようとしていました. 検索機能と言っても年･月･日を連想配列で渡すと該当の行事が配列で帰ってくる簡単なものです.<br />
+引数の型が指定できるので<code>\Hrgruri\Ritsucal\Calendar</code>型と<code>array</code>型を引数にしてメソッドを作りました. 学部の学年暦と今日の日付でテストをするとTypeError. 型が違うというエラー. 該当するクラスを見に行くとあるのは<code>src/Calender.php</code>.
+<font color=red>Calender.php </font>?<br />
+CalendarではなくCalender. ちなみにCalenderは光沢機のこと.</p>
+<p>タイプミス? やってしまったと思い, 置換しようと｢calender｣で検索すると</p>
+<pre><code class="language-php">private $url = 'http://www.ritsumei.ac.jp/profile/info/calender/';
+</code></pre>
+<p>までヒットした.</p>
+<h2>大学の間違え</h2>
+<p>ブラウザで確認したところ<br />
+<a href="http://www.ritsumei.ac.jp/profile/info/calender/">http://www.ritsumei.ac.jp/profile/info/calender/</a> は存在しているが,<br />
+<a href="http://www.ritsumei.ac.jp/profile/info/calendar/">http://www.ritsumei.ac.jp/profile/info/calendar/</a> は存在していない.  </p>
+<p>大学側も間違えていた. 学年暦のページが光沢機(calender)になっている.</p>
+<h2>今回の原因</h2>
+<p><del>そもそも大学側が間違えていたので, 私が間違えたのは大学のせいである. むしろ間違いに合わせているので,私は間違えていない</del></p>
+<ol>
+<li>単語の綴り確認もせずに,学年暦のURLに合わせてクラス名を決めてしまっていた.</li>
+<li>大学のホームページは正しいと思いんでいた.</li>
+<li>補完に頼り過ぎた.</li>
+</ol>
+<h2>まとめ</h2>
+<p>英語の綴りは確かめましょう. Googleで｢学年暦｣と検索して1番上に来るような弊大学のホームページだからといって間違いがないとは思ってはいけない.<br />
+そして<font color=red>弊大学の学年暦は光沢機</font></p>
+]]></summary>
+</entry>
 <entry>
 <author><name>Yuya Aratani</name>
 </author>
