@@ -31,6 +31,33 @@
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
                                 <div class="article" style="background: white;">
+    <span class="article-date">2016-05-30</span>
+    <h1 class="article-title"><a href="/article/2016/05/301402">Saori v0.4.0を作りました</a></h1>
+            <ul class="article-tags">
+                            <li><a href="/tag/saori/1">saori</a></li>
+                            <li><a href="/tag/php/1">php</a></li>
+                    </ul>
+        <div class="article-contents">
+                    <p>v0.4.0での変更点は</p>
+<ul>
+<li>Twigファイルの場所の変更</li>
+<li>config.jsonの場所を変更</li>
+<li>ユーザページの生成機能</li>
+</ul>
+<h2>Twigファイルの場所の変更について</h2>
+<p>Twigファイルの場所をtheme/:theme_name/twig/にしました. サイトを生成するのに必要なテンプレートはtemplate内に置きました.これからはsaoriが直接呼び出すTwigファイルはここにおいていこうと思います.  </p>
+<h2>config.jsonの場所を変更について</h2>
+<p>contentsディレクトリ内にconfig.jsonを設置するように変更しました. 何故したかというと,config.jsonもgitで管理しやすくするためです.</p>
+<h2>ユーザページの生成機能について</h2>
+<p>それと<a href="/article/2016/04/261251/">前に言ってた</a>,ユーザがMarkdownファイルを作るだけでページを生成できるようにしました. 例えば,contents/page/about.mdというファイルを作るとtemplate/page.twigを利用して,/about/index.htmlが作られます. しかしこれだと画像が扱えない(作ってから気づいた)ので,v0.5では画像をどこかにコピーしてMarkdownファイル内にある画像のパスをそこに書き換えようかな思います.</p>
+
+            </div>
+    <div class="article-share">
+                            <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            </div>
+
+    </div>
+            <div class="article" style="background: white;">
     <span class="article-date">2016-04-26</span>
     <h1 class="article-title"><a href="/article/2016/04/261251">Saori v0.3を作った</a></h1>
             <ul class="article-tags">
@@ -115,11 +142,11 @@
                                                                 <div id="side-recent" class="hidden-sm-down" style="background: white;">
                             <div class="side-title">最新記事</div>
                             <ul>
+                                                                    <li><a href="/article/2016/08/041630">saori v2.0を開発中</a><br></li>
                                                                     <li><a href="/article/2016/07/calender">弊大学の闇 (学年暦編)</a><br></li>
                                                                     <li><a href="/article/2016/07/saori_article_cache">Saoriの下書きとキャッシュ</a><br></li>
                                                                     <li><a href="/article/2016/07/phpcon_kansai_2016">PHPカンファレンス 関西2016でLT</a><br></li>
                                                                     <li><a href="/article/2016/07/demo">demo</a><br></li>
-                                                                    <li><a href="/article/2016/07/152308">Saoriの使い方</a><br></li>
                                                             </ul>
                         </div>
                     
@@ -128,7 +155,7 @@
                             <ul>
                                                             <li><a href="/tag/conference/1">conference (1)</a></li>
                                                             <li><a href="/tag/php/1">php (7)</a></li>
-                                                            <li><a href="/tag/saori/1">saori (7)</a></li>
+                                                            <li><a href="/tag/saori/1">saori (8)</a></li>
                                                             <li><a href="/tag/univ/1">univ (2)</a></li>
                                                         </ul>
                         </div>

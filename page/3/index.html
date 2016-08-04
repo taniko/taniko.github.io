@@ -31,6 +31,31 @@
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
                                 <div class="article" style="background: white;">
+    <span class="article-date">2016-06-04</span>
+    <h1 class="article-title"><a href="/article/2016/06/042227">Saori v0.5.x-devにてTableがおかしい</a></h1>
+            <ul class="article-tags">
+                            <li><a href="/tag/saori/1">saori</a></li>
+                    </ul>
+        <div class="article-contents">
+                    <p>現在Saoriのv0.5を作っていますが, どうやらテーブルが正しく表示されないです.</p>
+<pre><code class="language-markdown">|name|値|
+|:-:|:-:|
+|f85|キーワード|
+|f23|絵師|
+|f83|画題|
+</code></pre>
+<p>上記の記述をしたら以下の様なテーブルが生成されました.</p>
+<p><img src="/article/2016/06/042227/table.png" alt="" /></p>
+<p>罫線が入っていないので,テーブルとしてわかりにくくなっています. 今のところ原因がわかっていません. Atomの上では正しく表示されているので記述に間違いはないのではないかとは思います. cebe/markdownを使ってMarkdownを変換しています. とりあえず他のライブラリを使ってみてどう表示されるのか試してみます. あとHTMLも確認してみたいと思います.</p>
+<p>ちなみにv0.5.x-devでは記事とユーザページ(contents/page/NAME.md)の画像ファイルのパスの書き換えはできるようになりました. </p>
+
+            </div>
+    <div class="article-share">
+                            <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            </div>
+
+    </div>
+            <div class="article" style="background: white;">
     <span class="article-date">2016-06-02</span>
     <h1 class="article-title"><a href="/article/2016/06/arc">立命館ARCのスクレイピング</a></h1>
             <ul class="article-tags">
@@ -187,40 +212,10 @@ object(Hrgruri\Rarcs\Asset\Nishikie)#51 (5) {
             </div>
 
     </div>
-            <div class="article" style="background: white;">
-    <span class="article-date">2016-04-24</span>
-    <h1 class="article-title"><a href="/article/2016/04/saori">Saori v0.1.0のリリース</a></h1>
-            <ul class="article-tags">
-                            <li><a href="/tag/saori/1">saori</a></li>
-                            <li><a href="/tag/php/1">php</a></li>
-                    </ul>
-        <div class="article-contents">
-                    <h2>Saoriについて</h2>
-<p>SaoriというPHPを使った簡単なサイトジェネレータを作りました.現在のバージョンはv0.1.0です.これで,PHP動かない場所(たとえばusername.github.io)でもブログを公開できます. 仕組みとしてはローカルでPHPを使ってHTMLを生成して,それを公開するって流れです.<br />
-現在,テーマはsampleしかないのです.これでは1ページあたりの記事の数は5つとなっています.
-使い方は<a href="https://github.com/hrgruri/saori">GitHub</a>で.まだまだ開発途中で,追加したい機能がいくつかあるのでがんばります.  </p>
-<pre><code class="language-sh">composer install hrgruri/saori
-</code></pre>
-<h3>機能</h3>
-<ul>
-<li>各記事用のページの生成(/article/:year/:month/title)</li>
-<li>記事(N件)ごとのページを生成(/page/:page_number)</li>
-</ul>
-<h3>予定</h3>
-<p>各記事に対する設定でタグの欄があるのですが,Saoriの機能ではタグ一覧取得,タグ用のページの生成がないので,タグ機能を加えようと思います.<br />
-フィード機能(ATOM/RSS)がまだできていないので,それもできればいいかなと思っています.</p>
-<hr />
-<p>プログラムの話は全くしていないので,それに関しては近いうちに別の記事でします.</p>
-
-            </div>
-    <div class="article-share">
-                            <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-            </div>
-
-    </div>
         <nav class="pager">
                     <div class="previous"><a href="/page/2">&laquo; prev</a></div>
-                    </nav>
+                            <div class="next"><a href="/page/4">next &raquo;</a></div>
+            </nav>
                 </div>
                 <div id="blog-side" class="col-xs-12 col-md-4">
                                                                 <div id="side-profile" style="background: white;">
@@ -242,11 +237,11 @@ object(Hrgruri\Rarcs\Asset\Nishikie)#51 (5) {
                                                                 <div id="side-recent" class="hidden-sm-down" style="background: white;">
                             <div class="side-title">最新記事</div>
                             <ul>
+                                                                    <li><a href="/article/2016/08/041630">saori v2.0を開発中</a><br></li>
                                                                     <li><a href="/article/2016/07/calender">弊大学の闇 (学年暦編)</a><br></li>
                                                                     <li><a href="/article/2016/07/saori_article_cache">Saoriの下書きとキャッシュ</a><br></li>
                                                                     <li><a href="/article/2016/07/phpcon_kansai_2016">PHPカンファレンス 関西2016でLT</a><br></li>
                                                                     <li><a href="/article/2016/07/demo">demo</a><br></li>
-                                                                    <li><a href="/article/2016/07/152308">Saoriの使い方</a><br></li>
                                                             </ul>
                         </div>
                     
@@ -255,7 +250,7 @@ object(Hrgruri\Rarcs\Asset\Nishikie)#51 (5) {
                             <ul>
                                                             <li><a href="/tag/conference/1">conference (1)</a></li>
                                                             <li><a href="/tag/php/1">php (7)</a></li>
-                                                            <li><a href="/tag/saori/1">saori (7)</a></li>
+                                                            <li><a href="/tag/saori/1">saori (8)</a></li>
                                                             <li><a href="/tag/univ/1">univ (2)</a></li>
                                                         </ul>
                         </div>

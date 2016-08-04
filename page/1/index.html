@@ -31,6 +31,44 @@
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
                                 <div class="article" style="background: white;">
+    <span class="article-date">2016-08-04</span>
+    <h1 class="article-title"><a href="/article/2016/08/041630">saori v2.0を開発中</a></h1>
+            <ul class="article-tags">
+                            <li><a href="/tag/saori/1">saori</a></li>
+                    </ul>
+        <div class="article-contents">
+                    <p><code>composer create-project</code>でインストールできるようにして, symfony/consoleを利用してsaoriを使用できるようにしました. あとnamespaceを修正.</p>
+<h2>v2.0-devをインストール</h2>
+<p><code>composer create-project hrgruri/saori:v2.0.x-dev blog</code>で開発途中のv2.0をインストールして始めることができます. 最後の<code>blog</code>はディレクトリ名なので別のものに変えても構いません.  </p>
+<h2>使用方法</h2>
+<pre><code class="language-sh">composer create-project hrgruri/saori:v2.0.x-dev blog
+cd blog
+php saori
+
+#初期化
+php saori init
+
+#下書きファイルを生成 (いきなりpostを使ってもいい)
+php saori draft first_article
+
+#記事の投稿
+php saori post first_article
+
+#静的サイトを生成
+php saori build
+</code></pre>
+<p>現在のところ,init, draft, post, buildが使用できます. <code>-h</code>使えば簡単な説明が出ると思うのでそちらを参考に.</p>
+<p><code>php saori draft</code>は別に使用しないでいきなり<code>php saori post</code>しても利用できるのですが, <code>draft</code>を使ったほうがいいかと.</p>
+<h2>今後</h2>
+<p><code>draft</code>した時にはconfig.jsonが作られず, <code>post</code>した時に作られるのですが, これだと<code>post</code>した後じゃないとconfig.jsonがさわれない. config.jsonを<code>draft</code>でも生成しておき, timestampを<code>post</code>した時に追加させようと思います.  </p>
+
+            </div>
+    <div class="article-share">
+                            <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            </div>
+
+    </div>
+            <div class="article" style="background: white;">
     <span class="article-date">2016-07-20</span>
     <h1 class="article-title"><a href="/article/2016/07/calender">弊大学の闇 (学年暦編)</a></h1>
             <ul class="article-tags">
@@ -246,22 +284,6 @@ LTをしたことで思ったのが, みんな優しかったです. LT後にも
             </div>
 
     </div>
-            <div class="article" style="background: white;">
-    <span class="article-date">2016-07-15</span>
-    <h1 class="article-title"><a href="/article/2016/07/152308">Saoriの使い方</a></h1>
-            <ul class="article-tags">
-                            <li><a href="/tag/saori/1">saori</a></li>
-                    </ul>
-        <div class="article-contents">
-                    <p>PHPを使ってgithub.ioでブログをやるための静的サイトジェネレータである<a href="https://github.com/hrgruri/saori">saori</a>の使い方を簡単にですがまとめました. リンクは<a href="/repository/saori">こちら</a>です.<br />
-現在, 使い方だけなのでテーマの作成方法など内部的な話は書けていませんが近いうちに書きたいと思います.</p>
-
-            </div>
-    <div class="article-share">
-                            <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-            </div>
-
-    </div>
         <nav class="pager">
                             <div class="next"><a href="/page/2">next &raquo;</a></div>
             </nav>
@@ -286,11 +308,11 @@ LTをしたことで思ったのが, みんな優しかったです. LT後にも
                                                                 <div id="side-recent" class="hidden-sm-down" style="background: white;">
                             <div class="side-title">最新記事</div>
                             <ul>
+                                                                    <li><a href="/article/2016/08/041630">saori v2.0を開発中</a><br></li>
                                                                     <li><a href="/article/2016/07/calender">弊大学の闇 (学年暦編)</a><br></li>
                                                                     <li><a href="/article/2016/07/saori_article_cache">Saoriの下書きとキャッシュ</a><br></li>
                                                                     <li><a href="/article/2016/07/phpcon_kansai_2016">PHPカンファレンス 関西2016でLT</a><br></li>
                                                                     <li><a href="/article/2016/07/demo">demo</a><br></li>
-                                                                    <li><a href="/article/2016/07/152308">Saoriの使い方</a><br></li>
                                                             </ul>
                         </div>
                     
@@ -299,7 +321,7 @@ LTをしたことで思ったのが, みんな優しかったです. LT後にも
                             <ul>
                                                             <li><a href="/tag/conference/1">conference (1)</a></li>
                                                             <li><a href="/tag/php/1">php (7)</a></li>
-                                                            <li><a href="/tag/saori/1">saori (7)</a></li>
+                                                            <li><a href="/tag/saori/1">saori (8)</a></li>
                                                             <li><a href="/tag/univ/1">univ (2)</a></li>
                                                         </ul>
                         </div>

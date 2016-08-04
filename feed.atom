@@ -2,8 +2,41 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 <title>blog\hrgruri</title>
 <link href="https://hrgruri.github.io"></link>
-<updated>2016-07-20T16:45:48+09:00</updated>
+<updated>2016-08-04T16:33:18+09:00</updated>
 <id>urn:uuid:1deced78-1925-4a0a-6b37-d3e39e3b7725</id>
+<entry>
+<author><name>Yuya Aratani</name>
+</author>
+<title>saori v2.0を開発中</title>
+<link href="/article/2016/08/041630"></link>
+<id>urn:uuid:bb22f188-4e49-f02d-8d33-adc56979ae35</id>
+<updated>2016-08-04T16:27:14+09:00</updated>
+<summary type="html"><![CDATA[<p><code>composer create-project</code>でインストールできるようにして, symfony/consoleを利用してsaoriを使用できるようにしました. あとnamespaceを修正.</p>
+<h2>v2.0-devをインストール</h2>
+<p><code>composer create-project hrgruri/saori:v2.0.x-dev blog</code>で開発途中のv2.0をインストールして始めることができます. 最後の<code>blog</code>はディレクトリ名なので別のものに変えても構いません.  </p>
+<h2>使用方法</h2>
+<pre><code class="language-sh">composer create-project hrgruri/saori:v2.0.x-dev blog
+cd blog
+php saori
+
+#初期化
+php saori init
+
+#下書きファイルを生成 (いきなりpostを使ってもいい)
+php saori draft first_article
+
+#記事の投稿
+php saori post first_article
+
+#静的サイトを生成
+php saori build
+</code></pre>
+<p>現在のところ,init, draft, post, buildが使用できます. <code>-h</code>使えば簡単な説明が出ると思うのでそちらを参考に.</p>
+<p><code>php saori draft</code>は別に使用しないでいきなり<code>php saori post</code>しても利用できるのですが, <code>draft</code>を使ったほうがいいかと.</p>
+<h2>今後</h2>
+<p><code>draft</code>した時にはconfig.jsonが作られず, <code>post</code>した時に作られるのですが, これだと<code>post</code>した後じゃないとconfig.jsonがさわれない. config.jsonを<code>draft</code>でも生成しておき, timestampを<code>post</code>した時に追加させようと思います.  </p>
+]]></summary>
+</entry>
 <entry>
 <author><name>Yuya Aratani</name>
 </author>

@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
-        <title>Saori v0.4.0を作りました - blog\hrgruri</title>
+        <title>blog\hrgruri</title>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="/css/style.css">
@@ -31,42 +31,39 @@
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
                                 <div class="article" style="background: white;">
-    <span class="article-date">2016-05-30</span>
-    <h1 class="article-title"><a href="/article/2016/05/301402">Saori v0.4.0を作りました</a></h1>
+    <span class="article-date">2016-04-24</span>
+    <h1 class="article-title"><a href="/article/2016/04/saori">Saori v0.1.0のリリース</a></h1>
             <ul class="article-tags">
                             <li><a href="/tag/saori/1">saori</a></li>
                             <li><a href="/tag/php/1">php</a></li>
                     </ul>
         <div class="article-contents">
-                    <p>v0.4.0での変更点は</p>
+                    <h2>Saoriについて</h2>
+<p>SaoriというPHPを使った簡単なサイトジェネレータを作りました.現在のバージョンはv0.1.0です.これで,PHP動かない場所(たとえばusername.github.io)でもブログを公開できます. 仕組みとしてはローカルでPHPを使ってHTMLを生成して,それを公開するって流れです.<br />
+現在,テーマはsampleしかないのです.これでは1ページあたりの記事の数は5つとなっています.
+使い方は<a href="https://github.com/hrgruri/saori">GitHub</a>で.まだまだ開発途中で,追加したい機能がいくつかあるのでがんばります.  </p>
+<pre><code class="language-sh">composer install hrgruri/saori
+</code></pre>
+<h3>機能</h3>
 <ul>
-<li>Twigファイルの場所の変更</li>
-<li>config.jsonの場所を変更</li>
-<li>ユーザページの生成機能</li>
+<li>各記事用のページの生成(/article/:year/:month/title)</li>
+<li>記事(N件)ごとのページを生成(/page/:page_number)</li>
 </ul>
-<h2>Twigファイルの場所の変更について</h2>
-<p>Twigファイルの場所をtheme/:theme_name/twig/にしました. サイトを生成するのに必要なテンプレートはtemplate内に置きました.これからはsaoriが直接呼び出すTwigファイルはここにおいていこうと思います.  </p>
-<h2>config.jsonの場所を変更について</h2>
-<p>contentsディレクトリ内にconfig.jsonを設置するように変更しました. 何故したかというと,config.jsonもgitで管理しやすくするためです.</p>
-<h2>ユーザページの生成機能について</h2>
-<p>それと<a href="/article/2016/04/261251/">前に言ってた</a>,ユーザがMarkdownファイルを作るだけでページを生成できるようにしました. 例えば,contents/page/about.mdというファイルを作るとtemplate/page.twigを利用して,/about/index.htmlが作られます. しかしこれだと画像が扱えない(作ってから気づいた)ので,v0.5では画像をどこかにコピーしてMarkdownファイル内にある画像のパスをそこに書き換えようかな思います.</p>
+<h3>予定</h3>
+<p>各記事に対する設定でタグの欄があるのですが,Saoriの機能ではタグ一覧取得,タグ用のページの生成がないので,タグ機能を加えようと思います.<br />
+フィード機能(ATOM/RSS)がまだできていないので,それもできればいいかなと思っています.</p>
+<hr />
+<p>プログラムの話は全くしていないので,それに関しては近いうちに別の記事でします.</p>
 
             </div>
     <div class="article-share">
                             <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
             </div>
 
-            <div class="pager">
-                            <div id="pager-next">
-                    <div class="lines"><span>next article</span></div>
-                    <a href="/article/2016/06/arc">立命館ARCのスクレイピング</a>
-                </div>
-                                        <div id="pager-prev">
-                    <div class="lines"><span>previous article</span></div>
-                    <a href="/article/2016/04/icd3">icd3</a>
-                </div>
-                    </div>
     </div>
+        <nav class="pager">
+                    <div class="previous"><a href="/page/3">&laquo; prev</a></div>
+                    </nav>
                 </div>
                 <div id="blog-side" class="col-xs-12 col-md-4">
                                                                 <div id="side-profile" style="background: white;">
