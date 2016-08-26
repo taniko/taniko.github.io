@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
-        <title>立命館ARCのスクレイピング - blog\hrgruri</title>
+        <title>学年暦APIを作った - blog\hrgruri</title>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="/css/style.css">
@@ -31,76 +31,17 @@
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
                                 <div class="article" style="background: white;">
-    <span class="article-date">2016-06-02</span>
-    <h1 class="article-title"><a href="/article/2016/06/arc">立命館ARCのスクレイピング</a></h1>
+    <span class="article-date">2016-08-26</span>
+    <h1 class="article-title"><a href="/article/2016/08/ritsucal_api">学年暦APIを作った</a></h1>
             <ul class="article-tags">
-                            <li><a href="/tag/php/1">php</a></li>
+                            <li><a href="/tag/api/1">api</a></li>
+                            <li><a href="/tag/univ/1">univ</a></li>
                     </ul>
         <div class="article-contents">
-                    <h1>PHPでスクレイピング</h1>
-<p>創成3では立命館大学アート・リサーチセンター(以下ARC)のアクセスログを使って資料の推薦を行うことが目的でした. 最初はリンクだけを使った質素なものを作る予定でしたが, 途中でスクレイピングをして, サイト内だけで簡単な検索･閲覧をできるようにすることになりました. PHPを使ってやったのですが,これがとっても大変でした.</p>
-<h2>謎のname</h2>
-<p>HTMLのFormのほとんどにはname属性がつけられています.</p>
-<pre><code class="language-html">&lt;input type="text" name="username"&gt;
-</code></pre>
-<p>nameからどういった値が入るのか推測できるようになっているべきです.上の例だとユーザ名が入るのだと推測できます. しかしながらARCのフォームでは全くそれがなされていなかった.</p>
-<h3>浮世絵データベース</h3>
-<table>
-<thead>
-<tr><th align="center">name</th><th align="center">値</th></tr>
-</thead>
-<tbody>
-<tr><td align="center">f85</td><td align="center">キーワード</td></tr>
-<tr><td align="center">f23</td><td align="center">絵師</td></tr>
-<tr><td align="center">f83</td><td align="center">画題</td></tr>
-</tbody>
-</table>
-<h3>古典籍データベース</h3>
-<table>
-<thead>
-<tr><th align="center">name</th><th align="center">値</th></tr>
-</thead>
-<tbody>
-<tr><td align="center">f61</td><td align="center">資料名</td></tr>
-<tr><td align="center">f63</td><td align="center">編著者</td></tr>
-</tbody>
-</table>
-<p>まったく謎です. ちなみに浮世絵DBの絵師であるf23ですが,古典籍DBでは資料のソート(成立月日順)のために使われています.
-ちなみに統一されているものも一応あります.</p>
-<table>
-<thead>
-<tr><th align="center">name</th><th align="center">値</th></tr>
-</thead>
-<tbody>
-<tr><td align="center">-max</td><td align="center">表示件数</td></tr>
-<tr><td align="center">skip</td><td align="center">スキップ数</td></tr>
-</tbody>
-</table>
-<p>この2つは推測できますね. なぜかmaxではなく-maxですが. 統一されておらず,推測できないのはスクレイピングする側としては辛いですね. サーバサイドのコードを書くに扱いづらくなかったのでしょうか?</p>
-<h2>作ったライブラリ</h2>
-<p>オープンキャンパスのために創成3のサイトを再び作っているので使っているが, それさえ終わればもう使うことはないと思う. <a href="https://github.com/hrgruri/rarcs">GitHub</a>にアップロードしています. またComposerからインストールして使うことができます.</p>
-<pre><code class="language-sh">composer require hrgruri/rarcs
-</code></pre>
-<pre><code class="language-php">&lt;?php
-require 'vendor/autoload.php';
-
-$client = new Hrgruri\Rarcs\NishikieClient();
-var_dump($client-&gt;getDetail('arcUP2435'));
-/*
-object(Hrgruri\Rarcs\Asset\Nishikie)#51 (5) {
-  ["artist"]=&gt;
-  string(6) "広貞"
-  ["id"]=&gt;
-  string(9) "arcUP2435"
-  ["url"]=&gt;
-  string(62) "http://www.dh-jac.net/db/nishikie/results-big.php?f1=arcUP2435"
-  ["title"]=&gt;
-  string(54) "「菅原　三ノ口」「松王丸」「梅王丸」"
-  ["cover"]=&gt;
-  string(87) "http://www.arc.ritsumei.ac.jp/archive01/theater/image/PB/arc/Prints/arcUP/arcUP2435.jpg"
-}
- */
-</code></pre>
+                    <p>簡単な大学の学年暦APIを作ったのでその報告です.</p>
+<p><a href="https://ritsucal.hrgruri.com">https://ritsucal.hrgruri.com</a> です</p>
+<p>大学と大学院(情報理工学研究科)の学年暦をJSONで取得できるという簡単なものです. 使い方は<a href="https://ritsucal.hrgruri.com/doc">ドキュメント</a>を見てもらえればいいかと.<br />
+検索機能ですが,そのうちsince, untilができるようにはしたいと思います</p>
 
             </div>
     <div class="article-share">
@@ -108,13 +49,9 @@ object(Hrgruri\Rarcs\Asset\Nishikie)#51 (5) {
             </div>
 
             <div class="pager">
-                            <div id="pager-next">
-                    <div class="lines"><span>next article</span></div>
-                    <a href="/article/2016/06/042227">Saori v0.5.x-devにてTableがおかしい</a>
-                </div>
                                         <div id="pager-prev">
                     <div class="lines"><span>previous article</span></div>
-                    <a href="/article/2016/05/301402">Saori v0.4.0を作りました</a>
+                    <a href="/article/2016/08/041630">saori v2.0を開発中</a>
                 </div>
                     </div>
     </div>

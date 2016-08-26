@@ -2,8 +2,21 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 <title>blog\hrgruri</title>
 <link href="https://hrgruri.github.io"></link>
-<updated>2016-08-04T16:33:18+09:00</updated>
+<updated>2016-08-26T22:43:04+09:00</updated>
 <id>urn:uuid:1deced78-1925-4a0a-6b37-d3e39e3b7725</id>
+<entry>
+<author><name>Yuya Aratani</name>
+</author>
+<title>学年暦APIを作った</title>
+<link href="/article/2016/08/ritsucal_api"></link>
+<id>urn:uuid:5dfbe934-ffcc-ef2b-89ca-da78f6da9802</id>
+<updated>2016-08-26T22:41:38+09:00</updated>
+<summary type="html"><![CDATA[<p>簡単な大学の学年暦APIを作ったのでその報告です.</p>
+<p><a href="https://ritsucal.hrgruri.com">https://ritsucal.hrgruri.com</a> です</p>
+<p>大学と大学院(情報理工学研究科)の学年暦をJSONで取得できるという簡単なものです. 使い方は<a href="https://ritsucal.hrgruri.com/doc">ドキュメント</a>を見てもらえればいいかと.<br />
+検索機能ですが,そのうちsince, untilができるようにはしたいと思います</p>
+]]></summary>
+</entry>
 <entry>
 <author><name>Yuya Aratani</name>
 </author>
