@@ -42,31 +42,25 @@
 <h2>始め方</h2>
 <h3>インストール</h3>
 <p>インストールはComposerからできます</p>
-<pre><code class="language-sh">mkdir blog
-cd blog
-composer require hrgruri/saori
+<pre><code class="language-sh">composer create-project hrgruri/saori
 </code></pre>
 <h3>初期化</h3>
-<p>まずは動かすためのコードを記述します. main.phpにでも以下のコードを書いてください.</p>
-<pre><code class="language-php">&lt;?php
-require ('vendor/autoload.php');
-$saori = new hrgruri\saori\Saori(__DIR__);
-$saori-&gt;run($argv);
-</code></pre>
-<p>次の初期化をしましょう. 初期化をすることで,必要最低限の設定ファイルが生成されます.</p>
-<pre><code class="language-sh">php main.php init
+<p>インストールが終わったら初期化をしましょう. 初期化をすることで,必要最低限の設定ファイルが生成されます.</p>
+<pre><code class="language-sh">php saori init
 </code></pre>
 <p>そうするとcontents/config.jsonができていると思うので, 必要なところを編集してください. <font color='red'>idはGitHubのアカウント名</font>です.</p>
 <h2>使い方</h2>
 <h3>記事を投稿する</h3>
-<pre><code class="language-php">php main.php post (:article_title)
+<pre><code class="language-php">php saori draft :article_title
 </code></pre>
-<p>これで contents/yyyy/mm/:article_title にarticle.mdとconfig.jsonが生成されます. ちなみにarticle_titleを設定しなければ contents/yyyy/mm/ddhhmm (日時分)に生成されます.<br />
-config.jsonで記事のタイトルとタグを設定します.
-いよいよ記事の作成です. article.mdにMarkdown形式で記述していきます.</p>
+<p>これでdraft/:article_titleディレクトリが生成されます. 中にはarticle.mdとconfig.jsonがあるので,記事の設定(タグやタイトル)と記事(Markdown形式)を書いていきましょう.  </p>
+<p>書き終えれば次のコマンドを実行します.</p>
+<pre><code class="language-php">php saori post :article_title
+</code></pre>
+<p>こうすると先に書いた記事がcontents/yyyy/mm/:article_titleに移動されます.  </p>
 <h3>サイトを生成する</h3>
 <p>いよいよサイトを生成します.</p>
-<pre><code class="language-php">php main.php make
+<pre><code class="language-php">php saori build
 </code></pre>
 <p>これでlocalとusername.github.io (username部分はcontents/config.jsonのid)が作られます.<br />
 公開する前にどのようなサイトが生成されたのかを確認してみたいと思います. 確認にはPHPのビルトイン･サーバを使いましょう.</p>
@@ -75,7 +69,7 @@ config.jsonで記事のタイトルとタグを設定します.
 <p>ブラウザで<a href="http://localhost:8000">http://localhost:8000</a>にアクセスしてみましょう.</p>
 <h3>GitHubにPush</h3>
 <p>まずはGitHubに｢username.github.io｣というリポジトリを作成しましょう. username部分はGitHubのアカウント名です.  </p>
-<pre><code class="language-sh">cd hrgruri.github.io
+<pre><code class="language-sh">cd username.github.io
 git init
 git remote add origin git@github.com:username/username.github.io.git
 git add --all
@@ -95,8 +89,7 @@ git push origin master
     }
 }
 </code></pre>
-<p>これは,saoriというテーマを使用した際に使用する色を変えるためのものです. 変更できる箇所と名前はテーマによって異なるので注意してください. saoriテーマは<a href="https://github.com/hrgruri/saori/blob/v1.0/src/theme/saori/config.json">ここ</a>で確認することができます.</p>
-<p>(2016-07-15: 内部的な話は現在書いています)</p>
+<p>これは,saoriというテーマを使用した際に使用する色を変えるためのものです. 変更できる箇所と名前はテーマによって異なるので注意してください. saoriテーマは<a href="https://github.com/hrgruri/saori/blob/v2.0/src/theme/saori/config.json">ここ</a>で確認することができます.</p>
 
     </div>
                 </div>
