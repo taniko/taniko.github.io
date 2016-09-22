@@ -36,6 +36,56 @@
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
                                 <article style="background: white;">
+    <span class="article-date">2016-06-12</span>
+    <h1 class="article-title"><a href="/article/2016/06/121113">学年暦のスクレイピングについて</a></h1>
+        <div class="article-contents">
+                    <p><a href="/article/2016/06/ritsucal/">前の記事</a>でPHPを使って,学年暦のスクレイピングを行うライブラリの紹介をしたので,今回はそれを作ったことの話をします. スクレイピングは<a href="https://github.com/FriendsOfPHP/Goutte">fabpot/goutte</a>を使用しました</p>
+<h2>ページをローカルで動かす</h2>
+<p>おそらくコード書いて1回では成功できず,何度も失敗すると思うので,負荷を与えないように対象のページをダウンロードしてローカルで動かしてそこにスクレイピングをしましょう.<br />
+Chromeで 'Command(Control) + S'でダウンロードできます. ファイル名はindexでいいです. 次に動かし方ですが, PHPのビルトインサーバを使いましょう.</p>
+<pre><code class="language-sh">cd public
+php -S localhost:8000
+</code></pre>
+<p>詳しくは<a href="http://php.net/manual/ja/features.commandline.webserver.php">ここで</a>.</p>
+<h2>スクレイピングをする</h2>
+<h3>タイトル</h3>
+<p>ブラウザで上記のlocalhostにアクセスをして学年暦のタイトル(ページのタイトルではない)を探します.</p>
+<ol>
+<li><p>2016年度　立命館大学　学年暦</p>
+</li>
+<li><p>2016年度　立命館大学大学院　学年暦 セメスター制
+  （法学研究科、経済学研究科、経営学研究科、社会学研究科、文学研究科、国際関係研究科、政策科学研究科、応用人間科学研究科、言語教育情報研究科、公務研究科、スポーツ健康科学研究科、映像研究科、先端総合学術研究科）</p>
+</li>
+<li><p>2016年度　立命館大学大学院　学年暦 セメスター制
+  （理工学研究科、情報理工学研究科、生命科学研究科、薬学研究科）</p>
+</li>
+<li><p>2016年度　立命館大学大学院　学年暦 セッション制
+（テクノロジー・マネジメント研究科、経営管理研究科）</p>
+</li>
+<li><p>2016年度　立命館大学大学院　学年暦
+  （法務研究科）</p>
+</li>
+</ol>
+<p>この5つがあるので,これをタイトルとして,5つの学年暦を取得します. Chromeで右クリック→検証で構造を確かめられるので,見に行くとclass="mod-title type4"が割り振られているので</p>
+<pre><code class="language-php">$title = $crawler-&gt;filter('.mod-title.type4')-&gt;eq($i)-&gt;text();
+</code></pre>
+<p>で得られます.</p>
+<h3>年度</h3>
+<p>年度ですが,これはタイトル内に書かれているので<a href="http://php.net/preg_match">preg_match()</a>を使って｢2016｣を拾ってあげます.</p>
+<h3>各学年暦</h3>
+<p>ここからがスクレイピングするのには面倒な構造になっています.というのも, 学部と大学院では構造が異なっているのです. 学部の方は, mod-wysiwyg &gt; set-table &gt; table内にtheadとtbodyが2つ(前期･後期)あります. 一方, 大学院の方はmod-wysiwyg &gt; set-table が2つ(前期･後期)です.<br />
+eventはclass="event"ではなくテーブルの要素(イベント名･月･日)だと考えてください. mod-wysiwyは略.</p>
+<p><img src="/article/2016/06/121113/structure.jpeg" alt="" /></p>
+<p>これは不親切ですね. しかし,うまいこと下から順に配列を結合させていくと,5つの学年暦ができます. 考え方としては, 各学年暦にはset-tableが複数あり,tableの中にもtbodyが複数あることを前提に作るってことです.  結合やイベントのことなどは<a href="https://github.com/hrgruri/ritsucal/blob/master/src/Client.php">コード</a>を見てもらうほうがいいかと.  </p>
+<p>同じ日の行事はまとめられているので注意してください.</p>
+
+            </div>
+    <div class="article-share">
+                            <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            </div>
+
+    </article>
+            <article style="background: white;">
     <span class="article-date">2016-06-11</span>
     <h1 class="article-title"><a href="/article/2016/06/ritsucal">立命館の学年暦をスクレイピング</a></h1>
             <ul class="article-tags">
@@ -166,7 +216,7 @@ try {
 |f83|画題|
 </code></pre>
 <p>上記の記述をしたら以下の様なテーブルが生成されました.</p>
-<p><img src="/article/2016/06/042227/table.png" alt="" /></p>
+<p><img src="/article/2016/06/042227/table.png" alt="table" /></p>
 <p>罫線が入っていないので,テーブルとしてわかりにくくなっています. 今のところ原因がわかっていません. Atomの上では正しく表示されているので記述に間違いはないのではないかとは思います. cebe/markdownを使ってMarkdownを変換しています. とりあえず他のライブラリを使ってみてどう表示されるのか試してみます. あとHTMLも確認してみたいと思います.</p>
 <p>ちなみにv0.5.x-devでは記事とユーザページ(contents/page/NAME.md)の画像ファイルのパスの書き換えはできるようになりました. </p>
 
@@ -254,33 +304,6 @@ object(Hrgruri\Rarcs\Asset\Nishikie)#51 (5) {
             </div>
 
     </article>
-            <article style="background: white;">
-    <span class="article-date">2016-05-30</span>
-    <h1 class="article-title"><a href="/article/2016/05/301402">Saori v0.4.0を作りました</a></h1>
-            <ul class="article-tags">
-                            <li><a href="/tag/saori/1">saori</a></li>
-                            <li><a href="/tag/php/1">php</a></li>
-                    </ul>
-        <div class="article-contents">
-                    <p>v0.4.0での変更点は</p>
-<ul>
-<li>Twigファイルの場所の変更</li>
-<li>config.jsonの場所を変更</li>
-<li>ユーザページの生成機能</li>
-</ul>
-<h2>Twigファイルの場所の変更について</h2>
-<p>Twigファイルの場所をtheme/:theme_name/twig/にしました. サイトを生成するのに必要なテンプレートはtemplate内に置きました.これからはsaoriが直接呼び出すTwigファイルはここにおいていこうと思います.  </p>
-<h2>config.jsonの場所を変更について</h2>
-<p>contentsディレクトリ内にconfig.jsonを設置するように変更しました. 何故したかというと,config.jsonもgitで管理しやすくするためです.</p>
-<h2>ユーザページの生成機能について</h2>
-<p>それと<a href="/article/2016/04/261251/">前に言ってた</a>,ユーザがMarkdownファイルを作るだけでページを生成できるようにしました. 例えば,contents/page/about.mdというファイルを作るとtemplate/page.twigを利用して,/about/index.htmlが作られます. しかしこれだと画像が扱えない(作ってから気づいた)ので,v0.5では画像をどこかにコピーしてMarkdownファイル内にある画像のパスをそこに書き換えようかな思います.</p>
-
-            </div>
-    <div class="article-share">
-                            <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-            </div>
-
-    </article>
         <nav class="pager">
                     <div class="previous"><a href="/page/2">&laquo; prev</a></div>
                             <div class="next"><a href="/page/4">next &raquo;</a></div>
@@ -297,8 +320,9 @@ object(Hrgruri\Rarcs\Asset\Nishikie)#51 (5) {
                                                                 <div id="side-links" style="background: white;">
                             <div class="side-title">リンク</div>
                             <ul>
-                                                            <li><a href="https://github.com/hrgruri">github</a><br></li>
-                                                            <li><a href="https://twitter.com/hrgruri">twitter</a><br></li>
+                                                            <li><a href="https://github.com/hrgruri">GitHub</a><br></li>
+                                                            <li><a href="https://twitter.com/hrgruri">Twitter</a><br></li>
+                                                            <li><a href="https://speakerdeck.com/hrgruri">Speaker Deck</a><br></li>
                                                             <li><a href="/repository">リポジトリ説明</a><br></li>
                                                         </ul>
                         </div>
@@ -306,11 +330,11 @@ object(Hrgruri\Rarcs\Asset\Nishikie)#51 (5) {
                                                                 <div id="side-recent" class="hidden-sm-down" style="background: white;">
                             <div class="side-title">最新記事</div>
                             <ul>
+                                                                    <li><a href="/article/2016/09/saori_v2_1">saoriのv2.1リリース</a><br></li>
                                                                     <li><a href="/article/2016/09/summer-boot-camp-2016">pixiv 2016 SUMMER BOOT CAMPに参加</a><br></li>
                                                                     <li><a href="/article/2016/08/ritsucal_api">学年暦APIを作った</a><br></li>
                                                                     <li><a href="/article/2016/08/041630">saori v2.0を開発中</a><br></li>
                                                                     <li><a href="/article/2016/07/calender">弊大学の闇 (学年暦編)</a><br></li>
-                                                                    <li><a href="/article/2016/07/saori_article_cache">Saoriの下書きとキャッシュ</a><br></li>
                                                             </ul>
                         </div>
                     
@@ -321,7 +345,7 @@ object(Hrgruri\Rarcs\Asset\Nishikie)#51 (5) {
                                                             <li><a href="/tag/conference/1">conference (1)</a></li>
                                                             <li><a href="/tag/intern/1">intern (1)</a></li>
                                                             <li><a href="/tag/php/1">php (7)</a></li>
-                                                            <li><a href="/tag/saori/1">saori (8)</a></li>
+                                                            <li><a href="/tag/saori/1">saori (9)</a></li>
                                                             <li><a href="/tag/univ/1">univ (3)</a></li>
                                                         </ul>
                         </div>

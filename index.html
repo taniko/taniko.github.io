@@ -36,6 +36,42 @@
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
                                 <article style="background: white;">
+    <span class="article-date">2016-09-22</span>
+    <h1 class="article-title"><a href="/article/2016/09/saori_v2_1">saoriのv2.1リリース</a></h1>
+            <ul class="article-tags">
+                            <li><a href="/tag/saori/1">saori</a></li>
+                    </ul>
+        <div class="article-contents">
+                    <p>saori v2.1.0をリリースしました. v2.0の話をしていなかったのでここでまとめて話します.</p>
+<h2>create-projectからインストール</h2>
+<p><code>composer create-project hrgruri/saori-skeleton blog</code>でインストールができるようになりました. これにより</p>
+<pre><code class="language-sh">mkdir blog
+cd blog
+composer require hrgruri
+</code></pre>
+<p>とかしなくてもよくなった. そもそもインストールなので何度もするようなものじゃないですけどね.</p>
+<h2>使い方の変更</h2>
+<p>symfony/consoleを使用するように変更しました.</p>
+<pre><code class="language-sh">php saori init
+php saori draft article_name
+php saori post article_name
+php saori build
+php -S localhost:8000 -t local
+</code></pre>
+<p>このような使い方です. saoriはインストール時に存在していますので, 自分で実行のためのコードを書く必要はないです.</p>
+<h2>pageコマンドの追加</h2>
+<p>利用者が記事以外のページを作成したいときに使うコマンドです.
+<code>php saori page about</code>とすると<code>contents/page/about.md</code>が作られます. ここに色々と書いてビルドすると<code>/about/index.html</code>が生成されます.</p>
+<h2>httpsのリダイレクト</h2>
+<p>saori(デフォルトのテーマ)ではhttpでアクセスされた際に, httpsへとリダイレクトするように変更しました.</p>
+
+            </div>
+    <div class="article-share">
+                            <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            </div>
+
+    </article>
+            <article style="background: white;">
     <span class="article-date">2016-09-09</span>
     <h1 class="article-title"><a href="/article/2016/09/summer-boot-camp-2016">pixiv 2016 SUMMER BOOT CAMPに参加</a></h1>
             <ul class="article-tags">
@@ -177,45 +213,6 @@ CalendarではなくCalender. ちなみにCalenderは光沢機のこと.</p>
             </div>
 
     </article>
-            <article style="background: white;">
-    <span class="article-date">2016-07-19</span>
-    <h1 class="article-title"><a href="/article/2016/07/saori_article_cache">Saoriの下書きとキャッシュ</a></h1>
-            <ul class="article-tags">
-                            <li><a href="/tag/saori/1">saori</a></li>
-                    </ul>
-        <div class="article-contents">
-                    <h1>saori v1.1の開発</h1>
-<p>現在saori v1.1の開発を行っています.  </p>
-<ul>
-<li>下書き機能</li>
-<li>記事のキャッシュ</li>
-</ul>
-<p>に関することを行いました.  </p>
-<h2>下書き機能</h2>
-<p>下書き機能は<code>php main.php draft :name</code>とするとcontents/draft/:name/article.mdが作成されてここで記事の下書きができるよになるものです. 投稿したい場合は<code>php main.php post :name</code>とするとcontents/article/yyyy/mm/:nameにコピーされます. 記事のconfigファイルは<code>post</code>した時に作成されます.</p>
-<h2>記事のキャッシュ</h2>
-<p>今まではarticle.mdの画像パスを書き換えたものをcache/に作成しておき, <code>article.html()</code>でarticle.mdを読み込んでパースをしていました.<br />
-これを予めパースしておきarticle.htmlをcache/に作成しておき, <code>article.html()</code>でarticle.htmlを読み込むというものに変更しました.</p>
-<h3>時間計測</h3>
-<p>500回ループさせて時間を計測しました. 変更前後で2回計測.</p>
-<table>
-<thead>
-<tr><th></th><th>変更前</th><th>変更後</th></tr>
-</thead>
-<tbody>
-<tr><td>1回目</td><td>60.15</td><td>53.39</td></tr>
-<tr><td>2回目</td><td>59.77</td><td>54.78</td></tr>
-<tr><td>平均</td><td>59.96</td><td>54.085</td></tr>
-</tbody>
-</table>
-<p>記事の数やブログのテンプレートによって前後するとは思いますが, 方式を変えたことで5.875秒削減できました. 現在のところブログを生成する際には誤差かもしれませんが, 記事数が増えれば差が大きくなっていくかもしれません.</p>
-
-            </div>
-    <div class="article-share">
-                            <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-            </div>
-
-    </article>
         <nav class="pager">
                     <div class="next"><a href="/page/2">next &raquo;</a></div>
             </nav>
@@ -231,8 +228,9 @@ CalendarではなくCalender. ちなみにCalenderは光沢機のこと.</p>
                                                                 <div id="side-links" style="background: white;">
                             <div class="side-title">リンク</div>
                             <ul>
-                                                            <li><a href="https://github.com/hrgruri">github</a><br></li>
-                                                            <li><a href="https://twitter.com/hrgruri">twitter</a><br></li>
+                                                            <li><a href="https://github.com/hrgruri">GitHub</a><br></li>
+                                                            <li><a href="https://twitter.com/hrgruri">Twitter</a><br></li>
+                                                            <li><a href="https://speakerdeck.com/hrgruri">Speaker Deck</a><br></li>
                                                             <li><a href="/repository">リポジトリ説明</a><br></li>
                                                         </ul>
                         </div>
@@ -240,11 +238,11 @@ CalendarではなくCalender. ちなみにCalenderは光沢機のこと.</p>
                                                                 <div id="side-recent" class="hidden-sm-down" style="background: white;">
                             <div class="side-title">最新記事</div>
                             <ul>
+                                                                    <li><a href="/article/2016/09/saori_v2_1">saoriのv2.1リリース</a><br></li>
                                                                     <li><a href="/article/2016/09/summer-boot-camp-2016">pixiv 2016 SUMMER BOOT CAMPに参加</a><br></li>
                                                                     <li><a href="/article/2016/08/ritsucal_api">学年暦APIを作った</a><br></li>
                                                                     <li><a href="/article/2016/08/041630">saori v2.0を開発中</a><br></li>
                                                                     <li><a href="/article/2016/07/calender">弊大学の闇 (学年暦編)</a><br></li>
-                                                                    <li><a href="/article/2016/07/saori_article_cache">Saoriの下書きとキャッシュ</a><br></li>
                                                             </ul>
                         </div>
                     
@@ -255,7 +253,7 @@ CalendarではなくCalender. ちなみにCalenderは光沢機のこと.</p>
                                                             <li><a href="/tag/conference/1">conference (1)</a></li>
                                                             <li><a href="/tag/intern/1">intern (1)</a></li>
                                                             <li><a href="/tag/php/1">php (7)</a></li>
-                                                            <li><a href="/tag/saori/1">saori (8)</a></li>
+                                                            <li><a href="/tag/saori/1">saori (9)</a></li>
                                                             <li><a href="/tag/univ/1">univ (3)</a></li>
                                                         </ul>
                         </div>

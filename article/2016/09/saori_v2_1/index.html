@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
-        <title>Saori v0.5を作った - blog\hrgruri</title>
+        <title>saoriのv2.1リリース - blog\hrgruri</title>
                     <script type="text/javascript">
                 if (location.protocol === 'http:') {
                     location.replace(location.href.replace(/^http:/, 'https:'));
@@ -36,13 +36,34 @@
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
                                 <article style="background: white;">
-    <span class="article-date">2016-06-10</span>
-    <h1 class="article-title"><a href="/article/2016/06/102235">Saori v0.5を作った</a></h1>
+    <span class="article-date">2016-09-22</span>
+    <h1 class="article-title"><a href="/article/2016/09/saori_v2_1">saoriのv2.1リリース</a></h1>
+            <ul class="article-tags">
+                            <li><a href="/tag/saori/1">saori</a></li>
+                    </ul>
         <div class="article-contents">
-                    <p>Saori v0.5.0をリリースした. これで簡単にユーザが新たなページを生成することができるようになった. そして,<a href="http://hrgruri.github.io/article/2016/06/042227/">前の記事</a>で言っていたテーブルがおかしい理由はテーブルのCSSが記述されていなかったからでした. ボーダの設定を指定なかったので,枠線がない状態で出力されていただけでした.</p>
-<hr />
-<p>そろそろv0.x系をやめてv1.0にしてもいい頃かもしれない. 最初に思っていた必要な最低限の機能はできたと思う.<br />
-それとちゃんとした使い方をまとめて記事かページを生成する必要がある. 今のところ他の人が使うのには不親切だ. README.mdには記事の編集のことしか記述していない. (誰か作る人がいるのかわからないが)テーマの作り方やユーザページについてなど. こういったものをまとめ終えたらv1.0.0にしたいと思います.</p>
+                    <p>saori v2.1.0をリリースしました. v2.0の話をしていなかったのでここでまとめて話します.</p>
+<h2>create-projectからインストール</h2>
+<p><code>composer create-project hrgruri/saori-skeleton blog</code>でインストールができるようになりました. これにより</p>
+<pre><code class="language-sh">mkdir blog
+cd blog
+composer require hrgruri
+</code></pre>
+<p>とかしなくてもよくなった. そもそもインストールなので何度もするようなものじゃないですけどね.</p>
+<h2>使い方の変更</h2>
+<p>symfony/consoleを使用するように変更しました.</p>
+<pre><code class="language-sh">php saori init
+php saori draft article_name
+php saori post article_name
+php saori build
+php -S localhost:8000 -t local
+</code></pre>
+<p>このような使い方です. saoriはインストール時に存在していますので, 自分で実行のためのコードを書く必要はないです.</p>
+<h2>pageコマンドの追加</h2>
+<p>利用者が記事以外のページを作成したいときに使うコマンドです.
+<code>php saori page about</code>とすると<code>contents/page/about.md</code>が作られます. ここに色々と書いてビルドすると<code>/about/index.html</code>が生成されます.</p>
+<h2>httpsのリダイレクト</h2>
+<p>saori(デフォルトのテーマ)ではhttpでアクセスされた際に, httpsへとリダイレクトするように変更しました.</p>
 
             </div>
     <div class="article-share">
@@ -50,13 +71,9 @@
             </div>
 
             <div class="pager">
-                            <div id="pager-next">
-                    <div class="lines"><span>next article</span></div>
-                    <a href="/article/2016/06/ritsucal">立命館の学年暦をスクレイピング</a>
-                </div>
                                         <div id="pager-prev">
                     <div class="lines"><span>previous article</span></div>
-                    <a href="/article/2016/06/042227">Saori v0.5.x-devにてTableがおかしい</a>
+                    <a href="/article/2016/09/summer-boot-camp-2016">pixiv 2016 SUMMER BOOT CAMPに参加</a>
                 </div>
                     </div>
     </article>

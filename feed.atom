@@ -2,8 +2,39 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 <title>blog\hrgruri</title>
 <link href="https://hrgruri.github.io"></link>
-<updated>2016-09-12T19:34:06+09:00</updated>
+<updated>2016-09-22T18:05:25+09:00</updated>
 <id>urn:uuid:1deced78-1925-4a0a-6b37-d3e39e3b7725</id>
+<entry>
+<author><name>Yuya Aratani</name>
+</author>
+<title>saoriのv2.1リリース</title>
+<link href="/article/2016/09/saori_v2_1"></link>
+<id>urn:uuid:adaedbc2-2325-4034-909d-c48d979c8863</id>
+<updated>2016-09-22T18:01:37+09:00</updated>
+<summary type="html"><![CDATA[<p>saori v2.1.0をリリースしました. v2.0の話をしていなかったのでここでまとめて話します.</p>
+<h2>create-projectからインストール</h2>
+<p><code>composer create-project hrgruri/saori-skeleton blog</code>でインストールができるようになりました. これにより</p>
+<pre><code class="language-sh">mkdir blog
+cd blog
+composer require hrgruri
+</code></pre>
+<p>とかしなくてもよくなった. そもそもインストールなので何度もするようなものじゃないですけどね.</p>
+<h2>使い方の変更</h2>
+<p>symfony/consoleを使用するように変更しました.</p>
+<pre><code class="language-sh">php saori init
+php saori draft article_name
+php saori post article_name
+php saori build
+php -S localhost:8000 -t local
+</code></pre>
+<p>このような使い方です. saoriはインストール時に存在していますので, 自分で実行のためのコードを書く必要はないです.</p>
+<h2>pageコマンドの追加</h2>
+<p>利用者が記事以外のページを作成したいときに使うコマンドです.
+<code>php saori page about</code>とすると<code>contents/page/about.md</code>が作られます. ここに色々と書いてビルドすると<code>/about/index.html</code>が生成されます.</p>
+<h2>httpsのリダイレクト</h2>
+<p>saori(デフォルトのテーマ)ではhttpでアクセスされた際に, httpsへとリダイレクトするように変更しました.</p>
+]]></summary>
+</entry>
 <entry>
 <author><name>Yuya Aratani</name>
 </author>
@@ -255,7 +286,7 @@ LTのあとはじゃんけん大会が行われました. 11名が景品をも�
 <p>懇親会の終わりごろに基調講演をされたhirakuさんと少し話をさせていただきました. メルカリ様のステッカーをいただきました. ありがとうございます. パソコンにでも貼りたいと思います.  </p>
 <h1>最後に</h1>
 <p>こうして初めてのカンファレンス, 初めてのLT, 初めての懇親会が終わりました. 懇親会での話やTwitterを見てみると｢LT,良かったよ｣というのがあったので嬉しいです. デモも好評で良かったです. <a href="https://github.com/hrgruri/saori">リポジトリ</a>を見てみるとStarがありました. ありがとうございます.
-<img src="/article/2016/07/phpcon_kansai_2016/github.png" alt="" /></p>
+<img src="/article/2016/07/phpcon_kansai_2016/github.png" alt="hrgruri/saori" /></p>
 <p>Twitterで<a href="https://twitter.com/search?q=%23phpkansai">#phpkansai</a>を見ているとLTで話した内容(Saori)以外のことが少し話題になっていました. それは私がデモの時に使った｢g (git)｣です. Twitterを見ている限り｢git｣はエイリアスで｢g｣としている人は多い気がしますが少し会場がざわついていました. 少しでもストレスを無くすために｢g｣にするはおすすめです.</p>
 <p>カンファレンスが始まる前から気になっていたのですが,私以外にも大学生は参加していたのでしょうか. 私だけということはないとは思いますが,見かけませんでした. LTの冒頭で大学生がいるか聞いておけば良かったかなと今思う.</p>
 <h2>カンファレンスに参加したい学生へ</h2>
@@ -284,7 +315,7 @@ LTをしたことで思ったのが, みんな優しかったです. LT後にも
 <updated>2016-07-16T16:32:52+09:00</updated>
 <summary type="html"><![CDATA[<h1>deom</h1>
 <p>これはデモ用の記事です. 現在LT真っ最中です.<br />
-<img src="/article/2016/07/demo/front.jpg" alt="" /></p>
+<img src="/article/2016/07/demo/front.jpg" alt="demo" /></p>
 ]]></summary>
 </entry>
 <entry>
@@ -480,7 +511,7 @@ try {
 |f83|画題|
 </code></pre>
 <p>上記の記述をしたら以下の様なテーブルが生成されました.</p>
-<p><img src="/article/2016/06/042227/table.png" alt="" /></p>
+<p><img src="/article/2016/06/042227/table.png" alt="table" /></p>
 <p>罫線が入っていないので,テーブルとしてわかりにくくなっています. 今のところ原因がわかっていません. Atomの上では正しく表示されているので記述に間違いはないのではないかとは思います. cebe/markdownを使ってMarkdownを変換しています. とりあえず他のライブラリを使ってみてどう表示されるのか試してみます. あとHTMLも確認してみたいと思います.</p>
 <p>ちなみにv0.5.x-devでは記事とユーザページ(contents/page/NAME.md)の画像ファイルのパスの書き換えはできるようになりました. </p>
 ]]></summary>
