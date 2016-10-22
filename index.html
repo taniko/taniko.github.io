@@ -36,7 +36,51 @@
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
                                 <article style="background: white;">
-    <span class="article-date">2016-09-22</span>
+    <span class="article-date">October 22, 2016</span>
+    <h1 class="article-title"><a href="/article/2016/10/ricca">Slackのフレームワーク(?)を作った</a></h1>
+            <ul class="article-tags">
+                            <li><a href="/tag/php/1">php</a></li>
+                    </ul>
+        <div class="article-contents">
+                    <p><a href="https://github.com/hrgruri/ricca">Ricca</a>というSlackのフレームワークのようなものをPHPで作りました. できることは少ないですが, なにかメッセージを投げるとそれに一致したコマンドが動いて, Twitterにつぶやかれたり, Slackに文字を返したりするという単純なものです.<br />
+例としては｢tw こんにちは｣とメッセージを送るとTwitterに｢こんにちは｣とつぶやかれるとか｢pid｣でBotの動いているプロセスIDがslackに返ってくとかです.</p>
+<h2>コマンドについて</h2>
+<h3>コマンドの作り方</h3>
+<p>実際にコードをみてもらうとわかりやすいと思うので<a href="https://github.com/hrgruri/ricca/blob/master/src/Command/Tweet.php">twコマンドのコード</a>を載せます. configure()で設定をしてexecute()に実際の処理を書くといったものです.</p>
+<pre><code class="language-php">&lt;?php
+namespace Hrgruri\Ricca\Command;
+class Tweet extends \Hrgruri\Ricca\Command
+{
+    public function configure()
+    {
+        $this-&gt;setName('tw')
+            -&gt;setChannel('general');
+    }
+    public function execute(\Hrgruri\Ricca\Request $req, \Hrgruri\Ricca\Response $res)
+    {
+        return $res-&gt;withTweet($req-&gt;getText())-&gt;withText('tweeted');
+    }
+}
+</code></pre>
+<h3>botにコマンドを追加する方法</h3>
+<p>上記のようなコードを書くだけで簡単にコマンドを作成することができます. 自分で新たにコマンドを作成したら使用できるようにコマンドを追加します. 下のコードはbotを動かすためのコードです. add()で作ったコマンドを登録していけばいいだけです.</p>
+<pre><code class="language-php">&lt;?php
+require 'vendor/autoload.php';
+$app = new Hrgruri\Ricca\Application(__DIR__.'/data', 'general');
+$app-&gt;add(new Hrgruri\Ricca\Command\Tweet);
+$app-&gt;run();
+</code></pre>
+<hr />
+<p>私のbotのリポジトリ <a href="https://github.com/hrgruri/slack_bot">hrgruri/slack_bot</a></p>
+
+            </div>
+    <div class="article-share">
+                            <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            </div>
+
+    </article>
+            <article style="background: white;">
+    <span class="article-date">September 22, 2016</span>
     <h1 class="article-title"><a href="/article/2016/09/saori_v2_1">saoriのv2.1リリース</a></h1>
             <ul class="article-tags">
                             <li><a href="/tag/saori/1">saori</a></li>
@@ -72,7 +116,7 @@ php -S localhost:8000 -t local
 
     </article>
             <article style="background: white;">
-    <span class="article-date">2016-09-09</span>
+    <span class="article-date">September 9, 2016</span>
     <h1 class="article-title"><a href="/article/2016/09/summer-boot-camp-2016">pixiv 2016 SUMMER BOOT CAMPに参加</a></h1>
             <ul class="article-tags">
                             <li><a href="/tag/intern/1">intern</a></li>
@@ -117,7 +161,7 @@ php -S localhost:8000 -t local
 
     </article>
             <article style="background: white;">
-    <span class="article-date">2016-08-26</span>
+    <span class="article-date">August 26, 2016</span>
     <h1 class="article-title"><a href="/article/2016/08/ritsucal_api">学年暦APIを作った</a></h1>
             <ul class="article-tags">
                             <li><a href="/tag/api/1">api</a></li>
@@ -136,7 +180,7 @@ php -S localhost:8000 -t local
 
     </article>
             <article style="background: white;">
-    <span class="article-date">2016-08-04</span>
+    <span class="article-date">August 4, 2016</span>
     <h1 class="article-title"><a href="/article/2016/08/041630">saori v2.0を開発中</a></h1>
             <ul class="article-tags">
                             <li><a href="/tag/saori/1">saori</a></li>
@@ -173,46 +217,6 @@ php saori build
             </div>
 
     </article>
-            <article style="background: white;">
-    <span class="article-date">2016-07-20</span>
-    <h1 class="article-title"><a href="/article/2016/07/calender">弊大学の闇 (学年暦編)</a></h1>
-            <ul class="article-tags">
-                            <li><a href="/tag/univ/1">univ</a></li>
-                    </ul>
-        <div class="article-contents">
-                    <h1>学年暦の闇</h1>
-<p>大学の行事をJSONで返してくれるようなものを作ろうとしていた時に気づいた弊大学の闇を話したいと思います.</p>
-<h2>calender ?</h2>
-<p>PHPを使って学年暦をスクレイピングする<a href="https://github.com/hrgruri/ritsucal">ライブラリ</a>に行事の検索機能を追加しようとしていました. 検索機能と言っても年･月･日を連想配列で渡すと該当の行事が配列で帰ってくる簡単なものです.<br />
-引数の型が指定できるので<code>\Hrgruri\Ritsucal\Calendar</code>型と<code>array</code>型を引数にしてメソッドを作りました. 学部の学年暦と今日の日付でテストをするとTypeError. 型が違うというエラー. 該当するクラスを見に行くとあるのは<code>src/Calender.php</code>.
-<font color=red>Calender.php </font>?<br />
-CalendarではなくCalender. ちなみにCalenderは光沢機のこと.</p>
-<p>タイプミス? やってしまったと思い, 置換しようと｢calender｣で検索すると</p>
-<pre><code class="language-php">private $url = 'http://www.ritsumei.ac.jp/profile/info/calender/';
-</code></pre>
-<p>までヒットした.</p>
-<h2>大学の間違え</h2>
-<p>ブラウザで確認したところ<br />
-<a href="http://www.ritsumei.ac.jp/profile/info/calender/">http://www.ritsumei.ac.jp/profile/info/calender/</a> は存在しているが,<br />
-<a href="http://www.ritsumei.ac.jp/profile/info/calendar/">http://www.ritsumei.ac.jp/profile/info/calendar/</a> は存在していない.  </p>
-<p>大学側も間違えていた. 学年暦のページが光沢機(calender)になっている.</p>
-<h2>今回の原因</h2>
-<p><del>そもそも大学側が間違えていたので, 私が間違えたのは大学のせいである. むしろ間違いに合わせているので,私は間違えていない</del></p>
-<ol>
-<li>単語の綴り確認もせずに,学年暦のURLに合わせてクラス名を決めてしまっていた.</li>
-<li>大学のホームページは正しいと思いんでいた.</li>
-<li>補完に頼り過ぎた.</li>
-</ol>
-<h2>まとめ</h2>
-<p>英語の綴りは確かめましょう. Googleで｢学年暦｣と検索して1番上に来るような弊大学のホームページだからといって間違いがないとは思ってはいけない.<br />
-そして<font color=red>弊大学の学年暦は光沢機</font></p>
-
-            </div>
-    <div class="article-share">
-                            <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-            </div>
-
-    </article>
         <nav class="pager">
                     <div class="next"><a href="/page/2">next &raquo;</a></div>
             </nav>
@@ -238,11 +242,11 @@ CalendarではなくCalender. ちなみにCalenderは光沢機のこと.</p>
                                                                 <div id="side-recent" class="hidden-sm-down" style="background: white;">
                             <div class="side-title">最新記事</div>
                             <ul>
+                                                                    <li><a href="/article/2016/10/ricca">Slackのフレームワーク(?)を作った</a><br></li>
                                                                     <li><a href="/article/2016/09/saori_v2_1">saoriのv2.1リリース</a><br></li>
                                                                     <li><a href="/article/2016/09/summer-boot-camp-2016">pixiv 2016 SUMMER BOOT CAMPに参加</a><br></li>
                                                                     <li><a href="/article/2016/08/ritsucal_api">学年暦APIを作った</a><br></li>
                                                                     <li><a href="/article/2016/08/041630">saori v2.0を開発中</a><br></li>
-                                                                    <li><a href="/article/2016/07/calender">弊大学の闇 (学年暦編)</a><br></li>
                                                             </ul>
                         </div>
                     
@@ -252,7 +256,7 @@ CalendarではなくCalender. ちなみにCalenderは光沢機のこと.</p>
                                                             <li><a href="/tag/api/1">api (1)</a></li>
                                                             <li><a href="/tag/conference/1">conference (1)</a></li>
                                                             <li><a href="/tag/intern/1">intern (1)</a></li>
-                                                            <li><a href="/tag/php/1">php (7)</a></li>
+                                                            <li><a href="/tag/php/1">php (8)</a></li>
                                                             <li><a href="/tag/saori/1">saori (9)</a></li>
                                                             <li><a href="/tag/univ/1">univ (3)</a></li>
                                                         </ul>

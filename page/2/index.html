@@ -36,7 +36,47 @@
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
                                 <article style="background: white;">
-    <span class="article-date">2016-07-19</span>
+    <span class="article-date">July 20, 2016</span>
+    <h1 class="article-title"><a href="/article/2016/07/calender">弊大学の闇 (学年暦編)</a></h1>
+            <ul class="article-tags">
+                            <li><a href="/tag/univ/1">univ</a></li>
+                    </ul>
+        <div class="article-contents">
+                    <h1>学年暦の闇</h1>
+<p>大学の行事をJSONで返してくれるようなものを作ろうとしていた時に気づいた弊大学の闇を話したいと思います.</p>
+<h2>calender ?</h2>
+<p>PHPを使って学年暦をスクレイピングする<a href="https://github.com/hrgruri/ritsucal">ライブラリ</a>に行事の検索機能を追加しようとしていました. 検索機能と言っても年･月･日を連想配列で渡すと該当の行事が配列で帰ってくる簡単なものです.<br />
+引数の型が指定できるので<code>\Hrgruri\Ritsucal\Calendar</code>型と<code>array</code>型を引数にしてメソッドを作りました. 学部の学年暦と今日の日付でテストをするとTypeError. 型が違うというエラー. 該当するクラスを見に行くとあるのは<code>src/Calender.php</code>.
+<font color=red>Calender.php </font>?<br />
+CalendarではなくCalender. ちなみにCalenderは光沢機のこと.</p>
+<p>タイプミス? やってしまったと思い, 置換しようと｢calender｣で検索すると</p>
+<pre><code class="language-php">private $url = 'http://www.ritsumei.ac.jp/profile/info/calender/';
+</code></pre>
+<p>までヒットした.</p>
+<h2>大学の間違え</h2>
+<p>ブラウザで確認したところ<br />
+<a href="http://www.ritsumei.ac.jp/profile/info/calender/">http://www.ritsumei.ac.jp/profile/info/calender/</a> は存在しているが,<br />
+<a href="http://www.ritsumei.ac.jp/profile/info/calendar/">http://www.ritsumei.ac.jp/profile/info/calendar/</a> は存在していない.  </p>
+<p>大学側も間違えていた. 学年暦のページが光沢機(calender)になっている.</p>
+<h2>今回の原因</h2>
+<p><del>そもそも大学側が間違えていたので, 私が間違えたのは大学のせいである. むしろ間違いに合わせているので,私は間違えていない</del></p>
+<ol>
+<li>単語の綴り確認もせずに,学年暦のURLに合わせてクラス名を決めてしまっていた.</li>
+<li>大学のホームページは正しいと思いんでいた.</li>
+<li>補完に頼り過ぎた.</li>
+</ol>
+<h2>まとめ</h2>
+<p>英語の綴りは確かめましょう. Googleで｢学年暦｣と検索して1番上に来るような弊大学のホームページだからといって間違いがないとは思ってはいけない.<br />
+そして<font color=red>弊大学の学年暦は光沢機</font></p>
+
+            </div>
+    <div class="article-share">
+                            <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            </div>
+
+    </article>
+            <article style="background: white;">
+    <span class="article-date">July 19, 2016</span>
     <h1 class="article-title"><a href="/article/2016/07/saori_article_cache">Saoriの下書きとキャッシュ</a></h1>
             <ul class="article-tags">
                             <li><a href="/tag/saori/1">saori</a></li>
@@ -75,7 +115,7 @@
 
     </article>
             <article style="background: white;">
-    <span class="article-date">2016-07-17</span>
+    <span class="article-date">July 17, 2016</span>
     <h1 class="article-title"><a href="/article/2016/07/phpcon_kansai_2016">PHPカンファレンス 関西2016でLT</a></h1>
             <ul class="article-tags">
                             <li><a href="/tag/php/1">php</a></li>
@@ -198,7 +238,7 @@ LTをしたことで思ったのが, みんな優しかったです. LT後にも
 
     </article>
             <article style="background: white;">
-    <span class="article-date">2016-07-16</span>
+    <span class="article-date">July 16, 2016</span>
     <h1 class="article-title"><a href="/article/2016/07/demo">demo</a></h1>
         <div class="article-contents">
                     <h1>deom</h1>
@@ -212,7 +252,7 @@ LTをしたことで思ったのが, みんな優しかったです. LT後にも
 
     </article>
             <article style="background: white;">
-    <span class="article-date">2016-07-15</span>
+    <span class="article-date">July 15, 2016</span>
     <h1 class="article-title"><a href="/article/2016/07/152308">Saoriの使い方</a></h1>
             <ul class="article-tags">
                             <li><a href="/tag/saori/1">saori</a></li>
@@ -220,18 +260,6 @@ LTをしたことで思ったのが, みんな優しかったです. LT後にも
         <div class="article-contents">
                     <p>PHPを使ってgithub.ioでブログをやるための静的サイトジェネレータである<a href="https://github.com/hrgruri/saori">saori</a>の使い方を簡単にですがまとめました. リンクは<a href="/repository/saori">こちら</a>です.<br />
 現在, 使い方だけなのでテーマの作成方法など内部的な話は書けていませんが近いうちに書きたいと思います.</p>
-
-            </div>
-    <div class="article-share">
-                            <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-            </div>
-
-    </article>
-            <article style="background: white;">
-    <span class="article-date">2016-07-08</span>
-    <h1 class="article-title"><a href="/article/2016/07/081625">ブログのテーマを変えた</a></h1>
-        <div class="article-contents">
-                    <p>ブログのテーマを変えました. ただそれだけです.</p>
 
             </div>
     <div class="article-share">
@@ -265,11 +293,11 @@ LTをしたことで思ったのが, みんな優しかったです. LT後にも
                                                                 <div id="side-recent" class="hidden-sm-down" style="background: white;">
                             <div class="side-title">最新記事</div>
                             <ul>
+                                                                    <li><a href="/article/2016/10/ricca">Slackのフレームワーク(?)を作った</a><br></li>
                                                                     <li><a href="/article/2016/09/saori_v2_1">saoriのv2.1リリース</a><br></li>
                                                                     <li><a href="/article/2016/09/summer-boot-camp-2016">pixiv 2016 SUMMER BOOT CAMPに参加</a><br></li>
                                                                     <li><a href="/article/2016/08/ritsucal_api">学年暦APIを作った</a><br></li>
                                                                     <li><a href="/article/2016/08/041630">saori v2.0を開発中</a><br></li>
-                                                                    <li><a href="/article/2016/07/calender">弊大学の闇 (学年暦編)</a><br></li>
                                                             </ul>
                         </div>
                     
@@ -279,7 +307,7 @@ LTをしたことで思ったのが, みんな優しかったです. LT後にも
                                                             <li><a href="/tag/api/1">api (1)</a></li>
                                                             <li><a href="/tag/conference/1">conference (1)</a></li>
                                                             <li><a href="/tag/intern/1">intern (1)</a></li>
-                                                            <li><a href="/tag/php/1">php (7)</a></li>
+                                                            <li><a href="/tag/php/1">php (8)</a></li>
                                                             <li><a href="/tag/saori/1">saori (9)</a></li>
                                                             <li><a href="/tag/univ/1">univ (3)</a></li>
                                                         </ul>
