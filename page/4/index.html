@@ -8,13 +8,15 @@
                     location.replace(location.href.replace(/^http:/, 'https:'));
                 }
             </script>
-                <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+                <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc=" crossorigin="anonymous"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="/css/style.css">
         <link rel="stylesheet" href="/css/article.css">
         <link rel="stylesheet" href="/css/tag.css">
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/styles/github.min.css">
         <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/highlight.min.js"></script>
+        <script src="/js/share.js"></script>
         <script>hljs.initHighlightingOnLoad();</script>
                             <script>
               (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -36,8 +38,34 @@
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
                                 <article style="background: white;">
+    <span class="article-date">June 4, 2016</span>
+    <h1 class="article-title"><a href="https://hrgruri.github.io/article/2016/06/042227">Saori v0.5.x-devにてTableがおかしい</a></h1>
+            <ul class="article-tags">
+                            <li><a href="/tag/saori/1">saori</a></li>
+                    </ul>
+        <div class="article-contents">
+                    <p>現在Saoriのv0.5を作っていますが, どうやらテーブルが正しく表示されないです.</p>
+<pre><code class="language-markdown">|name|値|
+|:-:|:-:|
+|f85|キーワード|
+|f23|絵師|
+|f83|画題|
+</code></pre>
+<p>上記の記述をしたら以下の様なテーブルが生成されました.</p>
+<p><img src="/article/2016/06/042227/table.png" alt="table" /></p>
+<p>罫線が入っていないので,テーブルとしてわかりにくくなっています. 今のところ原因がわかっていません. Atomの上では正しく表示されているので記述に間違いはないのではないかとは思います. cebe/markdownを使ってMarkdownを変換しています. とりあえず他のライブラリを使ってみてどう表示されるのか試してみます. あとHTMLも確認してみたいと思います.</p>
+<p>ちなみにv0.5.x-devでは記事とユーザページ(contents/page/NAME.md)の画像ファイルのパスの書き換えはできるようになりました. </p>
+
+            </div>
+    <div class="article-share">
+                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://hrgruri.github.io/article/2016/06/042227" data-text="Saori v0.5.x-devにてTableがおかしい - blog\hrgruri">Tweet</a>
+                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://hrgruri.github.io/article/2016/06/042227"></a>
+            </div>
+
+    </article>
+            <article style="background: white;">
     <span class="article-date">June 2, 2016</span>
-    <h1 class="article-title"><a href="/article/2016/06/arc">立命館ARCのスクレイピング</a></h1>
+    <h1 class="article-title"><a href="https://hrgruri.github.io/article/2016/06/arc">立命館ARCのスクレイピング</a></h1>
             <ul class="article-tags">
                             <li><a href="/tag/php/1">php</a></li>
                     </ul>
@@ -109,13 +137,14 @@ object(Hrgruri\Rarcs\Asset\Nishikie)#51 (5) {
 
             </div>
     <div class="article-share">
-                            <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://hrgruri.github.io/article/2016/06/arc" data-text="立命館ARCのスクレイピング - blog\hrgruri">Tweet</a>
+                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://hrgruri.github.io/article/2016/06/arc"></a>
             </div>
 
     </article>
             <article style="background: white;">
     <span class="article-date">May 30, 2016</span>
-    <h1 class="article-title"><a href="/article/2016/05/301402">Saori v0.4.0を作りました</a></h1>
+    <h1 class="article-title"><a href="https://hrgruri.github.io/article/2016/05/301402">Saori v0.4.0を作りました</a></h1>
             <ul class="article-tags">
                             <li><a href="/tag/saori/1">saori</a></li>
                             <li><a href="/tag/php/1">php</a></li>
@@ -136,13 +165,14 @@ object(Hrgruri\Rarcs\Asset\Nishikie)#51 (5) {
 
             </div>
     <div class="article-share">
-                            <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://hrgruri.github.io/article/2016/05/301402" data-text="Saori v0.4.0を作りました - blog\hrgruri">Tweet</a>
+                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://hrgruri.github.io/article/2016/05/301402"></a>
             </div>
 
     </article>
             <article style="background: white;">
     <span class="article-date">April 29, 2016</span>
-    <h1 class="article-title"><a href="/article/2016/04/icd3">icd3</a></h1>
+    <h1 class="article-title"><a href="https://hrgruri.github.io/article/2016/04/icd3">icd3</a></h1>
             <ul class="article-tags">
                             <li><a href="/tag/php/1">php</a></li>
                             <li><a href="/tag/univ/1">univ</a></li>
@@ -158,13 +188,14 @@ object(Hrgruri\Rarcs\Asset\Nishikie)#51 (5) {
 
             </div>
     <div class="article-share">
-                            <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://hrgruri.github.io/article/2016/04/icd3" data-text="icd3 - blog\hrgruri">Tweet</a>
+                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://hrgruri.github.io/article/2016/04/icd3"></a>
             </div>
 
     </article>
             <article style="background: white;">
     <span class="article-date">April 26, 2016</span>
-    <h1 class="article-title"><a href="/article/2016/04/261251">Saori v0.3を作った</a></h1>
+    <h1 class="article-title"><a href="https://hrgruri.github.io/article/2016/04/261251">Saori v0.3を作った</a></h1>
             <ul class="article-tags">
                             <li><a href="/tag/saori/1">saori</a></li>
                             <li><a href="/tag/php/1">php</a></li>
@@ -188,44 +219,15 @@ object(Hrgruri\Rarcs\Asset\Nishikie)#51 (5) {
 
             </div>
     <div class="article-share">
-                            <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-            </div>
-
-    </article>
-            <article style="background: white;">
-    <span class="article-date">April 24, 2016</span>
-    <h1 class="article-title"><a href="/article/2016/04/saori">Saori v0.1.0のリリース</a></h1>
-            <ul class="article-tags">
-                            <li><a href="/tag/saori/1">saori</a></li>
-                            <li><a href="/tag/php/1">php</a></li>
-                    </ul>
-        <div class="article-contents">
-                    <h2>Saoriについて</h2>
-<p>SaoriというPHPを使った簡単なサイトジェネレータを作りました.現在のバージョンはv0.1.0です.これで,PHP動かない場所(たとえばusername.github.io)でもブログを公開できます. 仕組みとしてはローカルでPHPを使ってHTMLを生成して,それを公開するって流れです.<br />
-現在,テーマはsampleしかないのです.これでは1ページあたりの記事の数は5つとなっています.
-使い方は<a href="https://github.com/hrgruri/saori">GitHub</a>で.まだまだ開発途中で,追加したい機能がいくつかあるのでがんばります.  </p>
-<pre><code class="language-sh">composer install hrgruri/saori
-</code></pre>
-<h3>機能</h3>
-<ul>
-<li>各記事用のページの生成(/article/:year/:month/title)</li>
-<li>記事(N件)ごとのページを生成(/page/:page_number)</li>
-</ul>
-<h3>予定</h3>
-<p>各記事に対する設定でタグの欄があるのですが,Saoriの機能ではタグ一覧取得,タグ用のページの生成がないので,タグ機能を加えようと思います.<br />
-フィード機能(ATOM/RSS)がまだできていないので,それもできればいいかなと思っています.</p>
-<hr />
-<p>プログラムの話は全くしていないので,それに関しては近いうちに別の記事でします.</p>
-
-            </div>
-    <div class="article-share">
-                            <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://hrgruri.github.io/article/2016/04/261251" data-text="Saori v0.3を作った - blog\hrgruri">Tweet</a>
+                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://hrgruri.github.io/article/2016/04/261251"></a>
             </div>
 
     </article>
         <nav class="pager">
                     <div class="previous"><a href="/page/3">&laquo; prev</a></div>
-                    </nav>
+                            <div class="next"><a href="/page/5">next &raquo;</a></div>
+            </nav>
                 </div>
                 <div id="blog-side" class="col-xs-12 col-md-4">
                                                                 <div id="side-profile" style="background: white;">
@@ -248,17 +250,18 @@ object(Hrgruri\Rarcs\Asset\Nishikie)#51 (5) {
                                                                 <div id="side-recent" class="hidden-sm-down" style="background: white;">
                             <div class="side-title">最新記事</div>
                             <ul>
+                                                                    <li><a href="/article/2016/11/091738">響け!ユーフォニアム2の前半が終わって</a><br></li>
                                                                     <li><a href="/article/2016/10/ricca">Slackのフレームワーク(?)を作った</a><br></li>
                                                                     <li><a href="/article/2016/09/saori_v2_1">saoriのv2.1リリース</a><br></li>
                                                                     <li><a href="/article/2016/09/summer-boot-camp-2016">pixiv 2016 SUMMER BOOT CAMPに参加</a><br></li>
                                                                     <li><a href="/article/2016/08/ritsucal_api">学年暦APIを作った</a><br></li>
-                                                                    <li><a href="/article/2016/08/041630">saori v2.0を開発中</a><br></li>
                                                             </ul>
                         </div>
                     
                                                                 <div id="side-tags" class=" hidden-sm-down" style="background: white;">
                             <div class="side-title">タグ</div>
                             <ul>
+                                                            <li><a href="/tag/anime/1">anime (1)</a></li>
                                                             <li><a href="/tag/api/1">api (1)</a></li>
                                                             <li><a href="/tag/conference/1">conference (1)</a></li>
                                                             <li><a href="/tag/intern/1">intern (1)</a></li>

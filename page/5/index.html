@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
-        <title>saori v2.0を開発中 - blog\hrgruri</title>
+        <title>blog\hrgruri</title>
                     <script type="text/javascript">
                 if (location.protocol === 'http:') {
                     location.replace(location.href.replace(/^http:/, 'https:'));
@@ -38,54 +38,40 @@
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
                                 <article style="background: white;">
-    <span class="article-date">August 4, 2016</span>
-    <h1 class="article-title"><a href="https://hrgruri.github.io/article/2016/08/041630">saori v2.0を開発中</a></h1>
+    <span class="article-date">April 24, 2016</span>
+    <h1 class="article-title"><a href="https://hrgruri.github.io/article/2016/04/saori">Saori v0.1.0のリリース</a></h1>
             <ul class="article-tags">
                             <li><a href="/tag/saori/1">saori</a></li>
+                            <li><a href="/tag/php/1">php</a></li>
                     </ul>
         <div class="article-contents">
-                    <p><code>composer create-project</code>でインストールできるようにして, symfony/consoleを利用してsaoriを使用できるようにしました. あとnamespaceを修正.</p>
-<h2>v2.0-devをインストール</h2>
-<p><code>composer create-project hrgruri/saori:v2.0.x-dev blog</code>で開発途中のv2.0をインストールして始めることができます. 最後の<code>blog</code>はディレクトリ名なので別のものに変えても構いません.  </p>
-<h2>使用方法</h2>
-<pre><code class="language-sh">composer create-project hrgruri/saori:v2.0.x-dev blog
-cd blog
-php saori
-
-#初期化
-php saori init
-
-#下書きファイルを生成 (いきなりpostを使ってもいい)
-php saori draft first_article
-
-#記事の投稿
-php saori post first_article
-
-#静的サイトを生成
-php saori build
+                    <h2>Saoriについて</h2>
+<p>SaoriというPHPを使った簡単なサイトジェネレータを作りました.現在のバージョンはv0.1.0です.これで,PHP動かない場所(たとえばusername.github.io)でもブログを公開できます. 仕組みとしてはローカルでPHPを使ってHTMLを生成して,それを公開するって流れです.<br />
+現在,テーマはsampleしかないのです.これでは1ページあたりの記事の数は5つとなっています.
+使い方は<a href="https://github.com/hrgruri/saori">GitHub</a>で.まだまだ開発途中で,追加したい機能がいくつかあるのでがんばります.  </p>
+<pre><code class="language-sh">composer install hrgruri/saori
 </code></pre>
-<p>現在のところ,init, draft, post, buildが使用できます. <code>-h</code>使えば簡単な説明が出ると思うのでそちらを参考に.</p>
-<p><code>php saori draft</code>は別に使用しないでいきなり<code>php saori post</code>しても利用できるのですが, <code>draft</code>を使ったほうがいいかと.</p>
-<h2>今後</h2>
-<p><code>draft</code>した時にはconfig.jsonが作られず, <code>post</code>した時に作られるのですが, これだと<code>post</code>した後じゃないとconfig.jsonがさわれない. config.jsonを<code>draft</code>でも生成しておき, timestampを<code>post</code>した時に追加させようと思います.  </p>
+<h3>機能</h3>
+<ul>
+<li>各記事用のページの生成(/article/:year/:month/title)</li>
+<li>記事(N件)ごとのページを生成(/page/:page_number)</li>
+</ul>
+<h3>予定</h3>
+<p>各記事に対する設定でタグの欄があるのですが,Saoriの機能ではタグ一覧取得,タグ用のページの生成がないので,タグ機能を加えようと思います.<br />
+フィード機能(ATOM/RSS)がまだできていないので,それもできればいいかなと思っています.</p>
+<hr />
+<p>プログラムの話は全くしていないので,それに関しては近いうちに別の記事でします.</p>
 
             </div>
     <div class="article-share">
-                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://hrgruri.github.io/article/2016/08/041630" data-text="saori v2.0を開発中 - blog\hrgruri">Tweet</a>
-                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://hrgruri.github.io/article/2016/08/041630"></a>
+                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://hrgruri.github.io/article/2016/04/saori" data-text="Saori v0.1.0のリリース - blog\hrgruri">Tweet</a>
+                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://hrgruri.github.io/article/2016/04/saori"></a>
             </div>
 
-            <div class="pager">
-                            <div id="pager-next">
-                    <div class="lines"><span>next article</span></div>
-                    <a href="https://hrgruri.github.io/article/2016/08/ritsucal_api">学年暦APIを作った</a>
-                </div>
-                                        <div id="pager-prev">
-                    <div class="lines"><span>previous article</span></div>
-                    <a href="https://hrgruri.github.io/article/2016/07/calender">弊大学の闇 (学年暦編)</a>
-                </div>
-                    </div>
     </article>
+        <nav class="pager">
+                    <div class="previous"><a href="/page/4">&laquo; prev</a></div>
+                    </nav>
                 </div>
                 <div id="blog-side" class="col-xs-12 col-md-4">
                                                                 <div id="side-profile" style="background: white;">
