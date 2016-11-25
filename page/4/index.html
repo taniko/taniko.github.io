@@ -28,172 +28,16 @@
             </script>
                 <link href="/feed.atom" rel="alternate" title="atom" type="application/atom+xml">
     </head>
-    <body style="background: #FEFAEC;">
-        <div id="blog-header" style="background: #A9EEE6;">
+    <body>
+        <div id="blog-header">
             <div class="container">
-                <h1 id="blog-title"><a href="/" style="color:#F7FBFC;">blog\hrgruri</a></h1>
+                <h1 id="blog-title"><a href="/">blog\hrgruri</a></h1>
             </div>
         </div>
         <div class="container">
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
-                                <article style="background: white;">
-    <span class="article-date">June 4, 2016</span>
-    <h1 class="article-title"><a href="https://hrgruri.github.io/article/2016/06/042227">Saori v0.5.x-devにてTableがおかしい</a></h1>
-            <ul class="article-tags">
-                            <li><a href="/tag/saori/1">saori</a></li>
-                    </ul>
-        <div class="article-contents">
-                    <p>現在Saoriのv0.5を作っていますが, どうやらテーブルが正しく表示されないです.</p>
-<pre><code class="language-markdown">|name|値|
-|:-:|:-:|
-|f85|キーワード|
-|f23|絵師|
-|f83|画題|
-</code></pre>
-<p>上記の記述をしたら以下の様なテーブルが生成されました.</p>
-<p><img src="/article/2016/06/042227/table.png" alt="table" /></p>
-<p>罫線が入っていないので,テーブルとしてわかりにくくなっています. 今のところ原因がわかっていません. Atomの上では正しく表示されているので記述に間違いはないのではないかとは思います. cebe/markdownを使ってMarkdownを変換しています. とりあえず他のライブラリを使ってみてどう表示されるのか試してみます. あとHTMLも確認してみたいと思います.</p>
-<p>ちなみにv0.5.x-devでは記事とユーザページ(contents/page/NAME.md)の画像ファイルのパスの書き換えはできるようになりました. </p>
-
-            </div>
-    <div class="article-share">
-                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://hrgruri.github.io/article/2016/06/042227" data-text="Saori v0.5.x-devにてTableがおかしい - blog\hrgruri">Tweet</a>
-                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://hrgruri.github.io/article/2016/06/042227"></a>
-            </div>
-
-    </article>
-            <article style="background: white;">
-    <span class="article-date">June 2, 2016</span>
-    <h1 class="article-title"><a href="https://hrgruri.github.io/article/2016/06/arc">立命館ARCのスクレイピング</a></h1>
-            <ul class="article-tags">
-                            <li><a href="/tag/php/1">php</a></li>
-                    </ul>
-        <div class="article-contents">
-                    <h1>PHPでスクレイピング</h1>
-<p>創成3では立命館大学アート・リサーチセンター(以下ARC)のアクセスログを使って資料の推薦を行うことが目的でした. 最初はリンクだけを使った質素なものを作る予定でしたが, 途中でスクレイピングをして, サイト内だけで簡単な検索･閲覧をできるようにすることになりました. PHPを使ってやったのですが,これがとっても大変でした.</p>
-<h2>謎のname</h2>
-<p>HTMLのFormのほとんどにはname属性がつけられています.</p>
-<pre><code class="language-html">&lt;input type="text" name="username"&gt;
-</code></pre>
-<p>nameからどういった値が入るのか推測できるようになっているべきです.上の例だとユーザ名が入るのだと推測できます. しかしながらARCのフォームでは全くそれがなされていなかった.</p>
-<h3>浮世絵データベース</h3>
-<table>
-<thead>
-<tr><th align="center">name</th><th align="center">値</th></tr>
-</thead>
-<tbody>
-<tr><td align="center">f85</td><td align="center">キーワード</td></tr>
-<tr><td align="center">f23</td><td align="center">絵師</td></tr>
-<tr><td align="center">f83</td><td align="center">画題</td></tr>
-</tbody>
-</table>
-<h3>古典籍データベース</h3>
-<table>
-<thead>
-<tr><th align="center">name</th><th align="center">値</th></tr>
-</thead>
-<tbody>
-<tr><td align="center">f61</td><td align="center">資料名</td></tr>
-<tr><td align="center">f63</td><td align="center">編著者</td></tr>
-</tbody>
-</table>
-<p>まったく謎です. ちなみに浮世絵DBの絵師であるf23ですが,古典籍DBでは資料のソート(成立月日順)のために使われています.
-ちなみに統一されているものも一応あります.</p>
-<table>
-<thead>
-<tr><th align="center">name</th><th align="center">値</th></tr>
-</thead>
-<tbody>
-<tr><td align="center">-max</td><td align="center">表示件数</td></tr>
-<tr><td align="center">skip</td><td align="center">スキップ数</td></tr>
-</tbody>
-</table>
-<p>この2つは推測できますね. なぜかmaxではなく-maxですが. 統一されておらず,推測できないのはスクレイピングする側としては辛いですね. サーバサイドのコードを書くに扱いづらくなかったのでしょうか?</p>
-<h2>作ったライブラリ</h2>
-<p>オープンキャンパスのために創成3のサイトを再び作っているので使っているが, それさえ終わればもう使うことはないと思う. <a href="https://github.com/hrgruri/rarcs">GitHub</a>にアップロードしています. またComposerからインストールして使うことができます.</p>
-<pre><code class="language-sh">composer require hrgruri/rarcs
-</code></pre>
-<pre><code class="language-php">&lt;?php
-require 'vendor/autoload.php';
-
-$client = new Hrgruri\Rarcs\NishikieClient();
-var_dump($client-&gt;getDetail('arcUP2435'));
-/*
-object(Hrgruri\Rarcs\Asset\Nishikie)#51 (5) {
-  ["artist"]=&gt;
-  string(6) "広貞"
-  ["id"]=&gt;
-  string(9) "arcUP2435"
-  ["url"]=&gt;
-  string(62) "http://www.dh-jac.net/db/nishikie/results-big.php?f1=arcUP2435"
-  ["title"]=&gt;
-  string(54) "「菅原　三ノ口」「松王丸」「梅王丸」"
-  ["cover"]=&gt;
-  string(87) "http://www.arc.ritsumei.ac.jp/archive01/theater/image/PB/arc/Prints/arcUP/arcUP2435.jpg"
-}
- */
-</code></pre>
-
-            </div>
-    <div class="article-share">
-                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://hrgruri.github.io/article/2016/06/arc" data-text="立命館ARCのスクレイピング - blog\hrgruri">Tweet</a>
-                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://hrgruri.github.io/article/2016/06/arc"></a>
-            </div>
-
-    </article>
-            <article style="background: white;">
-    <span class="article-date">May 30, 2016</span>
-    <h1 class="article-title"><a href="https://hrgruri.github.io/article/2016/05/301402">Saori v0.4.0を作りました</a></h1>
-            <ul class="article-tags">
-                            <li><a href="/tag/saori/1">saori</a></li>
-                            <li><a href="/tag/php/1">php</a></li>
-                    </ul>
-        <div class="article-contents">
-                    <p>v0.4.0での変更点は</p>
-<ul>
-<li>Twigファイルの場所の変更</li>
-<li>config.jsonの場所を変更</li>
-<li>ユーザページの生成機能</li>
-</ul>
-<h2>Twigファイルの場所の変更について</h2>
-<p>Twigファイルの場所をtheme/:theme_name/twig/にしました. サイトを生成するのに必要なテンプレートはtemplate内に置きました.これからはsaoriが直接呼び出すTwigファイルはここにおいていこうと思います.  </p>
-<h2>config.jsonの場所を変更について</h2>
-<p>contentsディレクトリ内にconfig.jsonを設置するように変更しました. 何故したかというと,config.jsonもgitで管理しやすくするためです.</p>
-<h2>ユーザページの生成機能について</h2>
-<p>それと<a href="/article/2016/04/261251/">前に言ってた</a>,ユーザがMarkdownファイルを作るだけでページを生成できるようにしました. 例えば,contents/page/about.mdというファイルを作るとtemplate/page.twigを利用して,/about/index.htmlが作られます. しかしこれだと画像が扱えない(作ってから気づいた)ので,v0.5では画像をどこかにコピーしてMarkdownファイル内にある画像のパスをそこに書き換えようかな思います.</p>
-
-            </div>
-    <div class="article-share">
-                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://hrgruri.github.io/article/2016/05/301402" data-text="Saori v0.4.0を作りました - blog\hrgruri">Tweet</a>
-                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://hrgruri.github.io/article/2016/05/301402"></a>
-            </div>
-
-    </article>
-            <article style="background: white;">
-    <span class="article-date">April 29, 2016</span>
-    <h1 class="article-title"><a href="https://hrgruri.github.io/article/2016/04/icd3">icd3</a></h1>
-            <ul class="article-tags">
-                            <li><a href="/tag/php/1">php</a></li>
-                            <li><a href="/tag/univ/1">univ</a></li>
-                    </ul>
-        <div class="article-contents">
-                    <p>先生｢創成3で作ってもらったサイトをオープンキャンパスで見せようと思う｣<br />
-私｢あっ,はい. ちゃんとしたコードに直したかったので, 修正したら渡します｣<br />
-先生｢それなんだけどね, 今のままだと書籍だけで見た感じが微妙だから絵も推薦できるようにして. 7月末までにしておいてね｣</p>
-<p>こんなわけで,前に作ったサイトの見た目をとかを修正するだけだったつもりが, 先生からのお願い(?)で推薦対象となるカテゴリーを増やすことになりました.<br />
-追加することになったのは浮世絵. 浮世絵のログは抽出してDBに保存していなかったので,もう一度アクセスログの解析をすることになりました. クローラなどのログはすでに落としてあるのがあったと思うので,そこからもう一度.</p>
-<p><Font color="red">I Love PHP</font> なのでもちろんPHPを使います. スクレイピングもPHPです. スクレイピングのコードも前まではクラスを作ってそれを使っていただけだったのですが, 今回はComposerでインストールして使えるようにして公開したいと思います.</p>
-<p>実行環境は,今日,研究室に立てたUbuntu Serverを使おうかなと. 開発段階では研究室のみからアクセスできるようにしておけばいい. オープンキャンパスの時のみ,大学のIPだけを通すようにするとか考えたが... 前回と同様にデータを先生に渡すだけになるのかな</p>
-
-            </div>
-    <div class="article-share">
-                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://hrgruri.github.io/article/2016/04/icd3" data-text="icd3 - blog\hrgruri">Tweet</a>
-                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://hrgruri.github.io/article/2016/04/icd3"></a>
-            </div>
-
-    </article>
-            <article style="background: white;">
+                                <article>
     <span class="article-date">April 26, 2016</span>
     <h1 class="article-title"><a href="https://hrgruri.github.io/article/2016/04/261251">Saori v0.3を作った</a></h1>
             <ul class="article-tags">
@@ -224,20 +68,52 @@ object(Hrgruri\Rarcs\Asset\Nishikie)#51 (5) {
             </div>
 
     </article>
+            <article>
+    <span class="article-date">April 24, 2016</span>
+    <h1 class="article-title"><a href="https://hrgruri.github.io/article/2016/04/saori">Saori v0.1.0のリリース</a></h1>
+            <ul class="article-tags">
+                            <li><a href="/tag/saori/1">saori</a></li>
+                            <li><a href="/tag/php/1">php</a></li>
+                    </ul>
+        <div class="article-contents">
+                    <h2>Saoriについて</h2>
+<p>SaoriというPHPを使った簡単なサイトジェネレータを作りました.現在のバージョンはv0.1.0です.これで,PHP動かない場所(たとえばusername.github.io)でもブログを公開できます. 仕組みとしてはローカルでPHPを使ってHTMLを生成して,それを公開するって流れです.<br />
+現在,テーマはsampleしかないのです.これでは1ページあたりの記事の数は5つとなっています.
+使い方は<a href="https://github.com/hrgruri/saori">GitHub</a>で.まだまだ開発途中で,追加したい機能がいくつかあるのでがんばります.  </p>
+<pre><code class="language-sh">composer install hrgruri/saori
+</code></pre>
+<h3>機能</h3>
+<ul>
+<li>各記事用のページの生成(/article/:year/:month/title)</li>
+<li>記事(N件)ごとのページを生成(/page/:page_number)</li>
+</ul>
+<h3>予定</h3>
+<p>各記事に対する設定でタグの欄があるのですが,Saoriの機能ではタグ一覧取得,タグ用のページの生成がないので,タグ機能を加えようと思います.<br />
+フィード機能(ATOM/RSS)がまだできていないので,それもできればいいかなと思っています.</p>
+<hr />
+<p>プログラムの話は全くしていないので,それに関しては近いうちに別の記事でします.</p>
+
+            </div>
+    <div class="article-share">
+                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://hrgruri.github.io/article/2016/04/saori" data-text="Saori v0.1.0のリリース - blog\hrgruri">Tweet</a>
+                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://hrgruri.github.io/article/2016/04/saori"></a>
+            </div>
+
+    </article>
         <nav class="pager">
-                    <div class="previous"><a href="/page/3">&laquo; prev</a></div>
-                            <div class="next"><a href="/page/5">next &raquo;</a></div>
-            </nav>
+                    <div class="previous"><a href="/page/4">&laquo; prev</a></div>
+                    </nav>
                 </div>
                 <div id="blog-side" class="col-xs-12 col-md-4">
-                                                                <div id="side-profile" style="background: white;">
+                                                                <div id="side-profile">
                             <div class="side-title">プロフィール</div>
                             <p><img src="/img/profile.jpeg" width="100px"><br />
-<a href="https://twitter.com/hrgruri">@hrgruri</a></p>
+<a href="https://twitter.com/hrgruri">@hrgruri</a><br />
+滋賀県に生息する大学生</p>
 
                         </div>
                     
-                                                                <div id="side-links" style="background: white;">
+                                                                <div id="side-links">
                             <div class="side-title">リンク</div>
                             <ul>
                                                             <li><a href="https://github.com/hrgruri">GitHub</a><br></li>
@@ -247,18 +123,18 @@ object(Hrgruri\Rarcs\Asset\Nishikie)#51 (5) {
                                                         </ul>
                         </div>
                     
-                                                                <div id="side-recent" class="hidden-sm-down" style="background: white;">
+                                                                <div id="side-recent" class="hidden-sm-down">
                             <div class="side-title">最新記事</div>
                             <ul>
+                                                                    <li><a href="/article/2016/11/251311">Saori v2.2のリリース</a><br></li>
                                                                     <li><a href="/article/2016/11/091738">響け!ユーフォニアム2の前半が終わって</a><br></li>
                                                                     <li><a href="/article/2016/10/ricca">Slackのフレームワーク(?)を作った</a><br></li>
                                                                     <li><a href="/article/2016/09/saori_v2_1">saoriのv2.1リリース</a><br></li>
                                                                     <li><a href="/article/2016/09/summer-boot-camp-2016">pixiv 2016 SUMMER BOOT CAMPに参加</a><br></li>
-                                                                    <li><a href="/article/2016/08/ritsucal_api">学年暦APIを作った</a><br></li>
                                                             </ul>
                         </div>
                     
-                                                                <div id="side-tags" class=" hidden-sm-down" style="background: white;">
+                                                                <div id="side-tags" class=" hidden-sm-down">
                             <div class="side-title">タグ</div>
                             <ul>
                                                             <li><a href="/tag/anime/1">anime (1)</a></li>
@@ -266,7 +142,7 @@ object(Hrgruri\Rarcs\Asset\Nishikie)#51 (5) {
                                                             <li><a href="/tag/conference/1">conference (1)</a></li>
                                                             <li><a href="/tag/intern/1">intern (1)</a></li>
                                                             <li><a href="/tag/php/1">php (8)</a></li>
-                                                            <li><a href="/tag/saori/1">saori (9)</a></li>
+                                                            <li><a href="/tag/saori/1">saori (10)</a></li>
                                                             <li><a href="/tag/univ/1">univ (3)</a></li>
                                                         </ul>
                         </div>

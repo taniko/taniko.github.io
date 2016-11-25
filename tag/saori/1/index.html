@@ -28,16 +28,71 @@
             </script>
                 <link href="/feed.atom" rel="alternate" title="atom" type="application/atom+xml">
     </head>
-    <body style="background: #FEFAEC;">
-        <div id="blog-header" style="background: #A9EEE6;">
+    <body>
+        <div id="blog-header">
             <div class="container">
-                <h1 id="blog-title"><a href="/" style="color:#F7FBFC;">blog\hrgruri</a></h1>
+                <h1 id="blog-title"><a href="/">blog\hrgruri</a></h1>
             </div>
         </div>
         <div class="container">
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
-                                <article style="background: white;">
+                                <article>
+    <span class="article-date">November 25, 2016</span>
+    <h1 class="article-title"><a href="https://hrgruri.github.io/article/2016/11/251311">Saori v2.2のリリース</a></h1>
+            <ul class="article-tags">
+                            <li><a href="/tag/saori/1">saori</a></li>
+                    </ul>
+        <div class="article-contents">
+                    <p>v2.2では主にコマンドの追加をしました.</p>
+<h2>コマンドの追加</h2>
+<h3>deploy</h3>
+<p><code>deploy</code>はデプロイを簡単にするためのものです. git add, commit, pushをまとめてやってくれるといった簡単なものです.</p>
+<pre><code class="language-sh">php saori deploy (:commit_message)
+</code></pre>
+<p>これで動作します. <code>:commit_message</code>が存在しなければ<code>date('YmdHi')</code>が入ります.</p>
+<h3>theme</h3>
+<p><code>theme</code>は存在するテーマ一覧の取得と, テーマの設定ファイルの確認に使います</p>
+<pre><code class="language-sh">php saori theme
+## 以下が表示される
+Theme list
+sample, saori
+
+php saori theme saori
+## 以下が表示される
+saori/theme.json
+{
+    "noapp":5,
+    "color" : {
+        "header" : "#000033",
+        "title" : "#EEEEEE",
+        "body"      : "#E9E9E9",
+        "article"   : "#FFF1CF",
+        "main" : "white",
+        "side" : "white"
+    },
+    "date-format" : "Y-m-d"
+}
+</code></pre>
+<h2>内部的な話</h2>
+<p>現在置換え中ですが, PHPの配列から<code>Illuminate\Support\Collection</code>に変更中です. Laravelで使われているあれです. まだ書き換えられていないところもあるのですが, 徐々に書き換えていきたいと思います.<br />
+あと, テーマ作成の面で言うと<code>css.twig</code>を使えるようにした. これはcss/name.css.twigをcss/name.cssに書き換えると言うもの. theme/saoriではheader, bodyなどの背景色をカスタマイズできるようにするために使用しています.</p>
+<pre><code class="language-css.twig">/* theme/saori/css/article.css.twig */
+article {
+    background: {{maker.color('article')}};
+    margin-bottom: 50px;
+    padding: 5px 10px 5px 10px;
+}
+</code></pre>
+
+            </div>
+    <div class="article-share">
+                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://hrgruri.github.io/article/2016/11/251311" data-text="Saori v2.2のリリース - blog\hrgruri">Tweet</a>
+                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://hrgruri.github.io/article/2016/11/251311"></a>
+            </div>
+
+    </article>
+            <article>
     <span class="article-date">September 22, 2016</span>
     <h1 class="article-title"><a href="https://hrgruri.github.io/article/2016/09/saori_v2_1">saoriのv2.1リリース</a></h1>
             <ul class="article-tags">
@@ -74,7 +129,7 @@ php -S localhost:8000 -t local
             </div>
 
     </article>
-            <article style="background: white;">
+            <article>
     <span class="article-date">August 4, 2016</span>
     <h1 class="article-title"><a href="https://hrgruri.github.io/article/2016/08/041630">saori v2.0を開発中</a></h1>
             <ul class="article-tags">
@@ -113,7 +168,7 @@ php saori build
             </div>
 
     </article>
-            <article style="background: white;">
+            <article>
     <span class="article-date">July 19, 2016</span>
     <h1 class="article-title"><a href="https://hrgruri.github.io/article/2016/07/saori_article_cache">Saoriの下書きとキャッシュ</a></h1>
             <ul class="article-tags">
@@ -153,7 +208,7 @@ php saori build
             </div>
 
     </article>
-            <article style="background: white;">
+            <article>
     <span class="article-date">July 17, 2016</span>
     <h1 class="article-title"><a href="https://hrgruri.github.io/article/2016/07/phpcon_kansai_2016">PHPカンファレンス 関西2016でLT</a></h1>
             <ul class="article-tags">
@@ -277,36 +332,20 @@ LTをしたことで思ったのが, みんな優しかったです. LT後にも
             </div>
 
     </article>
-            <article style="background: white;">
-    <span class="article-date">July 15, 2016</span>
-    <h1 class="article-title"><a href="https://hrgruri.github.io/article/2016/07/152308">Saoriの使い方</a></h1>
-            <ul class="article-tags">
-                            <li><a href="/tag/saori/1">saori</a></li>
-                    </ul>
-        <div class="article-contents">
-                    <p>PHPを使ってgithub.ioでブログをやるための静的サイトジェネレータである<a href="https://github.com/hrgruri/saori">saori</a>の使い方を簡単にですがまとめました. リンクは<a href="/repository/saori">こちら</a>です.<br />
-現在, 使い方だけなのでテーマの作成方法など内部的な話は書けていませんが近いうちに書きたいと思います.</p>
-
-            </div>
-    <div class="article-share">
-                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://hrgruri.github.io/article/2016/07/152308" data-text="Saoriの使い方 - blog\hrgruri">Tweet</a>
-                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://hrgruri.github.io/article/2016/07/152308"></a>
-            </div>
-
-    </article>
         <nav class="pager">
                             <div class="next"><a href="/tag/saori/2">next &raquo;</a></div>
             </nav>
                 </div>
                 <div id="blog-side" class="col-xs-12 col-md-4">
-                                                                <div id="side-profile" style="background: white;">
+                                                                <div id="side-profile">
                             <div class="side-title">プロフィール</div>
                             <p><img src="/img/profile.jpeg" width="100px"><br />
-<a href="https://twitter.com/hrgruri">@hrgruri</a></p>
+<a href="https://twitter.com/hrgruri">@hrgruri</a><br />
+滋賀県に生息する大学生</p>
 
                         </div>
                     
-                                                                <div id="side-links" style="background: white;">
+                                                                <div id="side-links">
                             <div class="side-title">リンク</div>
                             <ul>
                                                             <li><a href="https://github.com/hrgruri">GitHub</a><br></li>
@@ -316,18 +355,18 @@ LTをしたことで思ったのが, みんな優しかったです. LT後にも
                                                         </ul>
                         </div>
                     
-                                                                <div id="side-recent" class="hidden-sm-down" style="background: white;">
+                                                                <div id="side-recent" class="hidden-sm-down">
                             <div class="side-title">最新記事</div>
                             <ul>
+                                                                    <li><a href="/article/2016/11/251311">Saori v2.2のリリース</a><br></li>
                                                                     <li><a href="/article/2016/11/091738">響け!ユーフォニアム2の前半が終わって</a><br></li>
                                                                     <li><a href="/article/2016/10/ricca">Slackのフレームワーク(?)を作った</a><br></li>
                                                                     <li><a href="/article/2016/09/saori_v2_1">saoriのv2.1リリース</a><br></li>
                                                                     <li><a href="/article/2016/09/summer-boot-camp-2016">pixiv 2016 SUMMER BOOT CAMPに参加</a><br></li>
-                                                                    <li><a href="/article/2016/08/ritsucal_api">学年暦APIを作った</a><br></li>
                                                             </ul>
                         </div>
                     
-                                                                <div id="side-tags" class=" hidden-sm-down" style="background: white;">
+                                                                <div id="side-tags" class=" hidden-sm-down">
                             <div class="side-title">タグ</div>
                             <ul>
                                                             <li><a href="/tag/anime/1">anime (1)</a></li>
@@ -335,7 +374,7 @@ LTをしたことで思ったのが, みんな優しかったです. LT後にも
                                                             <li><a href="/tag/conference/1">conference (1)</a></li>
                                                             <li><a href="/tag/intern/1">intern (1)</a></li>
                                                             <li><a href="/tag/php/1">php (8)</a></li>
-                                                            <li><a href="/tag/saori/1">saori (9)</a></li>
+                                                            <li><a href="/tag/saori/1">saori (10)</a></li>
                                                             <li><a href="/tag/univ/1">univ (3)</a></li>
                                                         </ul>
                         </div>

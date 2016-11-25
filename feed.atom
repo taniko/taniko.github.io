@@ -2,8 +2,57 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 <title>blog\hrgruri</title>
 <link href="https://hrgruri.github.io"></link>
-<updated>2016-11-09T17:40:38+09:00</updated>
-<id>urn:uuid:1deced78-1925-4a0a-6b37-d3e39e3b7725</id>
+<updated>2016-11-25T13:18:24+09:00</updated>
+<id>urn:uuid:ecb9c0fd-5fc2-090a-d008-e0a538ec5d85</id>
+<entry>
+<author><name>Yuya Aratani</name>
+</author>
+<title>Saori v2.2のリリース</title>
+<link href="/article/2016/11/251311"></link>
+<id>urn:uuid:3854f2b0-4f9b-e931-ab27-6efe25cde1ae</id>
+<updated>2016-11-25T13:11:48+09:00</updated>
+<summary type="html"><![CDATA[<p>v2.2では主にコマンドの追加をしました.</p>
+<h2>コマンドの追加</h2>
+<h3>deploy</h3>
+<p><code>deploy</code>はデプロイを簡単にするためのものです. git add, commit, pushをまとめてやってくれるといった簡単なものです.</p>
+<pre><code class="language-sh">php saori deploy (:commit_message)
+</code></pre>
+<p>これで動作します. <code>:commit_message</code>が存在しなければ<code>date('YmdHi')</code>が入ります.</p>
+<h3>theme</h3>
+<p><code>theme</code>は存在するテーマ一覧の取得と, テーマの設定ファイルの確認に使います</p>
+<pre><code class="language-sh">php saori theme
+## 以下が表示される
+Theme list
+sample, saori
+
+php saori theme saori
+## 以下が表示される
+saori/theme.json
+{
+    "noapp":5,
+    "color" : {
+        "header" : "#000033",
+        "title" : "#EEEEEE",
+        "body"      : "#E9E9E9",
+        "article"   : "#FFF1CF",
+        "main" : "white",
+        "side" : "white"
+    },
+    "date-format" : "Y-m-d"
+}
+</code></pre>
+<h2>内部的な話</h2>
+<p>現在置換え中ですが, PHPの配列から<code>Illuminate\Support\Collection</code>に変更中です. Laravelで使われているあれです. まだ書き換えられていないところもあるのですが, 徐々に書き換えていきたいと思います.<br />
+あと, テーマ作成の面で言うと<code>css.twig</code>を使えるようにした. これはcss/name.css.twigをcss/name.cssに書き換えると言うもの. theme/saoriではheader, bodyなどの背景色をカスタマイズできるようにするために使用しています.</p>
+<pre><code class="language-css.twig">/* theme/saori/css/article.css.twig */
+article {
+    background: {{maker.color('article')}};
+    margin-bottom: 50px;
+    padding: 5px 10px 5px 10px;
+}
+</code></pre>
+]]></summary>
+</entry>
 <entry>
 <author><name>Yuya Aratani</name>
 </author>
