@@ -38,6 +38,52 @@
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
                                 <article>
+    <span class="article-date">September 9, 2016</span>
+    <h1 class="article-title"><a href="https://hrgruri.github.io/article/2016/09/summer-boot-camp-2016">pixiv 2016 SUMMER BOOT CAMPに参加</a></h1>
+            <ul class="article-tags">
+                            <li><a href="/tag/intern/1">intern</a></li>
+                    </ul>
+        <div class="article-contents">
+                    <h1>ピクシブのインターンに参加</h1>
+<p><a href="https://ssl.pixiv.net/recruit/entry/summer_intern16.php">pixiv 2016 SUMMER BOOT CAMP</a>にエンジニア職で参加をしたのでその話です.</p>
+<h2>参加するまで</h2>
+<p>GitHub選考のあるインターンを探していたところ, ピクシブさんのインターンを見つけました. 普段からPHPを使っており, pixivはPHPで作られているので,これは応募するしかないと思い応募しました.<br />
+書類選考と,面接(Skype)がありましたが無事にパスして参加することになりました.</p>
+<h2>インターンの形式</h2>
+<p>今回のインターンは学生たちが集まってハッカソンをするとかではなく, 実際のチームに配属され, そこで仕事をするというもの. (全体)会議にも参加します. チームによってはユーザの入会率や開封率などの数字で振り返ったりもします. 私はpixivメンテナンスチームに配属となり, バグ修正やコードのリファクタリングを行ったので, ユーザ数などで振り返るとかってのはなかったです. 私の場合, テストの作成だったり, 新しいクラスの設計とかもやりました.</p>
+<h3>主な流れ(メンテナンスチーム)</h3>
+<ol>
+<li>コードの改修</li>
+<li>プルリクエストの作成</li>
+<li>コードレビュー</li>
+<li>コードの修正</li>
+<li>本体にマージしてもらえる</li>
+</ol>
+<h2>業務とか</h2>
+<p>修正･改修した箇所はいくつかあるのですが, その中から1つ話したいと思います.</p>
+<h3>画像投稿時のバグ</h3>
+<p>修正したバグの1つは, とあるフォームで巨大な画像をアップロードするとPHPのエラーが出てしまうというものでした.  (本番環境では再現させてないのですが, もしかしたら白い画面?)<br />
+まずはじめに画像のバリデーション失敗時にエラー画面を出すようにしたら, 該当箇所は修正できました. しかしながら, 別のところがおかしくなってしまいました. どうやら修正の仕方を間違えていた. なので他の正常なフォームと比べながらコードを辿っていき, エラーの原因となっている箇所を探しました.<br />
+無事に該当箇所を見つけて修正できたのですが, 該当箇所を探しているうちに別のバグ(?)もあったのでそれも報告して修正をしました.  </p>
+<h3>その他</h3>
+<p>コードを書く以外にも朝会, 夕会, 全体会議とかがありました. 全体会議はいろいろな数字や戦略の話が出たりと, 本当にインターン生も参加していいのかってものでした.</p>
+<h2>参加してみて</h2>
+<p>初めてのインターンということで, 自分がどこまで出来るのかなど不安だらけでしたが5日間楽しむことができました. 他とは比較できないのですが, ものすごくいいインターンでした. オフィスは会議室以外に壁がなく, ニックネームで呼び合うというコミュニケーションが溢れているところでした.<br />
+開発している時に感じたのは, PHPDocの大切さです. 今までは個人でコードを書くことばかりだったので, ドキュメントを残さないことが多々ありましたが, 大規模で多くの人が書いたコードを触るにあたって, ドキュメントの大切が分かりました.  他にもメンターさんから, 書かれているコードに敬意を持つこととメンテナンスの重要さを教わりました.<br />
+メンターさんたちと話す機会も多く, 会社やサービスの現状や大規模なサービスならではの悩みなど聞くことができた. 大変貴重な体験ができたインターンでした.</p>
+<h2>終わりに</h2>
+<p>5日間と短い期間でしたが, 学ぶことの多い5日間でした.  5日間ありがとうございました. 参加できるようなら, また参加したいです.</p>
+<hr />
+<p>Twitter  <a href="https://twitter.com/search?src=typd&amp;q=%23pixiv_BOOTCAMP">#pixiv_BOOTCAMP</a></p>
+
+            </div>
+    <div class="article-share">
+                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://hrgruri.github.io/article/2016/09/summer-boot-camp-2016" data-text="pixiv 2016 SUMMER BOOT CAMPに参加 - blog\hrgruri">Tweet</a>
+                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://hrgruri.github.io/article/2016/09/summer-boot-camp-2016"></a>
+            </div>
+
+    </article>
+            <article>
     <span class="article-date">August 26, 2016</span>
     <h1 class="article-title"><a href="https://hrgruri.github.io/article/2016/08/ritsucal_api">学年暦APIを作った</a></h1>
             <ul class="article-tags">
@@ -177,130 +223,6 @@ CalendarではなくCalender. ちなみにCalenderは光沢機のこと.</p>
             </div>
 
     </article>
-            <article>
-    <span class="article-date">July 17, 2016</span>
-    <h1 class="article-title"><a href="https://hrgruri.github.io/article/2016/07/phpcon_kansai_2016">PHPカンファレンス 関西2016でLT</a></h1>
-            <ul class="article-tags">
-                            <li><a href="/tag/php/1">php</a></li>
-                            <li><a href="/tag/conference/1">conference</a></li>
-                            <li><a href="/tag/saori/1">saori</a></li>
-                    </ul>
-        <div class="article-contents">
-                    <p>PHPカンファレンス関西 2016に参加をして, ブログを書くまでがカンファレンスだと言われたので書きたいと思います. 初めてのIT系イベント, 初めてのLT, 初めての懇親会でした. 先に断っておきますがカンファレンスでの基調講演やセッションの感想ではなく個人的な話が主です.</p>
-<h1>当日まで</h1>
-<h2>カンファレンスに参加</h2>
-<p>そもそもPHPカンファレンス関西というのを知ったのが, 2015年のカンファレンスの動画をYouTubeで見つけた時です. なので知ってから1年も経っていません.<br />
-東京は行くのが厳しいですが, 大阪なら行けるということで2016年のPHPカンファレンス関西には参加したいと思いました.
-<blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">PHPについて勉強しなきゃ。カンファレンス・関西を見に行ってみたい</p>&mdash; 柊木 (@hrgruri) <a href="https://twitter.com/hrgruri/status/675512116514701312">2015年12月12日</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-その時点ではまだ何月何日に開催されるのかわかりませんでした.
-月日は流れ, 開催日が発表されてそれを確かめると7月16日. 予定も空いているので参加を決意しました. この時点ではただ単にカンファレンスを聞きに行くだけの予定でした.<br />
-一応,少しずつですが<a href="https://github.com/hrgruri/saori">hrgruri/saori</a>の開発をしていました.  </p>
-<h2>LT参加を決意</h2>
-<p>6月になってもまだLTの応募がありました. セッション枠は募集終了していたと思います.
-<blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">カンファレンスのLT募集のフォームがまだあるってことは、LT募集しているのかな？</p>&mdash; 柊木 (@hrgruri) <a href="https://twitter.com/hrgruri/status/740189166785306624">2016年6月7日</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-カンファレンスに参加をするんだったら話したいなと思い, 思い切ってLTの応募をしました. 落選するだろうなと思っていたのですが, 6月16日に当選メールが来て喜ぶと同時に(まだまだ先ですが)緊張しました.    </p>
-<h2>前日</h2>
-<blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">デモをやったら5分で収まるかな? 怪しい</p>&mdash; 柊木 (@hrgruri) <a href="https://twitter.com/hrgruri/status/753777772007264256">2016年7月15日</a></blockquote>
-<p><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-<blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">CDN使っているのでオフラインだとデザインがかなり壊れるので、デモ用にダウンロードしてパスを書き換えた状態のものを用意しておく</p>&mdash; 柊木 (@hrgruri) <a href="https://twitter.com/hrgruri/status/753920059337281536">2016年7月15日</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></p>
-<h1>当日</h1>
-<h2>午前の部</h2>
-<p>開場が10時からで,大阪駅には9時30分ごろに着いていました. のんびり会場まで歩いて行きながら大阪の車と人の多さに怯えていました.
-<blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">田舎民なので大阪に恐怖している</p>&mdash; 柊木 (@hrgruri) <a href="https://twitter.com/hrgruri/status/754117879319044098">2016年7月16日</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-会場(7階)で受付を済ませました. スピーカーは専用の場所があり, 名前を言うだけで受付が済むのは良かったです.
-<blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">なんとか田舎民が会場に着きました <a href="https://twitter.com/hashtag/phpkansai?src=hash">#phpkansai</a> <a href="https://t.co/wMLLK5ZZdg">pic.twitter.com/wMLLK5ZZdg</a></p>&mdash; 柊木 (@hrgruri) <a href="https://twitter.com/hrgruri/status/754119238122479616">2016年7月16日</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-午前の部が終わった時にメインホールでWi-Fiが使ええますよというアナウンスが有りました. LTのデモでは, デモ用のブログを生成して終わりにしようと考えていたのですが, 実際にgit pushしてLTの最中にブログをアップロードできる可能性が出てきました.</p>
-<h2>午後の部</h2>
-<p>お昼ごはんを食べに行き, 会場の戻ってくると休憩場所がある8階に行きました. カンファレンスに来たのだからセッションを聞きに行くべきだですが, LTのデモの内容とスライドを変えたかったので, その作業を行いました. 当初,スライドは2分話して, 2分デモをして, 1分話すという考えのもと作っていました.
-<blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">2分話して, 2分デモして, 1分話すでいいのかな. 話すのもデモも2分で終わるようにしないと</p>&mdash; 柊木 (@hrgruri) <a href="https://twitter.com/hrgruri/status/753783193447206912">2016年7月15日</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-しかし実際にブログを更新できそうだったのと, デモの内容を変えることでデモにかける時間が変わると思ったので, デモを最後にすることにしました. そんなわけで,スライドを少し変えてデモ用に簡単な記事を予め作っておき, シェルスクリプトでコピーできるようにしていました. そのあと簡単にですがLTの練習をしていました. LTの練習がある程度済んだらセッションを見に行きました.</p>
-<h2>LT(ライトニングトーク)</h2>
-<p>セッションがすべて終了すると,少しの休憩を挟み, いよいよメインホールでLTです. プロジェクターのチェックを済まし,上手側でLTのスピーカーの人たちは待機していました. 例年だとLTの順番はくじなどでランダムに決めていたようですが, 今年は<a href="http://conference.kphpug.jp/2016/timetable/">タイムテーブル</a>の順で行うことになりました. 私の順番は5番目でした.  </p>
-<p>他の方のLTを見ながら, 待機場所でスライドに不備がないことを確認していました. 前の方が終わり, いよいよ私の番になったのでステージにあがり,パソコンを設定していると空席があるということで席の誘導が行われ, その後, 始まりました.<br />
-自己紹介で大学生だということとIT系のイベント自体初参加でLTも初めてだということを言ったら拍手をいただきました. スライドの説明はスライドをアップロードしているので詳しくは省略します.  </p>
-<p>内容としては｢github.io｣と既存の静的サイトジェネレータに少し触れて, ｢<a href="https://github.com/hrgruri/saori">Saori</a>｣の話をしました. 使い方や設定などに関してはあまり話せませんでした. 簡単にですが使い方を書いたのでSaoriを使いたい方は<a href="/repository/saori">こちら</a>をご覧ください.<br />
-時間が十分に余ったので, 最後にデモを行いました. デモの内容は私が実際に使っている<a href="https://hrgruri.github.io/">ブログ</a>に記事を投稿するというものです. <br />
-少しの内容ですが実際に書くのは(時間的に)怖かったので予め用意していました.  </p>
-<h3>デモの内容</h3>
-<ol>
-<li><p>記事｢demo｣用のベースファイルを生成<br />
-｢blog post demo｣と入力してベースとなるディレクトリとファイルを作成しました. ｢blog｣はaliasで｢blog='php ~/Desktop/blog/main.php'｣です.</p>
-</li>
-<li><p>ファイルをコピー<br />
-用意していた記事をコピーする際に｢cp from to｣とする時間がもったいなかったので予め作っていたシェルスクリプトでコピーしました.</p>
-</li>
-<li><p>ブログを生成<br />
-｢blog make｣と入力してブログを生成します. これによりlocalhostで動かすためのものとusername.github.ioで公開するものとが生成されます.</p>
-</li>
-<li><p>localhostで確認<br />
-GitHubに上げる前のlocalhostで確認をします. PHPのビルトイン サーバを利用してWebブラウザで確認をしました.</p>
-</li>
-<li><p>実際に公開<br />
-公開するためにadd, commit , pushをしました. ｢g add｣とかしていましたがgはgitのaliasです.</p>
-</li>
-<li><p>hrgruri.github.ioを確認<br />
-実際に公開されたページをWebブラウザで見に行きました.</p>
-</li>
-</ol>
-<p>Saoriについて話をしてデモもでき,最低限の言いたいことが言えたあたりで銅鑼が鳴り,初のLTが終了しました. 実は手元のiPhoneで時間を図っていたのですが, LT中に1度も見ていなかったです.  </p>
-<p>そんなわけで今回のLTで</p>
-<ul>
-<li>github.ioは無料</li>
-<li>GitHubが緑になる</li>
-<li>PHP最高</li>
-<li>Saoriはいいよ</li>
-</ul>
-<p>ということが伝わっていれば幸いです. ちなみにデモの際に投稿したのは<a href="http://hrgruri.github.io/article/2016/07/demo/">これ</a>です.</p>
-<h3>LTの感想+α</h3>
-<p>デモではタグ, リンク, 最近の記事の掲載などに触れることができて良かったです. しかし,プッシュをした時にすぐに終わらないのは本当に焦りました. 微妙なところで終わるのかもしれなかったですが, LTならではのアクシデントでいい経験だったと思います.<br />
-始まるまでは拍手や笑いが無いものになってしまうのではないかと不安でしたが, LT冒頭の自己紹介で拍手をいただき不安と緊張がとても和らぎました. LT中も笑いがあり, やっていて楽しかったです.   </p>
-<p>私のLTを聞いてくださった皆さんとLTをさせてくださった実行委員の方々に感謝したいと思います. ありがとうございました.
-<blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">初イベント, 初LTは最高でした <a href="https://twitter.com/hashtag/phpkansai?src=hash">#phpkansai</a></p>&mdash; 柊木 (@hrgruri) <a href="https://twitter.com/hrgruri/status/754220651079012352">2016年7月16日</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></p>
-<p>こちらが私のLT資料です.
-<script async class="speakerdeck-embed" data-id="3177cf4c00f040e38b49921be6a1af34" data-ratio="1.33333333333333" src="//speakerdeck.com/assets/embed.js"></script></p>
-<h2>懇親会</h2>
-<p>LTと写真撮影が終わったら, 懇親会の準備のため18時まで時間があったので8階で待機となりました. Twitterを見ているとスライドのアップロードがいくつもあったので, 私もすることにしました.Speaker Deckでアカウントを作成し, アップロードをしている最中に｢LTしていた人ですよね｣と声をかけてくださった方々がいました. その人達と懇親会が始まるまでいろいろと話しをさせていただき, 懇親会でも引き続き話をさせていただきました.  </p>
-<p>懇親会では飲んだり食べながらしながらいろいろな人と話をさせていただきとても楽しかったです. 知らなかったWAFのことを教えていただいたり, WordPressの話をしたりと私が知らなかったことを聞くことができました.  </p>
-<p>懇親会のLTは話をしながら後ろのほうで聞いていました. 懇親会LTは3分というとても短い時間でしたが面白いものばかりで会場も大盛り上がりでした.<br />
-LTのあとはじゃんけん大会が行われました. 11名が景品をもらえるとのことでした. 結果は11名の中に残り,カンファレンスのTシャツを頂きました.
-<blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">初カンファレンス、初LT、初懇親会で景品もらえました。 <a href="https://twitter.com/hashtag/phpkansai?src=hash">#phpkansai</a> <a href="https://t.co/f3rOMxLcEp">pic.twitter.com/f3rOMxLcEp</a></p>&mdash; 柊木 (@hrgruri) <a href="https://twitter.com/hrgruri/status/754264454884274176">2016年7月16日</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></p>
-<p>懇親会の終わりごろに基調講演をされたhirakuさんと少し話をさせていただきました. メルカリ様のステッカーをいただきました. ありがとうございます. パソコンにでも貼りたいと思います.  </p>
-<h1>最後に</h1>
-<p>こうして初めてのカンファレンス, 初めてのLT, 初めての懇親会が終わりました. 懇親会での話やTwitterを見てみると｢LT,良かったよ｣というのがあったので嬉しいです. デモも好評で良かったです. <a href="https://github.com/hrgruri/saori">リポジトリ</a>を見てみるとStarがありました. ありがとうございます.
-<img src="/article/2016/07/phpcon_kansai_2016/github.png" alt="hrgruri/saori" /></p>
-<p>Twitterで<a href="https://twitter.com/search?q=%23phpkansai">#phpkansai</a>を見ているとLTで話した内容(Saori)以外のことが少し話題になっていました. それは私がデモの時に使った｢g (git)｣です. Twitterを見ている限り｢git｣はエイリアスで｢g｣としている人は多い気がしますが少し会場がざわついていました. 少しでもストレスを無くすために｢g｣にするはおすすめです.</p>
-<p>カンファレンスが始まる前から気になっていたのですが,私以外にも大学生は参加していたのでしょうか. 私だけということはないとは思いますが,見かけませんでした. LTの冒頭で大学生がいるか聞いておけば良かったかなと今思う.</p>
-<h2>カンファレンスに参加したい学生へ</h2>
-<p>PHP初心者の学生でも参加する価値はあると思います. そもそも私自身もPHPを使い始めてそれほど経っていませんし, 今回LTで話したことも静的サイトジェネレータの話であって, PHPの主な使い方であるWebアプリケーション関係の話ではないです.<br />
-スライドでもPHPのコードはたったの4行しかありませんでした. PHPを触ったことがない人でもPHP(Saori)を使ってブログを公開することで, PHPに興味を持って使い始める学生が出てきてくれたら良いなと思います.<br />
-また,今回のカンファレンスでは初心者向けのセッションやDBに関するセッションなど, PHPを知らなくても楽しめるものがいくつもあったと思います.<br />
-LTをしたことで思ったのが, みんな優しかったです. LT後にも話しかけてくださる方々がいてとても良いカンファレンスでした.<br />
-カンファレンスの参加料は1000円ですが, 学割(先着)があり今回のカンファレンスは無料でした. ちなみにLTスピーカーは招待されるので本編チケットを買う必要なし.</p>
-<p>最後になりましたが, カンファレンスに出席した皆様, LTを聞いてくださった皆様, 懇親会で話をしてくださった皆様, 主催してくださった実行委員の皆様, そしてスポンサーの皆様のおかげで楽しいカンファレンスとなりました. ありがとうございました.</p>
-<hr />
-<h1>その他</h1>
-<p>カンファレンスのスライドは,まとめてくださった方がおられるのでそちらを御覧ください.<br />
-｢<a href="http://ikkitang1211.hatenablog.jp/entry/2016/07/16/145657">PHPカンファレンス関西2016 スライドリンク集 #phpkansai - お？意外といけるやん！</a>｣  </p>
-<p>TogetterにPHPカンファレンス関西2016まとめがあります.<br />
-｢<a href="http://togetter.com/li/1001000">PHPカンファレンス関西2016まとめ</a>｣</p>
-<p>PHPカンファレンス関西に参加しようと考えた時に読んだ記事<br />
-｢<a href="http://www.sigesaba.com/2014/06/phpkansai2014-relay05.php">ブラよろで学ぶPHPカンファレンス関西2014</a>｣</p>
-
-            </div>
-    <div class="article-share">
-                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://hrgruri.github.io/article/2016/07/phpcon_kansai_2016" data-text="PHPカンファレンス 関西2016でLT - blog\hrgruri">Tweet</a>
-                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://hrgruri.github.io/article/2016/07/phpcon_kansai_2016"></a>
-            </div>
-
-    </article>
         <nav class="pager">
                     <div class="previous"><a href="/page/1">&laquo; prev</a></div>
                             <div class="next"><a href="1">next &raquo;</a></div>
@@ -328,11 +250,11 @@ LTをしたことで思ったのが, みんな優しかったです. LT後にも
                                                                 <div id="side-recent" class="hidden-sm-down">
                             <div class="side-title">最新記事</div>
                             <ul>
+                                                                    <li><a href="/article/2016/12/311932">2016年のまとめ</a><br></li>
                                                                     <li><a href="/article/2016/11/251311">Saori v2.2のリリース</a><br></li>
                                                                     <li><a href="/article/2016/11/091738">響け!ユーフォニアム2の前半が終わって</a><br></li>
                                                                     <li><a href="/article/2016/10/ricca">Slackのフレームワーク(?)を作った</a><br></li>
                                                                     <li><a href="/article/2016/09/saori_v2_1">saoriのv2.1リリース</a><br></li>
-                                                                    <li><a href="/article/2016/09/summer-boot-camp-2016">pixiv 2016 SUMMER BOOT CAMPに参加</a><br></li>
                                                             </ul>
                         </div>
                     

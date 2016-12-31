@@ -2,8 +2,29 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 <title>blog\hrgruri</title>
 <link href="https://hrgruri.github.io"></link>
-<updated>2016-11-25T13:18:24+09:00</updated>
+<updated>2016-12-31T19:33:10+09:00</updated>
 <id>urn:uuid:ecb9c0fd-5fc2-090a-d008-e0a538ec5d85</id>
+<entry>
+<author><name>Yuya Aratani</name>
+</author>
+<title>2016年のまとめ</title>
+<link href="/article/2016/12/311932"></link>
+<id>urn:uuid:484f00a7-d913-4e11-abc3-f582bb240168</id>
+<updated>2016-12-31T19:32:38+09:00</updated>
+<summary type="html"><![CDATA[<p>もう年末です. 今までダラダラと過ごしていた私ですが, 今年は珍しく活動したのでそのまとめです.</p>
+<h2>大学のオープンキャンパス手伝い</h2>
+<p>4月頃, 3回生のときに授業の一環で作成した簡単な情報推薦のサイトをオープンキャンパスで紹介する事になりました. 簡単にコードを修正して終わりのつもりだったのですが, ｢前のままだと地味なので推薦できるものを書籍だけでなくて浮世絵も追加してね｣と先生に言われて新たにコードを書くことになりました.</p>
+<h2>PHPカンファレンス関西</h2>
+<p>2016年12月31日現在, GitHub Pagesを利用してブログをやっています. これですね. 4月ごろから, このようなブログを生成する静的サイトジェネレータ Saoriを作成していました. PHPカンファレンスに行ったことがなかったのですが, LTを応募したら通ったのでSaoriについて話してきました. 初めてのイベントです.<br />
+詳しくは<a href="https://hrgruri.github.io/article/2016/07/phpcon_kansai_2016/">PHPカンファレンス 関西2016でLT</a>に書いてあるのでそちらを.</p>
+<h2>インターン</h2>
+<p>8月末~9月末にピクシブのインターンに参加してきました. これも初めてのインターンです. pixivのメンテナンスを行いました. バグ修正とかコードのリファクタリングとかです.
+詳しくは<a href="https://hrgruri.github.io/article/2016/09/summer-boot-camp-2016/">pixiv 2016 SUMMER BOOT CAMPに参加</a>に書いてあるのでそちらを.</p>
+<hr />
+<p>こんな感じで初めての行動が多い1年でした. 3つともPHP関連ですね. PHPは楽しいです. みんなもPHPをやろう!<br />
+ついでに個人的な話以外を. 今年は百合姫が月刊誌になりましたね. あと早見沙織さんが1stアルバム｢Live Love Laugh｣と, コンサートの映像･音声が特典でついたミニアルバム｢live for LIVE｣をリリースしましたね. とってもいいものですので, みなさんもどうぞ.</p>
+]]></summary>
+</entry>
 <entry>
 <author><name>Yuya Aratani</name>
 </author>
