@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-<title>blog\taniko</title>
+<title>tanikoのぶろぐ</title>
 <link href="https://taniko.github.io"></link>
-<updated>2017-05-12T13:23:38+09:00</updated>
-<id>urn:uuid:ee76d9a1-b4cb-338f-5df6-b11781aa9aae</id>
+<updated>2017-05-17T23:29:25+09:00</updated>
+<id>urn:uuid:c90b8eeb-3954-eaf8-0b65-eae8678a9ee4</id>
 <entry>
 <author><name>Yuya Aratani</name>
 </author>
 <title>2016年のまとめ</title>
-<link href="/article/2016/12/311932"></link>
-<id>urn:uuid:484f00a7-d913-4e11-abc3-f582bb240168</id>
+<link href="http://localhost:8000/article/2016/12/311932"></link>
+<id>urn:uuid:fa62f634-71c6-e4c5-9fd9-cfb556f70261</id>
 <updated>2016-12-31T19:32:38+09:00</updated>
 <summary type="html"><![CDATA[<p>もう年末です. 今までダラダラと過ごしていた私ですが, 今年は珍しく活動したのでそのまとめです.</p>
 <h2>大学のオープンキャンパス手伝い</h2>
@@ -29,8 +29,8 @@
 <author><name>Yuya Aratani</name>
 </author>
 <title>Saori v2.2のリリース</title>
-<link href="/article/2016/11/251311"></link>
-<id>urn:uuid:3854f2b0-4f9b-e931-ab27-6efe25cde1ae</id>
+<link href="http://localhost:8000/article/2016/11/251311"></link>
+<id>urn:uuid:341063e0-9200-c12d-013c-74da819ede55</id>
 <updated>2016-11-25T13:11:48+09:00</updated>
 <summary type="html"><![CDATA[<p>v2.2では主にコマンドの追加をしました.</p>
 <h2>コマンドの追加</h2>
@@ -78,8 +78,8 @@ article {
 <author><name>Yuya Aratani</name>
 </author>
 <title>Slackのフレームワーク(?)を作った</title>
-<link href="/article/2016/10/ricca"></link>
-<id>urn:uuid:1cf00ce8-2fa4-30f4-a0e9-c80755279448</id>
+<link href="http://localhost:8000/article/2016/10/ricca"></link>
+<id>urn:uuid:d0297317-e21d-babe-7ed6-dfc7f138361f</id>
 <updated>2016-10-22T23:11:22+09:00</updated>
 <summary type="html"><![CDATA[<p><a href="https://github.com/hrgruri/ricca">Ricca</a>というSlackのフレームワークのようなものをPHPで作りました. できることは少ないですが, なにかメッセージを投げるとそれに一致したコマンドが動いて, Twitterにつぶやかれたり, Slackに文字を返したりするという単純なものです.<br />
 例としては｢tw こんにちは｣とメッセージを送るとTwitterに｢こんにちは｣とつぶやかれるとか｢pid｣でBotの動いているプロセスIDがslackに返ってくとかです.</p>
@@ -117,8 +117,8 @@ $app-&gt;run();
 <author><name>Yuya Aratani</name>
 </author>
 <title>saoriのv2.1リリース</title>
-<link href="/article/2016/09/saori_v2_1"></link>
-<id>urn:uuid:adaedbc2-2325-4034-909d-c48d979c8863</id>
+<link href="http://localhost:8000/article/2016/09/saori_v2_1"></link>
+<id>urn:uuid:44a74d48-5aa4-649b-6960-1891df1bdf28</id>
 <updated>2016-09-22T18:01:37+09:00</updated>
 <summary type="html"><![CDATA[<p>saori v2.1.0をリリースしました. v2.0の話をしていなかったのでここでまとめて話します.</p>
 <h2>create-projectからインストール</h2>
@@ -148,8 +148,8 @@ php -S localhost:8000 -t local
 <author><name>Yuya Aratani</name>
 </author>
 <title>pixiv 2016 SUMMER BOOT CAMPに参加</title>
-<link href="/article/2016/09/summer-boot-camp-2016"></link>
-<id>urn:uuid:8488d73c-a6bc-768b-e069-c0509f214fd8</id>
+<link href="http://localhost:8000/article/2016/09/summer_boot_camp_2016"></link>
+<id>urn:uuid:d12ed7f6-56b6-1485-bd1b-dc8337be30ad</id>
 <updated>2016-09-09T15:29:37+09:00</updated>
 <summary type="html"><![CDATA[<h1>ピクシブのインターンに参加</h1>
 <p><a href="https://ssl.pixiv.net/recruit/entry/summer_intern16.php">pixiv 2016 SUMMER BOOT CAMP</a>にエンジニア職で参加をしたのでその話です.</p>
@@ -188,8 +188,8 @@ php -S localhost:8000 -t local
 <author><name>Yuya Aratani</name>
 </author>
 <title>学年暦APIを作った</title>
-<link href="/article/2016/08/ritsucal_api"></link>
-<id>urn:uuid:5dfbe934-ffcc-ef2b-89ca-da78f6da9802</id>
+<link href="http://localhost:8000/article/2016/08/ritsucal_api"></link>
+<id>urn:uuid:d6b1d869-60dc-3140-e7c5-49400e4acc72</id>
 <updated>2016-08-26T22:41:38+09:00</updated>
 <summary type="html"><![CDATA[<p>簡単な大学の学年暦APIを作ったのでその報告です.</p>
 <p><a href="https://ritsucal.hrgruri.com">https://ritsucal.hrgruri.com</a> です</p>
@@ -201,8 +201,8 @@ php -S localhost:8000 -t local
 <author><name>Yuya Aratani</name>
 </author>
 <title>saori v2.0を開発中</title>
-<link href="/article/2016/08/041630"></link>
-<id>urn:uuid:bb22f188-4e49-f02d-8d33-adc56979ae35</id>
+<link href="http://localhost:8000/article/2016/08/041630"></link>
+<id>urn:uuid:92a9cb3d-d252-0081-4c62-19410e3f8586</id>
 <updated>2016-08-04T16:27:14+09:00</updated>
 <summary type="html"><![CDATA[<p><code>composer create-project</code>でインストールできるようにして, symfony/consoleを利用してsaoriを使用できるようにしました. あとnamespaceを修正.</p>
 <h2>v2.0-devをインストール</h2>
@@ -234,8 +234,8 @@ php saori build
 <author><name>Yuya Aratani</name>
 </author>
 <title>弊大学の闇 (学年暦編)</title>
-<link href="/article/2016/07/calender"></link>
-<id>urn:uuid:e88658d3-84af-858f-2723-092c0d6110e2</id>
+<link href="http://localhost:8000/article/2016/07/calender"></link>
+<id>urn:uuid:37cec5f3-f24b-b601-c603-b8a7dfd851eb</id>
 <updated>2016-07-20T16:31:04+09:00</updated>
 <summary type="html"><![CDATA[<h1>学年暦の闇</h1>
 <p>大学の行事をJSONで返してくれるようなものを作ろうとしていた時に気づいた弊大学の闇を話したいと思います.</p>
@@ -269,8 +269,8 @@ CalendarではなくCalender. ちなみにCalenderは光沢機のこと.</p>
 <author><name>Yuya Aratani</name>
 </author>
 <title>Saoriの下書きとキャッシュ</title>
-<link href="/article/2016/07/saori_article_cache"></link>
-<id>urn:uuid:43bea9e6-6e3c-81c1-98e6-9271da57a7e0</id>
+<link href="http://localhost:8000/article/2016/07/saori_article_cache"></link>
+<id>urn:uuid:141e6003-d4b0-d9f0-38f8-f0e2c961210b</id>
 <updated>2016-07-19T14:14:19+09:00</updated>
 <summary type="html"><![CDATA[<h1>saori v1.1の開発</h1>
 <p>現在saori v1.1の開発を行っています.  </p>
@@ -303,8 +303,8 @@ CalendarではなくCalender. ちなみにCalenderは光沢機のこと.</p>
 <author><name>Yuya Aratani</name>
 </author>
 <title>PHPカンファレンス 関西2016でLT</title>
-<link href="/article/2016/07/phpcon_kansai_2016"></link>
-<id>urn:uuid:1999e7a8-618d-3848-9a73-dba4fabec3b4</id>
+<link href="http://localhost:8000/article/2016/07/phpcon_kansai_2016"></link>
+<id>urn:uuid:b98f25cd-f419-e1a1-59c1-c58f04312c68</id>
 <updated>2016-07-17T23:23:30+09:00</updated>
 <summary type="html"><![CDATA[<p>PHPカンファレンス関西 2016に参加をして, ブログを書くまでがカンファレンスだと言われたので書きたいと思います. 初めてのIT系イベント, 初めてのLT, 初めての懇親会でした. 先に断っておきますがカンファレンスでの基調講演やセッションの感想ではなく個人的な話が主です.</p>
 <h1>当日まで</h1>
@@ -419,8 +419,8 @@ LTをしたことで思ったのが, みんな優しかったです. LT後にも
 <author><name>Yuya Aratani</name>
 </author>
 <title>demo</title>
-<link href="/article/2016/07/demo"></link>
-<id>urn:uuid:1d3fe443-518a-f427-75c3-45cb08feffe5</id>
+<link href="http://localhost:8000/article/2016/07/demo"></link>
+<id>urn:uuid:bae3d445-e30b-830b-f6f1-841fa6d97024</id>
 <updated>2016-07-16T16:32:52+09:00</updated>
 <summary type="html"><![CDATA[<h1>deom</h1>
 <p>これはデモ用の記事です. 現在LT真っ最中です.<br />
@@ -431,8 +431,8 @@ LTをしたことで思ったのが, みんな優しかったです. LT後にも
 <author><name>Yuya Aratani</name>
 </author>
 <title>Saoriの使い方</title>
-<link href="/article/2016/07/152308"></link>
-<id>urn:uuid:b6fc0d8e-e1ee-2061-6b11-b0775aa30092</id>
+<link href="http://localhost:8000/article/2016/07/152308"></link>
+<id>urn:uuid:a5fd0f3d-8c24-6781-e4c4-dffb2975fa0c</id>
 <updated>2016-07-15T23:08:00+09:00</updated>
 <summary type="html"><![CDATA[<p>PHPを使ってgithub.ioでブログをやるための静的サイトジェネレータである<a href="https://github.com/hrgruri/saori">saori</a>の使い方を簡単にですがまとめました. リンクは<a href="/repository/saori">こちら</a>です.<br />
 現在, 使い方だけなのでテーマの作成方法など内部的な話は書けていませんが近いうちに書きたいと思います.</p>
@@ -442,8 +442,8 @@ LTをしたことで思ったのが, みんな優しかったです. LT後にも
 <author><name>Yuya Aratani</name>
 </author>
 <title>ブログのテーマを変えた</title>
-<link href="/article/2016/07/081625"></link>
-<id>urn:uuid:5597600c-4919-31e3-f790-fd8db57256b5</id>
+<link href="http://localhost:8000/article/2016/07/081625"></link>
+<id>urn:uuid:c8f1f1af-476d-59a3-c483-83c25471ddfe</id>
 <updated>2016-07-08T16:25:33+09:00</updated>
 <summary type="html"><![CDATA[<p>ブログのテーマを変えました. ただそれだけです.</p>
 ]]></summary>
@@ -452,8 +452,8 @@ LTをしたことで思ったのが, みんな優しかったです. LT後にも
 <author><name>Yuya Aratani</name>
 </author>
 <title>学年暦のスクレイピングについて</title>
-<link href="/article/2016/06/121113"></link>
-<id>urn:uuid:268483fb-5977-e827-86e7-02540e5698ef</id>
+<link href="http://localhost:8000/article/2016/06/121113"></link>
+<id>urn:uuid:943f943f-91b8-715a-d016-b712330fd26d</id>
 <updated>2016-06-12T11:13:02+09:00</updated>
 <summary type="html"><![CDATA[<p><a href="/article/2016/06/ritsucal/">前の記事</a>でPHPを使って,学年暦のスクレイピングを行うライブラリの紹介をしたので,今回はそれを作ったことの話をします. スクレイピングは<a href="https://github.com/FriendsOfPHP/Goutte">fabpot/goutte</a>を使用しました</p>
 <h2>ページをローカルで動かす</h2>
@@ -500,8 +500,8 @@ eventはclass="event"ではなくテーブルの要素(イベント名･月･�
 <author><name>Yuya Aratani</name>
 </author>
 <title>立命館の学年暦をスクレイピング</title>
-<link href="/article/2016/06/ritsucal"></link>
-<id>urn:uuid:abcf6d60-63c0-0d97-5c32-e586805ea753</id>
+<link href="http://localhost:8000/article/2016/06/ritsucal"></link>
+<id>urn:uuid:2b081997-88c2-0a4d-07e7-e17669f4115f</id>
 <updated>2016-06-11T18:42:03+09:00</updated>
 <summary type="html"><![CDATA[<h1>ritsucal</h1>
 <p>ritsucalは立命館大学･大学院の学年暦をスクレイピングするPHPのライブラリです. 前から作っていて<a href="https://github.com/hrgruri/ritsucal">GitHub</a>にあげていましたが,久しぶりに見るとREADME.mdに変な文字が混ざっていたので,いくつか修正して,そのついでに簡単な使い方を書きます.</p>
@@ -596,8 +596,8 @@ try {
 <author><name>Yuya Aratani</name>
 </author>
 <title>Saori v0.5を作った</title>
-<link href="/article/2016/06/102235"></link>
-<id>urn:uuid:65a453e3-79a3-ccbd-085a-bc8729a31881</id>
+<link href="http://localhost:8000/article/2016/06/102235"></link>
+<id>urn:uuid:85c534c8-e97d-d53a-9294-3b4d61f14818</id>
 <updated>2016-06-10T22:35:58+09:00</updated>
 <summary type="html"><![CDATA[<p>Saori v0.5.0をリリースした. これで簡単にユーザが新たなページを生成することができるようになった. そして,<a href="http://hrgruri.github.io/article/2016/06/042227/">前の記事</a>で言っていたテーブルがおかしい理由はテーブルのCSSが記述されていなかったからでした. ボーダの設定を指定なかったので,枠線がない状態で出力されていただけでした.</p>
 <hr />
@@ -609,8 +609,8 @@ try {
 <author><name>Yuya Aratani</name>
 </author>
 <title>Saori v0.5.x-devにてTableがおかしい</title>
-<link href="/article/2016/06/042227"></link>
-<id>urn:uuid:34a591c2-3e2d-b7f2-4ee6-8c45e35f7a42</id>
+<link href="http://localhost:8000/article/2016/06/042227"></link>
+<id>urn:uuid:4f4e1d58-0a22-6e59-c64c-b57a11430954</id>
 <updated>2016-06-04T22:27:39+09:00</updated>
 <summary type="html"><![CDATA[<p>現在Saoriのv0.5を作っていますが, どうやらテーブルが正しく表示されないです.</p>
 <pre><code class="language-markdown">|name|値|
@@ -629,8 +629,8 @@ try {
 <author><name>Yuya Aratani</name>
 </author>
 <title>立命館ARCのスクレイピング</title>
-<link href="/article/2016/06/arc"></link>
-<id>urn:uuid:aeac6c74-1a6f-a261-d81d-872fb3ee9355</id>
+<link href="http://localhost:8000/article/2016/06/arc"></link>
+<id>urn:uuid:01ad3ab8-3536-73d2-fe37-ce943ed8a34d</id>
 <updated>2016-06-02T21:12:11+09:00</updated>
 <summary type="html"><![CDATA[<h1>PHPでスクレイピング</h1>
 <p>創成3では立命館大学アート・リサーチセンター(以下ARC)のアクセスログを使って資料の推薦を行うことが目的でした. 最初はリンクだけを使った質素なものを作る予定でしたが, 途中でスクレイピングをして, サイト内だけで簡単な検索･閲覧をできるようにすることになりました. PHPを使ってやったのですが,これがとっても大変でした.</p>
@@ -702,8 +702,8 @@ object(Hrgruri\Rarcs\Asset\Nishikie)#51 (5) {
 <author><name>Yuya Aratani</name>
 </author>
 <title>Saori v0.4.0を作りました</title>
-<link href="/article/2016/05/301402"></link>
-<id>urn:uuid:0d67959e-4782-4b3a-ff12-614f7faba226</id>
+<link href="http://localhost:8000/article/2016/05/301402"></link>
+<id>urn:uuid:afa6f077-6857-583e-08fb-50197b1b9a3e</id>
 <updated>2016-05-30T14:02:18+09:00</updated>
 <summary type="html"><![CDATA[<p>v0.4.0での変更点は</p>
 <ul>
@@ -723,8 +723,8 @@ object(Hrgruri\Rarcs\Asset\Nishikie)#51 (5) {
 <author><name>Yuya Aratani</name>
 </author>
 <title>icd3</title>
-<link href="/article/2016/04/icd3"></link>
-<id>urn:uuid:506a45d2-9b63-127f-d54e-0f30184aaa72</id>
+<link href="http://localhost:8000/article/2016/04/icd3"></link>
+<id>urn:uuid:bacf49b5-3d7f-cbb9-eb92-74c29cf93b24</id>
 <updated>2016-04-29T23:40:52+09:00</updated>
 <summary type="html"><![CDATA[<p>先生｢創成3で作ってもらったサイトをオープンキャンパスで見せようと思う｣<br />
 私｢あっ,はい. ちゃんとしたコードに直したかったので, 修正したら渡します｣<br />
@@ -739,8 +739,8 @@ object(Hrgruri\Rarcs\Asset\Nishikie)#51 (5) {
 <author><name>Yuya Aratani</name>
 </author>
 <title>Saori v0.3を作った</title>
-<link href="/article/2016/04/261251"></link>
-<id>urn:uuid:4352bc72-9893-69fd-374b-aa57f31f3822</id>
+<link href="http://localhost:8000/article/2016/04/261251"></link>
+<id>urn:uuid:99005e3d-85e2-82f9-ffe2-06a1dccef705</id>
 <updated>2016-04-26T12:51:20+09:00</updated>
 <summary type="html"><![CDATA[<p>Saoriにいくつか機能を加えた.</p>
 <h2>v0.2</h2>
@@ -763,8 +763,8 @@ object(Hrgruri\Rarcs\Asset\Nishikie)#51 (5) {
 <author><name>Yuya Aratani</name>
 </author>
 <title>Saori v0.1.0のリリース</title>
-<link href="/article/2016/04/saori"></link>
-<id>urn:uuid:776e69e3-34bd-db10-cb23-ce3ac961208d</id>
+<link href="http://localhost:8000/article/2016/04/saori"></link>
+<id>urn:uuid:2fc89cb5-5eb6-c53d-d9ff-11c9a39963b0</id>
 <updated>2016-04-24T18:53:20+09:00</updated>
 <summary type="html"><![CDATA[<h2>Saoriについて</h2>
 <p>SaoriというPHPを使った簡単なサイトジェネレータを作りました.現在のバージョンはv0.1.0です.これで,PHP動かない場所(たとえばusername.github.io)でもブログを公開できます. 仕組みとしてはローカルでPHPを使ってHTMLを生成して,それを公開するって流れです.<br />
