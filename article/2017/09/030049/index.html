@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
-        <title>Saori v0.5.x-devにてTableがおかしい - </title>
+        <title>Saori v3のリリース - </title>
                     <script type="text/javascript">
                 if (location.protocol === 'http:') {
                     location.replace(location.href.replace(/^http:/, 'https:'));
@@ -30,36 +30,40 @@
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
                                 <article>
-    <span class="article-date">June 4, 2016</span>
-    <h1 class="article-title"><a href="http://localhost:8000/article/2016/06/042227">Saori v0.5.x-devにてTableがおかしい</a></h1>
+    <span class="article-date">September 3, 2017</span>
+    <h1 class="article-title"><a href="http://localhost:8000/article/2017/09/030049">Saori v3のリリース</a></h1>
             <ul class="article-tags">
+                            <li><a href="/tag/php/1">php</a></li>
                             <li><a href="/tag/saori/1">saori</a></li>
                     </ul>
         <div class="article-contents">
-                    <p>現在Saoriのv0.5を作っていますが, どうやらテーブルが正しく表示されないです.</p>
-<pre><code class="language-markdown">|name|値|
-|:-:|:-:|
-|f85|キーワード|
-|f23|絵師|
-|f83|画題|
+                    <p>Saoriのバージョン3をリリースしました. 実際にリリースしたのは5月とかなり前です.<br />
+v3での主な変更点は以下のとおりです.</p>
+<ul>
+<li>github.io以外で使用可能</li>
+<li>設定ファイルをJSONからYAMLに変更</li>
+<li>テーマを外部から追加可能</li>
+</ul>
+<p>まず, github.io以外で使用可能になったので, 自分のVPSなどでブログを公開できるようになりました. <code>config/env.yml</code>の<code>public</code>にURLを記述します.  </p>
+<p>設定ファイルをYAMLに変えたのは, JSONの記述が辛かったからです. 括弧とかめんどくさかったのです.</p>
+<p>テーマを外部から追加可能というのは, テーマを追加できるようにしたということ(?). コードを見たほうが早い.</p>
+<pre><code class="language-php">&lt;?php
+require __DIR__.'/vendor/autoload.php';
+$app = new Taniko\Saori\Application(__DIR__);
+$app-&gt;addTheme('theme-name', __DIR__ . '/theme/append-theme');
+$app-&gt;run();
 </code></pre>
-<p>上記の記述をしたら以下の様なテーブルが生成されました.</p>
-<p><img src="/article/2016/06/042227/table.png" alt="table" /></p>
-<p>罫線が入っていないので,テーブルとしてわかりにくくなっています. 今のところ原因がわかっていません. Atomの上では正しく表示されているので記述に間違いはないのではないかとは思います. cebe/markdownを使ってMarkdownを変換しています. とりあえず他のライブラリを使ってみてどう表示されるのか試してみます. あとHTMLも確認してみたいと思います.</p>
-<p>ちなみにv0.5.x-devでは記事とユーザページ(contents/page/NAME.md)の画像ファイルのパスの書き換えはできるようになりました. </p>
+<p>今までだと<a href="https://github.com/taniko/saori">taniko/saori</a>に存在するテーマしか使用できなかったのですが, このような感じでテーマを追加して, それを使用できるようにしました.</p>
+<p>やっぱり, PHPは最高ですね!</p>
 
             </div>
     <div class="article-share">
                             </div>
 
             <div class="pager">
-                            <div id="pager-next">
-                    <div class="lines"><span>next article</span></div>
-                    <a href="http://localhost:8000/article/2016/06/102235">Saori v0.5を作った</a>
-                </div>
                                         <div id="pager-prev">
                     <div class="lines"><span>previous article</span></div>
-                    <a href="http://localhost:8000/article/2016/06/arc">立命館ARCのスクレイピング</a>
+                    <a href="http://localhost:8000/article/2016/12/311932">2016年のまとめ</a>
                 </div>
                     </div>
     </article>

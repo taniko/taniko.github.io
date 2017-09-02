@@ -30,6 +30,32 @@
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
                                 <article>
+    <span class="article-date">May 30, 2016</span>
+    <h1 class="article-title"><a href="http://localhost:8000/article/2016/05/301402">Saori v0.4.0を作りました</a></h1>
+            <ul class="article-tags">
+                            <li><a href="/tag/saori/1">saori</a></li>
+                            <li><a href="/tag/php/1">php</a></li>
+                    </ul>
+        <div class="article-contents">
+                    <p>v0.4.0での変更点は</p>
+<ul>
+<li>Twigファイルの場所の変更</li>
+<li>config.jsonの場所を変更</li>
+<li>ユーザページの生成機能</li>
+</ul>
+<h2>Twigファイルの場所の変更について</h2>
+<p>Twigファイルの場所をtheme/:theme_name/twig/にしました. サイトを生成するのに必要なテンプレートはtemplate内に置きました.これからはsaoriが直接呼び出すTwigファイルはここにおいていこうと思います.  </p>
+<h2>config.jsonの場所を変更について</h2>
+<p>contentsディレクトリ内にconfig.jsonを設置するように変更しました. 何故したかというと,config.jsonもgitで管理しやすくするためです.</p>
+<h2>ユーザページの生成機能について</h2>
+<p>それと<a href="/article/2016/04/261251/">前に言ってた</a>,ユーザがMarkdownファイルを作るだけでページを生成できるようにしました. 例えば,contents/page/about.mdというファイルを作るとtemplate/page.twigを利用して,/about/index.htmlが作られます. しかしこれだと画像が扱えない(作ってから気づいた)ので,v0.5では画像をどこかにコピーしてMarkdownファイル内にある画像のパスをそこに書き換えようかな思います.</p>
+
+            </div>
+    <div class="article-share">
+                            </div>
+
+    </article>
+            <article>
     <span class="article-date">April 29, 2016</span>
     <h1 class="article-title"><a href="http://localhost:8000/article/2016/04/icd3">icd3</a></h1>
             <ul class="article-tags">
@@ -139,8 +165,8 @@
                                                             <li><a href="/tag/api/1">api (1)</a></li>
                                                             <li><a href="/tag/conference/1">conference (1)</a></li>
                                                             <li><a href="/tag/intern/1">intern (1)</a></li>
-                                                            <li><a href="/tag/php/1">php (8)</a></li>
-                                                            <li><a href="/tag/saori/1">saori (10)</a></li>
+                                                            <li><a href="/tag/php/1">php (9)</a></li>
+                                                            <li><a href="/tag/saori/1">saori (11)</a></li>
                                                             <li><a href="/tag/univ/1">univ (3)</a></li>
                                                         </ul>
                         </div>

@@ -2,8 +2,35 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 <title>tanikoのぶろぐ</title>
 <link href="https://taniko.github.io"></link>
-<updated>2017-05-17T23:29:25+09:00</updated>
+<updated>2017-09-03T00:54:29+09:00</updated>
 <id>urn:uuid:c90b8eeb-3954-eaf8-0b65-eae8678a9ee4</id>
+<entry>
+<author><name>Yuya Aratani</name>
+</author>
+<title>Saori v3のリリース</title>
+<link href="http://localhost:8000/article/2017/09/030049"></link>
+<id>urn:uuid:13fdb967-447a-216d-d66d-e56bd54cb9bc</id>
+<updated>2017-09-03T00:49:14+09:00</updated>
+<summary type="html"><![CDATA[<p>Saoriのバージョン3をリリースしました. 実際にリリースしたのは5月とかなり前です.<br />
+v3での主な変更点は以下のとおりです.</p>
+<ul>
+<li>github.io以外で使用可能</li>
+<li>設定ファイルをJSONからYAMLに変更</li>
+<li>テーマを外部から追加可能</li>
+</ul>
+<p>まず, github.io以外で使用可能になったので, 自分のVPSなどでブログを公開できるようになりました. <code>config/env.yml</code>の<code>public</code>にURLを記述します.  </p>
+<p>設定ファイルをYAMLに変えたのは, JSONの記述が辛かったからです. 括弧とかめんどくさかったのです.</p>
+<p>テーマを外部から追加可能というのは, テーマを追加できるようにしたということ(?). コードを見たほうが早い.</p>
+<pre><code class="language-php">&lt;?php
+require __DIR__.'/vendor/autoload.php';
+$app = new Taniko\Saori\Application(__DIR__);
+$app-&gt;addTheme('theme-name', __DIR__ . '/theme/append-theme');
+$app-&gt;run();
+</code></pre>
+<p>今までだと<a href="https://github.com/taniko/saori">taniko/saori</a>に存在するテーマしか使用できなかったのですが, このような感じでテーマを追加して, それを使用できるようにしました.</p>
+<p>やっぱり, PHPは最高ですね!</p>
+]]></summary>
+</entry>
 <entry>
 <author><name>Yuya Aratani</name>
 </author>

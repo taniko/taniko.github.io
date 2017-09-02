@@ -30,6 +30,38 @@
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
                                 <article>
+    <span class="article-date">September 3, 2017</span>
+    <h1 class="article-title"><a href="http://localhost:8000/article/2017/09/030049">Saori v3のリリース</a></h1>
+            <ul class="article-tags">
+                            <li><a href="/tag/php/1">php</a></li>
+                            <li><a href="/tag/saori/1">saori</a></li>
+                    </ul>
+        <div class="article-contents">
+                    <p>Saoriのバージョン3をリリースしました. 実際にリリースしたのは5月とかなり前です.<br />
+v3での主な変更点は以下のとおりです.</p>
+<ul>
+<li>github.io以外で使用可能</li>
+<li>設定ファイルをJSONからYAMLに変更</li>
+<li>テーマを外部から追加可能</li>
+</ul>
+<p>まず, github.io以外で使用可能になったので, 自分のVPSなどでブログを公開できるようになりました. <code>config/env.yml</code>の<code>public</code>にURLを記述します.  </p>
+<p>設定ファイルをYAMLに変えたのは, JSONの記述が辛かったからです. 括弧とかめんどくさかったのです.</p>
+<p>テーマを外部から追加可能というのは, テーマを追加できるようにしたということ(?). コードを見たほうが早い.</p>
+<pre><code class="language-php">&lt;?php
+require __DIR__.'/vendor/autoload.php';
+$app = new Taniko\Saori\Application(__DIR__);
+$app-&gt;addTheme('theme-name', __DIR__ . '/theme/append-theme');
+$app-&gt;run();
+</code></pre>
+<p>今までだと<a href="https://github.com/taniko/saori">taniko/saori</a>に存在するテーマしか使用できなかったのですが, このような感じでテーマを追加して, それを使用できるようにしました.</p>
+<p>やっぱり, PHPは最高ですね!</p>
+
+            </div>
+    <div class="article-share">
+                            </div>
+
+    </article>
+            <article>
     <span class="article-date">October 22, 2016</span>
     <h1 class="article-title"><a href="http://localhost:8000/article/2016/10/ricca">Slackのフレームワーク(?)を作った</a></h1>
             <ul class="article-tags">
@@ -371,32 +403,6 @@ object(Hrgruri\Rarcs\Asset\Nishikie)#51 (5) {
                             </div>
 
     </article>
-            <article>
-    <span class="article-date">May 30, 2016</span>
-    <h1 class="article-title"><a href="http://localhost:8000/article/2016/05/301402">Saori v0.4.0を作りました</a></h1>
-            <ul class="article-tags">
-                            <li><a href="/tag/saori/1">saori</a></li>
-                            <li><a href="/tag/php/1">php</a></li>
-                    </ul>
-        <div class="article-contents">
-                    <p>v0.4.0での変更点は</p>
-<ul>
-<li>Twigファイルの場所の変更</li>
-<li>config.jsonの場所を変更</li>
-<li>ユーザページの生成機能</li>
-</ul>
-<h2>Twigファイルの場所の変更について</h2>
-<p>Twigファイルの場所をtheme/:theme_name/twig/にしました. サイトを生成するのに必要なテンプレートはtemplate内に置きました.これからはsaoriが直接呼び出すTwigファイルはここにおいていこうと思います.  </p>
-<h2>config.jsonの場所を変更について</h2>
-<p>contentsディレクトリ内にconfig.jsonを設置するように変更しました. 何故したかというと,config.jsonもgitで管理しやすくするためです.</p>
-<h2>ユーザページの生成機能について</h2>
-<p>それと<a href="/article/2016/04/261251/">前に言ってた</a>,ユーザがMarkdownファイルを作るだけでページを生成できるようにしました. 例えば,contents/page/about.mdというファイルを作るとtemplate/page.twigを利用して,/about/index.htmlが作られます. しかしこれだと画像が扱えない(作ってから気づいた)ので,v0.5では画像をどこかにコピーしてMarkdownファイル内にある画像のパスをそこに書き換えようかな思います.</p>
-
-            </div>
-    <div class="article-share">
-                            </div>
-
-    </article>
         <nav class="pager">
                             <div class="next"><a href="https://taniko.github.io/tag/php/2">next &raquo;</a></div>
             </nav>
@@ -427,8 +433,8 @@ object(Hrgruri\Rarcs\Asset\Nishikie)#51 (5) {
                                                             <li><a href="/tag/api/1">api (1)</a></li>
                                                             <li><a href="/tag/conference/1">conference (1)</a></li>
                                                             <li><a href="/tag/intern/1">intern (1)</a></li>
-                                                            <li><a href="/tag/php/1">php (8)</a></li>
-                                                            <li><a href="/tag/saori/1">saori (10)</a></li>
+                                                            <li><a href="/tag/php/1">php (9)</a></li>
+                                                            <li><a href="/tag/saori/1">saori (11)</a></li>
                                                             <li><a href="/tag/univ/1">univ (3)</a></li>
                                                         </ul>
                         </div>
