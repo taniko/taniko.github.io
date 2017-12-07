@@ -2,8 +2,48 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 <title>tanikoのぶろぐ</title>
 <link href="https://taniko.github.io"></link>
-<updated>2017-09-21T17:56:36+09:00</updated>
+<updated>2017-12-07T15:25:50+09:00</updated>
 <id>urn:uuid:c90b8eeb-3954-eaf8-0b65-eae8678a9ee4</id>
+<entry>
+<author><name>Yuya Aratani</name>
+</author>
+<title>マルチバイト周りに対応したローマ数字のパーサを作った</title>
+<link href="https://taniko.github.io/article/2017/12/071509"></link>
+<id>urn:uuid:1b76f5b3-5ad5-d33b-5149-c4d573065e3a</id>
+<updated>2017-12-07T15:09:46+09:00</updated>
+<summary type="html"><![CDATA[<p>日本語とは厄介なのでしょうか? とても扱いやすい言語だとは思います. 特に数字周りに関しては素晴らしい思っています. 英語の数え方とか加減乗除とかは厄介だと思います.<br />
+では, 日本の厄介な部分はどこかというと, マルチバイト文字だということ. 文字数が多すぎる.<br />
+ということで, 今回はローマ数字周りのライブラリです.</p>
+<p>まずは, マルチバイト周りのローマ数字について. 10を例に話します.</p>
+<table>
+<thead>
+<tr><th align="center"></th><th align="left"><code>x</code> </th><th align="left"><code>X</code> </th><th align="left"><code>ｘ</code> </th><th align="left"><code>Ｘ</code> </th><th align="left"><code>ⅹ</code> </th><th align="left"><code>Ⅹ</code></th></tr>
+</thead>
+<tbody>
+<tr><td align="center">説明</td><td align="left">半角小文字</td><td align="left">半角大文字</td><td align="left">全角小文字</td><td align="left">全角大文字</td><td align="left">ローマ数字(小文字)</td><td align="left">ローマ数字(大文字)</td></tr>
+<tr><td align="center">Unicode</td><td align="left">120</td><td align="left">88</td><td align="left">65368</td><td align="left">65336</td><td align="left">8569</td><td align="left">8553</td></tr>
+</tbody>
+</table>
+<p>11を表すには? <code>xi</code>? <code>XI</code>? <code>ｘｉ</code>? <code>ＸＩ</code>? <code>ⅺ</code>? <code>Ⅺ</code>?</p>
+<p>辛い.</p>
+<p>そんなわけで<code>taniko/romans</code>を作りました.
+インストールは<code>composer require taniko/romans</code>でできます.</p>
+<pre><code class="language-php">&lt;?php
+require 'vendor/autoload.php';
+
+// 全角大文字
+var_dump(Taniko\Romans\Parser::toInt('MMＸVII'));
+// int(2017)
+
+// ローマ数字(大文字)
+var_dump(Taniko\Romans\Parser::toInt('MMⅩVII'));
+// int(2017)
+</code></pre>
+<p>PHP 7.2からは<code>mb_ord()</code>, <code>mb_chr()</code>が使えるようになりました. <code>symfony/polyfill-mbstring</code>を使わなくてもいいようになりました.<br />
+そんなわけでPHPは最高ですね.</p>
+<p><font color='gray'>既存のライブラリにマルチバイト周りをASCIIに変換する部分だけのPRでも作る?&lt;font/&gt;</p>
+]]></summary>
+</entry>
 <entry>
 <author><name>Yuya Aratani</name>
 </author>

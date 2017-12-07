@@ -38,6 +38,47 @@
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
                                 <article>
+    <span class="article-date">July 20, 2016</span>
+    <h1 class="article-title"><a href="https://taniko.github.io/article/2016/07/calender">弊大学の闇 (学年暦編)</a></h1>
+            <ul class="article-tags">
+                            <li><a href="/tag/univ/1">univ</a></li>
+                    </ul>
+        <div class="article-contents">
+                    <h1>学年暦の闇</h1>
+<p>大学の行事をJSONで返してくれるようなものを作ろうとしていた時に気づいた弊大学の闇を話したいと思います.</p>
+<h2>calender ?</h2>
+<p>PHPを使って学年暦をスクレイピングする<a href="https://github.com/hrgruri/ritsucal">ライブラリ</a>に行事の検索機能を追加しようとしていました. 検索機能と言っても年･月･日を連想配列で渡すと該当の行事が配列で帰ってくる簡単なものです.<br />
+引数の型が指定できるので<code>\Hrgruri\Ritsucal\Calendar</code>型と<code>array</code>型を引数にしてメソッドを作りました. 学部の学年暦と今日の日付でテストをするとTypeError. 型が違うというエラー. 該当するクラスを見に行くとあるのは<code>src/Calender.php</code>.
+<font color=red>Calender.php </font>?<br />
+CalendarではなくCalender. ちなみにCalenderは光沢機のこと.</p>
+<p>タイプミス? やってしまったと思い, 置換しようと｢calender｣で検索すると</p>
+<pre><code class="language-php">private $url = 'http://www.ritsumei.ac.jp/profile/info/calender/';
+</code></pre>
+<p>までヒットした.</p>
+<h2>大学の間違え</h2>
+<p>ブラウザで確認したところ<br />
+<a href="http://www.ritsumei.ac.jp/profile/info/calender/">http://www.ritsumei.ac.jp/profile/info/calender/</a> は存在しているが,<br />
+<a href="http://www.ritsumei.ac.jp/profile/info/calendar/">http://www.ritsumei.ac.jp/profile/info/calendar/</a> は存在していない.  </p>
+<p>大学側も間違えていた. 学年暦のページが光沢機(calender)になっている.</p>
+<h2>今回の原因</h2>
+<p><del>そもそも大学側が間違えていたので, 私が間違えたのは大学のせいである. むしろ間違いに合わせているので,私は間違えていない</del></p>
+<ol>
+<li>単語の綴り確認もせずに,学年暦のURLに合わせてクラス名を決めてしまっていた.</li>
+<li>大学のホームページは正しいと思いんでいた.</li>
+<li>補完に頼り過ぎた.</li>
+</ol>
+<h2>まとめ</h2>
+<p>英語の綴りは確かめましょう. Googleで｢学年暦｣と検索して1番上に来るような弊大学のホームページだからといって間違いがないとは思ってはいけない.<br />
+そして<font color=red>弊大学の学年暦は光沢機</font></p>
+
+            </div>
+    <div class="article-share">
+                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://taniko.github.io/article/2016/07/calender" data-text="弊大学の闇 (学年暦編) - tanikoのぶろぐ">Tweet</a>
+                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://taniko.github.io/article/2016/07/calender"></a>
+            </div>
+
+    </article>
+            <article>
     <span class="article-date">July 19, 2016</span>
     <h1 class="article-title"><a href="https://taniko.github.io/article/2016/07/saori_article_cache">Saoriの下書きとキャッシュ</a></h1>
             <ul class="article-tags">
@@ -233,19 +274,6 @@ LTをしたことで思ったのが, みんな優しかったです. LT後にも
             </div>
 
     </article>
-            <article>
-    <span class="article-date">July 8, 2016</span>
-    <h1 class="article-title"><a href="https://taniko.github.io/article/2016/07/081625">ブログのテーマを変えた</a></h1>
-        <div class="article-contents">
-                    <p>ブログのテーマを変えました. ただそれだけです.</p>
-
-            </div>
-    <div class="article-share">
-                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://taniko.github.io/article/2016/07/081625" data-text="ブログのテーマを変えた - tanikoのぶろぐ">Tweet</a>
-                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://taniko.github.io/article/2016/07/081625"></a>
-            </div>
-
-    </article>
         <nav class="pager">
                     <div class="previous"><a href="https://taniko.github.io/page/2">&laquo; prev</a></div>
                             <div class="next"><a href="https://taniko.github.io/page/4">next &raquo;</a></div>
@@ -273,11 +301,11 @@ LTをしたことで思ったのが, みんな優しかったです. LT後にも
                                                                 <div id="side-recent" class="hidden-sm-down">
                             <div class="side-title">最新記事</div>
                             <ul>
+                                                                    <li><a href="https://taniko.github.io/article/2017/12/071509">マルチバイト周りに対応したローマ数字のパーサを作った</a><br></li>
                                                                     <li><a href="https://taniko.github.io/article/2017/09/211755">pixiv 2017 SUMMER BOOT CAMPに参加してきました</a><br></li>
                                                                     <li><a href="https://taniko.github.io/article/2017/09/030049">Saori v3のリリース</a><br></li>
                                                                     <li><a href="https://taniko.github.io/article/2016/12/311932">2016年のまとめ</a><br></li>
                                                                     <li><a href="https://taniko.github.io/article/2016/11/251311">Saori v2.2のリリース</a><br></li>
-                                                                    <li><a href="https://taniko.github.io/article/2016/10/ricca">Slackのフレームワーク(?)を作った</a><br></li>
                                                             </ul>
                         </div>
                     
@@ -287,7 +315,7 @@ LTをしたことで思ったのが, みんな優しかったです. LT後にも
                                                             <li><a href="/tag/api/1">api (1)</a></li>
                                                             <li><a href="/tag/conference/1">conference (1)</a></li>
                                                             <li><a href="/tag/internship/1">internship (2)</a></li>
-                                                            <li><a href="/tag/php/1">php (9)</a></li>
+                                                            <li><a href="/tag/php/1">php (10)</a></li>
                                                             <li><a href="/tag/saori/1">saori (11)</a></li>
                                                             <li><a href="/tag/univ/1">univ (3)</a></li>
                                                         </ul>
