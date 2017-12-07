@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 <title>tanikoのぶろぐ</title>
 <link href="https://taniko.github.io"></link>
-<updated>2017-12-07T15:25:50+09:00</updated>
+<updated>2017-12-07T15:29:15+09:00</updated>
 <id>urn:uuid:c90b8eeb-3954-eaf8-0b65-eae8678a9ee4</id>
 <entry>
 <author><name>Yuya Aratani</name>
@@ -39,9 +39,9 @@ var_dump(Taniko\Romans\Parser::toInt('MMＸVII'));
 var_dump(Taniko\Romans\Parser::toInt('MMⅩVII'));
 // int(2017)
 </code></pre>
-<p>PHP 7.2からは<code>mb_ord()</code>, <code>mb_chr()</code>が使えるようになりました. <code>symfony/polyfill-mbstring</code>を使わなくてもいいようになりました.<br />
-そんなわけでPHPは最高ですね.</p>
-<p><font color='gray'>既存のライブラリにマルチバイト周りをASCIIに変換する部分だけのPRでも作る?&lt;font/&gt;</p>
+<p>ちなみに, PHP 7.2からは<code>mb_ord()</code>, <code>mb_chr()</code>が使えるようになりました. <code>symfony/polyfill-mbstring</code>を使わなくてもいいようになりました.  </p>
+<p>最後に, PHPは最高ですね.</p>
+<p><font color='gray'>既存のライブラリにマルチバイト周りをASCIIに変換する部分だけのPRでも作る?</font></p>
 ]]></summary>
 </entry>
 <entry>

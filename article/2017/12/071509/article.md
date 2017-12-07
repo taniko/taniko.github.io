@@ -29,7 +29,8 @@ var_dump(Taniko\Romans\Parser::toInt('MMⅩVII'));
 // int(2017)
 ```
 
-PHP 7.2からは`mb_ord()`, `mb_chr()`が使えるようになりました. `symfony/polyfill-mbstring`を使わなくてもいいようになりました.  
-そんなわけでPHPは最高ですね.
+ちなみに, PHP 7.2からは`mb_ord()`, `mb_chr()`が使えるようになりました. `symfony/polyfill-mbstring`を使わなくてもいいようになりました.  
 
-<font color='gray'>既存のライブラリにマルチバイト周りをASCIIに変換する部分だけのPRでも作る?<font/>
+最後に, PHPは最高ですね.
+
+<font color='gray'>既存のライブラリにマルチバイト周りをASCIIに変換する部分だけのPRでも作る?</font>
