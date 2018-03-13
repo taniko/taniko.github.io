@@ -38,6 +38,65 @@
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
                                 <article>
+    <span class="article-date">August 26, 2016</span>
+    <h1 class="article-title"><a href="https://taniko.github.io/article/2016/08/ritsucal_api">学年暦APIを作った</a></h1>
+            <ul class="article-tags">
+                            <li><a href="/tag/api/1">api</a></li>
+                            <li><a href="/tag/univ/1">univ</a></li>
+                    </ul>
+        <div class="article-contents">
+                    <p>簡単な大学の学年暦APIを作ったのでその報告です.</p>
+<p><a href="https://ritsucal.hrgruri.com">https://ritsucal.hrgruri.com</a> です</p>
+<p>大学と大学院(情報理工学研究科)の学年暦をJSONで取得できるという簡単なものです. 使い方は<a href="https://ritsucal.hrgruri.com/doc">ドキュメント</a>を見てもらえればいいかと.<br />
+検索機能ですが,そのうちsince, untilができるようにはしたいと思います</p>
+
+            </div>
+    <div class="article-share">
+                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://taniko.github.io/article/2016/08/ritsucal_api" data-text="学年暦APIを作った - tanikoのぶろぐ">Tweet</a>
+                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://taniko.github.io/article/2016/08/ritsucal_api"></a>
+            </div>
+
+    </article>
+            <article>
+    <span class="article-date">August 4, 2016</span>
+    <h1 class="article-title"><a href="https://taniko.github.io/article/2016/08/041630">saori v2.0を開発中</a></h1>
+            <ul class="article-tags">
+                            <li><a href="/tag/saori/1">saori</a></li>
+                    </ul>
+        <div class="article-contents">
+                    <p><code>composer create-project</code>でインストールできるようにして, symfony/consoleを利用してsaoriを使用できるようにしました. あとnamespaceを修正.</p>
+<h2>v2.0-devをインストール</h2>
+<p><code>composer create-project hrgruri/saori:v2.0.x-dev blog</code>で開発途中のv2.0をインストールして始めることができます. 最後の<code>blog</code>はディレクトリ名なので別のものに変えても構いません.  </p>
+<h2>使用方法</h2>
+<pre><code class="language-sh">composer create-project hrgruri/saori:v2.0.x-dev blog
+cd blog
+php saori
+
+#初期化
+php saori init
+
+#下書きファイルを生成 (いきなりpostを使ってもいい)
+php saori draft first_article
+
+#記事の投稿
+php saori post first_article
+
+#静的サイトを生成
+php saori build
+</code></pre>
+<p>現在のところ,init, draft, post, buildが使用できます. <code>-h</code>使えば簡単な説明が出ると思うのでそちらを参考に.</p>
+<p><code>php saori draft</code>は別に使用しないでいきなり<code>php saori post</code>しても利用できるのですが, <code>draft</code>を使ったほうがいいかと.</p>
+<h2>今後</h2>
+<p><code>draft</code>した時にはconfig.jsonが作られず, <code>post</code>した時に作られるのですが, これだと<code>post</code>した後じゃないとconfig.jsonがさわれない. config.jsonを<code>draft</code>でも生成しておき, timestampを<code>post</code>した時に追加させようと思います.  </p>
+
+            </div>
+    <div class="article-share">
+                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://taniko.github.io/article/2016/08/041630" data-text="saori v2.0を開発中 - tanikoのぶろぐ">Tweet</a>
+                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://taniko.github.io/article/2016/08/041630"></a>
+            </div>
+
+    </article>
+            <article>
     <span class="article-date">July 20, 2016</span>
     <h1 class="article-title"><a href="https://taniko.github.io/article/2016/07/calender">弊大学の闇 (学年暦編)</a></h1>
             <ul class="article-tags">
@@ -242,38 +301,6 @@ LTをしたことで思ったのが, みんな優しかったです. LT後にも
             </div>
 
     </article>
-            <article>
-    <span class="article-date">July 16, 2016</span>
-    <h1 class="article-title"><a href="https://taniko.github.io/article/2016/07/demo">demo</a></h1>
-        <div class="article-contents">
-                    <h1>deom</h1>
-<p>これはデモ用の記事です. 現在LT真っ最中です.<br />
-<img src="/article/2016/07/demo/front.jpg" alt="demo" /></p>
-
-            </div>
-    <div class="article-share">
-                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://taniko.github.io/article/2016/07/demo" data-text="demo - tanikoのぶろぐ">Tweet</a>
-                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://taniko.github.io/article/2016/07/demo"></a>
-            </div>
-
-    </article>
-            <article>
-    <span class="article-date">July 15, 2016</span>
-    <h1 class="article-title"><a href="https://taniko.github.io/article/2016/07/152308">Saoriの使い方</a></h1>
-            <ul class="article-tags">
-                            <li><a href="/tag/saori/1">saori</a></li>
-                    </ul>
-        <div class="article-contents">
-                    <p>PHPを使ってgithub.ioでブログをやるための静的サイトジェネレータである<a href="https://github.com/hrgruri/saori">saori</a>の使い方を簡単にですがまとめました. リンクは<a href="/repository/saori">こちら</a>です.<br />
-現在, 使い方だけなのでテーマの作成方法など内部的な話は書けていませんが近いうちに書きたいと思います.</p>
-
-            </div>
-    <div class="article-share">
-                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://taniko.github.io/article/2016/07/152308" data-text="Saoriの使い方 - tanikoのぶろぐ">Tweet</a>
-                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://taniko.github.io/article/2016/07/152308"></a>
-            </div>
-
-    </article>
         <nav class="pager">
                     <div class="previous"><a href="https://taniko.github.io/page/2">&laquo; prev</a></div>
                             <div class="next"><a href="https://taniko.github.io/page/4">next &raquo;</a></div>
@@ -293,7 +320,6 @@ LTをしたことで思ったのが, みんな優しかったです. LT後にも
                             <ul>
                                                             <li><a href="https://github.com/taniko">GitHub</a><br></li>
                                                             <li><a href="https://twitter.com/taniko_dev">Twitter</a><br></li>
-                                                            <li><a href="https://qiita.com/taniko">Qiita</a><br></li>
                                                             <li><a href="https://speakerdeck.com/hrgruri">Speaker Deck</a><br></li>
                                                             <li><a href="/repository">リポジトリ説明</a><br></li>
                                                         </ul>
@@ -302,11 +328,11 @@ LTをしたことで思ったのが, みんな優しかったです. LT後にも
                                                                 <div id="side-recent" class="hidden-sm-down">
                             <div class="side-title">最新記事</div>
                             <ul>
+                                                                    <li><a href="https://taniko.github.io/article/2018/03/140815">Laravelのクエリビルダでifとかを使う</a><br></li>
+                                                                    <li><a href="https://taniko.github.io/article/2018/03/132311">Laravelのクエリビルダでifとかを使う</a><br></li>
                                                                     <li><a href="https://taniko.github.io/article/2017/12/071509">マルチバイト周りに対応したローマ数字のパーサを作った</a><br></li>
                                                                     <li><a href="https://taniko.github.io/article/2017/09/211755">pixiv 2017 SUMMER BOOT CAMPに参加してきました</a><br></li>
                                                                     <li><a href="https://taniko.github.io/article/2017/09/030049">Saori v3のリリース</a><br></li>
-                                                                    <li><a href="https://taniko.github.io/article/2016/12/311932">2016年のまとめ</a><br></li>
-                                                                    <li><a href="https://taniko.github.io/article/2016/11/251311">Saori v2.2のリリース</a><br></li>
                                                             </ul>
                         </div>
                     
@@ -316,6 +342,7 @@ LTをしたことで思ったのが, みんな優しかったです. LT後にも
                                                             <li><a href="/tag/api/1">api (1)</a></li>
                                                             <li><a href="/tag/conference/1">conference (1)</a></li>
                                                             <li><a href="/tag/internship/1">internship (2)</a></li>
+                                                            <li><a href="/tag/laravel/1">laravel (2)</a></li>
                                                             <li><a href="/tag/php/1">php (10)</a></li>
                                                             <li><a href="/tag/saori/1">saori (11)</a></li>
                                                             <li><a href="/tag/univ/1">univ (3)</a></li>

@@ -38,6 +38,174 @@
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
                                 <article>
+    <span class="article-date">March 14, 2018</span>
+    <h1 class="article-title"><a href="https://taniko.github.io/article/2018/03/140815">Laravelのクエリビルダでifとかを使う</a></h1>
+            <ul class="article-tags">
+                            <li><a href="/tag/laravel/1">laravel</a></li>
+                    </ul>
+        <div class="article-contents">
+                    <h2>はじめに</h2>
+<p>Laravelで特定のクエリパラメータを使ってクエリを組み立てたいときってありませんか? 例えば, 検索なので, <code>since_id</code>があれば, セットされている値以降で絞り込んで検索とかです.</p>
+<pre><code class="language-php">&lt;?php
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Asset;
+use App\Http\Requests\Asset\SearchRequest;
+
+class AssetController extends Controller
+{
+    public function search(SearchRequest $request)
+    {
+        $query = Asset::query();
+        if ($request-&gt;has('since_id')) {
+            $query = $query-&gt;where('id', '&gt;=', $request-&gt;input('since_id'));
+        }
+        if ($request-&gt;has('until_id')) {
+            $query = $query-&gt;where('id', '&lt;=', $request-&gt;input('until_id'));
+        }
+        return $query-&gt;get();
+    }
+}
+</code></pre>
+<p>こんな感じで書けますよね.<br />
+ただ, これだと何個もif文を書いていくことになります. メソッドチェーンでやってみたくなったので, やってみましょう.</p>
+<h2>やり方</h2>
+<h3>マクロの登録</h3>
+<p>まず, クエリビルダで<code>if</code>と<code>whereIf</code>を使えるように登録します. <code>app/Providers/AppServiceProvider.php</code>に以下のコードを加えます.</p>
+<pre><code class="language-php">&lt;?php
+// app/Providers/AppServiceProvider.php
+namespace App\Providers;
+
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Support\Facades\Schema;
+
+class AppServiceProvider extends ServiceProvider
+{
+    public function boot()
+    {
+        Builder::macro('if', function (bool $condition, callable $func) {
+            return $condition ? $func($this) : $this;
+        });
+        Builder::macro('whereIf', function (bool $condition, $column, $operator = null, $value = null, $boolean = 'and') {
+            return $condition ? $this-&gt;where($column, $operator, $value, $boolean) : $this;
+        });
+    }
+}
+</code></pre>
+<p>まず1つ目は, コールバック関数を与える方法です. これは, 複雑なクエリを付け加えたい時に使用します. 単純な<code>where</code>句を加えたいだけなら, この方法はおすすめしません.<br />
+2つ目は<code>where</code>句のみを付属させるものです. <code>where()</code>とほぼ同じ使い方なので, こちらがおすすめです. <code>where()</code>との違いは, 第1引数が<code>true</code>ならば<code>where</code>が加えられるという点です.</p>
+<h3>使い方</h3>
+<p>ユーザの投稿一覧の取得のサンプルコードです.</p>
+<pre><code class="language-php">&lt;?php
+// 1つ目 if
+$posts = $user-&gt;posts()
+    -&gt;if($request-&gt;has('since_id'), function ($query) use ($request) {
+        return $query-&gt;where('id', '&gt;=', $request-&gt;input('since_id'));
+    })-&gt;get();
+
+// 2つ目 whereIf
+$posts = $user-&gt;posts()
+    -&gt;whereIf($request-&gt;has('since_id'), 'id', '&gt;=', $request-&gt;input('since_id'));
+</code></pre>
+<p>こんな感じでメソッドチェーンをつなげていくことができます.<br />
+どちらの方が見やすいのか. ブロックで分けるべきか, 1行でまとめるべきか. あと, 型宣言や関数呼び出しの速度も.</p>
+<h2>リンク</h2>
+<p><a href="https://laravel.com/api/5.5/Illuminate/Database/Eloquent/Builder.html#method_where">Laravel API - https://laravel.com/api/5.5/Illuminate/Database/Eloquent/Builder.html#method_where</a></p>
+
+            </div>
+    <div class="article-share">
+                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://taniko.github.io/article/2018/03/140815" data-text="Laravelのクエリビルダでifとかを使う - tanikoのぶろぐ">Tweet</a>
+                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://taniko.github.io/article/2018/03/140815"></a>
+            </div>
+
+    </article>
+            <article>
+    <span class="article-date">March 14, 2018</span>
+    <h1 class="article-title"><a href="https://taniko.github.io/article/2018/03/132311">Laravelのクエリビルダでifとかを使う</a></h1>
+            <ul class="article-tags">
+                            <li><a href="/tag/laravel/1">laravel</a></li>
+                    </ul>
+        <div class="article-contents">
+                    <h2>はじめに</h2>
+<p>Laravelで特定のクエリパラメータを使ってクエリを組み立てたいときってありませんか? 例えば, 検索なので, <code>since_id</code>があれば, セットされている値以降で絞り込んで検索とかです.</p>
+<pre><code class="language-php">&lt;?php
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Asset;
+use App\Http\Requests\Asset\SearchRequest;
+
+class AssetController extends Controller
+{
+    public function search(SearchRequest $request)
+    {
+        $query = Asset::query();
+        if ($request-&gt;has('since_id')) {
+            $query = $query-&gt;where('id', '&gt;=', $request-&gt;input('since_id'));
+        }
+        if ($request-&gt;has('until_id')) {
+            $query = $query-&gt;where('id', '&lt;=', $request-&gt;input('until_id'));
+        }
+        return $query-&gt;get();
+    }
+}
+</code></pre>
+<p>こんな感じで書けますよね.<br />
+ただ, これだと何個もif文を書いていくことになります. メソッドチェーンでやってみたくなったので, やってみましょう.</p>
+<h2>やり方</h2>
+<h3>マクロの登録</h3>
+<p>まず, クエリビルダで<code>if</code>と<code>whereIf</code>を使えるように登録します. <code>app/Providers/AppServiceProvider.php</code>に以下のコードを加えます.</p>
+<pre><code class="language-php">&lt;?php
+// app/Providers/AppServiceProvider.php
+namespace App\Providers;
+
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Support\Facades\Schema;
+
+class AppServiceProvider extends ServiceProvider
+{
+    public function boot()
+    {
+        Builder::macro('if', function (bool $condition, callable $func) {
+            return $condition ? $func($this) : $this;
+        });
+        Builder::macro('whereIf', function (bool $condition, $column, $operator = null, $value = null, $boolean = 'and') {
+            return $condition ? $this-&gt;where($column, $operator, $value, $boolean) : $this;
+        });
+    }
+}
+</code></pre>
+<p>まず1つ目は, コールバック関数を与える方法です. これは, 複雑なクエリを付け加えたい時に使用します. 単純な<code>where</code>句を加えたいだけなら, この方法はおすすめしません.<br />
+2つ目は<code>where</code>句のみを付属させるものです. <code>where()</code>とほぼ同じ使い方なので, こちらがおすすめです. <code>where()</code>との違いは, 第1引数が<code>true</code>ならば<code>where</code>が加えられるという点です.</p>
+<h3>使い方</h3>
+<p>ユーザの投稿一覧の取得のサンプルコードです.</p>
+<pre><code class="language-php">&lt;?php
+// 1つ目 if
+$posts = $user-&gt;posts()
+    -&gt;if($request-&gt;has('since_id'), function ($query) use ($request) {
+        return $query-&gt;where('id', '&gt;=', $request-&gt;input('since_id'));
+    })-&gt;get();
+
+// 2つ目 whereIf
+$posts = $user-&gt;posts()
+    -&gt;whereIf($request-&gt;has('since_id'), 'id', '&gt;=', $request-&gt;input('since_id'));
+</code></pre>
+<p>こんな感じでメソッドチェーンをつなげていくことができます.<br />
+どちらの方が見やすいのか. ブロックで分けるべきか, 1行でまとめるべきか. あと, 型宣言や関数呼び出しの速度も.</p>
+<h2>リンク</h2>
+<p><a href="https://laravel.com/api/5.5/Illuminate/Database/Eloquent/Builder.html#method_where">Laravel API - https://laravel.com/api/5.5/Illuminate/Database/Eloquent/Builder.html#method_where</a></p>
+
+            </div>
+    <div class="article-share">
+                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://taniko.github.io/article/2018/03/132311" data-text="Laravelのクエリビルダでifとかを使う - tanikoのぶろぐ">Tweet</a>
+                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://taniko.github.io/article/2018/03/132311"></a>
+            </div>
+
+    </article>
+            <article>
     <span class="article-date">December 7, 2017</span>
     <h1 class="article-title"><a href="https://taniko.github.io/article/2017/12/071509">マルチバイト周りに対応したローマ数字のパーサを作った</a></h1>
             <ul class="article-tags">
@@ -138,7 +306,7 @@ var_dump(Taniko\Romans\Parser::toInt('MMⅩVII'));
 
     </article>
             <article>
-    <span class="article-date">September 2, 2017</span>
+    <span class="article-date">September 3, 2017</span>
     <h1 class="article-title"><a href="https://taniko.github.io/article/2017/09/030049">Saori v3のリリース</a></h1>
             <ul class="article-tags">
                             <li><a href="/tag/php/1">php</a></li>
@@ -171,85 +339,6 @@ $app-&gt;run();
             </div>
 
     </article>
-            <article>
-    <span class="article-date">December 31, 2016</span>
-    <h1 class="article-title"><a href="https://taniko.github.io/article/2016/12/311932">2016年のまとめ</a></h1>
-        <div class="article-contents">
-                    <p>もう年末です. 今までダラダラと過ごしていた私ですが, 今年は珍しく活動したのでそのまとめです.</p>
-<h2>大学のオープンキャンパス手伝い</h2>
-<p>4月頃, 3回生のときに授業の一環で作成した簡単な情報推薦のサイトをオープンキャンパスで紹介する事になりました. 簡単にコードを修正して終わりのつもりだったのですが, ｢前のままだと地味なので推薦できるものを書籍だけでなくて浮世絵も追加してね｣と先生に言われて新たにコードを書くことになりました.</p>
-<h2>PHPカンファレンス関西</h2>
-<p>2016年12月31日現在, GitHub Pagesを利用してブログをやっています. これですね. 4月ごろから, このようなブログを生成する静的サイトジェネレータ Saoriを作成していました. PHPカンファレンスに行ったことがなかったのですが, LTを応募したら通ったのでSaoriについて話してきました. 初めてのイベントです.<br />
-詳しくは<a href="https://hrgruri.github.io/article/2016/07/phpcon_kansai_2016/">PHPカンファレンス 関西2016でLT</a>に書いてあるのでそちらを.</p>
-<h2>インターン</h2>
-<p>8月末~9月末にピクシブのインターンに参加してきました. これも初めてのインターンです. pixivのメンテナンスを行いました. バグ修正とかコードのリファクタリングとかです.
-詳しくは<a href="https://hrgruri.github.io/article/2016/09/summer-boot-camp-2016/">pixiv 2016 SUMMER BOOT CAMPに参加</a>に書いてあるのでそちらを.</p>
-<hr />
-<p>こんな感じで初めての行動が多い1年でした. 3つともPHP関連ですね. PHPは楽しいです. みんなもPHPをやろう!<br />
-ついでに個人的な話以外を. 今年は百合姫が月刊誌になりましたね. あと早見沙織さんが1stアルバム｢Live Love Laugh｣と, コンサートの映像･音声が特典でついたミニアルバム｢live for LIVE｣をリリースしましたね. とってもいいものですので, みなさんもどうぞ.</p>
-
-            </div>
-    <div class="article-share">
-                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://taniko.github.io/article/2016/12/311932" data-text="2016年のまとめ - tanikoのぶろぐ">Tweet</a>
-                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://taniko.github.io/article/2016/12/311932"></a>
-            </div>
-
-    </article>
-            <article>
-    <span class="article-date">November 25, 2016</span>
-    <h1 class="article-title"><a href="https://taniko.github.io/article/2016/11/251311">Saori v2.2のリリース</a></h1>
-            <ul class="article-tags">
-                            <li><a href="/tag/saori/1">saori</a></li>
-                    </ul>
-        <div class="article-contents">
-                    <p>v2.2では主にコマンドの追加をしました.</p>
-<h2>コマンドの追加</h2>
-<h3>deploy</h3>
-<p><code>deploy</code>はデプロイを簡単にするためのものです. git add, commit, pushをまとめてやってくれるといった簡単なものです.</p>
-<pre><code class="language-sh">php saori deploy (:commit_message)
-</code></pre>
-<p>これで動作します. <code>:commit_message</code>が存在しなければ<code>date('YmdHi')</code>が入ります.</p>
-<h3>theme</h3>
-<p><code>theme</code>は存在するテーマ一覧の取得と, テーマの設定ファイルの確認に使います</p>
-<pre><code class="language-sh">php saori theme
-## 以下が表示される
-Theme list
-sample, saori
-
-php saori theme saori
-## 以下が表示される
-saori/theme.json
-{
-    "noapp":5,
-    "color" : {
-        "header" : "#000033",
-        "title" : "#EEEEEE",
-        "body"      : "#E9E9E9",
-        "article"   : "#FFF1CF",
-        "main" : "white",
-        "side" : "white"
-    },
-    "date-format" : "Y-m-d"
-}
-</code></pre>
-<h2>内部的な話</h2>
-<p>現在置換え中ですが, PHPの配列から<code>Illuminate\Support\Collection</code>に変更中です. Laravelで使われているあれです. まだ書き換えられていないところもあるのですが, 徐々に書き換えていきたいと思います.<br />
-あと, テーマ作成の面で言うと<code>css.twig</code>を使えるようにした. これはcss/name.css.twigをcss/name.cssに書き換えると言うもの. theme/saoriではheader, bodyなどの背景色をカスタマイズできるようにするために使用しています.</p>
-<pre><code class="language-css.twig">/* theme/saori/css/article.css.twig */
-article {
-    background: {{maker.color('article')}};
-    margin-bottom: 50px;
-    padding: 5px 10px 5px 10px;
-}
-</code></pre>
-
-            </div>
-    <div class="article-share">
-                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://taniko.github.io/article/2016/11/251311" data-text="Saori v2.2のリリース - tanikoのぶろぐ">Tweet</a>
-                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://taniko.github.io/article/2016/11/251311"></a>
-            </div>
-
-    </article>
         <nav class="pager">
                     <div class="next"><a href="/page/2">next &raquo;</a></div>
             </nav>
@@ -268,7 +357,6 @@ article {
                             <ul>
                                                             <li><a href="https://github.com/taniko">GitHub</a><br></li>
                                                             <li><a href="https://twitter.com/taniko_dev">Twitter</a><br></li>
-                                                            <li><a href="https://qiita.com/taniko">Qiita</a><br></li>
                                                             <li><a href="https://speakerdeck.com/hrgruri">Speaker Deck</a><br></li>
                                                             <li><a href="/repository">リポジトリ説明</a><br></li>
                                                         </ul>
@@ -277,11 +365,11 @@ article {
                                                                 <div id="side-recent" class="hidden-sm-down">
                             <div class="side-title">最新記事</div>
                             <ul>
+                                                                    <li><a href="https://taniko.github.io/article/2018/03/140815">Laravelのクエリビルダでifとかを使う</a><br></li>
+                                                                    <li><a href="https://taniko.github.io/article/2018/03/132311">Laravelのクエリビルダでifとかを使う</a><br></li>
                                                                     <li><a href="https://taniko.github.io/article/2017/12/071509">マルチバイト周りに対応したローマ数字のパーサを作った</a><br></li>
                                                                     <li><a href="https://taniko.github.io/article/2017/09/211755">pixiv 2017 SUMMER BOOT CAMPに参加してきました</a><br></li>
                                                                     <li><a href="https://taniko.github.io/article/2017/09/030049">Saori v3のリリース</a><br></li>
-                                                                    <li><a href="https://taniko.github.io/article/2016/12/311932">2016年のまとめ</a><br></li>
-                                                                    <li><a href="https://taniko.github.io/article/2016/11/251311">Saori v2.2のリリース</a><br></li>
                                                             </ul>
                         </div>
                     
@@ -291,6 +379,7 @@ article {
                                                             <li><a href="/tag/api/1">api (1)</a></li>
                                                             <li><a href="/tag/conference/1">conference (1)</a></li>
                                                             <li><a href="/tag/internship/1">internship (2)</a></li>
+                                                            <li><a href="/tag/laravel/1">laravel (2)</a></li>
                                                             <li><a href="/tag/php/1">php (10)</a></li>
                                                             <li><a href="/tag/saori/1">saori (11)</a></li>
                                                             <li><a href="/tag/univ/1">univ (3)</a></li>

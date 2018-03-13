@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
-        <title>Saoriの下書きとキャッシュ - tanikoのぶろぐ</title>
+        <title>Laravelのクエリビルダでifとかを使う - tanikoのぶろぐ</title>
                     <script type="text/javascript">
                 if (location.protocol === 'http:') {
                     location.replace(location.href.replace(/^http:/, 'https:'));
@@ -38,52 +38,96 @@
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
                                 <article>
-    <span class="article-date">July 19, 2016</span>
-    <h1 class="article-title"><a href="https://taniko.github.io/article/2016/07/saori_article_cache">Saoriの下書きとキャッシュ</a></h1>
+    <span class="article-date">March 14, 2018</span>
+    <h1 class="article-title"><a href="https://taniko.github.io/article/2018/03/132311">Laravelのクエリビルダでifとかを使う</a></h1>
             <ul class="article-tags">
-                            <li><a href="/tag/saori/1">saori</a></li>
+                            <li><a href="/tag/laravel/1">laravel</a></li>
                     </ul>
         <div class="article-contents">
-                    <h1>saori v1.1の開発</h1>
-<p>現在saori v1.1の開発を行っています.  </p>
-<ul>
-<li>下書き機能</li>
-<li>記事のキャッシュ</li>
-</ul>
-<p>に関することを行いました.  </p>
-<h2>下書き機能</h2>
-<p>下書き機能は<code>php main.php draft :name</code>とするとcontents/draft/:name/article.mdが作成されてここで記事の下書きができるよになるものです. 投稿したい場合は<code>php main.php post :name</code>とするとcontents/article/yyyy/mm/:nameにコピーされます. 記事のconfigファイルは<code>post</code>した時に作成されます.</p>
-<h2>記事のキャッシュ</h2>
-<p>今まではarticle.mdの画像パスを書き換えたものをcache/に作成しておき, <code>article.html()</code>でarticle.mdを読み込んでパースをしていました.<br />
-これを予めパースしておきarticle.htmlをcache/に作成しておき, <code>article.html()</code>でarticle.htmlを読み込むというものに変更しました.</p>
-<h3>時間計測</h3>
-<p>500回ループさせて時間を計測しました. 変更前後で2回計測.</p>
-<table>
-<thead>
-<tr><th></th><th>変更前</th><th>変更後</th></tr>
-</thead>
-<tbody>
-<tr><td>1回目</td><td>60.15</td><td>53.39</td></tr>
-<tr><td>2回目</td><td>59.77</td><td>54.78</td></tr>
-<tr><td>平均</td><td>59.96</td><td>54.085</td></tr>
-</tbody>
-</table>
-<p>記事の数やブログのテンプレートによって前後するとは思いますが, 方式を変えたことで5.875秒削減できました. 現在のところブログを生成する際には誤差かもしれませんが, 記事数が増えれば差が大きくなっていくかもしれません.</p>
+                    <h2>はじめに</h2>
+<p>Laravelで特定のクエリパラメータを使ってクエリを組み立てたいときってありませんか? 例えば, 検索なので, <code>since_id</code>があれば, セットされている値以降で絞り込んで検索とかです.</p>
+<pre><code class="language-php">&lt;?php
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Asset;
+use App\Http\Requests\Asset\SearchRequest;
+
+class AssetController extends Controller
+{
+    public function search(SearchRequest $request)
+    {
+        $query = Asset::query();
+        if ($request-&gt;has('since_id')) {
+            $query = $query-&gt;where('id', '&gt;=', $request-&gt;input('since_id'));
+        }
+        if ($request-&gt;has('until_id')) {
+            $query = $query-&gt;where('id', '&lt;=', $request-&gt;input('until_id'));
+        }
+        return $query-&gt;get();
+    }
+}
+</code></pre>
+<p>こんな感じで書けますよね.<br />
+ただ, これだと何個もif文を書いていくことになります. メソッドチェーンでやってみたくなったので, やってみましょう.</p>
+<h2>やり方</h2>
+<h3>マクロの登録</h3>
+<p>まず, クエリビルダで<code>if</code>と<code>whereIf</code>を使えるように登録します. <code>app/Providers/AppServiceProvider.php</code>に以下のコードを加えます.</p>
+<pre><code class="language-php">&lt;?php
+// app/Providers/AppServiceProvider.php
+namespace App\Providers;
+
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Support\Facades\Schema;
+
+class AppServiceProvider extends ServiceProvider
+{
+    public function boot()
+    {
+        Builder::macro('if', function (bool $condition, callable $func) {
+            return $condition ? $func($this) : $this;
+        });
+        Builder::macro('whereIf', function (bool $condition, $column, $operator = null, $value = null, $boolean = 'and') {
+            return $condition ? $this-&gt;where($column, $operator, $value, $boolean) : $this;
+        });
+    }
+}
+</code></pre>
+<p>まず1つ目は, コールバック関数を与える方法です. これは, 複雑なクエリを付け加えたい時に使用します. 単純な<code>where</code>句を加えたいだけなら, この方法はおすすめしません.<br />
+2つ目は<code>where</code>句のみを付属させるものです. <code>where()</code>とほぼ同じ使い方なので, こちらがおすすめです. <code>where()</code>との違いは, 第1引数が<code>true</code>ならば<code>where</code>が加えられるという点です.</p>
+<h3>使い方</h3>
+<p>ユーザの投稿一覧の取得のサンプルコードです.</p>
+<pre><code class="language-php">&lt;?php
+// 1つ目 if
+$posts = $user-&gt;posts()
+    -&gt;if($request-&gt;has('since_id'), function ($query) use ($request) {
+        return $query-&gt;where('id', '&gt;=', $request-&gt;input('since_id'));
+    })-&gt;get();
+
+// 2つ目 whereIf
+$posts = $user-&gt;posts()
+    -&gt;whereIf($request-&gt;has('since_id'), 'id', '&gt;=', $request-&gt;input('since_id'));
+</code></pre>
+<p>こんな感じでメソッドチェーンをつなげていくことができます.<br />
+どちらの方が見やすいのか. ブロックで分けるべきか, 1行でまとめるべきか. あと, 型宣言や関数呼び出しの速度も.</p>
+<h2>リンク</h2>
+<p><a href="https://laravel.com/api/5.5/Illuminate/Database/Eloquent/Builder.html#method_where">Laravel API - https://laravel.com/api/5.5/Illuminate/Database/Eloquent/Builder.html#method_where</a></p>
 
             </div>
     <div class="article-share">
-                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://taniko.github.io/article/2016/07/saori_article_cache" data-text="Saoriの下書きとキャッシュ - tanikoのぶろぐ">Tweet</a>
-                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://taniko.github.io/article/2016/07/saori_article_cache"></a>
+                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://taniko.github.io/article/2018/03/132311" data-text="Laravelのクエリビルダでifとかを使う - tanikoのぶろぐ">Tweet</a>
+                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://taniko.github.io/article/2018/03/132311"></a>
             </div>
 
             <div class="pager">
                             <div id="pager-next">
                     <div class="lines"><span>next article</span></div>
-                    <a href="https://taniko.github.io/article/2016/07/calender">弊大学の闇 (学年暦編)</a>
+                    <a href="https://taniko.github.io/article/2018/03/140815">Laravelのクエリビルダでifとかを使う</a>
                 </div>
                                         <div id="pager-prev">
                     <div class="lines"><span>previous article</span></div>
-                    <a href="https://taniko.github.io/article/2016/07/phpcon_kansai_2016">PHPカンファレンス 関西2016でLT</a>
+                    <a href="https://taniko.github.io/article/2017/12/071509">マルチバイト周りに対応したローマ数字のパーサを作った</a>
                 </div>
                     </div>
     </article>

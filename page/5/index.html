@@ -38,6 +38,48 @@
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
                                 <article>
+    <span class="article-date">June 10, 2016</span>
+    <h1 class="article-title"><a href="https://taniko.github.io/article/2016/06/102235">Saori v0.5を作った</a></h1>
+        <div class="article-contents">
+                    <p>Saori v0.5.0をリリースした. これで簡単にユーザが新たなページを生成することができるようになった. そして,<a href="http://hrgruri.github.io/article/2016/06/042227/">前の記事</a>で言っていたテーブルがおかしい理由はテーブルのCSSが記述されていなかったからでした. ボーダの設定を指定なかったので,枠線がない状態で出力されていただけでした.</p>
+<hr />
+<p>そろそろv0.x系をやめてv1.0にしてもいい頃かもしれない. 最初に思っていた必要な最低限の機能はできたと思う.<br />
+それとちゃんとした使い方をまとめて記事かページを生成する必要がある. 今のところ他の人が使うのには不親切だ. README.mdには記事の編集のことしか記述していない. (誰か作る人がいるのかわからないが)テーマの作り方やユーザページについてなど. こういったものをまとめ終えたらv1.0.0にしたいと思います.</p>
+
+            </div>
+    <div class="article-share">
+                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://taniko.github.io/article/2016/06/102235" data-text="Saori v0.5を作った - tanikoのぶろぐ">Tweet</a>
+                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://taniko.github.io/article/2016/06/102235"></a>
+            </div>
+
+    </article>
+            <article>
+    <span class="article-date">June 4, 2016</span>
+    <h1 class="article-title"><a href="https://taniko.github.io/article/2016/06/042227">Saori v0.5.x-devにてTableがおかしい</a></h1>
+            <ul class="article-tags">
+                            <li><a href="/tag/saori/1">saori</a></li>
+                    </ul>
+        <div class="article-contents">
+                    <p>現在Saoriのv0.5を作っていますが, どうやらテーブルが正しく表示されないです.</p>
+<pre><code class="language-markdown">|name|値|
+|:-:|:-:|
+|f85|キーワード|
+|f23|絵師|
+|f83|画題|
+</code></pre>
+<p>上記の記述をしたら以下の様なテーブルが生成されました.</p>
+<p><img src="/article/2016/06/042227/table.png" alt="table" /></p>
+<p>罫線が入っていないので,テーブルとしてわかりにくくなっています. 今のところ原因がわかっていません. Atomの上では正しく表示されているので記述に間違いはないのではないかとは思います. cebe/markdownを使ってMarkdownを変換しています. とりあえず他のライブラリを使ってみてどう表示されるのか試してみます. あとHTMLも確認してみたいと思います.</p>
+<p>ちなみにv0.5.x-devでは記事とユーザページ(contents/page/NAME.md)の画像ファイルのパスの書き換えはできるようになりました. </p>
+
+            </div>
+    <div class="article-share">
+                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://taniko.github.io/article/2016/06/042227" data-text="Saori v0.5.x-devにてTableがおかしい - tanikoのぶろぐ">Tweet</a>
+                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://taniko.github.io/article/2016/06/042227"></a>
+            </div>
+
+    </article>
+            <article>
     <span class="article-date">June 2, 2016</span>
     <h1 class="article-title"><a href="https://taniko.github.io/article/2016/06/arc">立命館ARCのスクレイピング</a></h1>
             <ul class="article-tags">
@@ -167,72 +209,10 @@ object(Hrgruri\Rarcs\Asset\Nishikie)#51 (5) {
             </div>
 
     </article>
-            <article>
-    <span class="article-date">April 26, 2016</span>
-    <h1 class="article-title"><a href="https://taniko.github.io/article/2016/04/261251">Saori v0.3を作った</a></h1>
-            <ul class="article-tags">
-                            <li><a href="/tag/saori/1">saori</a></li>
-                            <li><a href="/tag/php/1">php</a></li>
-                    </ul>
-        <div class="article-contents">
-                    <p>Saoriにいくつか機能を加えた.</p>
-<h2>v0.2</h2>
-<p>v0.2ではフィード(/feed.atom)を生成するようにしたり,簡単なタグ機能を加えた.</p>
-<h2>v0.3</h2>
-<p>v0.3では機能の追加ではなく,コードを分けたり修正したりした.あと生成する際に使用するtwigファイルの場所を変更したので,v0.2からv0.3でテーマの互換性がないですが,sampleテーマは直した.</p>
-<h2>v0.4でしたいこと</h2>
-<p>v0.4ではconfig.jsonの場所をcontentsの中にしたい. あとinitでconfig.jsonファイルの生成も. 機能としてはテーマが設定したページを作れるようにしたり,ユーザがMarkdownファイルを作るだけで設定されたテンプレートからページを生成できるようにしたい.  </p>
-<hr />
-<p>現在アクセスできるのは</p>
-<ul>
-<li>/page/:page_number</li>
-<li>/article/:year/:month/:title</li>
-<li>/tag</li>
-<li>/tag/:tag_name/:page_number</li>
-</ul>
-
-            </div>
-    <div class="article-share">
-                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://taniko.github.io/article/2016/04/261251" data-text="Saori v0.3を作った - tanikoのぶろぐ">Tweet</a>
-                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://taniko.github.io/article/2016/04/261251"></a>
-            </div>
-
-    </article>
-            <article>
-    <span class="article-date">April 24, 2016</span>
-    <h1 class="article-title"><a href="https://taniko.github.io/article/2016/04/saori">Saori v0.1.0のリリース</a></h1>
-            <ul class="article-tags">
-                            <li><a href="/tag/saori/1">saori</a></li>
-                            <li><a href="/tag/php/1">php</a></li>
-                    </ul>
-        <div class="article-contents">
-                    <h2>Saoriについて</h2>
-<p>SaoriというPHPを使った簡単なサイトジェネレータを作りました.現在のバージョンはv0.1.0です.これで,PHP動かない場所(たとえばusername.github.io)でもブログを公開できます. 仕組みとしてはローカルでPHPを使ってHTMLを生成して,それを公開するって流れです.<br />
-現在,テーマはsampleしかないのです.これでは1ページあたりの記事の数は5つとなっています.
-使い方は<a href="https://github.com/hrgruri/saori">GitHub</a>で.まだまだ開発途中で,追加したい機能がいくつかあるのでがんばります.  </p>
-<pre><code class="language-sh">composer install hrgruri/saori
-</code></pre>
-<h3>機能</h3>
-<ul>
-<li>各記事用のページの生成(/article/:year/:month/title)</li>
-<li>記事(N件)ごとのページを生成(/page/:page_number)</li>
-</ul>
-<h3>予定</h3>
-<p>各記事に対する設定でタグの欄があるのですが,Saoriの機能ではタグ一覧取得,タグ用のページの生成がないので,タグ機能を加えようと思います.<br />
-フィード機能(ATOM/RSS)がまだできていないので,それもできればいいかなと思っています.</p>
-<hr />
-<p>プログラムの話は全くしていないので,それに関しては近いうちに別の記事でします.</p>
-
-            </div>
-    <div class="article-share">
-                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://taniko.github.io/article/2016/04/saori" data-text="Saori v0.1.0のリリース - tanikoのぶろぐ">Tweet</a>
-                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://taniko.github.io/article/2016/04/saori"></a>
-            </div>
-
-    </article>
         <nav class="pager">
                     <div class="previous"><a href="https://taniko.github.io/page/4">&laquo; prev</a></div>
-                    </nav>
+                            <div class="next"><a href="https://taniko.github.io/page/6">next &raquo;</a></div>
+            </nav>
                 </div>
                 <div id="blog-side" class="col-xs-12 col-md-4">
                                                                 <div id="side-profile">
@@ -248,7 +228,6 @@ object(Hrgruri\Rarcs\Asset\Nishikie)#51 (5) {
                             <ul>
                                                             <li><a href="https://github.com/taniko">GitHub</a><br></li>
                                                             <li><a href="https://twitter.com/taniko_dev">Twitter</a><br></li>
-                                                            <li><a href="https://qiita.com/taniko">Qiita</a><br></li>
                                                             <li><a href="https://speakerdeck.com/hrgruri">Speaker Deck</a><br></li>
                                                             <li><a href="/repository">リポジトリ説明</a><br></li>
                                                         </ul>
@@ -257,11 +236,11 @@ object(Hrgruri\Rarcs\Asset\Nishikie)#51 (5) {
                                                                 <div id="side-recent" class="hidden-sm-down">
                             <div class="side-title">最新記事</div>
                             <ul>
+                                                                    <li><a href="https://taniko.github.io/article/2018/03/140815">Laravelのクエリビルダでifとかを使う</a><br></li>
+                                                                    <li><a href="https://taniko.github.io/article/2018/03/132311">Laravelのクエリビルダでifとかを使う</a><br></li>
                                                                     <li><a href="https://taniko.github.io/article/2017/12/071509">マルチバイト周りに対応したローマ数字のパーサを作った</a><br></li>
                                                                     <li><a href="https://taniko.github.io/article/2017/09/211755">pixiv 2017 SUMMER BOOT CAMPに参加してきました</a><br></li>
                                                                     <li><a href="https://taniko.github.io/article/2017/09/030049">Saori v3のリリース</a><br></li>
-                                                                    <li><a href="https://taniko.github.io/article/2016/12/311932">2016年のまとめ</a><br></li>
-                                                                    <li><a href="https://taniko.github.io/article/2016/11/251311">Saori v2.2のリリース</a><br></li>
                                                             </ul>
                         </div>
                     
@@ -271,6 +250,7 @@ object(Hrgruri\Rarcs\Asset\Nishikie)#51 (5) {
                                                             <li><a href="/tag/api/1">api (1)</a></li>
                                                             <li><a href="/tag/conference/1">conference (1)</a></li>
                                                             <li><a href="/tag/internship/1">internship (2)</a></li>
+                                                            <li><a href="/tag/laravel/1">laravel (2)</a></li>
                                                             <li><a href="/tag/php/1">php (10)</a></li>
                                                             <li><a href="/tag/saori/1">saori (11)</a></li>
                                                             <li><a href="/tag/univ/1">univ (3)</a></li>
