@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 <title>tanikoのぶろぐ</title>
 <link href="https://taniko.github.io"></link>
-<updated>2018-03-14T08:15:29+09:00</updated>
+<updated>2018-03-14T08:19:44+09:00</updated>
 <id>urn:uuid:c90b8eeb-3954-eaf8-0b65-eae8678a9ee4</id>
 <entry>
 <author><name>Yuya Aratani</name>
@@ -11,84 +11,6 @@
 <link href="https://taniko.github.io/article/2018/03/140815"></link>
 <id>urn:uuid:d8ac6ad6-421d-8b27-cbab-382cdeacf0ce</id>
 <updated>2018-03-14T08:15:25+09:00</updated>
-<summary type="html"><![CDATA[<h2>はじめに</h2>
-<p>Laravelで特定のクエリパラメータを使ってクエリを組み立てたいときってありませんか? 例えば, 検索なので, <code>since_id</code>があれば, セットされている値以降で絞り込んで検索とかです.</p>
-<pre><code class="language-php">&lt;?php
-namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-use App\Asset;
-use App\Http\Requests\Asset\SearchRequest;
-
-class AssetController extends Controller
-{
-    public function search(SearchRequest $request)
-    {
-        $query = Asset::query();
-        if ($request-&gt;has('since_id')) {
-            $query = $query-&gt;where('id', '&gt;=', $request-&gt;input('since_id'));
-        }
-        if ($request-&gt;has('until_id')) {
-            $query = $query-&gt;where('id', '&lt;=', $request-&gt;input('until_id'));
-        }
-        return $query-&gt;get();
-    }
-}
-</code></pre>
-<p>こんな感じで書けますよね.<br />
-ただ, これだと何個もif文を書いていくことになります. メソッドチェーンでやってみたくなったので, やってみましょう.</p>
-<h2>やり方</h2>
-<h3>マクロの登録</h3>
-<p>まず, クエリビルダで<code>if</code>と<code>whereIf</code>を使えるように登録します. <code>app/Providers/AppServiceProvider.php</code>に以下のコードを加えます.</p>
-<pre><code class="language-php">&lt;?php
-// app/Providers/AppServiceProvider.php
-namespace App\Providers;
-
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Database\Query\Builder;
-use Illuminate\Support\Facades\Schema;
-
-class AppServiceProvider extends ServiceProvider
-{
-    public function boot()
-    {
-        Builder::macro('if', function (bool $condition, callable $func) {
-            return $condition ? $func($this) : $this;
-        });
-        Builder::macro('whereIf', function (bool $condition, $column, $operator = null, $value = null, $boolean = 'and') {
-            return $condition ? $this-&gt;where($column, $operator, $value, $boolean) : $this;
-        });
-    }
-}
-</code></pre>
-<p>まず1つ目は, コールバック関数を与える方法です. これは, 複雑なクエリを付け加えたい時に使用します. 単純な<code>where</code>句を加えたいだけなら, この方法はおすすめしません.<br />
-2つ目は<code>where</code>句のみを付属させるものです. <code>where()</code>とほぼ同じ使い方なので, こちらがおすすめです. <code>where()</code>との違いは, 第1引数が<code>true</code>ならば<code>where</code>が加えられるという点です.</p>
-<h3>使い方</h3>
-<p>ユーザの投稿一覧の取得のサンプルコードです.</p>
-<pre><code class="language-php">&lt;?php
-// 1つ目 if
-$posts = $user-&gt;posts()
-    -&gt;if($request-&gt;has('since_id'), function ($query) use ($request) {
-        return $query-&gt;where('id', '&gt;=', $request-&gt;input('since_id'));
-    })-&gt;get();
-
-// 2つ目 whereIf
-$posts = $user-&gt;posts()
-    -&gt;whereIf($request-&gt;has('since_id'), 'id', '&gt;=', $request-&gt;input('since_id'));
-</code></pre>
-<p>こんな感じでメソッドチェーンをつなげていくことができます.<br />
-どちらの方が見やすいのか. ブロックで分けるべきか, 1行でまとめるべきか. あと, 型宣言や関数呼び出しの速度も.</p>
-<h2>リンク</h2>
-<p><a href="https://laravel.com/api/5.5/Illuminate/Database/Eloquent/Builder.html#method_where">Laravel API - https://laravel.com/api/5.5/Illuminate/Database/Eloquent/Builder.html#method_where</a></p>
-]]></summary>
-</entry>
-<entry>
-<author><name>Yuya Aratani</name>
-</author>
-<title>Laravelのクエリビルダでifとかを使う</title>
-<link href="https://taniko.github.io/article/2018/03/132311"></link>
-<id>urn:uuid:e85d30b9-c6a4-25ae-3f91-5145ef1eaccc</id>
-<updated>2018-03-14T08:11:30+09:00</updated>
 <summary type="html"><![CDATA[<h2>はじめに</h2>
 <p>Laravelで特定のクエリパラメータを使ってクエリを組み立てたいときってありませんか? 例えば, 検索なので, <code>since_id</code>があれば, セットされている値以降で絞り込んで検索とかです.</p>
 <pre><code class="language-php">&lt;?php
