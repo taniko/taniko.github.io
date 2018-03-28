@@ -38,6 +38,22 @@
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
                                 <article>
+    <span class="article-date">June 10, 2016</span>
+    <h1 class="article-title"><a href="https://taniko.github.io/article/2016/06/102235">Saori v0.5を作った</a></h1>
+        <div class="article-contents">
+                    <p>Saori v0.5.0をリリースした. これで簡単にユーザが新たなページを生成することができるようになった. そして,<a href="http://hrgruri.github.io/article/2016/06/042227/">前の記事</a>で言っていたテーブルがおかしい理由はテーブルのCSSが記述されていなかったからでした. ボーダの設定を指定なかったので,枠線がない状態で出力されていただけでした.</p>
+<hr />
+<p>そろそろv0.x系をやめてv1.0にしてもいい頃かもしれない. 最初に思っていた必要な最低限の機能はできたと思う.<br />
+それとちゃんとした使い方をまとめて記事かページを生成する必要がある. 今のところ他の人が使うのには不親切だ. README.mdには記事の編集のことしか記述していない. (誰か作る人がいるのかわからないが)テーマの作り方やユーザページについてなど. こういったものをまとめ終えたらv1.0.0にしたいと思います.</p>
+
+            </div>
+    <div class="article-share">
+                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://taniko.github.io/article/2016/06/102235" data-text="Saori v0.5を作った - tanikoのぶろぐ">Tweet</a>
+                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://taniko.github.io/article/2016/06/102235"></a>
+            </div>
+
+    </article>
+            <article>
     <span class="article-date">June 4, 2016</span>
     <h1 class="article-title"><a href="https://taniko.github.io/article/2016/06/042227">Saori v0.5.x-devにてTableがおかしい</a></h1>
             <ul class="article-tags">
@@ -193,37 +209,6 @@ object(Hrgruri\Rarcs\Asset\Nishikie)#51 (5) {
             </div>
 
     </article>
-            <article>
-    <span class="article-date">April 26, 2016</span>
-    <h1 class="article-title"><a href="https://taniko.github.io/article/2016/04/261251">Saori v0.3を作った</a></h1>
-            <ul class="article-tags">
-                            <li><a href="/tag/saori/1">saori</a></li>
-                            <li><a href="/tag/php/1">php</a></li>
-                    </ul>
-        <div class="article-contents">
-                    <p>Saoriにいくつか機能を加えた.</p>
-<h2>v0.2</h2>
-<p>v0.2ではフィード(/feed.atom)を生成するようにしたり,簡単なタグ機能を加えた.</p>
-<h2>v0.3</h2>
-<p>v0.3では機能の追加ではなく,コードを分けたり修正したりした.あと生成する際に使用するtwigファイルの場所を変更したので,v0.2からv0.3でテーマの互換性がないですが,sampleテーマは直した.</p>
-<h2>v0.4でしたいこと</h2>
-<p>v0.4ではconfig.jsonの場所をcontentsの中にしたい. あとinitでconfig.jsonファイルの生成も. 機能としてはテーマが設定したページを作れるようにしたり,ユーザがMarkdownファイルを作るだけで設定されたテンプレートからページを生成できるようにしたい.  </p>
-<hr />
-<p>現在アクセスできるのは</p>
-<ul>
-<li>/page/:page_number</li>
-<li>/article/:year/:month/:title</li>
-<li>/tag</li>
-<li>/tag/:tag_name/:page_number</li>
-</ul>
-
-            </div>
-    <div class="article-share">
-                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://taniko.github.io/article/2016/04/261251" data-text="Saori v0.3を作った - tanikoのぶろぐ">Tweet</a>
-                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://taniko.github.io/article/2016/04/261251"></a>
-            </div>
-
-    </article>
         <nav class="pager">
                     <div class="previous"><a href="https://taniko.github.io/page/4">&laquo; prev</a></div>
                             <div class="next"><a href="https://taniko.github.io/page/6">next &raquo;</a></div>
@@ -243,6 +228,8 @@ object(Hrgruri\Rarcs\Asset\Nishikie)#51 (5) {
                             <ul>
                                                             <li><a href="https://github.com/taniko">GitHub</a><br></li>
                                                             <li><a href="https://twitter.com/taniko_dev">Twitter</a><br></li>
+                                                            <li><a href="https://clipas.me/taniko">Clipas</a><br></li>
+                                                            <li><a href="https://qiita.com/taniko">Qiita</a><br></li>
                                                             <li><a href="https://speakerdeck.com/hrgruri">Speaker Deck</a><br></li>
                                                             <li><a href="/repository">リポジトリ説明</a><br></li>
                                                         </ul>
@@ -251,11 +238,11 @@ object(Hrgruri\Rarcs\Asset\Nishikie)#51 (5) {
                                                                 <div id="side-recent" class="hidden-sm-down">
                             <div class="side-title">最新記事</div>
                             <ul>
+                                                                    <li><a href="https://taniko.github.io/article/2018/03/280656">Clipasってサイトを作りました</a><br></li>
                                                                     <li><a href="https://taniko.github.io/article/2018/03/140815">Laravelのクエリビルダでifとかを使う</a><br></li>
                                                                     <li><a href="https://taniko.github.io/article/2017/12/071509">マルチバイト周りに対応したローマ数字のパーサを作った</a><br></li>
                                                                     <li><a href="https://taniko.github.io/article/2017/09/211755">pixiv 2017 SUMMER BOOT CAMPに参加してきました</a><br></li>
                                                                     <li><a href="https://taniko.github.io/article/2017/09/030049">Saori v3のリリース</a><br></li>
-                                                                    <li><a href="https://taniko.github.io/article/2016/12/311932">2016年のまとめ</a><br></li>
                                                             </ul>
                         </div>
                     

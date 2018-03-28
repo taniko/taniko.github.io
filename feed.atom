@@ -2,15 +2,34 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 <title>tanikoのぶろぐ</title>
 <link href="https://taniko.github.io"></link>
-<updated>2018-03-14T08:19:44+09:00</updated>
+<updated>2018-03-28T07:03:08+00:00</updated>
 <id>urn:uuid:c90b8eeb-3954-eaf8-0b65-eae8678a9ee4</id>
+<entry>
+<author><name>Yuya Aratani</name>
+</author>
+<title>Clipasってサイトを作りました</title>
+<link href="https://taniko.github.io/article/2018/03/280656"></link>
+<id>urn:uuid:447316c4-1551-ad2f-aa8c-e481fb651fd4</id>
+<updated>2018-03-28T06:56:32+00:00</updated>
+<summary type="html"><![CDATA[<p>ただ単に, SNSのアカウントなどのURLをまとめるサービスである<a href="https://clipas.me">Clipas</a>を作りました.</p>
+<h2>clipasについて</h2>
+<p>どんなサービスかは見てもらう方が早いと思うので私のページのURLを載せておきます.</p>
+<p><a href="https://clipas.me/taniko">https://clipas.me/taniko</a></p>
+<p>自分に関するURLまとめておくだけのサービスなので, SNS, ホームページ等のURLを載せて, このサービスのURLを他のサービスのURL欄に載せておくだけです. 自分のプロフィールへのリンク, アカウント情報を1箇所にまとめられるので便利.</p>
+<h2>作った理由</h2>
+<p>Twitter, GitHub, Instagramなどでプロファイル欄にURLを載せられる場所ありますよね？ そこにが何のURLを載せていますか？ どのURLを載せるか悩んでいませんか？<br />
+私は TwitterのはGitHubのリンク. GitHub にはホームページのリンクを載せていました. 他にもFlickrやInstagramなどでも様々でした. 1箇所で自分のアカウント一覧を表示してくれるサービスを作りました.</p>
+<h2>今後</h2>
+<p>clipasに説明欄が足りないなと思ったので, あとで加えようと思います. また, 公式(？)サービス一覧追加のリクエストフォームがあればいいなと. あと, できればユーザアイコンも.</p>
+]]></summary>
+</entry>
 <entry>
 <author><name>Yuya Aratani</name>
 </author>
 <title>Laravelのクエリビルダでifとかを使う</title>
 <link href="https://taniko.github.io/article/2018/03/140815"></link>
 <id>urn:uuid:d8ac6ad6-421d-8b27-cbab-382cdeacf0ce</id>
-<updated>2018-03-14T08:15:25+09:00</updated>
+<updated>2018-03-13T23:15:25+00:00</updated>
 <summary type="html"><![CDATA[<h2>はじめに</h2>
 <p>Laravelで特定のクエリパラメータを使ってクエリを組み立てたいときってありませんか? 例えば, 検索なので, <code>since_id</code>があれば, セットされている値以降で絞り込んで検索とかです.</p>
 <pre><code class="language-php">&lt;?php
@@ -88,7 +107,7 @@ $posts = $user-&gt;posts()
 <title>マルチバイト周りに対応したローマ数字のパーサを作った</title>
 <link href="https://taniko.github.io/article/2017/12/071509"></link>
 <id>urn:uuid:1b76f5b3-5ad5-d33b-5149-c4d573065e3a</id>
-<updated>2017-12-07T15:09:46+09:00</updated>
+<updated>2017-12-07T06:09:46+00:00</updated>
 <summary type="html"><![CDATA[<p>日本語とは厄介なのでしょうか? とても扱いやすい言語だとは思います. 特に数字周りに関しては素晴らしい思っています. 英語の数え方とか加減乗除とかは厄介だと思います.<br />
 では, 日本の厄介な部分はどこかというと, マルチバイト文字だということ. 文字数が多すぎる.<br />
 ということで, 今回はローマ数字周りのライブラリです.</p>
@@ -128,7 +147,7 @@ var_dump(Taniko\Romans\Parser::toInt('MMⅩVII'));
 <title>pixiv 2017 SUMMER BOOT CAMPに参加してきました</title>
 <link href="https://taniko.github.io/article/2017/09/211755"></link>
 <id>urn:uuid:459a5104-dd21-26bf-8d17-138b34de443c</id>
-<updated>2017-09-21T17:55:51+09:00</updated>
+<updated>2017-09-21T08:55:51+00:00</updated>
 <summary type="html"><![CDATA[<p><img src="/article/2017/09/211755/front.jpg" alt="" />
 ピクシブさんのインターンに行ってきたのでそのお話です. <a href="https://taniko.github.io/article/2016/09/summer_boot_camp_2016/">去年も参加</a>したので, 1年ぶり2度めのピクシブさんでのインターンでした.</p>
 <h2>参加するまで</h2>
@@ -176,7 +195,7 @@ var_dump(Taniko\Romans\Parser::toInt('MMⅩVII'));
 <title>Saori v3のリリース</title>
 <link href="https://taniko.github.io/article/2017/09/030049"></link>
 <id>urn:uuid:851adc68-9980-f15c-afd3-bfeefe6df551</id>
-<updated>2017-09-03T00:49:14+09:00</updated>
+<updated>2017-09-02T15:49:14+00:00</updated>
 <summary type="html"><![CDATA[<p>Saoriのバージョン3をリリースしました. 実際にリリースしたのは5月とかなり前です.<br />
 v3での主な変更点は以下のとおりです.</p>
 <ul>
@@ -203,7 +222,7 @@ $app-&gt;run();
 <title>2016年のまとめ</title>
 <link href="https://taniko.github.io/article/2016/12/311932"></link>
 <id>urn:uuid:2074e7e0-9b5a-3730-dc21-99c56d5dd2d1</id>
-<updated>2016-12-31T19:32:38+09:00</updated>
+<updated>2016-12-31T10:32:38+00:00</updated>
 <summary type="html"><![CDATA[<p>もう年末です. 今までダラダラと過ごしていた私ですが, 今年は珍しく活動したのでそのまとめです.</p>
 <h2>大学のオープンキャンパス手伝い</h2>
 <p>4月頃, 3回生のときに授業の一環で作成した簡単な情報推薦のサイトをオープンキャンパスで紹介する事になりました. 簡単にコードを修正して終わりのつもりだったのですが, ｢前のままだと地味なので推薦できるものを書籍だけでなくて浮世絵も追加してね｣と先生に言われて新たにコードを書くことになりました.</p>
@@ -224,7 +243,7 @@ $app-&gt;run();
 <title>Saori v2.2のリリース</title>
 <link href="https://taniko.github.io/article/2016/11/251311"></link>
 <id>urn:uuid:67b62569-a892-8164-9011-97a1e4beb135</id>
-<updated>2016-11-25T13:11:48+09:00</updated>
+<updated>2016-11-25T04:11:48+00:00</updated>
 <summary type="html"><![CDATA[<p>v2.2では主にコマンドの追加をしました.</p>
 <h2>コマンドの追加</h2>
 <h3>deploy</h3>
@@ -273,7 +292,7 @@ article {
 <title>Slackのフレームワーク(?)を作った</title>
 <link href="https://taniko.github.io/article/2016/10/ricca"></link>
 <id>urn:uuid:b5440d86-7e78-04ea-725d-5bf998fe61e7</id>
-<updated>2016-10-22T23:11:22+09:00</updated>
+<updated>2016-10-22T14:11:22+00:00</updated>
 <summary type="html"><![CDATA[<p><a href="https://github.com/hrgruri/ricca">Ricca</a>というSlackのフレームワークのようなものをPHPで作りました. できることは少ないですが, なにかメッセージを投げるとそれに一致したコマンドが動いて, Twitterにつぶやかれたり, Slackに文字を返したりするという単純なものです.<br />
 例としては｢tw こんにちは｣とメッセージを送るとTwitterに｢こんにちは｣とつぶやかれるとか｢pid｣でBotの動いているプロセスIDがslackに返ってくとかです.</p>
 <h2>コマンドについて</h2>
@@ -312,7 +331,7 @@ $app-&gt;run();
 <title>saoriのv2.1リリース</title>
 <link href="https://taniko.github.io/article/2016/09/saori_v2_1"></link>
 <id>urn:uuid:489d64f6-a1ec-80b4-f1c2-d3668fdbcf7f</id>
-<updated>2016-09-22T18:01:37+09:00</updated>
+<updated>2016-09-22T09:01:37+00:00</updated>
 <summary type="html"><![CDATA[<p>saori v2.1.0をリリースしました. v2.0の話をしていなかったのでここでまとめて話します.</p>
 <h2>create-projectからインストール</h2>
 <p><code>composer create-project hrgruri/saori-skeleton blog</code>でインストールができるようになりました. これにより</p>
@@ -343,7 +362,7 @@ php -S localhost:8000 -t local
 <title>pixiv 2016 SUMMER BOOT CAMPに参加</title>
 <link href="https://taniko.github.io/article/2016/09/summer_boot_camp_2016"></link>
 <id>urn:uuid:ee3f57c9-75fd-5da3-c87b-c868fd2dc063</id>
-<updated>2016-09-09T15:29:37+09:00</updated>
+<updated>2016-09-09T06:29:37+00:00</updated>
 <summary type="html"><![CDATA[<h1>ピクシブのインターンに参加</h1>
 <p><a href="https://ssl.pixiv.net/recruit/entry/summer_intern16.php">pixiv 2016 SUMMER BOOT CAMP</a>にエンジニア職で参加をしたのでその話です.</p>
 <h2>参加するまで</h2>
@@ -383,7 +402,7 @@ php -S localhost:8000 -t local
 <title>学年暦APIを作った</title>
 <link href="https://taniko.github.io/article/2016/08/ritsucal_api"></link>
 <id>urn:uuid:ff54d09a-fdbb-3a75-7de8-130c6d0df2a6</id>
-<updated>2016-08-26T22:41:38+09:00</updated>
+<updated>2016-08-26T13:41:38+00:00</updated>
 <summary type="html"><![CDATA[<p>簡単な大学の学年暦APIを作ったのでその報告です.</p>
 <p><a href="https://ritsucal.hrgruri.com">https://ritsucal.hrgruri.com</a> です</p>
 <p>大学と大学院(情報理工学研究科)の学年暦をJSONで取得できるという簡単なものです. 使い方は<a href="https://ritsucal.hrgruri.com/doc">ドキュメント</a>を見てもらえればいいかと.<br />
@@ -396,7 +415,7 @@ php -S localhost:8000 -t local
 <title>saori v2.0を開発中</title>
 <link href="https://taniko.github.io/article/2016/08/041630"></link>
 <id>urn:uuid:56a26964-1f88-f2ce-4e60-53a52d09e01e</id>
-<updated>2016-08-04T16:27:14+09:00</updated>
+<updated>2016-08-04T07:27:14+00:00</updated>
 <summary type="html"><![CDATA[<p><code>composer create-project</code>でインストールできるようにして, symfony/consoleを利用してsaoriを使用できるようにしました. あとnamespaceを修正.</p>
 <h2>v2.0-devをインストール</h2>
 <p><code>composer create-project hrgruri/saori:v2.0.x-dev blog</code>で開発途中のv2.0をインストールして始めることができます. 最後の<code>blog</code>はディレクトリ名なので別のものに変えても構いません.  </p>
@@ -429,7 +448,7 @@ php saori build
 <title>弊大学の闇 (学年暦編)</title>
 <link href="https://taniko.github.io/article/2016/07/calender"></link>
 <id>urn:uuid:33d94f93-6642-c73b-99d8-cc188bf7dec0</id>
-<updated>2016-07-20T16:31:04+09:00</updated>
+<updated>2016-07-20T07:31:04+00:00</updated>
 <summary type="html"><![CDATA[<h1>学年暦の闇</h1>
 <p>大学の行事をJSONで返してくれるようなものを作ろうとしていた時に気づいた弊大学の闇を話したいと思います.</p>
 <h2>calender ?</h2>
@@ -464,7 +483,7 @@ CalendarではなくCalender. ちなみにCalenderは光沢機のこと.</p>
 <title>Saoriの下書きとキャッシュ</title>
 <link href="https://taniko.github.io/article/2016/07/saori_article_cache"></link>
 <id>urn:uuid:baf866b4-1c67-b3b3-182b-fd8dde619b5b</id>
-<updated>2016-07-19T14:14:19+09:00</updated>
+<updated>2016-07-19T05:14:19+00:00</updated>
 <summary type="html"><![CDATA[<h1>saori v1.1の開発</h1>
 <p>現在saori v1.1の開発を行っています.  </p>
 <ul>
@@ -498,7 +517,7 @@ CalendarではなくCalender. ちなみにCalenderは光沢機のこと.</p>
 <title>PHPカンファレンス 関西2016でLT</title>
 <link href="https://taniko.github.io/article/2016/07/phpcon_kansai_2016"></link>
 <id>urn:uuid:cebc8a79-9827-c9dc-132e-f9d367285c38</id>
-<updated>2016-07-17T23:23:30+09:00</updated>
+<updated>2016-07-17T14:23:30+00:00</updated>
 <summary type="html"><![CDATA[<p>PHPカンファレンス関西 2016に参加をして, ブログを書くまでがカンファレンスだと言われたので書きたいと思います. 初めてのIT系イベント, 初めてのLT, 初めての懇親会でした. 先に断っておきますがカンファレンスでの基調講演やセッションの感想ではなく個人的な話が主です.</p>
 <h1>当日まで</h1>
 <h2>カンファレンスに参加</h2>
@@ -614,7 +633,7 @@ LTをしたことで思ったのが, みんな優しかったです. LT後にも
 <title>demo</title>
 <link href="https://taniko.github.io/article/2016/07/demo"></link>
 <id>urn:uuid:a2835caf-e491-e2cc-87b9-f5001d079012</id>
-<updated>2016-07-16T16:32:52+09:00</updated>
+<updated>2016-07-16T07:32:52+00:00</updated>
 <summary type="html"><![CDATA[<h1>deom</h1>
 <p>これはデモ用の記事です. 現在LT真っ最中です.<br />
 <img src="/article/2016/07/demo/front.jpg" alt="demo" /></p>
@@ -626,7 +645,7 @@ LTをしたことで思ったのが, みんな優しかったです. LT後にも
 <title>Saoriの使い方</title>
 <link href="https://taniko.github.io/article/2016/07/152308"></link>
 <id>urn:uuid:5caf2536-da26-989f-a950-a46a24379348</id>
-<updated>2016-07-15T23:08:00+09:00</updated>
+<updated>2016-07-15T14:08:00+00:00</updated>
 <summary type="html"><![CDATA[<p>PHPを使ってgithub.ioでブログをやるための静的サイトジェネレータである<a href="https://github.com/hrgruri/saori">saori</a>の使い方を簡単にですがまとめました. リンクは<a href="/repository/saori">こちら</a>です.<br />
 現在, 使い方だけなのでテーマの作成方法など内部的な話は書けていませんが近いうちに書きたいと思います.</p>
 ]]></summary>
@@ -637,7 +656,7 @@ LTをしたことで思ったのが, みんな優しかったです. LT後にも
 <title>ブログのテーマを変えた</title>
 <link href="https://taniko.github.io/article/2016/07/081625"></link>
 <id>urn:uuid:7473600e-6d31-fd1a-ba82-1d76900219fa</id>
-<updated>2016-07-08T16:25:33+09:00</updated>
+<updated>2016-07-08T07:25:33+00:00</updated>
 <summary type="html"><![CDATA[<p>ブログのテーマを変えました. ただそれだけです.</p>
 ]]></summary>
 </entry>
@@ -647,7 +666,7 @@ LTをしたことで思ったのが, みんな優しかったです. LT後にも
 <title>学年暦のスクレイピングについて</title>
 <link href="https://taniko.github.io/article/2016/06/121113"></link>
 <id>urn:uuid:e6e21b4a-e55c-f3f2-7e51-54bbf5804668</id>
-<updated>2016-06-12T11:13:02+09:00</updated>
+<updated>2016-06-12T02:13:02+00:00</updated>
 <summary type="html"><![CDATA[<p><a href="/article/2016/06/ritsucal/">前の記事</a>でPHPを使って,学年暦のスクレイピングを行うライブラリの紹介をしたので,今回はそれを作ったことの話をします. スクレイピングは<a href="https://github.com/FriendsOfPHP/Goutte">fabpot/goutte</a>を使用しました</p>
 <h2>ページをローカルで動かす</h2>
 <p>おそらくコード書いて1回では成功できず,何度も失敗すると思うので,負荷を与えないように対象のページをダウンロードしてローカルで動かしてそこにスクレイピングをしましょう.<br />
@@ -695,7 +714,7 @@ eventはclass="event"ではなくテーブルの要素(イベント名･月･�
 <title>立命館の学年暦をスクレイピング</title>
 <link href="https://taniko.github.io/article/2016/06/ritsucal"></link>
 <id>urn:uuid:63d4f46c-3601-0afb-06de-1f766adfdaa6</id>
-<updated>2016-06-11T18:42:03+09:00</updated>
+<updated>2016-06-11T09:42:03+00:00</updated>
 <summary type="html"><![CDATA[<h1>ritsucal</h1>
 <p>ritsucalは立命館大学･大学院の学年暦をスクレイピングするPHPのライブラリです. 前から作っていて<a href="https://github.com/hrgruri/ritsucal">GitHub</a>にあげていましたが,久しぶりに見るとREADME.mdに変な文字が混ざっていたので,いくつか修正して,そのついでに簡単な使い方を書きます.</p>
 <h2>インストール</h2>
@@ -791,7 +810,7 @@ try {
 <title>Saori v0.5を作った</title>
 <link href="https://taniko.github.io/article/2016/06/102235"></link>
 <id>urn:uuid:23fc001a-3e3f-bf8b-c5ed-a324dac1d554</id>
-<updated>2016-06-10T22:35:58+09:00</updated>
+<updated>2016-06-10T13:35:58+00:00</updated>
 <summary type="html"><![CDATA[<p>Saori v0.5.0をリリースした. これで簡単にユーザが新たなページを生成することができるようになった. そして,<a href="http://hrgruri.github.io/article/2016/06/042227/">前の記事</a>で言っていたテーブルがおかしい理由はテーブルのCSSが記述されていなかったからでした. ボーダの設定を指定なかったので,枠線がない状態で出力されていただけでした.</p>
 <hr />
 <p>そろそろv0.x系をやめてv1.0にしてもいい頃かもしれない. 最初に思っていた必要な最低限の機能はできたと思う.<br />
@@ -804,7 +823,7 @@ try {
 <title>Saori v0.5.x-devにてTableがおかしい</title>
 <link href="https://taniko.github.io/article/2016/06/042227"></link>
 <id>urn:uuid:3d2ce163-17c3-11e4-8af0-6434679688d7</id>
-<updated>2016-06-04T22:27:39+09:00</updated>
+<updated>2016-06-04T13:27:39+00:00</updated>
 <summary type="html"><![CDATA[<p>現在Saoriのv0.5を作っていますが, どうやらテーブルが正しく表示されないです.</p>
 <pre><code class="language-markdown">|name|値|
 |:-:|:-:|
@@ -824,7 +843,7 @@ try {
 <title>立命館ARCのスクレイピング</title>
 <link href="https://taniko.github.io/article/2016/06/arc"></link>
 <id>urn:uuid:5ae20fc7-96ab-3424-13f6-7631c8288d3d</id>
-<updated>2016-06-02T21:12:11+09:00</updated>
+<updated>2016-06-02T12:12:11+00:00</updated>
 <summary type="html"><![CDATA[<h1>PHPでスクレイピング</h1>
 <p>創成3では立命館大学アート・リサーチセンター(以下ARC)のアクセスログを使って資料の推薦を行うことが目的でした. 最初はリンクだけを使った質素なものを作る予定でしたが, 途中でスクレイピングをして, サイト内だけで簡単な検索･閲覧をできるようにすることになりました. PHPを使ってやったのですが,これがとっても大変でした.</p>
 <h2>謎のname</h2>
@@ -897,7 +916,7 @@ object(Hrgruri\Rarcs\Asset\Nishikie)#51 (5) {
 <title>Saori v0.4.0を作りました</title>
 <link href="https://taniko.github.io/article/2016/05/301402"></link>
 <id>urn:uuid:4e289b13-8aa9-2eff-c8df-ce1f4431688a</id>
-<updated>2016-05-30T14:02:18+09:00</updated>
+<updated>2016-05-30T05:02:18+00:00</updated>
 <summary type="html"><![CDATA[<p>v0.4.0での変更点は</p>
 <ul>
 <li>Twigファイルの場所の変更</li>
@@ -918,7 +937,7 @@ object(Hrgruri\Rarcs\Asset\Nishikie)#51 (5) {
 <title>icd3</title>
 <link href="https://taniko.github.io/article/2016/04/icd3"></link>
 <id>urn:uuid:46e3d3e9-60be-c55d-95b1-163308e1424d</id>
-<updated>2016-04-29T23:40:52+09:00</updated>
+<updated>2016-04-29T14:40:52+00:00</updated>
 <summary type="html"><![CDATA[<p>先生｢創成3で作ってもらったサイトをオープンキャンパスで見せようと思う｣<br />
 私｢あっ,はい. ちゃんとしたコードに直したかったので, 修正したら渡します｣<br />
 先生｢それなんだけどね, 今のままだと書籍だけで見た感じが微妙だから絵も推薦できるようにして. 7月末までにしておいてね｣</p>
@@ -934,7 +953,7 @@ object(Hrgruri\Rarcs\Asset\Nishikie)#51 (5) {
 <title>Saori v0.3を作った</title>
 <link href="https://taniko.github.io/article/2016/04/261251"></link>
 <id>urn:uuid:10cd51a9-379b-acb9-e10c-0fe6cbeb7f26</id>
-<updated>2016-04-26T12:51:20+09:00</updated>
+<updated>2016-04-26T03:51:20+00:00</updated>
 <summary type="html"><![CDATA[<p>Saoriにいくつか機能を加えた.</p>
 <h2>v0.2</h2>
 <p>v0.2ではフィード(/feed.atom)を生成するようにしたり,簡単なタグ機能を加えた.</p>
@@ -958,7 +977,7 @@ object(Hrgruri\Rarcs\Asset\Nishikie)#51 (5) {
 <title>Saori v0.1.0のリリース</title>
 <link href="https://taniko.github.io/article/2016/04/saori"></link>
 <id>urn:uuid:93c68bd7-84eb-8947-a71c-48d1a86faad7</id>
-<updated>2016-04-24T18:53:20+09:00</updated>
+<updated>2016-04-24T09:53:20+00:00</updated>
 <summary type="html"><![CDATA[<h2>Saoriについて</h2>
 <p>SaoriというPHPを使った簡単なサイトジェネレータを作りました.現在のバージョンはv0.1.0です.これで,PHP動かない場所(たとえばusername.github.io)でもブログを公開できます. 仕組みとしてはローカルでPHPを使ってHTMLを生成して,それを公開するって流れです.<br />
 現在,テーマはsampleしかないのです.これでは1ページあたりの記事の数は5つとなっています.
