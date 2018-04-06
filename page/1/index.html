@@ -38,6 +38,75 @@
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
                                 <article>
+    <span class="article-date">April 6, 2018</span>
+    <h1 class="article-title"><a href="https://taniko.github.io/article/2018/04/060522">PHPの面白いところ</a></h1>
+            <ul class="article-tags">
+                            <li><a href="/tag/php/1">php</a></li>
+                    </ul>
+        <div class="article-contents">
+                    <p>注意 - 皮肉的な記事です. いくつか使っていて, 辛いところを記述するので, ネタみたいな記事です.</p>
+<h2>配列周り</h2>
+<p>PHPには, 配列がありまして, <code>$foo = [1, 2, 3]</code>とかです. 前までは<code>$foo = array(1, 2, 3)</code>でした.<br />
+そんな配列なのですが, JavaScriptとかRubyとかと違って, arrayであって, array objectではないわけです. そんなわけで, 配列の操作がしたければ, <code>array_*()</code>を使うわけです. <code>array_push()</code>に関しては, <code>$array[] = $val</code>でできます.<br />
+そんなPHPの配列で面白いところは, <code>array_map()</code>です. <code>array_push($array, $val_1)</code>, <code>array_filter($array, $callback)</code>, <code>array_reduce($array, $callback)</code>など, 第1引数に配列を持ちます. しかし, <code>array_map()</code>は<code>array_map($callback, $array)</code>と順番が逆なのです. これが辛い. 統一していて欲しい.<br />
+PHPの配列が辛い人は, <code>Illuminate\Support\Collection</code>を使ってオブジェクトにすればいいと思うので, <code>composer install illuminate/support</code>しましょう.</p>
+<h2>オブジェクトのコピー</h2>
+<p>PHPのオブジェクトを別の変数に渡す時, <code>clone</code>を利用します.</p>
+<pre><code>&lt;?php
+class Sample {
+    public $count = 0;
+}
+
+$foo = new Sample();
+$bar = clone $foo;
+
+$bar-&gt;count++;
+
+var_dump($foo-&gt;count); // int(0)
+var_dump($bar-&gt;count); // int(1)
+</code></pre>
+<p>もしも<code>clone</code>を使用しないと, 思わぬ副作用を生み出します.</p>
+<pre><code class="language-php">&lt;?php
+class Sample {
+    public $count = 0;
+}
+
+$foo = new Sample();
+$bar = $foo;
+
+$bar-&gt;count++;
+
+var_dump($foo-&gt;count); // int(1)
+var_dump($bar-&gt;count); // int(1)
+</code></pre>
+<p><code>$foo-&gt;count</code>も書き換わってしまうんですね. そんな<code>clone</code>ですが, クローンが作成される際に呼ばれるマジックメソッド<code>__clone()</code>というものがあります. これは作成された新たなオブジェクトで呼ばれます.</p>
+<pre><code class="language-php">&lt;?php
+class Sample {
+    public $count = 0;
+
+    public function __clone() {
+        $this-&gt;count++;
+    }
+}
+
+$foo = new Sample();
+$bar = clone $foo;
+
+var_dump($foo-&gt;count); // int(0)
+var_dump($bar-&gt;count); // int(1)
+</code></pre>
+<p>これにより, 遺伝子操作されたクローンを作ることができます. 使う機会があるかはわかりませんが.</p>
+<h2>ついでに</h2>
+<p>homebrewでのPHPのインストール方法が変わりました. いままでは<code>brew install php72</code>だったのですが, これからは, <code>brew install php@7.2</code>という形になります. あと, xdebugがインストールされていないようなので, 調べたらpeclを使ってとあったので, <code>pecl install xdebug</code>をしましょう. 詳しくは GitHubのIssueで <a href="https://github.com/Homebrew/homebrew-php/issues/4721">https://github.com/Homebrew/homebrew-php/issues/4721</a></p>
+
+            </div>
+    <div class="article-share">
+                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://taniko.github.io/article/2018/04/060522" data-text="PHPの面白いところ - tanikoのぶろぐ">Tweet</a>
+                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://taniko.github.io/article/2018/04/060522"></a>
+            </div>
+
+    </article>
+            <article>
     <span class="article-date">March 28, 2018</span>
     <h1 class="article-title"><a href="https://taniko.github.io/article/2018/03/280656">Clipasってサイトを作りました</a></h1>
         <div class="article-contents">
@@ -243,40 +312,6 @@ var_dump(Taniko\Romans\Parser::toInt('MMⅩVII'));
             </div>
 
     </article>
-            <article>
-    <span class="article-date">September 2, 2017</span>
-    <h1 class="article-title"><a href="https://taniko.github.io/article/2017/09/030049">Saori v3のリリース</a></h1>
-            <ul class="article-tags">
-                            <li><a href="/tag/php/1">php</a></li>
-                            <li><a href="/tag/saori/1">saori</a></li>
-                    </ul>
-        <div class="article-contents">
-                    <p>Saoriのバージョン3をリリースしました. 実際にリリースしたのは5月とかなり前です.<br />
-v3での主な変更点は以下のとおりです.</p>
-<ul>
-<li>github.io以外で使用可能</li>
-<li>設定ファイルをJSONからYAMLに変更</li>
-<li>テーマを外部から追加可能</li>
-</ul>
-<p>まず, github.io以外で使用可能になったので, 自分のVPSなどでブログを公開できるようになりました. <code>config/env.yml</code>の<code>public</code>にURLを記述します.  </p>
-<p>設定ファイルをYAMLに変えたのは, JSONの記述が辛かったからです. 括弧とかめんどくさかったのです.</p>
-<p>テーマを外部から追加可能というのは, テーマを追加できるようにしたということ(?). コードを見たほうが早い.</p>
-<pre><code class="language-php">&lt;?php
-require __DIR__.'/vendor/autoload.php';
-$app = new Taniko\Saori\Application(__DIR__);
-$app-&gt;addTheme('theme-name', __DIR__ . '/theme/append-theme');
-$app-&gt;run();
-</code></pre>
-<p>今までだと<a href="https://github.com/taniko/saori">taniko/saori</a>に存在するテーマしか使用できなかったのですが, このような感じでテーマを追加して, それを使用できるようにしました.</p>
-<p>やっぱり, PHPは最高ですね!</p>
-
-            </div>
-    <div class="article-share">
-                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://taniko.github.io/article/2017/09/030049" data-text="Saori v3のリリース - tanikoのぶろぐ">Tweet</a>
-                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://taniko.github.io/article/2017/09/030049"></a>
-            </div>
-
-    </article>
         <nav class="pager">
                             <div class="next"><a href="https://taniko.github.io/page/2">next &raquo;</a></div>
             </nav>
@@ -305,11 +340,11 @@ $app-&gt;run();
                                                                 <div id="side-recent" class="hidden-sm-down">
                             <div class="side-title">最新記事</div>
                             <ul>
+                                                                    <li><a href="https://taniko.github.io/article/2018/04/060522">PHPの面白いところ</a><br></li>
                                                                     <li><a href="https://taniko.github.io/article/2018/03/280656">Clipasってサイトを作りました</a><br></li>
                                                                     <li><a href="https://taniko.github.io/article/2018/03/140815">Laravelのクエリビルダでifとかを使う</a><br></li>
                                                                     <li><a href="https://taniko.github.io/article/2017/12/071509">マルチバイト周りに対応したローマ数字のパーサを作った</a><br></li>
                                                                     <li><a href="https://taniko.github.io/article/2017/09/211755">pixiv 2017 SUMMER BOOT CAMPに参加してきました</a><br></li>
-                                                                    <li><a href="https://taniko.github.io/article/2017/09/030049">Saori v3のリリース</a><br></li>
                                                             </ul>
                         </div>
                     
@@ -320,7 +355,7 @@ $app-&gt;run();
                                                             <li><a href="/tag/conference/1">conference (1)</a></li>
                                                             <li><a href="/tag/internship/1">internship (2)</a></li>
                                                             <li><a href="/tag/laravel/1">laravel (1)</a></li>
-                                                            <li><a href="/tag/php/1">php (10)</a></li>
+                                                            <li><a href="/tag/php/1">php (11)</a></li>
                                                             <li><a href="/tag/saori/1">saori (11)</a></li>
                                                             <li><a href="/tag/univ/1">univ (3)</a></li>
                                                         </ul>

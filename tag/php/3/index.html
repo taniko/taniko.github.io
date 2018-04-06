@@ -38,26 +38,39 @@
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
                                 <article>
-    <span class="article-date">August 26, 2016</span>
-    <h1 class="article-title"><a href="https://taniko.github.io/article/2016/08/ritsucal_api">学年暦APIを作った</a></h1>
+    <span class="article-date">April 24, 2016</span>
+    <h1 class="article-title"><a href="https://taniko.github.io/article/2016/04/saori">Saori v0.1.0のリリース</a></h1>
             <ul class="article-tags">
-                            <li><a href="/tag/api/1">api</a></li>
-                            <li><a href="/tag/univ/1">univ</a></li>
+                            <li><a href="/tag/saori/1">saori</a></li>
+                            <li><a href="/tag/php/1">php</a></li>
                     </ul>
         <div class="article-contents">
-                    <p>簡単な大学の学年暦APIを作ったのでその報告です.</p>
-<p><a href="https://ritsucal.hrgruri.com">https://ritsucal.hrgruri.com</a> です</p>
-<p>大学と大学院(情報理工学研究科)の学年暦をJSONで取得できるという簡単なものです. 使い方は<a href="https://ritsucal.hrgruri.com/doc">ドキュメント</a>を見てもらえればいいかと.<br />
-検索機能ですが,そのうちsince, untilができるようにはしたいと思います</p>
+                    <h2>Saoriについて</h2>
+<p>SaoriというPHPを使った簡単なサイトジェネレータを作りました.現在のバージョンはv0.1.0です.これで,PHP動かない場所(たとえばusername.github.io)でもブログを公開できます. 仕組みとしてはローカルでPHPを使ってHTMLを生成して,それを公開するって流れです.<br />
+現在,テーマはsampleしかないのです.これでは1ページあたりの記事の数は5つとなっています.
+使い方は<a href="https://github.com/hrgruri/saori">GitHub</a>で.まだまだ開発途中で,追加したい機能がいくつかあるのでがんばります.  </p>
+<pre><code class="language-sh">composer install hrgruri/saori
+</code></pre>
+<h3>機能</h3>
+<ul>
+<li>各記事用のページの生成(/article/:year/:month/title)</li>
+<li>記事(N件)ごとのページを生成(/page/:page_number)</li>
+</ul>
+<h3>予定</h3>
+<p>各記事に対する設定でタグの欄があるのですが,Saoriの機能ではタグ一覧取得,タグ用のページの生成がないので,タグ機能を加えようと思います.<br />
+フィード機能(ATOM/RSS)がまだできていないので,それもできればいいかなと思っています.</p>
+<hr />
+<p>プログラムの話は全くしていないので,それに関しては近いうちに別の記事でします.</p>
 
             </div>
     <div class="article-share">
-                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://taniko.github.io/article/2016/08/ritsucal_api" data-text="学年暦APIを作った - tanikoのぶろぐ">Tweet</a>
-                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://taniko.github.io/article/2016/08/ritsucal_api"></a>
+                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://taniko.github.io/article/2016/04/saori" data-text="Saori v0.1.0のリリース - tanikoのぶろぐ">Tweet</a>
+                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://taniko.github.io/article/2016/04/saori"></a>
             </div>
 
     </article>
         <nav class="pager">
+                    <div class="previous"><a href="https://taniko.github.io/tag/php/2">&laquo; prev</a></div>
                     </nav>
                 </div>
                 <div id="blog-side" class="col-xs-12 col-md-4">
