@@ -38,7 +38,49 @@
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
                                 <article>
-    <span class="article-date">March 13, 2018</span>
+    <span class="article-date">April 22, 2018</span>
+    <h1 class="article-title"><a href="https://taniko.github.io/article/2018/04/221906">Laravelが 201 Createdを返すってさ</a></h1>
+            <ul class="article-tags">
+                            <li><a href="/tag/laravel/1">laravel</a></li>
+                    </ul>
+        <div class="article-contents">
+                    <p>Laravel 5.6での話です. 5.6から, 新たにモデルを作成した際に<code>200 OK</code>ではなく, <code>201 Created</code>を返すようになったってだけの話です. (今更?)</p>
+<h2>どういうことか</h2>
+<p>LaravelをAPIとして利用していた時に, Eloquentモデルを返した際に, <code>200</code>だったのが, <code>201</code>に変更になりました.  </p>
+<pre><code class="language-php">// app/Http/Controllers/PostController.php
+&lt;?php
+
+namespace App\Http\Controllers;
+
+use App\Post;
+use App\Http\Requests\Post\CreateRequest;
+
+class PostController extends Controller
+{
+    public function create(CreateRequest $request)
+    {
+        return $request
+            -&gt;user()
+            -&gt;posts()
+            -&gt;save(Post::make($request-&gt;only(['text'])));
+    }
+}
+</code></pre>
+<p>こんな感じのコードがあった場合, 5.5までだと<code>200 OK</code>で新規に作成されたPostのデータがレスポンスとして, 返ってきていました. しかし, 5.6からは<code>201 Created</code>とPostのデータが返ってくるようになりました.<br />
+特に副作用がなさそうですが, テストやライブラリで<code>200</code>かを使っていれば思わぬ動作をしてしまいます. 皆さんは, axiosとかでasync/awaitとかthen/catchとか使っているので大丈夫ですよね. 私はPHPUnitで<code>assertStatus(200)</code>とかしていたのでテストが転けた.</p>
+<p>地味な変更点ではあるかと思いますが, せっかく<code>201 Created</code>という, ちゃんと意味があるものがあるので, 嬉しいですね.</p>
+<h2>ちなみに</h2>
+<p>この話自体はLaravel 5.5の時に出ていて, <a href="https://github.com/laravel/framework/pull/21603">PR</a>も出されていましたが, バグフィックスとかではなく, 破壊的変更であったため, 見送られ, 5.6で<a href="https://github.com/laravel/framework/pull/21625/">PR</a>がマージされました. 仕組み自体はRouterでレスポンス(コントローラでreturnしたもの)が<code>Illuminate\Database\Eloquent\Model</code>で,<code>wasRecentlyCreated</code>が<code>true</code>だったら<code>201 Created</code>で返すって感じです. 詳しくは<a href="https://github.com/mathieutu/framework/blob/f8af1166169d98a12af54aae8ceff87cea55bbbd/src/Illuminate/Routing/Router.php#L704-L705">コード</a>を.</p>
+
+            </div>
+    <div class="article-share">
+                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://taniko.github.io/article/2018/04/221906" data-text="Laravelが 201 Createdを返すってさ - tanikoのぶろぐ">Tweet</a>
+                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://taniko.github.io/article/2018/04/221906"></a>
+            </div>
+
+    </article>
+            <article>
+    <span class="article-date">March 14, 2018</span>
     <h1 class="article-title"><a href="https://taniko.github.io/article/2018/03/140815">Laravelのクエリビルダでifとかを使う</a></h1>
             <ul class="article-tags">
                             <li><a href="/tag/laravel/1">laravel</a></li>
@@ -148,11 +190,11 @@ $posts = $user-&gt;posts()
                                                                 <div id="side-recent" class="hidden-sm-down">
                             <div class="side-title">最新記事</div>
                             <ul>
+                                                                    <li><a href="https://taniko.github.io/article/2018/04/221906">Laravelが 201 Createdを返すってさ</a><br></li>
                                                                     <li><a href="https://taniko.github.io/article/2018/04/060522">PHPの面白いところ</a><br></li>
                                                                     <li><a href="https://taniko.github.io/article/2018/03/280656">Clipasってサイトを作りました</a><br></li>
                                                                     <li><a href="https://taniko.github.io/article/2018/03/140815">Laravelのクエリビルダでifとかを使う</a><br></li>
                                                                     <li><a href="https://taniko.github.io/article/2017/12/071509">マルチバイト周りに対応したローマ数字のパーサを作った</a><br></li>
-                                                                    <li><a href="https://taniko.github.io/article/2017/09/211755">pixiv 2017 SUMMER BOOT CAMPに参加してきました</a><br></li>
                                                             </ul>
                         </div>
                     
@@ -162,7 +204,7 @@ $posts = $user-&gt;posts()
                                                             <li><a href="/tag/api/1">api (1)</a></li>
                                                             <li><a href="/tag/conference/1">conference (1)</a></li>
                                                             <li><a href="/tag/internship/1">internship (2)</a></li>
-                                                            <li><a href="/tag/laravel/1">laravel (1)</a></li>
+                                                            <li><a href="/tag/laravel/1">laravel (2)</a></li>
                                                             <li><a href="/tag/php/1">php (11)</a></li>
                                                             <li><a href="/tag/saori/1">saori (11)</a></li>
                                                             <li><a href="/tag/univ/1">univ (3)</a></li>

@@ -38,6 +38,48 @@
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
                                 <article>
+    <span class="article-date">April 22, 2018</span>
+    <h1 class="article-title"><a href="https://taniko.github.io/article/2018/04/221906">Laravelが 201 Createdを返すってさ</a></h1>
+            <ul class="article-tags">
+                            <li><a href="/tag/laravel/1">laravel</a></li>
+                    </ul>
+        <div class="article-contents">
+                    <p>Laravel 5.6での話です. 5.6から, 新たにモデルを作成した際に<code>200 OK</code>ではなく, <code>201 Created</code>を返すようになったってだけの話です. (今更?)</p>
+<h2>どういうことか</h2>
+<p>LaravelをAPIとして利用していた時に, Eloquentモデルを返した際に, <code>200</code>だったのが, <code>201</code>に変更になりました.  </p>
+<pre><code class="language-php">// app/Http/Controllers/PostController.php
+&lt;?php
+
+namespace App\Http\Controllers;
+
+use App\Post;
+use App\Http\Requests\Post\CreateRequest;
+
+class PostController extends Controller
+{
+    public function create(CreateRequest $request)
+    {
+        return $request
+            -&gt;user()
+            -&gt;posts()
+            -&gt;save(Post::make($request-&gt;only(['text'])));
+    }
+}
+</code></pre>
+<p>こんな感じのコードがあった場合, 5.5までだと<code>200 OK</code>で新規に作成されたPostのデータがレスポンスとして, 返ってきていました. しかし, 5.6からは<code>201 Created</code>とPostのデータが返ってくるようになりました.<br />
+特に副作用がなさそうですが, テストやライブラリで<code>200</code>かを使っていれば思わぬ動作をしてしまいます. 皆さんは, axiosとかでasync/awaitとかthen/catchとか使っているので大丈夫ですよね. 私はPHPUnitで<code>assertStatus(200)</code>とかしていたのでテストが転けた.</p>
+<p>地味な変更点ではあるかと思いますが, せっかく<code>201 Created</code>という, ちゃんと意味があるものがあるので, 嬉しいですね.</p>
+<h2>ちなみに</h2>
+<p>この話自体はLaravel 5.5の時に出ていて, <a href="https://github.com/laravel/framework/pull/21603">PR</a>も出されていましたが, バグフィックスとかではなく, 破壊的変更であったため, 見送られ, 5.6で<a href="https://github.com/laravel/framework/pull/21625/">PR</a>がマージされました. 仕組み自体はRouterでレスポンス(コントローラでreturnしたもの)が<code>Illuminate\Database\Eloquent\Model</code>で,<code>wasRecentlyCreated</code>が<code>true</code>だったら<code>201 Created</code>で返すって感じです. 詳しくは<a href="https://github.com/mathieutu/framework/blob/f8af1166169d98a12af54aae8ceff87cea55bbbd/src/Illuminate/Routing/Router.php#L704-L705">コード</a>を.</p>
+
+            </div>
+    <div class="article-share">
+                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://taniko.github.io/article/2018/04/221906" data-text="Laravelが 201 Createdを返すってさ - tanikoのぶろぐ">Tweet</a>
+                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://taniko.github.io/article/2018/04/221906"></a>
+            </div>
+
+    </article>
+            <article>
     <span class="article-date">April 6, 2018</span>
     <h1 class="article-title"><a href="https://taniko.github.io/article/2018/04/060522">PHPの面白いところ</a></h1>
             <ul class="article-tags">
@@ -129,7 +171,7 @@ var_dump($bar-&gt;count); // int(1)
 
     </article>
             <article>
-    <span class="article-date">March 13, 2018</span>
+    <span class="article-date">March 14, 2018</span>
     <h1 class="article-title"><a href="https://taniko.github.io/article/2018/03/140815">Laravelのクエリビルダでifとかを使う</a></h1>
             <ul class="article-tags">
                             <li><a href="/tag/laravel/1">laravel</a></li>
@@ -258,60 +300,6 @@ var_dump(Taniko\Romans\Parser::toInt('MMⅩVII'));
             </div>
 
     </article>
-            <article>
-    <span class="article-date">September 21, 2017</span>
-    <h1 class="article-title"><a href="https://taniko.github.io/article/2017/09/211755">pixiv 2017 SUMMER BOOT CAMPに参加してきました</a></h1>
-            <ul class="article-tags">
-                            <li><a href="/tag/internship/1">internship</a></li>
-                    </ul>
-        <div class="article-contents">
-                    <p><img src="/article/2017/09/211755/front.jpg" alt="" />
-ピクシブさんのインターンに行ってきたのでそのお話です. <a href="https://taniko.github.io/article/2016/09/summer_boot_camp_2016/">去年も参加</a>したので, 1年ぶり2度めのピクシブさんでのインターンでした.</p>
-<h2>参加するまで</h2>
-<h3>選考について</h3>
-<p>GitHub選考が今年もあったので, それを使って応募しました. GitHub選考は, 履歴書とか書かなくていいのでおすすめです.  </p>
-<p>1次選考が終わったらオンライン面接がありました. 内容は, なぜ(今年も)応募したのかや, 参加希望コースのこととか, コーディングテストとかです. コーディングテストに関しては, 好きな言語でやっていいとのことなので, もちろんPHPでやりました.  </p>
-<p>エントリーから面接含めて2週間弱で, 参加させていただけることが決まりました.</p>
-<h3>前日</h3>
-<p>去年同様に, 初日の朝に滋賀から東京に行って, 最終日の夜に帰ろうとしていたのですが, 東京に住んでいる友達にお願いして, 泊めてもらえることになりました. おかげさまで移動がだいぶ楽になりました. 感謝です.</p>
-<h2>やったこと</h2>
-<p>初日の午前中は, インターンの概要説明, 自己紹介, 機密保持契約とかをやっていました. 社員の方はもちろんなのですが, 参加しているインターンの人もすごい人ばっかりでした.</p>
-<p>午後からは, 開発環境の構築から始まり, 実際に開発を行い始めました. 開発環境の構築なのですが, データが大きすぎるので, 開発用のサーバのコードを触って行うというものだったので, SSHとかの知識がほんの少し必要. セットアップの方法はまとめられているので, 基本的にはその通りにやっていけば行えました. SSHの公開鍵周りのことがあるので, GitHubに公開鍵を登録しておくと楽です.</p>
-<p>開発なのですが, 今回, 私が参加したのは技術基盤コースというもので, pixivや他のサービスで利用されているライブラリやルーティングをリファクタリングなどが主な内容でした.</p>
-<p>具体的には</p>
-<ul>
-<li>PDOから独自のライブラリに移行</li>
-<li>リファレンス渡しをなくす</li>
-<li>ユーザが原因のエラーのログレベルを修正</li>
-<li>とあるエラー時のログ用テーブルの設計とロギング用クラス作成</li>
-</ul>
-<p>など. テストがないようなところはテストも作ったりしていました. 基本的にはPHPを触っていたのですが, エラーの再現をさせるためにフロント(TypeScript)のコードも読むことがありました.</p>
-<p>GitHubにインターン生用のスナップショットがおいてあって, そこで開発していきました.  </p>
-<p>流れとしては,</p>
-<ul>
-<li>コードを書く</li>
-<li>PRを送る</li>
-<li>コードレビューを受ける</li>
-<li>本体(実際に運用されているリポジトリ)にマージされる</li>
-<li>デプロイ</li>
-</ul>
-<p>といった感じです. 時々, 本体側で更新されたコードもまとめて降ってきました.<br />
-チーム開発なので, リーベースしたり, コミットをまとめたりなどをすることがありました. 一度, PRをクローズ, スカッシュ, リベースなどをやってしまって, PRを再オープンするのに手間取って大変でした.<br />
-インターン中にいくつかのPRがマージされました. 実際に本体でマージされてデプロイされる画面も見せていただきました.</p>
-<p>最終日は, インターンの成果発表がありました. インターンはコース毎に分かれてやっていたので, 他のコースの人がどんなことをやっているのかは, その時まではよくわかっていなかったのですが, 皆さん機能追加やOSSへコントリビュートしたり楽しそうでした.<br />
-あと, すべてが終わったあとにオフィス見学をさせていただきました.</p>
-<h2>さいごに</h2>
-<p>開発業務以外にも, 全社ミーティング, インターン生向けの講義とかがあり, ピクシブさんの現状であったり, プロジェクトのこれからの方針とかも聞かせて頂きました.  </p>
-<p>一緒に働かせていただいて, 周りの方々はすごい人ばかりだなと感じました. メンターの方々に相談すれば一緒に考えてくださり, とても親切な方々でした.</p>
-<p>大変勉強になった5日間でした. ピクシブさんには大変お世話になりました. このような機会をいただき, ありがとうございました.</p>
-
-            </div>
-    <div class="article-share">
-                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://taniko.github.io/article/2017/09/211755" data-text="pixiv 2017 SUMMER BOOT CAMPに参加してきました - tanikoのぶろぐ">Tweet</a>
-                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://taniko.github.io/article/2017/09/211755"></a>
-            </div>
-
-    </article>
         <nav class="pager">
                     <div class="next"><a href="/page/2">next &raquo;</a></div>
             </nav>
@@ -340,11 +328,11 @@ var_dump(Taniko\Romans\Parser::toInt('MMⅩVII'));
                                                                 <div id="side-recent" class="hidden-sm-down">
                             <div class="side-title">最新記事</div>
                             <ul>
+                                                                    <li><a href="https://taniko.github.io/article/2018/04/221906">Laravelが 201 Createdを返すってさ</a><br></li>
                                                                     <li><a href="https://taniko.github.io/article/2018/04/060522">PHPの面白いところ</a><br></li>
                                                                     <li><a href="https://taniko.github.io/article/2018/03/280656">Clipasってサイトを作りました</a><br></li>
                                                                     <li><a href="https://taniko.github.io/article/2018/03/140815">Laravelのクエリビルダでifとかを使う</a><br></li>
                                                                     <li><a href="https://taniko.github.io/article/2017/12/071509">マルチバイト周りに対応したローマ数字のパーサを作った</a><br></li>
-                                                                    <li><a href="https://taniko.github.io/article/2017/09/211755">pixiv 2017 SUMMER BOOT CAMPに参加してきました</a><br></li>
                                                             </ul>
                         </div>
                     
@@ -354,7 +342,7 @@ var_dump(Taniko\Romans\Parser::toInt('MMⅩVII'));
                                                             <li><a href="/tag/api/1">api (1)</a></li>
                                                             <li><a href="/tag/conference/1">conference (1)</a></li>
                                                             <li><a href="/tag/internship/1">internship (2)</a></li>
-                                                            <li><a href="/tag/laravel/1">laravel (1)</a></li>
+                                                            <li><a href="/tag/laravel/1">laravel (2)</a></li>
                                                             <li><a href="/tag/php/1">php (11)</a></li>
                                                             <li><a href="/tag/saori/1">saori (11)</a></li>
                                                             <li><a href="/tag/univ/1">univ (3)</a></li>
