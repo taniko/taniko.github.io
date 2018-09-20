@@ -2,8 +2,114 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 <title>tanikoのぶろぐ</title>
 <link href="https://taniko.github.io"></link>
-<updated>2018-04-22T19:07:22+09:00</updated>
+<updated>2018-09-20T23:34:42+09:00</updated>
 <id>urn:uuid:c90b8eeb-3954-eaf8-0b65-eae8678a9ee4</id>
+<entry>
+<author><name>Yuya Aratani</name>
+</author>
+<title>文章生成をやってみる</title>
+<link href="https://taniko.github.io/article/2018/09/202328"></link>
+<id>urn:uuid:a141ba75-07d7-5764-c564-e6da67bf26f7</id>
+<updated>2018-09-20T23:28:18+09:00</updated>
+<summary type="html"><![CDATA[<p>文章作成機(?)を作る方法をなるべく簡単(?)に説明したいと思います. とても, 無能なものです.  </p>
+<h2>はじめに</h2>
+<p>どんなものかと簡単に説明すると, 複数の文章を元に, 文章を作成するというものです.<br />
+PHPで雑に実装したので, それもどうぞ.
+<a href="https://github.com/taniko/udon">https://github.com/taniko/udon</a></p>
+<h2>仕組みを雑に</h2>
+<p>まずはじめに, 元となるデータを用意します. 簡単にするために, 以下のような文章を用意します. 猫派の方はごめんなさい.</p>
+<ol>
+<li>私は犬が好きです</li>
+<li>私は猫が嫌いです</li>
+</ol>
+<p>この2文を形態素解析をすると以下のようになったとします. MeCabとか使えばいいと思います.</p>
+<ol>
+<li>私 は 犬 が 好き です</li>
+<li>私 は 猫 が 嫌い です</li>
+</ol>
+<p>これを1つの状態遷移図で表すと以下のようになります.</p>
+<p><img src="/article/2018/09/202328/flow_1.png" alt="" /></p>
+<p>この状態遷移図から文章を生成してみます.</p>
+<ol>
+<li>私は犬が好きです (本来の文章)</li>
+<li>私は猫が嫌いです (本来の文章)</li>
+<li>私は犬が嫌いです (新たな文章)</li>
+<li>私は猫が好きです (新たな文章)</li>
+</ol>
+<p>新たに2つの文章が得られました. 簡単ですね. そんなわけで, 以上, 文章作成機の仕組みでした.</p>
+<h2>もう少し面白く</h2>
+<p>仕組み自体は, あまり変わりませんが, 次の状態を現在の状態のみに依存させると面白くなるので, それについての話です. 実装したのはこっち.  </p>
+<p>以下のような3文があったとします.</p>
+<ol>
+<li>私 は 犬 が 好き です</li>
+<li>私 は 猫 が 嫌い です</li>
+<li>私 が し ます</li>
+</ol>
+<p>これを状態遷移図に書き起こします.
+<img src="/article/2018/09/202328/flow_2.png" alt="" /></p>
+<p>今までの通りにやると, 以下の5文が生成できます.</p>
+<ol>
+<li>私は犬が好きです (本来の文章)</li>
+<li>私は猫が嫌いです (本来の文章)</li>
+<li>私がします (本来の文章)</li>
+<li>私は犬が嫌いです (新たな文章)</li>
+<li>私は猫が好きです (新たな文章)</li>
+</ol>
+<p>もし, 次の状態を決めるのが, <code>現在の状態のみに依存</code>するとなると以下のような表と図ができます.  </p>
+<table>
+<thead>
+<tr><th align="left">現在の状態</th><th align="left">次の状態</th><th align="left">確率</th></tr>
+</thead>
+<tbody>
+<tr><td align="left">私</td><td align="left">は</td><td align="left">2/3</td></tr>
+<tr><td align="left">私</td><td align="left">が</td><td align="left">1/3</td></tr>
+<tr><td align="left">は</td><td align="left">犬</td><td align="left">1/2</td></tr>
+<tr><td align="left">は</td><td align="left">猫</td><td align="left">1/2</td></tr>
+<tr><td align="left">犬</td><td align="left">が</td><td align="left">1/2</td></tr>
+<tr><td align="left">猫</td><td align="left">が</td><td align="left">1/2</td></tr>
+<tr><td align="left">が</td><td align="left">し</td><td align="left">1/3</td></tr>
+<tr><td align="left">が</td><td align="left">好き</td><td align="left">1/3</td></tr>
+<tr><td align="left">が</td><td align="left">嫌い</td><td align="left">1/3</td></tr>
+<tr><td align="left">し</td><td align="left">ます</td><td align="left">1/1</td></tr>
+<tr><td align="left">好き</td><td align="left">です</td><td align="left">1/1</td></tr>
+<tr><td align="left">嫌い</td><td align="left">です</td><td align="left">1/1</td></tr>
+</tbody>
+</table>
+<p><img src="/article/2018/09/202328/flow_3.png" alt="" /></p>
+<p>こうすることで, 新たに以下のような文が生成できるようになります.</p>
+<ul>
+<li>私が好きです</li>
+<li>私が嫌いです</li>
+</ul>
+<p>このように, <code>現在の状態のみに依存</code>させると, 新たな文章が作成できるようになりました. 実装するなら, 下の表みたいに, 文の頭に<code>BOS(Begin of Sentence)</code>, 文の終わりに<code>EOS(End of Sentence)</code>などを差し込んで, どの語から始めることができ, どの語で終わることができるのかを明確にした方がいいと思います.</p>
+<table>
+<thead>
+<tr><th align="left">現在の状態</th><th align="left">次の状態</th><th align="left">確率</th></tr>
+</thead>
+<tbody>
+<tr><td align="left">BOS</td><td align="left">私</td><td align="left">3/3</td></tr>
+<tr><td align="left">ます</td><td align="left">EOS</td><td align="left">1/1</td></tr>
+<tr><td align="left">です</td><td align="left">EOS</td><td align="left">1/1</td></tr>
+</tbody>
+</table>
+<p>ちなみに, 私のツイートから生成された文章はこんな漢字です.</p>
+<blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">記号とか品詞とか全く考えずにやるとこんな感じで, ゴミが生成されます. <a href="https://t.co/erAWuavniZ">pic.twitter.com/erAWuavniZ</a></p>&mdash; たにこ (@hrgruri) <a href="https://twitter.com/hrgruri/status/1013721468583141376?ref_src=twsrc%5Etfw">2018年7月2日</a></blockquote>
+<p><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></p>
+<p>おしまい.</p>
+<h2>調べると幸せになる用語</h2>
+<ul>
+<li>MeCab</li>
+<li>mecab-ipadic-neologd</li>
+<li>マルコフ連鎖</li>
+</ul>
+<h2>おわりに</h2>
+<p>PassCodeの"Tonight/Taking you out"を買いました. ライブDVDがほしかったので. (下の映像は入っていないです.)</p>
+<p>PassCode - ONE STEP BEYON
+<iframe width="560" height="315" src="https://www.youtube.com/embed/GObrpzFp2lA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></p>
+<p>PassCode - Tonight
+<iframe width="560" height="315" src="https://www.youtube.com/embed/YzNXj9a6blE" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></p>
+]]></summary>
+</entry>
 <entry>
 <author><name>Yuya Aratani</name>
 </author>
