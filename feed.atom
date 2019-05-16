@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 <title>tanikoのぶろぐ</title>
 <link href="https://taniko.github.io"></link>
-<updated>2018-09-20T23:34:42+09:00</updated>
+<updated>2019-05-17T01:23:20+09:00</updated>
 <id>urn:uuid:c90b8eeb-3954-eaf8-0b65-eae8678a9ee4</id>
 <entry>
 <author><name>Yuya Aratani</name>
@@ -319,7 +319,7 @@ $posts = $user-&gt;posts()
 <p>まずは, マルチバイト周りのローマ数字について. 10を例に話します.</p>
 <table>
 <thead>
-<tr><th align="center"></th><th align="left"><code>x</code> </th><th align="left"><code>X</code> </th><th align="left"><code>ｘ</code> </th><th align="left"><code>Ｘ</code> </th><th align="left"><code>ⅹ</code> </th><th align="left"><code>Ⅹ</code></th></tr>
+<tr><th align="center"></th><th align="left"><code>x</code></th><th align="left"><code>X</code></th><th align="left"><code>ｘ</code></th><th align="left"><code>Ｘ</code></th><th align="left"><code>ⅹ</code></th><th align="left"><code>Ⅹ</code></th></tr>
 </thead>
 <tbody>
 <tr><td align="center">説明</td><td align="left">半角小文字</td><td align="left">半角大文字</td><td align="left">全角小文字</td><td align="left">全角大文字</td><td align="left">ローマ数字(小文字)</td><td align="left">ローマ数字(大文字)</td></tr>
@@ -1086,9 +1086,9 @@ try {
 <tbody>
 <tr><td align="center">-max</td><td align="center">表示件数</td></tr>
 <tr><td align="center">skip</td><td align="center">スキップ数</td></tr>
+<tr><td align="center">この2つは推測できますね. なぜかmaxではなく-maxですが. 統一されておらず,推測できないのはスクレイピングする側としては辛いですね. サーバサイドのコードを書くに扱いづらくなかったのでしょうか?</td></tr>
 </tbody>
 </table>
-<p>この2つは推測できますね. なぜかmaxではなく-maxですが. 統一されておらず,推測できないのはスクレイピングする側としては辛いですね. サーバサイドのコードを書くに扱いづらくなかったのでしょうか?</p>
 <h2>作ったライブラリ</h2>
 <p>オープンキャンパスのために創成3のサイトを再び作っているので使っているが, それさえ終わればもう使うことはないと思う. <a href="https://github.com/hrgruri/rarcs">GitHub</a>にアップロードしています. またComposerからインストールして使うことができます.</p>
 <pre><code class="language-sh">composer require hrgruri/rarcs
