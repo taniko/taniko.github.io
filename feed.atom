@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 <title>tanikoのぶろぐ</title>
 <link href="https://taniko.github.io"></link>
-<updated>2020-12-13T00:41:34+00:00</updated>
+<updated>2020-12-13T00:44:05+00:00</updated>
 <id>urn:uuid:c90b8eeb-3954-eaf8-0b65-eae8678a9ee4</id>
 <entry>
 <author><name>Yuya Aratani</name>
@@ -47,7 +47,7 @@ owner/repo:
 </li>
 </ol>
 <p>以下のようなメッセージがチャンネル宛、もしくはDMで届きます。</p>
-<pre><code class="language-text">@team-a
+<pre><code>@team-a
 お手すきの際にレビューお願いします。
 
 [PRタイトル]
