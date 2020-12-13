@@ -38,6 +38,129 @@
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
                                 <article>
+    <span class="article-date">December 13, 2020</span>
+    <h1 class="article-title"><a href="https://taniko.github.io/article/2020/12/130034">GitHubのPRレビュー依頼をSlackに通知する</a></h1>
+            <ul class="article-tags">
+                            <li><a href="/tag/TypeScript/1">TypeScript</a></li>
+                    </ul>
+        <div class="article-contents">
+                    <p>この記事は<a href="https://qiita.com/advent-calendar/2020/dmm">DMMグループ Advent Calendar 2020</a> 13日目の記事です。</p>
+<h2>初めに</h2>
+<p>プルリクエストのレビュー依頼をSlack上で行っていました。
+PRを作成するたびに、Slackで「レビューをお願いします」と書くのが面倒だったので、レビュー依頼を半自動化させました。<br />
+BotによるDMもしくは、チャンネルへのメッセージによる通知を行います。</p>
+<p>GitHubのPRまたはIssueにラベルをつけるとSlackにメッセージが飛びます。
+個人、グループメンションに対応しています。Reviewersにも対応。
+リポジトリのHooks設定、YAML設定するだけ。</p>
+<p>１年以上前にコードを書きました。TypeScriptの知識も少なかったので、コードが汚いですが、ご了承ください。　　</p>
+<h2>uzr</h2>
+<p>弊社では、GitHub Enterpriseのアカウント名とSlackのアカウント名が同じです。多くの人は、 <code>aratani-yuya</code> みたいに、<code>姓-名</code> の形になっています。<br />
+そのため、 GitHubのアカウント名をそのまま使えば、Slackへの通知が可能になっています。もしも違うのであれば、変換の処理を入れる必要がありますが、今回はそれを省きました。<br />
+PRのラベルを指定のものにする、もしくはReviewersに誰かを追加すると、レビュー依頼が自動で出されるようになります。</p>
+<h3>レビュー依頼設定</h3>
+<p>1リポジトリに対して、複数のラベルの設定ができるようになっています。これは複数のチームが同じリポジトリを操作する可能性があるためです。</p>
+<pre><code>// setting/pr.yml
+owner/repo:
+  - label: Team-A
+    channel: team-a-channel
+    mentions:
+      - team-a
+    text: 'お手すきの際にレビューお願いします。'
+</code></pre>
+<h3>Slack通知の流れ</h3>
+<p><img src="/article/2020/12/130034/uzr.png" alt="" /></p>
+<ol>
+<li>GitHubのWebhookをCloud Functionsに送る</li>
+<li>KMSからWebhookのSecret、SlackのTokenを取得</li>
+<li>Cloud Storageから設定を取得</li>
+<li>Slackにメッセージを送る<ul>
+<li>DM</li>
+<li>チャンネルへメンション</li>
+</ul>
+</li>
+</ol>
+<p>以下のようなメッセージがチャンネル宛、もしくはDMで届きます。</p>
+<pre><code class="language-text">@team-a
+お手すきの際にレビューお願いします。
+
+[PRタイトル]
+by [User]
+https://github.com/owner/repo/pull/1
+</code></pre>
+<h3>ソースコード</h3>
+<pre><code class="language-javascript">exports.uzr = async function(req: Request, res: Response) {
+  // Pingリクエストのチェック
+  if (isPingRequest(req)) {
+    return res.status(200).send('pong');
+  }
+  // GitHub WebhookのSecretの取得
+  const secret = (await decrypt(env('GITHUB_SECRET', ''), KMS_SETTING)).plaintext.toString().trim();
+  const github_host = env('GITHUB_HOST', '') as string;
+
+  // GitHub Enterpriseからのアクセスかを確認
+  if (!isValidIP(req.ip) || !validate(req, secret, github_host)) {
+    return res.status(403).send('');
+  }
+
+  // labeled、review_requestedのWebhookかを確認
+  if (!isAllowRequest(req)) {
+    res.status(200).send('Not support request');
+    return;
+  }
+
+  // Webhookのリクエストを判断
+  const type = detectRequestType(req);
+  const storage = new Storage();
+  const bucket = storage.bucket(BUCKET_NAME);
+  let message: Message | undefined;
+  try {
+    // Slackのメッセージを組み立て
+    if (type === RequestType.REVIEW) {
+      const data: PullRequest = req.body;
+      const targets = parseJsonToReviewTargetsByLabel(data.repository.full_name, await getYamlFile(bucket.file(SETTING_FILE_PR)));
+      message = createMessagesByLabel(targets, data, type);
+    } else if (type === RequestType.REVIEW_REQUEST) {
+      const data: ReviewerRequest = req.body;
+      const users: User[] = await getUsers(bucket.file(USERS_FILE))
+      const targets = getTargetsBySlackUsers(users, data.requested_reviewer.login);
+      message = createMessageByReviewer(targets, data, type);
+    } else if (type === RequestType.ISSUE) {
+      const data: IssueRequest = req.body;
+      const targets = parseJsonToReviewTargetsByLabel(data.repository.full_name, await getYamlFile(bucket.file(SETTING_FILE_ISSUE)));
+      message = createMessagesByLabel(targets, data, type);
+    } else {
+      res.status(200).send('Not support request');
+      return;
+    }
+  } catch (e) {
+    console.log(e.toString());
+    res.status(500).send('error');
+    return;
+  }
+
+  if (message != undefined) {
+    // Slackにメッセージを送信
+    const groups = await getUserGroups(bucket.file(GROUPS_FILE));
+    const slack_token = (await decrypt(env('SLACK_TOKEN', ''), KMS_SETTING)).plaintext.toString().trim();
+    const client = new WebClient(slack_token);
+    await send(client, message, groups);
+  }
+  res.status(200).send('ok');
+};
+</code></pre>
+<h2>終わりに</h2>
+<p>主に弊チームで運用されているレビュー依頼半自動化のコードでした。リポジトリは<a href="https://github.com/taniko/uzr_pr">こちら</a><br />
+レビュー依頼だけでなく、PRへのコメントの通知も、行えるようにできたらいいなと思います。</p>
+<p>明日は <a href="https://qiita.com/yo_chan_yo_chan">yo_chan_yo_chan</a> さんです。</p>
+
+            </div>
+    <div class="article-share">
+                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://taniko.github.io/article/2020/12/130034" data-text="GitHubのPRレビュー依頼をSlackに通知する - tanikoのぶろぐ">Tweet</a>
+                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://taniko.github.io/article/2020/12/130034"></a>
+            </div>
+
+    </article>
+            <article>
     <span class="article-date">September 20, 2018</span>
     <h1 class="article-title"><a href="https://taniko.github.io/article/2018/09/202328">文章生成をやってみる</a></h1>
         <div class="article-contents">
@@ -279,90 +402,6 @@ var_dump($bar-&gt;count); // int(1)
             </div>
 
     </article>
-            <article>
-    <span class="article-date">March 14, 2018</span>
-    <h1 class="article-title"><a href="https://taniko.github.io/article/2018/03/140815">Laravelのクエリビルダでifとかを使う</a></h1>
-            <ul class="article-tags">
-                            <li><a href="/tag/laravel/1">laravel</a></li>
-                    </ul>
-        <div class="article-contents">
-                    <h2>はじめに</h2>
-<p>Laravelで特定のクエリパラメータを使ってクエリを組み立てたいときってありませんか? 例えば, 検索なので, <code>since_id</code>があれば, セットされている値以降で絞り込んで検索とかです.</p>
-<pre><code class="language-php">&lt;?php
-namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-use App\Asset;
-use App\Http\Requests\Asset\SearchRequest;
-
-class AssetController extends Controller
-{
-    public function search(SearchRequest $request)
-    {
-        $query = Asset::query();
-        if ($request-&gt;has('since_id')) {
-            $query = $query-&gt;where('id', '&gt;=', $request-&gt;input('since_id'));
-        }
-        if ($request-&gt;has('until_id')) {
-            $query = $query-&gt;where('id', '&lt;=', $request-&gt;input('until_id'));
-        }
-        return $query-&gt;get();
-    }
-}
-</code></pre>
-<p>こんな感じで書けますよね.<br />
-ただ, これだと何個もif文を書いていくことになります. メソッドチェーンでやってみたくなったので, やってみましょう.</p>
-<h2>やり方</h2>
-<h3>マクロの登録</h3>
-<p>まず, クエリビルダで<code>if</code>と<code>whereIf</code>を使えるように登録します. <code>app/Providers/AppServiceProvider.php</code>に以下のコードを加えます.</p>
-<pre><code class="language-php">&lt;?php
-// app/Providers/AppServiceProvider.php
-namespace App\Providers;
-
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Database\Query\Builder;
-use Illuminate\Support\Facades\Schema;
-
-class AppServiceProvider extends ServiceProvider
-{
-    public function boot()
-    {
-        Builder::macro('if', function (bool $condition, callable $func) {
-            return $condition ? $func($this) : $this;
-        });
-        Builder::macro('whereIf', function (bool $condition, $column, $operator = null, $value = null, $boolean = 'and') {
-            return $condition ? $this-&gt;where($column, $operator, $value, $boolean) : $this;
-        });
-    }
-}
-</code></pre>
-<p>まず1つ目は, コールバック関数を与える方法です. これは, 複雑なクエリを付け加えたい時に使用します. 単純な<code>where</code>句を加えたいだけなら, この方法はおすすめしません.<br />
-2つ目は<code>where</code>句のみを付属させるものです. <code>where()</code>とほぼ同じ使い方なので, こちらがおすすめです. <code>where()</code>との違いは, 第1引数が<code>true</code>ならば<code>where</code>が加えられるという点です.</p>
-<h3>使い方</h3>
-<p>ユーザの投稿一覧の取得のサンプルコードです.</p>
-<pre><code class="language-php">&lt;?php
-// 1つ目 if
-$posts = $user-&gt;posts()
-    -&gt;if($request-&gt;has('since_id'), function ($query) use ($request) {
-        return $query-&gt;where('id', '&gt;=', $request-&gt;input('since_id'));
-    })-&gt;get();
-
-// 2つ目 whereIf
-$posts = $user-&gt;posts()
-    -&gt;whereIf($request-&gt;has('since_id'), 'id', '&gt;=', $request-&gt;input('since_id'));
-</code></pre>
-<p>こんな感じでメソッドチェーンをつなげていくことができます.<br />
-どちらの方が見やすいのか. ブロックで分けるべきか, 1行でまとめるべきか. あと, 型宣言や関数呼び出しの速度も.</p>
-<h2>リンク</h2>
-<p><a href="https://laravel.com/api/5.5/Illuminate/Database/Eloquent/Builder.html#method_where">Laravel API - https://laravel.com/api/5.5/Illuminate/Database/Eloquent/Builder.html#method_where</a></p>
-
-            </div>
-    <div class="article-share">
-                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://taniko.github.io/article/2018/03/140815" data-text="Laravelのクエリビルダでifとかを使う - tanikoのぶろぐ">Tweet</a>
-                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://taniko.github.io/article/2018/03/140815"></a>
-            </div>
-
-    </article>
         <nav class="pager">
                             <div class="next"><a href="https://taniko.github.io/page/2">next &raquo;</a></div>
             </nav>
@@ -391,17 +430,18 @@ $posts = $user-&gt;posts()
                                                                 <div id="side-recent" class="hidden-sm-down">
                             <div class="side-title">最新記事</div>
                             <ul>
+                                                                    <li><a href="https://taniko.github.io/article/2020/12/130034">GitHubのPRレビュー依頼をSlackに通知する</a><br></li>
                                                                     <li><a href="https://taniko.github.io/article/2018/09/202328">文章生成をやってみる</a><br></li>
                                                                     <li><a href="https://taniko.github.io/article/2018/04/221906">Laravelが 201 Createdを返すってさ</a><br></li>
                                                                     <li><a href="https://taniko.github.io/article/2018/04/060522">PHPの面白いところ</a><br></li>
                                                                     <li><a href="https://taniko.github.io/article/2018/03/280656">Clipasってサイトを作りました</a><br></li>
-                                                                    <li><a href="https://taniko.github.io/article/2018/03/140815">Laravelのクエリビルダでifとかを使う</a><br></li>
                                                             </ul>
                         </div>
                     
                                                                 <div id="side-tags" class=" hidden-sm-down">
                             <div class="side-title">タグ</div>
                             <ul>
+                                                            <li><a href="/tag/TypeScript/1">TypeScript (1)</a></li>
                                                             <li><a href="/tag/api/1">api (1)</a></li>
                                                             <li><a href="/tag/conference/1">conference (1)</a></li>
                                                             <li><a href="/tag/internship/1">internship (2)</a></li>

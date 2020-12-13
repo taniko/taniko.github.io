@@ -38,6 +38,61 @@
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
                                 <article>
+    <span class="article-date">November 25, 2016</span>
+    <h1 class="article-title"><a href="https://taniko.github.io/article/2016/11/251311">Saori v2.2のリリース</a></h1>
+            <ul class="article-tags">
+                            <li><a href="/tag/saori/1">saori</a></li>
+                    </ul>
+        <div class="article-contents">
+                    <p>v2.2では主にコマンドの追加をしました.</p>
+<h2>コマンドの追加</h2>
+<h3>deploy</h3>
+<p><code>deploy</code>はデプロイを簡単にするためのものです. git add, commit, pushをまとめてやってくれるといった簡単なものです.</p>
+<pre><code class="language-sh">php saori deploy (:commit_message)
+</code></pre>
+<p>これで動作します. <code>:commit_message</code>が存在しなければ<code>date('YmdHi')</code>が入ります.</p>
+<h3>theme</h3>
+<p><code>theme</code>は存在するテーマ一覧の取得と, テーマの設定ファイルの確認に使います</p>
+<pre><code class="language-sh">php saori theme
+## 以下が表示される
+Theme list
+sample, saori
+
+php saori theme saori
+## 以下が表示される
+saori/theme.json
+{
+    "noapp":5,
+    "color" : {
+        "header" : "#000033",
+        "title" : "#EEEEEE",
+        "body"      : "#E9E9E9",
+        "article"   : "#FFF1CF",
+        "main" : "white",
+        "side" : "white"
+    },
+    "date-format" : "Y-m-d"
+}
+</code></pre>
+<h2>内部的な話</h2>
+<p>現在置換え中ですが, PHPの配列から<code>Illuminate\Support\Collection</code>に変更中です. Laravelで使われているあれです. まだ書き換えられていないところもあるのですが, 徐々に書き換えていきたいと思います.<br />
+あと, テーマ作成の面で言うと<code>css.twig</code>を使えるようにした. これはcss/name.css.twigをcss/name.cssに書き換えると言うもの. theme/saoriではheader, bodyなどの背景色をカスタマイズできるようにするために使用しています.</p>
+<pre><code class="language-css.twig">/* theme/saori/css/article.css.twig */
+article {
+    background: {{maker.color('article')}};
+    margin-bottom: 50px;
+    padding: 5px 10px 5px 10px;
+}
+</code></pre>
+
+            </div>
+    <div class="article-share">
+                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://taniko.github.io/article/2016/11/251311" data-text="Saori v2.2のリリース - tanikoのぶろぐ">Tweet</a>
+                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://taniko.github.io/article/2016/11/251311"></a>
+            </div>
+
+    </article>
+            <article>
     <span class="article-date">October 22, 2016</span>
     <h1 class="article-title"><a href="https://taniko.github.io/article/2016/10/ricca">Slackのフレームワーク(?)を作った</a></h1>
             <ul class="article-tags">
@@ -185,45 +240,6 @@ php -S localhost:8000 -t local
             </div>
 
     </article>
-            <article>
-    <span class="article-date">August 4, 2016</span>
-    <h1 class="article-title"><a href="https://taniko.github.io/article/2016/08/041630">saori v2.0を開発中</a></h1>
-            <ul class="article-tags">
-                            <li><a href="/tag/saori/1">saori</a></li>
-                    </ul>
-        <div class="article-contents">
-                    <p><code>composer create-project</code>でインストールできるようにして, symfony/consoleを利用してsaoriを使用できるようにしました. あとnamespaceを修正.</p>
-<h2>v2.0-devをインストール</h2>
-<p><code>composer create-project hrgruri/saori:v2.0.x-dev blog</code>で開発途中のv2.0をインストールして始めることができます. 最後の<code>blog</code>はディレクトリ名なので別のものに変えても構いません.  </p>
-<h2>使用方法</h2>
-<pre><code class="language-sh">composer create-project hrgruri/saori:v2.0.x-dev blog
-cd blog
-php saori
-
-#初期化
-php saori init
-
-#下書きファイルを生成 (いきなりpostを使ってもいい)
-php saori draft first_article
-
-#記事の投稿
-php saori post first_article
-
-#静的サイトを生成
-php saori build
-</code></pre>
-<p>現在のところ,init, draft, post, buildが使用できます. <code>-h</code>使えば簡単な説明が出ると思うのでそちらを参考に.</p>
-<p><code>php saori draft</code>は別に使用しないでいきなり<code>php saori post</code>しても利用できるのですが, <code>draft</code>を使ったほうがいいかと.</p>
-<h2>今後</h2>
-<p><code>draft</code>した時にはconfig.jsonが作られず, <code>post</code>した時に作られるのですが, これだと<code>post</code>した後じゃないとconfig.jsonがさわれない. config.jsonを<code>draft</code>でも生成しておき, timestampを<code>post</code>した時に追加させようと思います.  </p>
-
-            </div>
-    <div class="article-share">
-                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://taniko.github.io/article/2016/08/041630" data-text="saori v2.0を開発中 - tanikoのぶろぐ">Tweet</a>
-                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://taniko.github.io/article/2016/08/041630"></a>
-            </div>
-
-    </article>
         <nav class="pager">
                     <div class="previous"><a href="https://taniko.github.io/page/2">&laquo; prev</a></div>
                             <div class="next"><a href="https://taniko.github.io/page/4">next &raquo;</a></div>
@@ -253,17 +269,18 @@ php saori build
                                                                 <div id="side-recent" class="hidden-sm-down">
                             <div class="side-title">最新記事</div>
                             <ul>
+                                                                    <li><a href="https://taniko.github.io/article/2020/12/130034">GitHubのPRレビュー依頼をSlackに通知する</a><br></li>
                                                                     <li><a href="https://taniko.github.io/article/2018/09/202328">文章生成をやってみる</a><br></li>
                                                                     <li><a href="https://taniko.github.io/article/2018/04/221906">Laravelが 201 Createdを返すってさ</a><br></li>
                                                                     <li><a href="https://taniko.github.io/article/2018/04/060522">PHPの面白いところ</a><br></li>
                                                                     <li><a href="https://taniko.github.io/article/2018/03/280656">Clipasってサイトを作りました</a><br></li>
-                                                                    <li><a href="https://taniko.github.io/article/2018/03/140815">Laravelのクエリビルダでifとかを使う</a><br></li>
                                                             </ul>
                         </div>
                     
                                                                 <div id="side-tags" class=" hidden-sm-down">
                             <div class="side-title">タグ</div>
                             <ul>
+                                                            <li><a href="/tag/TypeScript/1">TypeScript (1)</a></li>
                                                             <li><a href="/tag/api/1">api (1)</a></li>
                                                             <li><a href="/tag/conference/1">conference (1)</a></li>
                                                             <li><a href="/tag/internship/1">internship (2)</a></li>

@@ -38,6 +38,32 @@
             <div class="row">
                 <div id="blog-main" class="col-xs-12 col-md-8">
                                 <article>
+    <span class="article-date">June 4, 2016</span>
+    <h1 class="article-title"><a href="https://taniko.github.io/article/2016/06/042227">Saori v0.5.x-devにてTableがおかしい</a></h1>
+            <ul class="article-tags">
+                            <li><a href="/tag/saori/1">saori</a></li>
+                    </ul>
+        <div class="article-contents">
+                    <p>現在Saoriのv0.5を作っていますが, どうやらテーブルが正しく表示されないです.</p>
+<pre><code class="language-markdown">|name|値|
+|:-:|:-:|
+|f85|キーワード|
+|f23|絵師|
+|f83|画題|
+</code></pre>
+<p>上記の記述をしたら以下の様なテーブルが生成されました.</p>
+<p><img src="/article/2016/06/042227/table.png" alt="table" /></p>
+<p>罫線が入っていないので,テーブルとしてわかりにくくなっています. 今のところ原因がわかっていません. Atomの上では正しく表示されているので記述に間違いはないのではないかとは思います. cebe/markdownを使ってMarkdownを変換しています. とりあえず他のライブラリを使ってみてどう表示されるのか試してみます. あとHTMLも確認してみたいと思います.</p>
+<p>ちなみにv0.5.x-devでは記事とユーザページ(contents/page/NAME.md)の画像ファイルのパスの書き換えはできるようになりました. </p>
+
+            </div>
+    <div class="article-share">
+                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://taniko.github.io/article/2016/06/042227" data-text="Saori v0.5.x-devにてTableがおかしい - tanikoのぶろぐ">Tweet</a>
+                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://taniko.github.io/article/2016/06/042227"></a>
+            </div>
+
+    </article>
+            <article>
     <span class="article-date">June 2, 2016</span>
     <h1 class="article-title"><a href="https://taniko.github.io/article/2016/06/arc">立命館ARCのスクレイピング</a></h1>
             <ul class="article-tags">
@@ -198,41 +224,10 @@ object(Hrgruri\Rarcs\Asset\Nishikie)#51 (5) {
             </div>
 
     </article>
-            <article>
-    <span class="article-date">April 24, 2016</span>
-    <h1 class="article-title"><a href="https://taniko.github.io/article/2016/04/saori">Saori v0.1.0のリリース</a></h1>
-            <ul class="article-tags">
-                            <li><a href="/tag/saori/1">saori</a></li>
-                            <li><a href="/tag/php/1">php</a></li>
-                    </ul>
-        <div class="article-contents">
-                    <h2>Saoriについて</h2>
-<p>SaoriというPHPを使った簡単なサイトジェネレータを作りました.現在のバージョンはv0.1.0です.これで,PHP動かない場所(たとえばusername.github.io)でもブログを公開できます. 仕組みとしてはローカルでPHPを使ってHTMLを生成して,それを公開するって流れです.<br />
-現在,テーマはsampleしかないのです.これでは1ページあたりの記事の数は5つとなっています.
-使い方は<a href="https://github.com/hrgruri/saori">GitHub</a>で.まだまだ開発途中で,追加したい機能がいくつかあるのでがんばります.  </p>
-<pre><code class="language-sh">composer install hrgruri/saori
-</code></pre>
-<h3>機能</h3>
-<ul>
-<li>各記事用のページの生成(/article/:year/:month/title)</li>
-<li>記事(N件)ごとのページを生成(/page/:page_number)</li>
-</ul>
-<h3>予定</h3>
-<p>各記事に対する設定でタグの欄があるのですが,Saoriの機能ではタグ一覧取得,タグ用のページの生成がないので,タグ機能を加えようと思います.<br />
-フィード機能(ATOM/RSS)がまだできていないので,それもできればいいかなと思っています.</p>
-<hr />
-<p>プログラムの話は全くしていないので,それに関しては近いうちに別の記事でします.</p>
-
-            </div>
-    <div class="article-share">
-                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://taniko.github.io/article/2016/04/saori" data-text="Saori v0.1.0のリリース - tanikoのぶろぐ">Tweet</a>
-                            <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en" data-save-url="https://taniko.github.io/article/2016/04/saori"></a>
-            </div>
-
-    </article>
         <nav class="pager">
                     <div class="previous"><a href="https://taniko.github.io/page/5">&laquo; prev</a></div>
-                    </nav>
+                            <div class="next"><a href="https://taniko.github.io/page/7">next &raquo;</a></div>
+            </nav>
                 </div>
                 <div id="blog-side" class="col-xs-12 col-md-4">
                                                                 <div id="side-profile">
@@ -258,17 +253,18 @@ object(Hrgruri\Rarcs\Asset\Nishikie)#51 (5) {
                                                                 <div id="side-recent" class="hidden-sm-down">
                             <div class="side-title">最新記事</div>
                             <ul>
+                                                                    <li><a href="https://taniko.github.io/article/2020/12/130034">GitHubのPRレビュー依頼をSlackに通知する</a><br></li>
                                                                     <li><a href="https://taniko.github.io/article/2018/09/202328">文章生成をやってみる</a><br></li>
                                                                     <li><a href="https://taniko.github.io/article/2018/04/221906">Laravelが 201 Createdを返すってさ</a><br></li>
                                                                     <li><a href="https://taniko.github.io/article/2018/04/060522">PHPの面白いところ</a><br></li>
                                                                     <li><a href="https://taniko.github.io/article/2018/03/280656">Clipasってサイトを作りました</a><br></li>
-                                                                    <li><a href="https://taniko.github.io/article/2018/03/140815">Laravelのクエリビルダでifとかを使う</a><br></li>
                                                             </ul>
                         </div>
                     
                                                                 <div id="side-tags" class=" hidden-sm-down">
                             <div class="side-title">タグ</div>
                             <ul>
+                                                            <li><a href="/tag/TypeScript/1">TypeScript (1)</a></li>
                                                             <li><a href="/tag/api/1">api (1)</a></li>
                                                             <li><a href="/tag/conference/1">conference (1)</a></li>
                                                             <li><a href="/tag/internship/1">internship (2)</a></li>
